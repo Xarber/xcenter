@@ -18,6 +18,19 @@ html.is-animating .transition-fade {
 GENERAL
 ------------------------------------------------*/
 
+:root {
+  color-scheme: light dark;
+  --title-color: black;
+  --bkgd-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --title-color: white;
+    --bkgd-color: black;
+  }
+}
+
 .animate{-webkit-transition: all 0.3s ease-out;transition: all 0.3s ease-out;}
 .button{display: inline-block; background: rgb(68, 63, 63); color: rgb(255, 255, 255); padding: 15px 30px; border-radius: 3px; text-decoration: none;}
 p{line-height: 22px;}
