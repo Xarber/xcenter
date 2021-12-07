@@ -1,0 +1,526 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    animation: fadeIn 2s;
+}
+
+/*Global Fade In Animation*/
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+/*Global Links*/
+a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    color: black;
+}
+
+a:hover {
+    border-bottom: 2px solid black;
+}
+
+a:visited {
+    color: black;
+}
+
+a.links:hover {
+    border-bottom: none;
+}
+
+a.pointedLink:hover {
+    border-bottom: none;
+}
+
+a.chickenLink:hover {
+    border-bottom: none;
+}
+
+a.logo:hover {
+    border-bottom: none;
+}
+
+a.sideBar li {
+    opacity: 50%;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+}
+
+a.sideBar li:hover {
+    opacity: 100%;
+}
+
+a.mobileLink li {
+    opacity: 50%;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+}
+
+a.mobileLink li:hover {
+    opacity: 100%;
+}
+
+a.closeButton {
+    border: none;
+}
+
+/*Dark Mode Integration - Light Mode*/
+:root {
+    color-scheme: light dark;
+    --title-color: black;
+    --nav-color: white;
+}
+
+/*Title with Logo*/
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 150px;
+    margin-left: 150px;
+}
+
+.title img {
+    width: 75px;
+    height: 75px;
+}
+
+.title h1 {
+    margin: 0px;
+    font-size: 32pt;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--title-color);
+}
+
+/*Desktop Navigation*/
+.desktopNavigation {
+    margin: 0px;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+}
+
+.desktopNavigation img {
+    width: 60px;
+    height: 60px;
+}
+
+.desktopNavigation ul {
+    margin: 0px;
+    padding: 50px;
+    padding-top: 150px;
+    list-style: none;
+    text-align: center;
+    font-size: 12pt;
+    font-family: 'Lato' , -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--title-color);
+    border-radius: 20px;
+    box-shadow: 1px 1px 6px black;
+}
+
+.desktopNavigation li {
+    margin-bottom: 80px;
+    padding-top: 10px;
+    color: var(--nav-color);
+}
+
+/*Mobile Navigation Button*/
+.mobileNavigation nav {
+    display: none;
+    margin: 20px;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    background-color: none;
+    z-index: 2;
+}
+
+.mobileNavigation nav:hover {
+    cursor: pointer;
+}
+
+.mobileNavigation div {
+    margin: 5px;
+    width: 20px;
+    height: 2px;
+    background-color: var(--title-color);
+}
+
+.mobileNavigation .lineTwo {
+    width: 15px;
+}
+
+.mobileNavigation .lineThree {
+    width: 17px;
+}
+
+.closeButton {
+    display: none;
+    margin: 20px;
+    position: absolute;
+    top: 5px;
+    font-size: 28pt;
+    z-index: 1;
+    color: var(--title-color);
+}
+
+.closeNav {
+    display: none;
+}
+
+/*Mobile Navigation Sheet*/
+.mobileNavigationSheet {
+    position: fixed;
+    top: 2000px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--title-color);
+    border-radius: 30px;
+    box-shadow: 0px -1px 6px black;
+    transition: .8s ease-in-out;
+    -webkit-transition: .8s ease-in-out;
+    -moz-transition: .8s ease-in-out;
+}
+
+.mobileNavigationSheet img {
+    width: 60px;
+    height: 60px;
+}
+
+.mobileNavigationSheet ul {
+    margin: 0px;
+    padding: 50px;
+    list-style: none;
+    font-size: 12pt;
+    font-family: 'Lato' , -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.mobileNavigationSheet li {
+    margin-bottom: 80px;
+    text-align: center;
+    color: var(--nav-color);
+}
+
+
+/*Main Section with Picture and Subtitle*/
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+    margin-left: 200px;
+}
+
+.main img {
+    /*width: 680px;
+    height: 504px;*/
+    width: 49%;
+    margin-right: 100px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.main .subtitle {
+    margin-right: 20px;
+    font-size: 24pt;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+span.subOne {
+    color: #89ffa7;
+}
+
+span.subTwo {
+    color: #00BFAB;
+}
+
+/*Featured App*/
+
+.featuredApp {
+    margin-bottom: 20px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-image: url(images/featuredAppBackground.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.featuredApp h2 {
+    color: black;
+    text-align: center;
+    font-size: 24pt;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.featuredApp img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 480px;
+    height: 270px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px black;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+}
+
+.featuredApp img:hover {
+    width: 490px;
+    height: 280px;
+    box-shadow: 0px 3px 5px black;
+}
+
+.featuredApp h3 {
+    font-size: 14pt;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    color: black;
+}
+
+/* Featured Giveback */
+
+.featuredGiveback {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-image: url(images/featuredGivebackBackground.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.featuredGiveback h2 {
+    color: white;
+    text-align: center;
+    font-size: 24pt;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.featuredGiveback img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px black;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+}
+
+.featuredGiveback img:hover {
+    width: 410px;
+    height: 410px;
+    box-shadow: 0px 3px 5px black;
+}
+
+.featuredGiveback h3 {
+    font-size: 14pt;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+/*Footer*/
+.footer {
+    overflow: hidden;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+    background-color: lightgray;
+}
+
+.footer ul {
+    margin: 5px;
+    padding: 0px;
+}
+
+.footer li {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12pt;
+    line-height: 25px;
+    list-style-type: none;
+}
+
+.footer p {
+    color: black;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a.links {
+    padding-bottom: 10px;
+}
+
+a.links img {
+    width: 20px;
+    padding: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --title-color: white;
+        --nav-color: black;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main {
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0px;
+    }
+
+    .main img {
+        width: 60%;
+        margin-right: 0px;
+        margin-left: 50px;
+    }
+
+    .main .subtitle {
+        margin: 0px;
+        margin-right: 120px;
+        font-size: 24pt;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        margin-left: 0px;
+    }
+
+    .desktopNavigation {
+        display: none;
+    }
+
+    .mobileNavigation nav {
+        display: block;
+    }
+
+    .mobileNavigationSheet {
+        display: block;
+    }
+
+    .closeButton {
+        display: block;
+    }
+
+    .main {
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0px;
+    }
+
+    .main img {
+        width: 80%;
+        margin-right: 0px;
+    }
+
+    .main .subtitle {
+        margin: 0px;
+        margin-left: -70px;
+        font-size: 24pt;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        justify-content: center;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        margin-left: 0px;
+    }
+
+    .title img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .title h1 {
+        font-size: 24pt;
+    }
+
+    .mobileNavigationSheet img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobileNavigationSheet li {
+        margin-bottom: 40px;
+    }
+
+    .main img {
+        width: 90%;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .main .subtitle {
+        margin: 0px;
+        margin-right: 20px;
+        margin-left: 20px;
+        font-size: 24pt;
+    }
+
+    .featuredApp img {
+        width: 308px;
+        height: 173px;
+    }
+
+    .featuredApp img:hover {
+        width: 310px;
+        height: 175px;
+    }
+
+    .featuredGiveback img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .featuredGiveback img:hover {
+        width: 310px;
+        height: 310px;
+    }
+}
+
+@media (max-width: 320px) {
+    .title {
+        justify-content: center;
+        margin-top: 45px;
+        margin-bottom: 50px;
+        margin-left: 50px;
+    }
+
+    .featuredApp img {
+        width: 246px;
+        height: 138px;
+    }
+
+    .featuredApp img:hover {
+        width: 248px;
+        height: 140px;
+    }
+
+    .featuredGiveback img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .featuredGiveback img:hover {
+        width: 210px;
+        height: 210px;
+    }
+}

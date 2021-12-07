@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+ErrorDocument 404 /en-us/issues/404
+ErrorDocument 403 /en-us/issues/403
+=======
+ErrorDocument 404 /en-us/issues/404
+ErrorDocument 403 /en-us/issues/403
+>>>>>>> 2aca28b70d2ae32e9d968449303ef8331effbafa

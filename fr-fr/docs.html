@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="/assets/media/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Center - Docs</title>
+    <link rel="stylesheet" href="/assets/css/light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+</head>
+<body>
+    <!-------------------------------------------------
+        HEADER
+    -------------------------------------------------->
+    <header class="header clearfix">
+        <a href="/fr-fr/" class="header__logo"><img src="/assets/media/logo.png" alt="Logo"></a>
+        <a href="" class="header__icon-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <ul class="header__menu animate">
+            <li class="header__menu__item"><a href="/">Lang</a></li>
+            <li class="header__menu__item"><a href="/fr-fr/">🏠</a></li>
+            <li class="header__menu__item"><a href="/fr-fr/dark/docs">🌙</a></li>
+        </ul>
+    </header>
+
+    <!--FORM-->
+
+
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSez3ebo7asmewvv3toGjDFfUc556KiY0eI9hou_cCD4D9f1jQ/viewform?embedded=true" width=100% height="988" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
+
+    <!-------------------------------------------------
+        FOOTER
+    -------------------------------------------------->
+
+    <footer class="footer">
+        <p>@Copyright 2021 Xarber</p>
+        <p><a href="https://discord.gg/gnfg5hZPDJ">Join support server</a></p>
+    </footer>
+
+    <!-------------------------------------------------
+        OTHER
+    -------------------------------------------------->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".header__icon-bar").click(function(e){
+                $(".header__icon-bar").toggleClass('is-open');
+                e.preventDefault();
+            });
+        });
+    </script>
+    <script src="/assets/js/light/docs.js"></script>
+</body>
+</html>
