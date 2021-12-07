@@ -14,38 +14,47 @@ set /p "lastverold="
 set /p "lastupdtypeold="
 )<"data.info"
 chdir "%userprofile%\OneDrive\Desktop\Productivity\X-Center"
-start "weblink" "https://download1587.mediafire.com/d8ew2kv8wmeg/pnk77toh6ykagqr/GPT.zip"
+goto datamode
+:datamode
+cls
+set /p "choice=Update (1) or Keep (2) download links? "
+if "%choice%"=="1" goto update
+if "%choice%"=="2" goto keep
+goto datamode
+:update
+start "weblink" "%gptold%"
 set /p "gpt=Insert GPT Link "
 cls
-start "weblink" "https://download1592.mediafire.com/joav4991cq7g/r1ykciia9xmtcau/MBR.zip"
+start "weblink" "%mbrold%"
 set /p "mbr=Insert MBR Link "
 cls
-start "weblink" "https://download1073.mediafire.com/lthwkmc9ndfg/d4lmfv1tto6rw2q/DualBoot.zip"
+start "weblink" "%dualold%"
 set /p "dual=Insert DUALBOOT Link "
 cls
-start "weblink" "https://download1349.mediafire.com/8nzt9f7ibdxg/qtco3g01cst1s2o/Win10.zip"
+start "weblink" "%winold%"
 set /p "win=Insert Win10 Link "
 cls
-start "weblink" "https://download1348.mediafire.com/1nz0sxrjycig/knzwgah7rz9u9x8/Ubuntu.zip"
+start "weblink" "%ubntold%"
 set /p "ubnt=Insert Ubuntu Link "
 cls
-start "weblink" "https://download1509.mediafire.com/l6cd1js56o0g/u99u3kwwcgiww00/Rufus.zip"
+start "weblink" "%rufusold%"
 set /p "rufus=Insert Rufus Link "
 cls
-start "weblink" "https://download943.mediafire.com/lt3e4alk4ztg/bmgggq6fiwgvaqx/Etcher.zip"
+start "weblink" "%etchold%"
 set /p "etch=Insert Etcher Link "
 cls
-start "weblink" "https://download1498.mediafire.com/jfyv4ylxll3g/p2hjxa157qhn9pe/ChromeOS.zip"
+start "weblink" "%chrosold%"
 set /p "chros=Insert ChromeOS Link "
 cls
-start "weblink" "https://download1510.mediafire.com/r76moqqtft7g/1wg2efahon06o23/WIIUHB.zip"
+start "weblink" "%wiiuold%"
 set /p "wiiu=Insert WIIUHB Link "
+goto keep
+:keep
 cls
 set /p "lastver=Insert Last Smart Tools version "
 cls
 set /p "lastupdtype=Insert Last Update Type "
 cls
-:after
 set "updtime=%date%-%time%"
 if "%gpt%"=="" ( set "gpt=%gptold%" )
 if "%mbr%"=="" ( set "mbr=%mbrold%" )
