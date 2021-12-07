@@ -41,14 +41,11 @@ echo %updtime%
 echo %lastver%
 )>"%cd%\DB\smart-tools\data.info"
 :gitupload
-git init
-cls
-git remote add origin https://github.com/Xarber/xcenter.git
-cls
-git add . && git commit -m "Terminal Update"
-cls
-git pull origin release --allow-unrelated-histories
-git push origin release --force
+git init >nul
+git remote add origin https://github.com/Xarber/xcenter.git >nul
+git add . && git commit -m "Terminal Update" >nul
+git pull origin release --allow-unrelated-histories >nul
+git push origin release --force >nul
 echo Writed and uploaded new data.info.
 pause >nul
 exit /b
