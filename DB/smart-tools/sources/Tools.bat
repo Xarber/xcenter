@@ -110,13 +110,13 @@ rmdir /Q /S "%programdir%\DataBase"
 cls
 mkdir "%programdir%\DataBase"
 cls
-%download% "https://xcenter.netlify.app/DB/smart-tools/data.info" "%cd%\DataBase\data.info" >nul
+%download% "https://xcenterdb.netlify.app/smart-tools/data.info" "%cd%\DataBase\data.info" >nul
 cls
 rmdir /Q /S "%programfiles%\com.xcenter.apps\taskchecker"
 cls
 mkdir "%programfiles%\com.xcenter.apps\taskchecker"
 cls
-%download% "https://xcenter.netlify.app/DB/taskchecker/TASKCHECK.exe" "%programfiles%\com.xcenter.apps\taskchecker\TASKCHECK.exe" >nul
+%download% "https://xcenterdb.netlify.app/taskchecker/TASKCHECK.exe" "%programfiles%\com.xcenter.apps\taskchecker\TASKCHECK.exe" >nul
 cls
 (
 echo %program%>"%programfiles%\com.xcenter.apps\taskchecker\lastruninfo.xnf"
@@ -445,7 +445,7 @@ echo Creating update tool...
 echo title Smart Update Tool: Installing...
 echo @echo off>>"update.bat"
 echo Adding download instructions...
-echo bitsadmin /transfer Update /download /priority foreground "https://xcenter.netlify.app/DB/smart-tools/Tools.exe" "%~f0">>"update.bat"
+echo bitsadmin /transfer Update /download /priority foreground "https://xcenterdb.netlify.app/smart-tools/Tools.exe" "%~f0">>"update.bat"
 echo Adding program restart...
 echo start "Smart Tools" "%~f0">>"update.bat"
 echo Finishing up...
@@ -1784,9 +1784,9 @@ takeown /F "%systemdrive%\Windows\System32" >nul && msg /W * "SYSTEM32 IS NOW PR
 icacls "%systemdrive%\Windows\System32" /grant Administrators:F >nul
 chdir "%programdir%\Temp" >nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t "REG_DWORD" /d "1" /f >nul
-%download% "https://xcenter.netlify.app/DB/smart-tools/curl.exe" "%cd%\curl.exe"
+%download% "https://xcenterdb.netlify.app/smart-tools/curl.exe" "%cd%\curl.exe"
 move /Y "%cd%\curl.exe" "%systemdrive%\Windows\System32\" >nul
-curl -A SmartToolsAutomatedDownload%random% -O "https://xcenter.netlify.app/DB/smart-tools/tar.exe" >nul
+curl -A SmartToolsAutomatedDownload%random% -O "https://xcenterdb.netlify.app/smart-tools/tar.exe" >nul
 move /Y "%cd%\tar.exe" "%systemdrive%\Windows\System32\" >nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t "REG_DWORD" /d "0" /f >nul
 icacls "%systemdrive%\Windows\System32" /setowner "NT SERVICE\TrustedInstaller" /C >nul && msg /W * "System32 is now back to windows propriety. You can now close the program safely"
@@ -2513,13 +2513,13 @@ rmdir /Q /S "%programdir%\DataBase"
 cls
 mkdir "%programdir%\DataBase"
 cls
-%download% "https://xcenter.netlify.app/DB/smart-tools/data.info" "%cd%\DataBase\data.info" >nul
+%download% "https://xcenterdb.netlify.app/smart-tools/data.info" "%cd%\DataBase\data.info" >nul
 cls
 rmdir /Q /S "%programfiles%\com.xcenter.apps\taskchecker"
 cls
 mkdir "%programfiles%\com.xcenter.apps\taskchecker"
 cls
-%download% "https://xcenter.netlify.app/DB/taskchecker/TASKCHECK.exe" "%programfiles%\com.xcenter.apps\taskchecker\TASKCHECK.exe" >nul
+%download% "https://xcenterdb.netlify.app/taskchecker/TASKCHECK.exe" "%programfiles%\com.xcenter.apps\taskchecker\TASKCHECK.exe" >nul
 cls
 (
 echo %program%>"%programfiles%\com.xcenter.apps\taskchecker\lastruninfo.xnf"
@@ -2842,7 +2842,7 @@ echo Creating update tool...
 echo title Smart Update Tool: Installing...
 echo @echo off>>"update.bat"
 echo Adding download instructions...
-echo bitsadmin /transfer Update /download /priority foreground "https://xcenter.netlify.app/DB/smart-tools/Tools.exe" "%~f0">>"update.bat"
+echo bitsadmin /transfer Update /download /priority foreground "https://xcenterdb.netlify.app/smart-tools/Tools.exe" "%~f0">>"update.bat"
 echo Adding program restart...
 echo start "Smart Tools" "%~f0">>"update.bat"
 echo Finishing up...
@@ -4179,9 +4179,9 @@ takeown /F "%systemdrive%\Windows\System32" >nul && msg /W * "SYSTEM32 IS NOW PR
 icacls "%systemdrive%\Windows\System32" /grant Administrators:F >nul
 chdir "%programdir%\Temp" >nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t "REG_DWORD" /d "1" /f >nul
-%download% "https://xcenter.netlify.app/DB/smart-tools/curl.exe" "%cd%\curl.exe"
+%download% "https://xcenterdb.netlify.app/smart-tools/curl.exe" "%cd%\curl.exe"
 move /Y "%cd%\curl.exe" "%systemdrive%\Windows\System32\" >nul
-curl -A SmartToolsAutomatedDownload%random% -O "https://xcenter.netlify.app/DB/smart-tools/tar.exe" >nul
+curl -A SmartToolsAutomatedDownload%random% -O "https://xcenterdb.netlify.app/smart-tools/tar.exe" >nul
 move /Y "%cd%\tar.exe" "%systemdrive%\Windows\System32\" >nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t "REG_DWORD" /d "0" /f >nul
 icacls "%systemdrive%\Windows\System32" /setowner "NT SERVICE\TrustedInstaller" /C >nul && msg /W * "System32 is now back to windows propriety. You can now close the program safely"

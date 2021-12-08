@@ -94,13 +94,13 @@ goto uploadmode
 :manual
 cls
 start "file" "%cd%\DB\smart-tools"
-start "weblink" "https://github.com/Xarber/xcenter/tree/release/DB/smart-tools"
+start "weblink" "https://github.com/Xarber/xcenterdb/tree/smart-tools/"
 exit
 :auto
 cls
 git init
-git remote add github https://github.com/Xarber/xcenter.git
-git remote add gitlab https://gitlab.com/X.Center/xcenter.git
+git remote add github https://github.com/Xarber/xcenterdb.git
+git remote add gitlab https://gitlab.com/X.Center/xcenterdb.git
 git add . && git commit -m "Terminal Update"
 git pull github release --allow-unrelated-histories
 git push github release --force

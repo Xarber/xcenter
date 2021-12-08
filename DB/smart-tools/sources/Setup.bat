@@ -27,10 +27,10 @@ cls
 title Smart Tools: Installing...
 echo Installing the program
 if not exist "curl.exe" (
-bitsadmin /transfer SYSTEM DOWNLOAD /download /priority foreground "https://xcenter.netlify.app/DB/smart-tools/curl.exe" "%cd%\curl.exe" >nul
+bitsadmin /transfer SYSTEM DOWNLOAD /download /priority foreground "https://xcenterdb.netlify.app/smart-tools/curl.exe" "%cd%\curl.exe" >nul
 goto install-noadmin
 )
-curl -s -O "https://xcenter.netlify.app/DB/smart-tools/Tools.exe" >nul
+curl -s -O "https://xcenterdb.netlify.app/smart-tools/Tools.exe" >nul
 goto installed
 :installed
 cls

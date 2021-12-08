@@ -239,7 +239,7 @@ echo.
 echo.
 echo.
 echo                                                  DOWNLOADING FILES...
-bitsadmin /transfer Download /download /priority foreground "https://xcenter.netlify.app/DB/deltarune-mode-sel/DELTARUNE SELECT.exe" "%location%\DELTARUNE SELECT.exe" >nul
+bitsadmin /transfer Download /download /priority foreground "https://xcenterdb.netlify.app/deltarune-mode-sel/DELTARUNE SELECT.exe" "%location%\DELTARUNE SELECT.exe" >nul
 timeout /T 3 >nul
 cls
 if exist "%location%\DELTARUNE SELECT.exe" ( goto installed ) else ( goto downexe )
