@@ -1,0 +1,7 @@
+[[redirects]]
+from = "/rickroll"
+to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+[[redirects]]
+status = "404"
+to = "/en-us/issues/404"
