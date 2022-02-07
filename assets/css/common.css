@@ -158,9 +158,13 @@ DEVICES
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+.horizontal-center {
+  left: 50%;
+}
 .bottom_right {
   position:absolute;
   bottom:0;
   right:0;
 }
 .hided {display: none;visibility: hidden;}
+.clickDisabled {pointer-events: none;}
