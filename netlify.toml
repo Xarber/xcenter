@@ -4,15 +4,15 @@ to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 [[redirects]]
 from = "/*"
-to = "/404/"
+to = "/404"
 status = "404"
 
 [[redirects]]
 from = "/*"
-to = "/403/"
+to = "/403"
 status = "403"
 
 [[redirects]]
 from = "/*"
 to = "/down"
-status = "75757575"
+status = "405"
