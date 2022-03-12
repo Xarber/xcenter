@@ -1,7 +1,9 @@
-/*var userLang = navigator.language;
+var userLang = navigator.language;
 if (userLang.indexOf("it") != -1) {
     document.getElementById('commontext-alsoexplore').innerHTML = "Assicurati di esplorare:";
     document.getElementById('commontext-gotop').innerHTML = "Torna all'inizio";
+
+
 } else if (userLang.indexOf("en") != -1) {
     document.getElementById('commontext-alsoexplore').innerHTML = "Be sure to explore:";
     document.getElementById('commontext-gotop').innerHTML
@@ -14,4 +16,4 @@ if (userLang.indexOf("it") != -1) {
     document.getElementById('commontext-CONTENT').innerHTML = "TRADUCCIÓN";
 
 
-}*/
+}
