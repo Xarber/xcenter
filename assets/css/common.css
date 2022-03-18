@@ -96,8 +96,8 @@ button {border: 0px;background-color: rgba(129, 129, 129, 0.644);border-radius: 
 .new-gotop:hover {background-color: rgba(0, 0, 0, 0.336);}
 .new-page-indicator {height: 50px;width: 50%;background-color: rgba(128, 128, 128, 0.342);margin-bottom: 50px;margin-left: 25%;border-radius: 0px 0px 20px 20px;text-align: center;}
 .new-page-indicator h1 {color:gray;}
-.new-text-hr {margin-left: 10%;}
-.new-text-hr hr {margin-left: 0% !important;}
+.new-text-hr {margin-left: 10%;margin-right: 10%;margin-top: 50px;}
+.new-text-hr hr {margin-left: 0% !important;margin-right: 0% !important;width: 100%;}
 .new-menu-button {width: 98%;margin-left: 1.15%;height: 50px;margin-top: 1%;margin-bottom: 1%;background-color: rgba(90, 90, 90, 0.5);padding: 0px;}
 .new-menu-button h3 {text-align: left;float: left;margin-top: 8px;}
 .new-menu-button img {height: 40px;width: 40px;float: left;margin: 5px 10px 5px 5px;}
@@ -139,12 +139,26 @@ div.horizontal-scroll {overflow-y: hidden;overflow-x: auto;}
 .new-xarbot-cover img {height: 100%;width: 30%;max-width: 200px;border-radius: 0px 20px 20px 0px;border: 1px solid gray;}
 .new-page-actions {float: right;width: 200px;background-color: rgba(128, 128, 128, 0.342);height: 200px;border-radius: 15px;margin: 15px;padding: 10px;}
 .new-page-actions button {width: 100%;margin-bottom: 10px;}
-.new-shop-card {width: 300px;height: 400px;padding: 20px;background-color: rgba(105, 105, 105, 0.342);border-radius: 30px;float: left;margin-left: calc(1.5% + 70px);margin-bottom: 1.5%;}
+.new-shop-card {width: 300px;height: 400px;padding: 20px;background-color: rgba(105, 105, 105, 0.342);border-radius: 30px;float: left;margin-left: calc(1.5% + 70px);margin-bottom: 1.5%;cursor: pointer;}
 .new-shop-card img {width: 100%;max-height: 45%;border: 1px solid gray;border-radius: 20px 20px 0px 0px;}
-.new-shop-card h3 {border: 1px solid gray;border-radius: 0px 0px 20px 20px;width: 100%;margin-bottom: 20px;text-align: center;}
-.new-shop-card p {text-align: left;margin-left: 5px;margin-right: 5px;width: 100%;}
+.new-shop-card h3 {border: 1px solid gray;border-radius: 0px 0px 20px 20px;width: 100%;margin-bottom: 20px;text-align: center;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.new-shop-card p {text-align: left;margin-left: 5px;margin-right: 5px;width: 100%;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .new-shop-card button {float: right;margin-left: 10px;}
 .new-shop-card-btn-join {background-color: rgb(0, 110, 255);}
+.new-os-png {width: 90%;height: 75%;margin-left: 5%;border: 1px solid gray;border-radius: 40px 40px 0px 0px;margin-bottom: 0px;}
+.new-os-name {width: 90%;margin: 5%;border: 1px solid gray;border-radius: 0px 0px 40px 40px;text-align: center;margin-top: 0px;}
+.new-os-text {margin-left: 10%;margin-right: 10%;margin-top: 30px;margin-bottom: 30px;}
+.new-os-tools {width: 100%;height: 300px;background-color: rgba(180, 180, 180, 0.342);overflow-x: auto;overflow-y: hidden;white-space: nowrap;border-radius: 50px 50px 8px 8px;margin-bottom: 20px;}
+.new-os-tools img {width: 350px;height: 90%;margin-top: 15px;margin-left: 15px;margin-right: 15px;border-radius: 25px;border: 0px;background-color: rgba(145, 145, 145, 0.342);cursor: pointer;}
+.new-os-tool {width: 80%;margin-left: 10%;height: 290px;background-color: rgba(180, 180, 180, 0.342);border-radius: 15px;margin-bottom: 30px;}
+.new-os-tool img {float: left;background-color: rgba(145, 145, 145, 0.342);margin: 20px;border-radius: 15px;width: 250px;height: 250px;}
+.new-os-tool p {margin-right: 250px;margin-left: 20px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+#new-os-actions {margin-top: -105px;}
+.new-os-tool-remember {width: 100%;height: 70px;background-color: rgba(180, 180, 180, 0.342);border-radius: 50px;margin-bottom: 15px;}
+.new-os-tool-remember img {height: 80%;float: left;margin-top: 7px;margin-left: 7px;}
+.new-os-tool-remember p {float: left;margin-top: 22px;margin-left: 15px;}
+.new-page-actions_OS {float: right;width: 200px;background-color: rgba(128, 128, 128, 0.342);height: 200px;border-radius: 15px;margin: 15px;padding: 10px;}
+.new-page-actions_OS button {width: 100%;margin-bottom: 10px;}
 /*------------------------------------------------
 SCROLLBAR
 ------------------------------------------------*/
@@ -249,6 +263,11 @@ DEVICES
           #new-card-group_INDEX {height: 1685px;}
           .new-shop-sidebar {position: fixed;left: 0;height: 100%;background-color: rgb(26, 26, 26);width: 80px;border-radius: 0px 20px 20px 0px;}
           .new-page-actions {float: none;width: 90%;margin-left: 5%;}
+          .new-os-tool {height: 565px;}
+          .new-os-tool img {float: none;background-color: rgba(145, 145, 145, 0.342);margin: 20px;border-radius: 15px;width: calc(100% - 40px);height: 250px;}
+          .new-page-actions_OS {float: none;width: 90%;background-color: rgba(128, 128, 128, 0.342);height: 200px;border-radius: 15px;margin: 15px;padding: 10px;margin-left: 5%;}
+          .new-page-actions_OS button {width: 100%;margin-bottom: 10px;}
+          #new-os-tool-name, #new-os-tool-desc {margin-left: 15px;margin-right: 15px;width: 100%;}
         }
       /*---------------------------------------------------
       FIXES
@@ -270,8 +289,25 @@ DEVICES
         .new-card {margin-left: 0%;float: none;width: 100%;}
         #new-card-group_INDEX {height: 1685px;}
       }
+      @media (max-width:473px) {
+        .new-card {height: 440px;}
+        #new-card-group_INDEX {height: 1830px;}
+      }
       @media (max-width:452px) {
         .new-card {height: 440px;}
+      }
+      @media (max-width:274px) {
+        .new-card {height: 490px;}
+        #new-card-group_INDEX {height: 2020px;}
+        .new-os-tool-remember img {display: none;}
+      }
+      @media (max-width:202px) {
+        .new-card {height: 500px;}
+        #new-card-group_INDEX {height: 2055px;}
+      }
+      @media (max-width:194px) {
+        .new-card {height: 520px;}
+        #new-card-group_INDEX {height: 2130px;}
       }
 .external-page-div {height: 85%;background-color: #fff;background:#fff;color: rgba(32,37,41,255);position: relative;}
 .vertical-center {
