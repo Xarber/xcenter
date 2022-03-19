@@ -1,0 +1,16 @@
+Geografia = https://meet.google.com/lookup/b2lpq6deft?authuser=1
+Inglese = https://meet.google.com/lookup/baabntly3y?authuser=1
+Italiano = https://meet.google.com/lookup/a7akbl5mfx?authuser=1
+Arte = https://meet.google.com/lookup/drphsgfyd4?authuser=1
+Matematica = https://meet.google.com/lookup/hhukmn3iu7?authuser=1
+Spagnolo = https://meet.google.com/lookup/gaypoiopy7?authuser=1
+Motoria = https://meet.google.com/lookup/bqohxerwas?authuser=1
+
+# MANCANTI:
+
+Religione = [ - ]
+Tecnologia = [ - ]
+
+# VARIABILI/NON PRENDIBILI:
+
+Musica = [ :( ]
