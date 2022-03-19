@@ -251,6 +251,42 @@ var CommonJS = {
 console.log('CommonJS function enabled succeffully!');
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
     console.log('Now Running CommonJS');
+    var xversion = '4.0.0';
+    var Changelog1 = 'Renewed:';
+    var Changelog2 = 'Fixed:';
+    var Changelog1txt = '<li>Graphics</li><li>Optimization</li>';
+    var Changelog2txt = '<li>Old Versions</li>';
+    if (localStorage.getItem('XChangelog' + xversion) == null || localStorage.getItem('XChangelog' + xversion) == false) {
+        var ChangelogBKG = document.createElement('div');
+        ChangelogBKG.setAttribute('class', 'new-changelog-back');
+        ChangelogBKG.setAttribute('id', 'new-changelog');
+        document.querySelector('.page').appendChild(ChangelogBKG);
+        var Changelog = document.createElement('div');
+        Changelog.setAttribute('class', 'new-changelog');
+        Changelog.setAttribute('id', 'new-changelog-div');
+        document.getElementById('new-changelog').appendChild(Changelog)
+        var ChangelogTIT = document.createElement('h1');
+        ChangelogTIT.innerHTML = "What's new (v" + xversion + ")";
+        document.getElementById('new-changelog-div').appendChild(ChangelogTIT);
+        var ChangelogADD = document.createElement('p');
+        ChangelogADD.innerHTML = Changelog1;
+        document.getElementById('new-changelog-div').appendChild(ChangelogADD);
+        var ChangelogADDUL = document.createElement('ul');
+        ChangelogADDUL.innerHTML = Changelog1txt;
+        document.getElementById('new-changelog-div').appendChild(ChangelogADDUL);
+        var ChangelogFIX = document.createElement('p');
+        ChangelogFIX.innerHTML = Changelog2;
+        document.getElementById('new-changelog-div').appendChild(ChangelogFIX);
+        var ChangelogFIXUL = document.createElement('ul');
+        ChangelogFIXUL.innerHTML = Changelog2txt;
+        document.getElementById('new-changelog-div').appendChild(ChangelogFIXUL);
+        var ChangelogBTN = document.createElement('button');
+        ChangelogBTN.innerHTML = 'Thanks!';
+        ChangelogBTN.setAttribute('onclick', 'changelogClose()');
+        ChangelogBTN.setAttribute('class', 'btn-primary')
+        document.getElementById('new-changelog-div').appendChild(ChangelogBTN);
+        function changelogClose() {document.getElementById('new-changelog').classList.add('hided');localStorage.setItem('XChangelog' + xversion, true)}
+    }
     if (location.href.indexOf('pbd') <= -1) {
         link('/assets/css/loading.css', 'css');
     }
