@@ -1473,7 +1473,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             console.log('Processing App...')
             var Packs = tempElement.querySelector('apps').innerText || tempElement.querySelector('apps').textContent;
             var ProcessedAppID = tempElement.querySelector('id').innerText || tempElement.querySelector('id').textContent;
-            fetch('https://raw.githubusercontent.com/Xarber/X-StoreAPPS/release/' + ProcessedAppID + '.app').then(response => response.text()).then(data => {
+            fetch('https://raw.githubusercontent.com/Xarber/xcenter/store/' + ProcessedAppID + '.app').then(response => response.text()).then(data => {
                 localStorage.removeItem('getTxtTMP');
                 localStorage.setItem('getTxtTMP', data);
                 var newAppContent = localStorage.getItem('getTxtTMP');
@@ -1547,9 +1547,9 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     if (location.href.indexOf('/shop/') != -1) {
         if (location.href.indexOf('/app/') != -1) {
             var AppID = CommonJS.params('get', 'id', '0');
-            fetch('https://raw.githubusercontent.com/Xarber/X-StoreAPPS/release/' + AppID + '.app').then(response => response.text()).then(data => {StoreApp(data)});
+            fetch('https://raw.githubusercontent.com/Xarber/xcenter/store/' + AppID + '.app').then(response => response.text()).then(data => {StoreApp(data)});
         } else {
-            fetch('https://raw.githubusercontent.com/Xarber/X-StoreAPPS/release/apps.apl').then(response => response.text()).then(data => {StoreProcessApp(data)});
+            fetch('https://raw.githubusercontent.com/Xarber/xcenter/store/apps.apl').then(response => response.text()).then(data => {StoreProcessApp(data)});
         }
     }
     console.log('All Scripts Executed Succeffully!');
