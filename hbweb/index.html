@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HB WEB</title>
+    <link rel="shortcut icon" id="HTMLlogo" href="https://xcenter.netlify.app/assets/media/hb.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://xcenter.netlify.app/assets/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <audio autoplay="autoplay"><source src="https://xcenterdb.netlify.app/base/homebrew.m4a"></audio>
+    <div id="HBContainer">
+        <div id="hbempty" class="center" style="color: white;text-align: center;">
+            <h1>Nothing to see here...</h1>
+            <p>Download an app from the store and load it here.</p>
+            <p>Remember: To upload another app press Enter/A.</p>
+            <label for="HBupload" class="HBupload">Upload .hbl</label>
+            <input type="file" id="HBupload" class="hided" accept=".hbl,.hbpack">
+            <p class="hblerror" id="hblerror"></p>
+        </div>
+        <div id="hbupload" class="hbAppUpload hided">
+            <h1>Upload An App</h1>
+            <p>Download an app from the store and load it here.</p>
+            <p>Remember: To upload another app press Enter/A.</p>
+            <label for="HBUploadApp" class="hbUploadApp">Upload .hbl</label>
+            <input type="file" id="HBUploadApp" class="hided" accept=".hbl,.hbpack">
+            <p class="hblerror" id="hbUploadError" style="color: white !important;text-decoration-color: white !important;"></p>
+            <button class="btn-secondary" onclick="document.getElementById('hbupload').classList.add('hided')">Close</button>
+        </div>
+        <div id="hbOpen" class="hbOpen hided">
+            <div class="hbOpenContent">
+                <img src="https://xcenter.netlify.app/assets/media/appError.png" id="hbOpenIMG" alt="">
+                <h1 id="hbOpenTITLE">???</h1>
+                <p id="hbOpenDESC">???</p>
+            </div>
+            <button id="hbLoad" onclick="">Load</button>
+            <button id="hbBack" onclick="document.getElementById('hbOpen').classList.add('hided')">Back</button>
+        </div>
+        <div id="homebrew">
+            <button id="homebrewButtonBack" class="hbback hided" onclick="hbBack(this.id)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg></button>
+            <button id="homebrewButtonNext" class="hbnext hided" onclick="hbNext(this.id)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg></button>
+        </div>
+    </div>
+    <style>
+        body {background-color: rgb(0, 102, 255);}
+        .hbback, .hbnext {background-color: rgb(216, 0, 0);border-radius: 50%;height: 10%;width: 5%;border: 0px;color: white;position: fixed;top: 45%;cursor: pointer;}
+        .hbback {left: 20px;}
+        .hbnext {right: 20px;}
+        .hbapp {width: 80%;margin-left: 10%;height: 100px;border-radius: 30px;border: 0px;background-color: rgb(216, 0, 0);color: white;margin-bottom: 2%;margin-top: 2%;cursor: pointer;}
+        .hbapp img {border-radius: 20px;float: left;margin-left: 5px;width:20%;height: 80%;max-width: 150px;margin-right: 10px;}
+        .hbapp h2 {text-align: left;margin-top: 0px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+        .hbapp p {margin-top: -30px;text-align: left;margin-bottom: -5px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+        @media (max-width: 450px) {
+            .hbapp img {display: none;}
+        }
+        .hided {display: none;visibility: hidden;}
+        .semi-hided {background-color: transparent !important;color: transparent !important;opacity: 0;}
+        .hblerror {color: red !important;text-decoration: underline red;text-decoration-style: wavy;text-decoration-thickness: 1px;}
+        .HBupload {padding: 5px;background-color: rgb(216, 0, 0);border-radius: 10px;width: 50% !important;border: 5px solid transparent;text-align: center;}
+        .HBupload:hover {cursor: pointer;background-color: rgb(194, 0, 0);}
+        .HBupload:active {border: 5px solid rgb(255, 0, 0);}
+        .vertical-center {margin: 0;position: absolute;top: 50%;-ms-transform: translateY(-50%);transform: translateY(-50%);}
+        .center {margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);}
+        .horizontal-center {left: 50%;}
+        .hbAppUpload {position: fixed;top: 25%;left: 25%;text-align: center;background-color: rgb(216, 0, 0);border-radius: 25px;width: 50%;height: 50%;color: white;border: 2px solid darkred;}
+        .hbAppUpload button {width: 50%;border: 0px;border-radius: 10px;height: 50px;}
+        .hbAppUpload h1 {margin-top: 5%;}
+        .hbUploadApp {padding: 5px;background-color: rgb(0, 102, 255);border-radius: 10px;width: 50% !important;border: 5px solid transparent;text-align: center;}
+        .hbUploadApp:hover {cursor: pointer;background-color: rgb(0, 140, 255);}
+        .hbUploadApp:active {border: 5px solid rgb(0, 77, 192);}
+        .hbOpen {position: fixed;top: 25%;left: 25%;text-align: center;background-color: rgb(216, 0, 0);border-radius: 25px;width: 50%;height: 50%;color: white;border: 2px solid darkred;}
+        .hbOpenContent {margin-bottom: 20px;height: 100%;width: 100%;}
+        .hbOpenContent img {float: left;width: 20%;border-radius: 20px;height: 30%;margin: 20px;}
+        .hbOpenContent h1 {text-align: left;width: 100%;}
+        .hbOpenContent p {text-align: left;width: 100%;margin-left: 10px;margin-right: 10px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+        .hbOpen button {width: 40%;float: left;margin-left: 0px;height: 40px;background-color: rgb(216, 0, 0);color: white;border-radius: 20px;}
+        .hbOpen button#hbBack {float: right;}
+        button {border: 2px solid darkred !important;}
+    </style>
+    <noscript><meta http-equiv="refresh" content="0;url=https://xcenter.netlify.app/issues/js.html"></noscript>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        /*------------------------------------------------------
+        Sample HomeBrewLoad App
+        Rules:
+        - NO COMMAS ALLOWED (,)
+        - NEVER use "" on action scripts, only ''. 
+        <id>YOUR_AppID</id>
+        <name>App Title</name>
+        <desc>App Description</desc>
+        <icon>https://path.to/your/app/icon.png</icon>
+        <AppRun>
+            //APP_JS_Scripts
+        </AppRun>
+        ------------------------------------------------------*/
+        window.onkeydown = function(PressedKey) {
+            if (PressedKey.keyCode == "13") {
+                uploadApp()
+            }
+        }
+        var HBlastPage = 0;
+        var highestHBPage = 0;
+        function AddHBApp(id, action, name, desc, icon) {
+            icon = icon ?? 'https://xcenter.netlify.app/assets/media/app.png';
+            name = name ?? 'Unknown';
+            desc = desc ?? 'No Desc Provided';
+            if (id == null || id.length <= 0) return;
+            if (action == null || action.length <= 0) return;
+            if (document.getElementById(id) != null) return false;
+            if (document.getElementById('homebrew').getElementsByTagName('button').length >= 6) {
+                if (document.getElementById('homebrew-' + HBlastPage) != null) {
+                    document.getElementById('homebrewButtonBack').classList.remove('hided')
+                    document.getElementById('homebrewButtonNext-' + HBlastPage).classList.remove('hided')
+                }
+                document.getElementById('homebrewButtonNext').classList.remove('hided')
+                document.getElementById('homebrewButtonBack').setAttribute('id', 'homebrewButtonBack-' + HBlastPage);
+                document.getElementById('homebrewButtonNext').setAttribute('id', 'homebrewButtonNext-' + HBlastPage);
+                document.getElementById('homebrew').setAttribute('id', 'homebrew-' + HBlastPage);
+                HBlastPage = ++HBlastPage;
+                highestHBPage = HBlastPage - 1;
+                var newHBpage = document.createElement('div');
+                newHBpage.setAttribute('id', 'homebrew');
+                newHBpage.setAttribute('class', 'hided');
+                document.getElementById('HBContainer').appendChild(newHBpage);
+                var newHBbuttonBack = document.createElement('button');
+                newHBbuttonBack.setAttribute('id', 'homebrewButtonBack');
+                newHBbuttonBack.setAttribute('class', 'hbback')
+                newHBbuttonBack.setAttribute('onclick', 'hbBack(this.id)');
+                document.getElementById('homebrew').appendChild(newHBbuttonBack)
+                document.getElementById('homebrewButtonBack').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>';
+                var newHBbuttonNext = document.createElement('button');
+                newHBbuttonNext.setAttribute('id', 'homebrewButtonNext');
+                newHBbuttonNext.setAttribute('class', 'hbnext hided');
+                newHBbuttonNext.setAttribute('onclick', 'hbNext(this.id)');
+                document.getElementById('homebrew').appendChild(newHBbuttonNext)
+                document.getElementById('homebrewButtonNext').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>';
+            }
+            document.getElementById('hbempty').classList.add('hided');
+            document.getElementById('hbupload').classList.add('hided');
+            var hbapp = document.createElement('button');
+            hbapp.setAttribute("id", id);
+            hbapp.setAttribute("class", "hbapp")
+            hbapp.setAttribute("onclick", 'hbOpen("' + id + '", "' + action + '", "' + name + '", "' + desc + '", "' + icon + '")')
+            document.getElementById("homebrew").appendChild(hbapp);
+            document.getElementById(id).innerHTML = "<img alt='HBapp' src='" + icon + "'><h2>" + name + "</h2><br><p>" + desc + "</p>"
+        }
+        function hbBack(id) {
+            if (!document.getElementById('hbOpen').classList.contains('hided')) return;
+            if (!document.getElementById('hbupload').classList.contains('hided')) return;
+            var ButtonNumber = id.split("-")[1];
+            if (document.getElementById('homebrew-' + ButtonNumber) != null) {
+                document.getElementById('homebrew-' + ButtonNumber).classList.add('hided')
+                document.getElementById('homebrew-' + --ButtonNumber).classList.remove('hided')
+            } else {
+                document.getElementById('homebrew').classList.add('hided')
+                document.getElementById('homebrew-' + highestHBPage).classList.remove('hided')
+            }
+        }
+        function hbNext(id) {
+            if (!document.getElementById('hbOpen').classList.contains('hided')) return;
+            if (!document.getElementById('hbupload').classList.contains('hided')) return;
+            var ButtonNumber = id.split("-")[1];
+            document.getElementById('homebrew-' + ButtonNumber).classList.add('hided')
+            if (document.getElementById('homebrew-' + ++ButtonNumber) != null) {
+                document.getElementById('homebrew-' + ButtonNumber).classList.remove('hided')
+            } else {
+                document.getElementById('homebrew').classList.remove('hided')
+            }
+        }
+        function uploadApp() {
+            if (!document.getElementById('hbOpen').classList.contains('hided')) return;
+            if (!document.getElementById('hbempty').classList.contains('hided')) return;
+            document.getElementById('hbupload').classList.remove('hided');
+        }
+        function hbOpen(id, action, name, desc, icon) {
+            if (!document.getElementById('hbupload').classList.contains('hided')) return;
+            if (id == null || id.length <= 0) return;
+            if (action == null || action.length <= 0) return;
+            name = name ?? 'Unknown';
+            desc = desc ?? 'No Desc Provided';
+            icon = icon ?? 'https://xcenter.netlify.app/assets/media/app.png';
+            document.getElementById('hbOpenIMG').src = icon;
+            document.getElementById('hbOpenTITLE').innerHTML = name;
+            document.getElementById('hbOpenDESC').innerHTML = desc;
+            document.getElementById('hbLoad').setAttribute('onclick', "document.getElementById('hbOpen').classList.add('hided');" + action);
+            document.getElementById('hbOpen').classList.remove('hided');
+        }
+        function ProcessApp(input) {
+            var tempElement = document.createElement('div');
+            tempElement.innerHTML = input;
+            if (tempElement.querySelector('packs') != null || tempElement.querySelector('packs') != null) {
+                var Packs = tempElement.querySelector('packs').innerText || tempElement.querySelector('packs').textContent;
+                ProcessAppPack()
+                function ProcessAppPack() {
+                    var ProcessedAppID = tempElement.querySelector('id').innerText || tempElement.querySelector('id').textContent;
+                    var ProcessedAppACT = tempElement.querySelector('AppRun').innerText || tempElement.querySelector('AppRun').textContent;
+                    var ProcessedAppNAME = tempElement.querySelector('name').innerText || tempElement.querySelector('name').textContent;
+                    var ProcessedAppDESC = tempElement.querySelector('desc').innerText || tempElement.querySelector('desc').textContent;
+                    var ProcessedAppICON = tempElement.querySelector('icon').innerText || tempElement.querySelector('icon').textContent;
+                    var id = tempElement.querySelector('id');
+                    var AppRun = tempElement.querySelector('AppRun');
+                    var name = tempElement.querySelector('name');
+                    var desc = tempElement.querySelector('desc');
+                    var icon = tempElement.querySelector('icon');
+                    ProcessedAppACT = ProcessedAppACT.replaceAll(',', '');
+                    Packs = --Packs;
+                    id.parentNode.removeChild(id);
+                    AppRun.parentNode.removeChild(AppRun);
+                    name.parentNode.removeChild(name);
+                    desc.parentNode.removeChild(desc);
+                    icon.parentNode.removeChild(icon);
+                    if (Packs > 0) ProcessAppPack();
+                    AddHBApp(ProcessedAppID, ProcessedAppACT, ProcessedAppNAME, ProcessedAppDESC, ProcessedAppICON);
+                }
+            } else {
+                var ProcessedAppID = tempElement.querySelector('id').innerText || tempElement.querySelector('id').textContent;
+                var ProcessedAppACT = tempElement.querySelector('AppRun').innerText || tempElement.querySelector('AppRun').textContent;
+                var ProcessedAppNAME = tempElement.querySelector('name').innerText || tempElement.querySelector('name').textContent;
+                var ProcessedAppDESC = tempElement.querySelector('desc').innerText || tempElement.querySelector('desc').textContent;
+                var ProcessedAppICON = tempElement.querySelector('icon').innerText || tempElement.querySelector('icon').textContent;
+                ProcessedAppACT = ProcessedAppACT.replaceAll(',', '');
+                AddHBApp(ProcessedAppID, ProcessedAppACT, ProcessedAppNAME, ProcessedAppDESC, ProcessedAppICON);
+            }
+        }
+
+        let HBinput = document.querySelector("#HBupload");
+        HBinput.addEventListener("change", () => {
+            let files = HBinput.files;
+            if(files.length == 0) return;
+            if(HBinput.files[0].name.split(".")[1] != "hbl") {
+                if (HBinput.files[0].name.split(".")[1] != "hbpack") {
+                    document.getElementById("hblerror").innerHTML = "Please enter a .hbl file."
+                    return;
+                }
+            }
+            document.getElementById("hblerror").innerHTML = "";
+            const file = files[0];
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                const file = e.target.result;
+                const lines = file.split(/\r\n|\n/);
+                ProcessApp(lines);
+            };
+            reader.onerror = (e) => alert(e.target.error.name);
+            reader.readAsText(file);
+        });
+        let uploadinput = document.querySelector("#HBUploadApp");
+        uploadinput.addEventListener("change", () => {
+            let files = uploadinput.files;
+            if(files.length == 0) return;
+            if(HBinput.files[0].name.split(".")[1] != "hbl") {
+                if (HBinput.files[0].name.split(".")[1] != "hbpack") {
+                    document.getElementById("hblerror").innerHTML = "Please enter a .hbl file."
+                    return;
+                }
+            }
+            document.getElementById("hbUploadError").innerHTML = "";
+            const file = files[0];
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                const file = e.target.result;
+                const lines = file.split(/\r\n|\n/);
+                ProcessApp(lines);
+            };
+            reader.onerror = (e) => alert(e.target.error.name);
+            reader.readAsText(file);
+        });
+
+    </script>
+</body>

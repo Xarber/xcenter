@@ -1,0 +1,4 @@
+.pbdload {padding: 5px;background-color: rgb(0, 119, 255);border-radius: 10px;width: 50% !important;border: 5px solid transparent;text-align: center;}
+.pbdload:hover {cursor: pointer;background-color: rgb(28, 134, 255);}
+.pbdload:active {border: 5px solid rgb(0, 98, 209);}
+.pbderror {color: red !important;text-decoration: underline red;text-decoration-style: wavy;text-decoration-thickness: 1px;}
