@@ -112,6 +112,11 @@
       <p>Reset Recent Page</p>
       <button style="float: right;margin-right:10%;background-color: red;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="localStorage.removeItem('LastLocalPage');location.reload();">Reset</button>
     </div>
+    <br><br>
+    <div class="new-settings-option">
+      <p>Clear Cache</p>
+      <button style="float: right;margin-right:10%;background-color: red;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="if(confirm('ARE YOU REALLY SURE?')) {localStorage.clear();window.location = '/';}">Clear</button>
+    </div>
   </div>
   <br><br>
   <div class="new-text-hr"><hr></div>
