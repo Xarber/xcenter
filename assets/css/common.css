@@ -168,6 +168,14 @@ div.horizontal-scroll {overflow-y: hidden;overflow-x: auto;}
 #new-os-actions {margin-top: -105px;}
 .new-page-actions_STORE {float: right;width: 200px;background-color: rgba(128, 128, 128, 0.342);height: 200px;border-radius: 15px;margin: 15px;padding: 10px;}
 .new-page-actions_STORE button {width: 100%;margin-bottom: 10px;}
+.new-xarber-img {border-radius: 25px;width: 200px;}
+.new-changelog-back {width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.555);position: fixed;top: 0px;z-index: 10;}
+.new-changelog {width: 80%;height: 80%;background-color: white;margin: 10%;margin-top: 5%;border-radius: 30px;}
+.new-changelog h1, .new-changelog p, .new-changelog ul, .new-changelog li {color: rgb(37, 37, 37) !important;width: 100%;}
+.new-changelog button {position: fixed;bottom: 11%;left: 10.5%;width: 79%;border-radius: 30px !important;}
+.new-changelog p, .new-changelog ul, .new-changelog li {margin-left: 15px;}
+.new-changelog .new-changelog h1, .new-changelog p {overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.new-changelog h1 {text-align: center;}
 /*------------------------------------------------
 SCROLLBAR
 ------------------------------------------------*/
@@ -236,8 +244,7 @@ DEVICES
           .banner__image{width: 50%;height: 50%;}
           .banner__copy{width: 50%;height: 50%;}
           .new-card {margin-left: 1%;}
-          #new-card-group_INDEX {height: 865px;}
-  
+          #new-card-group_INDEX {height: 865px;}  
       }
   
       /*------------------------------------------------
@@ -284,6 +291,10 @@ DEVICES
           .new-page-actions_OS {float: none;width: 90%;background-color: rgba(128, 128, 128, 0.342);height: 200px;border-radius: 15px;margin: 15px;padding: 10px;margin-left: 5%;}
           .new-page-actions_OS button {width: 100%;margin-bottom: 10px;}
           #new-os-tool-name, #new-os-tool-desc {margin-left: 15px;margin-right: 15px;width: 100%;}
+          .new-changelog {width: 80%;height: 80%;background-color: white;margin: 10%;margin-top: 5%;border-radius: 30px;}
+          .new-changelog h1, .new-changelog p, .new-changelog ul, .new-changelog li {color: rgb(37, 37, 37) !important;}
+          .new-changelog button {bottom: 8%;}
+          .new-changelog p, .new-changelog ul, .new-changelog li {margin-left: 5px;}
         }
       /*---------------------------------------------------
       FIXES
@@ -300,6 +311,10 @@ DEVICES
       @media (max-width: 1259px){
         .new-card {margin-left: 1%;}
         #new-card-group_INDEX {height: 885px;}
+        .new-changelog {width: 80%;height: 80%;background-color: white;margin: 10%;margin-top: 5%;border-radius: 30px;}
+        .new-changelog h1, .new-changelog p, .new-changelog ul, .new-changelog li {color: rgb(37, 37, 37) !important;}
+        .new-changelog button {bottom: 2%;}
+        .new-changelog p, .new-changelog ul, .new-changelog li {margin-left: 5px;}
       }
       @media (max-width:767px){
         .new-card {margin-left: 0%;float: none;width: 100%;}
@@ -312,6 +327,7 @@ DEVICES
         .new-store-app {margin-left: 20%;}
         .new-shop-sidebar {width: 50px;}
         .new-shop-sidebar-button img {width: 300%;margin-left: -100%;}
+        .new-changelog button {bottom: 8%;}
       }
       @media (max-width:473px) {
         .new-card {height: 440px;}
@@ -319,6 +335,7 @@ DEVICES
       }
       @media (max-width:452px) {
         .new-card {height: 440px;}
+        .new-xarber-img {width: 98%;margin-left: 1%;}
       }
       @media (max-width:280px){
         .new-store-app {margin-left: 20%;height: 790px;}
@@ -340,6 +357,7 @@ DEVICES
         .new-card {height: 520px;}
         #new-card-group_INDEX {height: 2130px;}
       }
+
 .external-page-div {height: 85%;background-color: #fff;background:#fff;color: rgba(32,37,41,255);position: relative;}
 .vertical-center {
   margin: 0;
