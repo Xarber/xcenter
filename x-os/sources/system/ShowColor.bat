@@ -1,0 +1,1 @@
+powershell -Command Write-Host "TEXT" -foreground "COLOR"
