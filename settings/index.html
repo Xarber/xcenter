@@ -58,6 +58,7 @@
       <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
       <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
       <button class="new-menu-button" onclick="location.href = '/shop';"><img src="/assets/media/4.0/shop.png" width="100%" alt=""><h3>Store</h3></button>
+      <button class="new-menu-button" onclick="location.href = '/xarber';"><img src="/assets/media/4.0/xarber.png" width="100%" alt=""><h3>Xarber</h3></button>
       <button class="new-menu-button" onclick="location.href = '/xwip';"><img src="/assets/media/4.0/xwip.png" width="100%" alt=""><h3>XWIP</h3></button>
       <button class="new-menu-button" onclick="location.href = '/xarbot';"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""><h3>Xarbot</h3></button>
       <button class="new-menu-button" onclick="location.href = '/os';"><img src="/assets/media/4.0/os.png" width="100%" alt=""><h3>OS</h3></button>
@@ -85,7 +86,7 @@
     <h3>Settings</h3>
     <hr>
   </div>
-  <div class="new-settings-group">
+  <div class="new-settings-group vertical-scroll">
     <div class="new-settings-option">
       <p>Auto Theme Detection</p>
       <label class="new-switch" onclick="var tmpTheme = sysTheme();if (tmpTheme == 'dark') {document.getElementById('settings-ThemeDark').checked = true;document.getElementById('settings-ThemeDarkCheck').checked = true;} else {document.getElementById('settings-ThemeDark').checked = false;document.getElementById('settings-ThemeDarkCheck').checked = false;}">
@@ -109,6 +110,19 @@
     </div>
     <br><br>
     <div class="new-settings-option">
+      <p>Always Hide Changelog</p>
+      <label class="new-switch">
+        <input type="checkbox" id="settings-ChangelogHide" class="new-switch-input">
+        <span class="new-switch-slider"></span>
+      </label>
+    </div>
+    <br><br>
+    <div class="new-settings-option">
+      <p>Changelog</p>
+      <button style="float: right;margin-right:10%;background-color: blue;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="changelog.open()">Show</button>
+    </div>
+    <br><br>
+    <div class="new-settings-option">
       <p>Reset Recent Page</p>
       <button style="float: right;margin-right:10%;background-color: red;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="localStorage.removeItem('LastLocalPage');location.reload();">Reset</button>
     </div>
@@ -118,8 +132,7 @@
       <button style="float: right;margin-right:10%;background-color: red;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="if(confirm('ARE YOU REALLY SURE?')) {localStorage.clear();window.location = '/';}">Clear</button>
     </div>
   </div>
-  <br><br>
-  <div class="new-text-hr"><hr></div>
+  <hr style="width: 80%;margin-left: 10% !important;">
   <div class="new-settings-actions">
     <button class="btn-red" onclick="settings('reset')">Reset</button>
     <button class="btn-secondary" onclick="window.history.go(-1)">Cancel</button>
