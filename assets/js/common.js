@@ -250,43 +250,72 @@ var CommonJS = {
 }
 console.log('CommonJS function enabled succeffully!');
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
-    console.log('Now Running CommonJS');
-    var xversion = '4.0.0';
-    var Changelog1 = 'Renewed:';
-    var Changelog2 = 'Fixed:';
-    var Changelog1txt = '<li>Graphics</li><li>Optimization</li>';
-    var Changelog2txt = '<li>Old Versions</li>';
-    if (localStorage.getItem('XChangelog' + xversion) == null || localStorage.getItem('XChangelog' + xversion) == false) {
-        var ChangelogBKG = document.createElement('div');
-        ChangelogBKG.setAttribute('class', 'new-changelog-back');
-        ChangelogBKG.setAttribute('id', 'new-changelog');
-        document.querySelector('.page').appendChild(ChangelogBKG);
-        var Changelog = document.createElement('div');
-        Changelog.setAttribute('class', 'new-changelog');
-        Changelog.setAttribute('id', 'new-changelog-div');
-        document.getElementById('new-changelog').appendChild(Changelog)
-        var ChangelogTIT = document.createElement('h1');
-        ChangelogTIT.innerHTML = "What's new (v" + xversion + ")";
-        document.getElementById('new-changelog-div').appendChild(ChangelogTIT);
-        var ChangelogADD = document.createElement('p');
-        ChangelogADD.innerHTML = Changelog1;
-        document.getElementById('new-changelog-div').appendChild(ChangelogADD);
-        var ChangelogADDUL = document.createElement('ul');
-        ChangelogADDUL.innerHTML = Changelog1txt;
-        document.getElementById('new-changelog-div').appendChild(ChangelogADDUL);
-        var ChangelogFIX = document.createElement('p');
-        ChangelogFIX.innerHTML = Changelog2;
-        document.getElementById('new-changelog-div').appendChild(ChangelogFIX);
-        var ChangelogFIXUL = document.createElement('ul');
-        ChangelogFIXUL.innerHTML = Changelog2txt;
-        document.getElementById('new-changelog-div').appendChild(ChangelogFIXUL);
-        var ChangelogBTN = document.createElement('button');
-        ChangelogBTN.innerHTML = 'Thanks!';
-        ChangelogBTN.setAttribute('onclick', 'changelogClose()');
-        ChangelogBTN.setAttribute('class', 'btn-primary')
-        document.getElementById('new-changelog-div').appendChild(ChangelogBTN);
-        function changelogClose() {document.getElementById('new-changelog').classList.add('hided');localStorage.setItem('XChangelog' + xversion, true)}
+    var xversion = '4.0.1';
+    var changelog = {
+        OPT1: 'New Settings:',
+        TXT1: '<li>Hide Changelog</li><li>Show Changelog</li>',
+        OPT2: 'Improved:',
+        TXT2: '<li>Optimization</li><li>Settings</li><li>Graphics</li><li>Menu</li>',
+        OPT3: '',
+        TXT3: '',
+        OPT4: '',
+        TXT4: '',
+        open: function() {
+            if (document.getElementById('new-changelog') == null) {
+                var ChangelogBKG = document.createElement('div');
+                ChangelogBKG.setAttribute('class', 'new-changelog-back');
+                ChangelogBKG.setAttribute('id', 'new-changelog');
+                document.querySelector('.page').appendChild(ChangelogBKG);
+                var Changelog = document.createElement('div');
+                Changelog.setAttribute('class', 'new-changelog vertical-scroll');
+                Changelog.setAttribute('id', 'new-changelog-div');
+                document.getElementById('new-changelog').appendChild(Changelog)
+                var ChangelogTIT = document.createElement('h1');
+                ChangelogTIT.innerHTML = "What's new (v" + xversion + ")";
+                document.getElementById('new-changelog-div').appendChild(ChangelogTIT);
+                var ChangelogADD = document.createElement('p');
+                ChangelogADD.innerHTML = changelog.OPT1;
+                document.getElementById('new-changelog-div').appendChild(ChangelogADD);
+                var ChangelogADDUL = document.createElement('ul');
+                ChangelogADDUL.innerHTML = changelog.TXT1;
+                document.getElementById('new-changelog-div').appendChild(ChangelogADDUL);
+                var ChangelogFIX = document.createElement('p');
+                ChangelogFIX.innerHTML = changelog.OPT2;
+                document.getElementById('new-changelog-div').appendChild(ChangelogFIX);
+                var ChangelogFIXUL = document.createElement('ul');
+                ChangelogFIXUL.innerHTML = changelog.TXT2;
+                document.getElementById('new-changelog-div').appendChild(ChangelogFIXUL);
+                if (changelog.OPT3 != null && changelog.OPT3.length > 0) {
+                    var Changelog3 = document.createElement('p');
+                    Changelog3.innerHTML = changelog.OPT3;
+                    document.getElementById('new-changelog-div').appendChild(Changelog3);
+                    var Changelog3ul = document.createElement('ul');
+                    Changelog3ul.innerHTML = changelog.TXT3;
+                    document.getElementById('new-changelog-div').appendChild(Changelog3ul);
+                }
+                if (changelog.OPT4 != null && changelog.OPT4.length > 0) {
+                    var Changelog4 = document.createElement('p');
+                    Changelog4.innerHTML = changelog.OPT4;
+                    document.getElementById('new-changelog-div').appendChild(Changelog4);
+                    var Changelog4ul = document.createElement('ul');
+                    Changelog4ul.innerHTML = changelog.TXT4;
+                    document.getElementById('new-changelog-div').appendChild(Changelog4ul);
+                }
+                var ChangelogBTN = document.createElement('button');
+                ChangelogBTN.innerHTML = 'Thanks!';
+                ChangelogBTN.setAttribute('onclick', 'changelog.close()');
+                ChangelogBTN.setAttribute('class', 'btn-primary')
+                document.getElementById('new-changelog-div').appendChild(ChangelogBTN);
+            } else {
+                document.getElementById('new-changelog').classList.remove('hided');
+            }
+        },
+        close: function() {
+            document.getElementById('new-changelog').classList.add('hided');
+            localStorage.setItem('XChangelog' + xversion, true);
+        }
     }
+    console.log('Now Running CommonJS (X-Center v' + xversion + ')');
     if (location.href.indexOf('pbd') <= -1) {
         link('/assets/css/loading.css', 'css');
     }
@@ -352,6 +381,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     var navbar = document.getElementById('navbar');
     var menu = document.getElementById('new-menu');
     var theme = sysTheme();
+    var ChangelogHide = localStorage.getItem('AutoHideChangelog');
     if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')};
     setTheme();
     function setTheme() {
@@ -571,19 +601,33 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             } else {
                 localStorage.setItem('theme', 'light');
             }
+            if (document.getElementById('settings-ChangelogHide').checked) {
+                localStorage.setItem('AutoHideChangelog', 'true');
+            } else {
+                localStorage.setItem('AutoHideChangelog', 'false');
+            }
             window.location = '/';
         } else if (a == 'get') {
             console.log('Getting settings...');
             if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')}
+            if (localStorage.getItem('AutoHideChangelog') == null) {localStorage.setItem('AutoHideChangelog', 'false')}
             var theme = localStorage.getItem('theme');
+            var ChangelogHide = localStorage.getItem('AutoHideChangelog');
             if (document.getElementById('settings-ThemeDetect') != null) {
                 if (theme == 'auto') {
                     document.getElementById('settings-ThemeDetect').checked = true;
                 }
             }
+            if (document.getElementById('settings-ChangelogHide') != null) {
+                if (ChangelogHide == 'true') {
+                    document.getElementById('settings-ChangelogHide').checked = true;
+                }
+            }
         } else if (a == 'reset') {
             console.log('Resetting settings...');
-            localStorage.setItem('theme', 'auto')
+            localStorage.setItem('theme', 'auto');
+            localStorage.setItem('AutoHideChangelog', 'false');
+            ChangelogHide = 'false';
             theme = 'auto';
             location.reload();
         }
@@ -1588,6 +1632,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             fetch('https://raw.githubusercontent.com/Xarber/xcenter/store/apps.apl').then(response => response.text()).then(data => {StoreProcessApp(data)});
         }
     }
+    if (ChangelogHide == 'false' && (localStorage.getItem('XChangelog' + xversion) == null || localStorage.getItem('XChangelog' + xversion) == false)) changelog.open();
     console.log('All Scripts Executed Succeffully!');
 } else {
     console.log('Running On External Page / Old Version');
