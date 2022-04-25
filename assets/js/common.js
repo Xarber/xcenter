@@ -1790,12 +1790,14 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     }
     if (ChangelogHide == 'false' && (localStorage.getItem('XChangelog' + xversion) == null || localStorage.getItem('XChangelog' + xversion) == false)) changelog.open();
     //RAINBOW_FOOTER_EASTER_EGG
-    if (document.getElementById('new-footer-img-easter') != null) {
-        if (localStorage.getItem('XCenterVersionSelectorEasterEgg') == 'true') {
-            document.querySelector('.new-footer').classList.add('rainbow');
+    if (localStorage.getItem('XCenterVersionSelectorEasterEgg') == 'true') {
+        document.querySelector('.new-footer').classList.add('rainbow');
+        if (document.getElementById('new-footer-img-easter') != null) {
             document.getElementById('new-footer-img-easter').innerHTML = 'true';
-        } else {
-            document.querySelector('.new-footer').classList.remove('rainbow');
+        }
+    } else {
+        document.querySelector('.new-footer').classList.remove('rainbow');
+        if (document.getElementById('new-footer-img-easter') != null) {
             document.getElementById('new-footer-img-easter').innerHTML = 'false';
         }
     }
