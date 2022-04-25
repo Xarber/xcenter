@@ -1,6 +1,6 @@
 <name>Smart Tools</name>
-<titles>Smart Tools X-Tools</titles>
 <desc>Run useful tools for your computer!</desc>
+<titles>Smart Tools X-Tools</titles>
 <icon>https://xcenterdb.netlify.app/smart-tools/sources/icon.png</icon>
 <down>https://xcenterdb.netlify.app/smart-tools/Tools.exe</down>
 <link>https://xcenter.netlify.app/tools/</link>
