@@ -1,0 +1,21 @@
+.ToolsWeb {margin-left: 10%;margin-top: 1%;margin-bottom: 1%;margin-right: 10%;height: 80%;}
+.ToolsWeb hr {margin-left: 0% !important;margin-right: 0% !important;width: 100%;}
+.tools-reccomended {width: 100%;height: 100%;border-radius: 50px;background-color: rgba(128, 128, 128, 0.342);margin-bottom: 50px;margin-top: 20px;}
+.tools-reccomend {width: 46%;height: 220px;margin-left:2%;margin-right: 2%;margin-bottom: 20px;margin-top: 20px;background-color: rgba(54, 54, 54, 0.384);border-radius: 25px;float: left;}
+.tools-reccomend img {float: left;margin:25px;height: 50%;}
+.tools-reccomend p {margin: 0px;margin-top: 10px;border: 0px;padding: 0px;}
+.tools-reccomend desc {color: gray;}
+.tools-reccomend:hover {background-color: rgba(75, 74, 74, 0.384);cursor: pointer;}
+@media (max-width:767px){
+    .tools-reccomended {width: 100%;height: 560px;border-radius: 20px;background-color: rgba(128, 128, 128, 0.342);margin-bottom: 50px;margin-top: 20px;}
+    .tools-reccomend {width: 96%;height: 100px;margin-bottom: 20px;margin-top: 20px;background-color: rgba(54, 54, 54, 0.384);border-radius: 25px;}
+    .tools-reccomend img {height: 30%;margin: 3%;margin-bottom: 100%;}
+}
+.tools-list {width: 100%;height: 10%;background-color: rgba(128, 128, 128, 0.342);border-radius: 20px;}
+.tools-list button {width: calc(100% - 20px);margin: 10px;border-radius: 15px;text-align: left;background-image: url('/assets/media/4.0/run.png');background-size: contain;background-repeat: no-repeat;background-position: right;padding: 10px !important;}
+.tools-console {width: 100%;height: 100%;}
+.tools-console div input {height: 50px;width: calc(100% - 55px);background-color: rgba(95, 95, 95, 0.747);border: 0;border-radius: 0px 0px 0px 8px;padding: 1%;color: white;}
+.tools-console div button {border-radius: 0px 0px 8px 0px !important;aspect-ratio: 1 / 1;height: 50px;padding: 0;background-color: rgba(95, 95, 95, 0.747) !important;background-image: url("/assets/media/4.0/run.png");background-repeat: no-repeat;background-size: 50%;background-position: center;margin-top: 0%;float: right;}
+.tools-console div#tools-admin-console-cmds {width: 100%;height: 94%;background-color: rgba(95, 95, 95, 0.747);margin-bottom: 5px;border-radius: 8px 8px 8px 0px;padding: 1%;}
+.tools-console div#tools-admin-console-cmds h3 {color: darkgray;}
+button#ToolsWebBack {position: fixed;top:50%;left: 1%;width: 5%;aspect-ratio: 1 / 1;background-color: transparent !important;border-radius: 100px !important;background-image: url('/assets/media/4.0/left-arrow.svg');background-size: contain;background-repeat: no-repeat;}

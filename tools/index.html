@@ -7,6 +7,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="/assets/css/common.css">
+     <link rel="stylesheet" href="main.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
      <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css">
      <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">  
@@ -53,50 +54,151 @@
   <div></div>
 </div>
 <body class="page">
-  <nav class="new-navbar-light hided" id="navbar">
-    <div class="new-menu hided vertical-scroll" id="new-menu">
-      <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/shop';"><img src="/assets/media/4.0/shop.png" width="100%" alt=""><h3>Store</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/xarber';"><img src="/assets/media/4.0/xarber.png" width="100%" alt=""><h3>Xarber</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/xwip';"><img src="/assets/media/4.0/xwip.png" width="100%" alt=""><h3>XWIP</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/xarbot';"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""><h3>Xarbot</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/os';"><img src="/assets/media/4.0/os.png" width="100%" alt=""><h3>OS</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/settings';"><img src="/assets/media/4.0/settings.png" width="100%" alt=""><h3>Settings</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/help';"><img src="/assets/media/4.0/unknown.png" width="100%" alt=""><h3>FAQ</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/feedback';"><img src="/assets/media/4.0/chat.png" width="100%" alt=""><h3>Feedback</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/about';"><img src="/assets/media/4.0/info.png" width="100%" alt=""><h3>About</h3></button>
-      <button class="new-menu-button" onclick="location.href = '/map';"><img src="/assets/media/4.0/plus.png" width="100%" alt=""><h3>Site Map</h3></button>
-      <button class="new-menu-button" onclick="RecentPage()"><img src="/assets/media/4.0/other.png" width="100%" alt=""><h3>Other</h3></button>
+  <div id="ToolsBase">
+    <nav class="new-navbar-light hided" id="navbar">
+      <div class="new-menu hided vertical-scroll" id="new-menu">
+        <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/shop';"><img src="/assets/media/4.0/shop.png" width="100%" alt=""><h3>Store</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/xarber';"><img src="/assets/media/4.0/xarber.png" width="100%" alt=""><h3>Xarber</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/xwip';"><img src="/assets/media/4.0/xwip.png" width="100%" alt=""><h3>XWIP</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/xarbot';"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""><h3>Xarbot</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/os';"><img src="/assets/media/4.0/os.png" width="100%" alt=""><h3>OS</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/settings';"><img src="/assets/media/4.0/settings.png" width="100%" alt=""><h3>Settings</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/help';"><img src="/assets/media/4.0/unknown.png" width="100%" alt=""><h3>FAQ</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/feedback';"><img src="/assets/media/4.0/chat.png" width="100%" alt=""><h3>Feedback</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/about';"><img src="/assets/media/4.0/info.png" width="100%" alt=""><h3>About</h3></button>
+        <button class="new-menu-button" onclick="location.href = '/map';"><img src="/assets/media/4.0/plus.png" width="100%" alt=""><h3>Site Map</h3></button>
+        <button class="new-menu-button" onclick="RecentPage()"><img src="/assets/media/4.0/other.png" width="100%" alt=""><h3>Other</h3></button>
+      </div>
+      <center>
+        <button class="new-navbar-button" onclick="location.href = '/';" id="new-navbar-home"><img src="/assets/media/4.0/home.png" width="100%" alt=""></button>
+        <button class="new-navbar-button" onclick="location.href = '/tools';" id="new-navbar-tools"><img src="/assets/media/4.0/tools.png" width="100%" alt=""></button>
+        <button class="new-navbar-button" onclick="location.href = '/xarbot';" id="new-navbar-xarbot"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""></button>
+        <button class="new-navbar-button" onclick="location.href = '/os';" id="new-navbar-OS"><img src="/assets/media/4.0/unknown.png" id="nav-OS" width="100%" alt=""></button>
+        <button class="new-navbar-button" onclick="location.href = '/settings';" id="new-navbar-settings"><img src="/assets/media/4.0/settings.png" width="100%" alt=""></button>
+        <button class="new-navbar-button" onclick="NewMenu()" id="new-navbar-menu"><img src="/assets/media/4.0/menu.png" width="100%" alt=""></button>
+        <button class="new-navbar-button" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
+      </center>
+    </nav>
+    <div class="new-page-indicator hided" id="new-page-indicator">
+      <h1>Tools</h1>
     </div>
     <center>
-      <button class="new-navbar-button" onclick="location.href = '/';" id="new-navbar-home"><img src="/assets/media/4.0/home.png" width="100%" alt=""></button>
-      <button class="new-navbar-button" onclick="location.href = '/tools';" id="new-navbar-tools"><img src="/assets/media/4.0/tools.png" width="100%" alt=""></button>
-      <button class="new-navbar-button" onclick="location.href = '/xarbot';" id="new-navbar-xarbot"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""></button>
-      <button class="new-navbar-button" onclick="location.href = '/os';" id="new-navbar-OS"><img src="/assets/media/4.0/unknown.png" id="nav-OS" width="100%" alt=""></button>
-      <button class="new-navbar-button" onclick="location.href = '/settings';" id="new-navbar-settings"><img src="/assets/media/4.0/settings.png" width="100%" alt=""></button>
-      <button class="new-navbar-button" onclick="NewMenu()" id="new-navbar-menu"><img src="/assets/media/4.0/menu.png" width="100%" alt=""></button>
-      <button class="new-navbar-button" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
+      <div class="center">
+        <img src="/assets/media/4.0/shop.png" style="border: 1px solid gray;padding: 5px;border-radius: 15px;" width="50%" alt="">
+        <h1>Tools</h1>
+        <p>Store App</p>
+        <button class="btn-primary" onclick="location.href = '/shop/app/?id=X70015';">Open</button>
+        <button class="btn-secondary" onclick="window.history.go(-1)">Go Back</button>
+      </div>
     </center>
-  </nav>
-  <div class="new-page-indicator hided" id="new-page-indicator">
-    <h1>Tools</h1>
-  </div>
-  <center>
-    <div class="center">
-      <img src="/assets/media/4.0/shop.png" style="border: 1px solid gray;padding: 5px;border-radius: 15px;" width="50%" alt="">
-      <h1>Tools</h1>
-      <p>Store App</p>
-      <button class="btn-primary" onclick="location.href = '/shop/app/?id=X70015';">Open</button>
-      <button class="btn-secondary" onclick="window.history.go(-1)">Go Back</button>
+    <div class="new-footer hided">
+      <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
+      <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
+      <h1>X-Center</h1>
+      <copyright>@ Copyright 2022 - Xarber</copyright>
     </div>
-  </center>
+  </div>
+  <div id="ToolsWeb" class="hided ToolsWeb">
+    <button id="ToolsWebBack" class="hided" onclick="tools.goBack();"></button>
+    <div class="" id="ToolsWebTabs">
+      <h2 id="SmartToolsWelcome">Smart Tools</h2>
+      <hr>
+      <p id="SmartToolsOptions">What tool do you want to use?</p>
+    </div>
+    <div class="tools-reccomended" id="ToolsWebTools">
+      <div class="tools-reccomend" id="tools-admin+caller" onclick="Tools.section(this.id);">
+        <img src="/assets/media/4.0/admin.png" alt="">
+        <p>Admin</p>
+        <desc>Admin content</de>
+      </div>
+      <div class="tools-reccomend" id="tools-basic+caller" onclick="Tools.section(this.id);">
+        <img src="/assets/media/4.0/tools.png" alt="">
+        <p>Basic</p>
+        <desc>Basic commands</desc>
+      </div>
+      <div class="tools-reccomend" id="tools-online+caller" onclick="Tools.section(this.id);">
+        <img src="/assets/media/4.0/online.png" alt="">
+        <p>Online</p>
+        <desc>Connect to use</desc>
+      </div>
+      <div class="tools-reccomend" id="tools-other+caller" onclick="Tools.section(this.id);">
+        <img src="/assets/media/4.0/other.png" alt="">
+        <p>Other</p>
+        <desc>Settings & Help</desc>
+      </div>
+    </div>
+    <div class="hided" id="tools-admin">
+      <div class="tools-list vertical-scroll">
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('tools-admin-console').classList.remove('hided');" style="background-image: url('/assets/media/4.0/submenu.png');">Console</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-admin').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+      </div>
+    </div>
+    <div class="hided" id="tools-online">
+      <div class="tools-list vertical-scroll">
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Console</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-online').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+      </div>
+    </div>
+    <div class="hided" id="tools-basic">
+      <div class="tools-list vertical-scroll">
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Console</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-basic').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+      </div>
+    </div>
+    <div class="hided" id="tools-other">
+      <div class="tools-list vertical-scroll">
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Console</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+        <button onclick="document.getElementById('ToolsWebTabs').classList.add('hided');document.getElementById('ToolsWebTools').classList.add('hided');document.getElementById('tools-other').classList.add('hided');document.getElementById('').classList.remove('hided');">Run</button>
+      </div>
+    </div>
+    <div class="tools-console hided" id="tools-admin-console">
+      <h1>Console</h1><hr>
+      <div class="vertical-scroll" id="tools-admin-console-cmds">
 
-  <div class="new-footer hided">
-    <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
-    <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
-    <h1>X-Center</h1>
-    <copyright>@ Copyright 2022 - Xarber</copyright>
+      </div>
+      <div id="tools-admin-console-act" style="width: 100%;">
+        <input id="consoleType" type="text" value="Insert Command Here" onclick="this.value = '';">
+        <button id="consoleSend" onclick="tools.consoleSend()"></button>
+      </div>
+    </div>
   </div>
   <noscript><meta http-equiv="refresh" content="0;url=/issues/js.html"></noscript>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -123,4 +225,5 @@
   <script src="/assets/bootstrap/js/bootstrap.js.map"></script>
   <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="/assets/bootstrap/js/bootstrap.min.js.map"></script>
+  <script src="main.js" defer></script>
 </body>

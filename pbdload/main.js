@@ -18,13 +18,11 @@ input.addEventListener("change", () => {
     reader.onload = (e) => {
         const file = e.target.result;
         const lines = file.split(/\r\n|\n/);
-        if (lines.join("\n").includes("<html") || lines.join("\n").includes("<!DOCTYPE html>") || lines.join("\n").includes("class=") || lines.join("\n").includes("<script") || lines.join("\n").includes("</script>") || lines.join("\n").includes("<noscript") || lines.join("\n").includes("</noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">") || lines.join("\n").includes("<o>") || lines.join("\n").includes("</style>") || lines.join("\n").includes("<body") || lines.join("\n").includes("</body>") || lines.join("\n").includes("<head>") || lines.join("\n").includes("</head>")) {
+        if (lines.join("\n").includes("<html") || lines.join("\n").includes("<!DOCTYPE html>") || lines.join("\n").includes("class=") || lines.join("\n").includes("<script") || lines.join("\n").includes("</script>") || lines.join("\n").includes("<noscript") || lines.join("\n").includes("</noscript>") || lines.join("\n").includes("<o>") || lines.join("\n").includes("</style>") || lines.join("\n").includes("<body") || lines.join("\n").includes("</body>") || lines.join("\n").includes("<head>") || lines.join("\n").includes("</head>")) {
             document.getElementById("pbderror").innerHTML = "Invalid .pbd format."
             return;
         }
-        const PageBootDocument = lines.join("\n").replaceAll("<!DOCTYPE pbd>", "<!DOCTYPE html>").replaceAll("<pbd", "<html").replaceAll("group=", "class=").replaceAll("<js", "<script").replaceAll("</js>", "</script>").replaceAll("<nojs", "<noscript").replaceAll("</nojs>", "</noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">").replaceAll("<css>", "<style>").replaceAll("</css>", "</style>").replace("<base", "<head").replaceAll("</base>", "</head>").replaceAll("<content", "<body").replaceAll("</content>", "</body>");
+        const PageBootDocument = lines.join("\n").replaceAll("<!DOCTYPE pbd>", "<!DOCTYPE html>").replaceAll("<pbd", "<html").replaceAll("group=", "class=").replaceAll("<js", "<script").replaceAll("</js>", "</script>").replaceAll("<nojs", "<noscript").replaceAll("</nojs>", "</noscript>").replaceAll("<css>", "<style>").replaceAll("</css>", "</style>").replace("<base", "<head").replaceAll("</base>", "</head>").replaceAll("<content", "<body").replaceAll("</content>", "</body>");
         document.getElementById("html").className = "";
         document.getElementById("body").className = "";
         CommonJS.replaceURL("/pbdload/?pbd=" + input.files[0].name);
@@ -51,8 +49,7 @@ inputconvert.addEventListener("change", () => {
             document.getElementById("pbderror-convert").innerHTML = "Invalid .html format."
             return;
         }
-        const newPBD = lines.join("\n").replaceAll("<!DOCTYPE html>", "<!DOCTYPE pbd>").replaceAll("<html", "<pbd").replaceAll("class=", "group=").replaceAll("<script", "<js").replaceAll("</script>", "</js>").replaceAll("<noscript", "<nojs").replaceAll("</noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">", "</nojs>").replaceAll("<style>", "<css>").replaceAll("</style>", "</css>").replace("<head", "<base").replaceAll("</head>", "</base>").replaceAll("<body", "<content").replaceAll("</body>", "</content>");
+        const newPBD = lines.join("\n").replaceAll("<!DOCTYPE html>", "<!DOCTYPE pbd>").replaceAll("<html", "<pbd").replaceAll("class=", "group=").replaceAll("<script", "<js").replaceAll("</script>", "</js>").replaceAll("<noscript", "<nojs").replaceAll("</noscript>", "</nojs>").replaceAll("<style>", "<css>").replaceAll("</style>", "</css>").replace("<head", "<base").replaceAll("</head>", "</base>").replaceAll("<body", "<content").replaceAll("</body>", "</content>");
         var newPBDname = inputconvert.files[0].name.replace("html", "pbd");
         CommonJS.download(newPBDname, newPBD);
         location.reload();
@@ -74,13 +71,11 @@ inputconvertHTML.addEventListener("change", () => {
     reader.onload = (e) => {
         const file = e.target.result;
         const lines = file.split(/\r\n|\n/);
-        if (lines.join("\n").includes("<html") || lines.join("\n").includes("<!DOCTYPE html>") || lines.join("\n").includes("class=") || lines.join("\n").includes("<script") || lines.join("\n").includes("</script>") || lines.join("\n").includes("<noscript") || lines.join("\n").includes("</noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">") || lines.join("\n").includes("<o>") || lines.join("\n").includes("</style>") || lines.join("\n").includes("<body") || lines.join("\n").includes("</body>") || lines.join("\n").includes("<head>") || lines.join("\n").includes("</head>")) {
+        if (lines.join("\n").includes("<html") || lines.join("\n").includes("<!DOCTYPE html>") || lines.join("\n").includes("class=") || lines.join("\n").includes("<script") || lines.join("\n").includes("</script>") || lines.join("\n").includes("<noscript") || lines.join("\n").includes("</noscript>") || lines.join("\n").includes("<o>") || lines.join("\n").includes("</style>") || lines.join("\n").includes("<body") || lines.join("\n").includes("</body>") || lines.join("\n").includes("<head>") || lines.join("\n").includes("</head>")) {
             document.getElementById("pbderror-convert").innerHTML = "Invalid .pbd format."
             return;
         }
-        const newHTML = lines.join("\n").replaceAll("<!DOCTYPE pbd>", "<!DOCTYPE html>").replaceAll("<pbd", "<html").replaceAll("group=", "class=").replaceAll("<js", "<script").replaceAll("</js>", "</script>").replaceAll("<nojs", "<noscript").replaceAll("</nojs>", "</noscript>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">").replaceAll("<css>", "<style>").replaceAll("</css>", "</style>").replace("<base", "<head").replaceAll("</base>", "</head>").replaceAll("<content", "<body").replaceAll("</content>", "</body>");
+        const newHTML = lines.join("\n").replaceAll("<!DOCTYPE pbd>", "<!DOCTYPE html>").replaceAll("<pbd", "<html").replaceAll("group=", "class=").replaceAll("<js", "<script").replaceAll("</js>", "</script>").replaceAll("<nojs", "<noscript").replaceAll("</nojs>", "</noscript>").replaceAll("<css>", "<style>").replaceAll("</css>", "</style>").replace("<base", "<head").replaceAll("</base>", "</head>").replaceAll("<content", "<body").replaceAll("</content>", "</body>");
         var newHTMLname = inputconvertHTML.files[0].name.replace("pbd", "html");
         CommonJS.download(newHTMLname, newHTML);
         location.reload();
