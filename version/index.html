@@ -53,7 +53,7 @@
   <div></div>
 </div>
 <body class="page">
-  <nav class="new-navbar-light" id="navbar">
+  <nav class="new-navbar-light hided" id="navbar">
     <div class="new-menu hided vertical-scroll" id="new-menu">
       <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
       <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
@@ -86,14 +86,17 @@
     <div class="center">
       <center>
         <h1>What do you want to explore?</h1>
+        <button class="rainbow" onclick="location.href = '/';" style="color: black !important;">4.0</button>
         <button class="btn-primary" onclick="location.href = '3.0';">3.0</button>
-        <button class="btn-secondary" onclick="location.href = '2.0';">2.0</button>
-        <button class="btn-secondary" onclick="location.href = '1.0';">1.0</button>
+        <button class="btn-primary" onclick="location.href = '2.0';">2.0</button>
+        <button class="btn-primary" onclick="location.href = '1.0';">1.0</button>
       </center>
     </div>
   </div>
   <div class="new-footer">
-    <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
+    <p class="hided" id="new-footer-img-clicks">1</p>
+    <p class="hided" id="new-footer-img-easter">false</p>
+    <img src="/assets/media/logo.png" onclick="var clicks = document.getElementById('new-footer-img-clicks').innerHTML;if(clicks == 10) {this.parentNode.classList.toggle('rainbow');document.getElementById('new-footer-img-clicks').innerHTML = '1';} else {document.getElementById('new-footer-img-clicks').innerHTML = ++clicks;};if (document.getElementById('new-footer-img-easter').innerHTML == 'true') {document.getElementById('new-footer-img-easter').innerHTML = 'false';localStorage.setItem('XCenterVersionSelectorEasterEgg', 'false');} else {document.getElementById('new-footer-img-easter').innerHTML = 'true';localStorage.setItem('XCenterVersionSelectorEasterEgg', 'true');}" width="80px" height="80px" alt="">
     <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
     <h1>X-Center</h1>
     <copyright>@ Copyright 2022 - Xarber</copyright>
