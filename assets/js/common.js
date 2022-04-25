@@ -1,5 +1,7 @@
+//CommonJS Tools @ Copyright 2022 - Xarber. Do NOT Redistribuite.
 var CommonJS = {
     TabSwitch: function() {
+        //Gets if the page is currently shown or not. the example here is to always run the code.
         /*document.addEventListener("visibilitychange", function() {
             if (document.hidden){
                 return true;
@@ -14,6 +16,7 @@ var CommonJS = {
         }
     },
     getOS: function() {
+        //Gets the user's operative system (userAgent, not accurate.)
         console.warn('Detecting your OS...')
         var OS = 'unknown';
         if (navigator.userAgent.indexOf("Win") != -1) {
@@ -31,6 +34,7 @@ var CommonJS = {
         return OS;
     },
     link: function(file, type) {
+        //Links a css/js file to the page.
         console.log('Linking ' + type + ' file...');
         if (type == "js") {
             var th = document.getElementsByTagName('head')[0];
@@ -51,6 +55,7 @@ var CommonJS = {
         //Does Nothing
     },
     params: function(action, parameter, defaultvalue) {
+        //Gets/Deletes page parameter. parameter must be defined.
         if (defaultvalue == null || defaultvalue.length < 1) defaultvalue = 0;
         if (parameter == null || parameter.length < 1) return 'failed';
         if (action == 'get' || action == 'obtain') {
@@ -82,6 +87,7 @@ var CommonJS = {
         return 'failed';
     },
     getUrlVars: function() {
+        //params helper, do not use.
         var vars = {};
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
             vars[key] = value;
@@ -89,6 +95,7 @@ var CommonJS = {
         return vars;
     },
     replaceURL: function(URL) {
+        //Changes the URL (but not the page) shown.
         console.group('Changed URL');
         console.log('From: ' + window.location.pathname);
         console.log('To: ' + URL);
@@ -96,6 +103,7 @@ var CommonJS = {
         window.history.replaceState({}, "", URL);
     },
     redirect: function(URL, Type) {
+        //Redirects user (replace = No Browser history on old page; redirect = browser history saved);
         console.log('Redirecting to ' + URL + '...');
         if (Type == 'redirect' || Type == null) {
             location.href = URL;
@@ -108,9 +116,11 @@ var CommonJS = {
         return 'failed';
     },
     getLanguage: function() {
+        //Gets User (browser)'s language.
         return navigator.language;
     },
     getTheme: function() {
+        //Gets system (browser)'s theme (dark or light).
         console.log('Getting System Theme...');
         var darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
         var theme;
@@ -123,11 +133,13 @@ var CommonJS = {
         return theme;
     },
     getKeyCode: window.onkeydown = function(Key) {
+        //Returns pressed key keyCode (UNSTABLE)
         return(Key.keyCode);
     },
     fileManage: function(action, inpt, out) {
-        var input = document.getElementById('FileInput');
-        var output = document.getElementById('FileOutput');
+        //Gets the uploaded file's content/name/date/extension/all. Define at least the action. 
+        var input = document.getElementById('FileInput') ?? document.querySelector('input');
+        var output = document.getElementById('FileOutput') ?? document.querySelector('textarea');
         input = inpt ?? input;
         output = out ?? output;
         //USAGE: fileManage("Action", "inputID", "outputID");
@@ -192,16 +204,20 @@ var CommonJS = {
         } else {return "failed"};
     },
     editPageHead: function(toEdit, value) {
+        //Edits page's name or page's icon. Define both values.
+        if (toEdit == null || toEdit.length < 1 || value == null) return false;
         if (toEdit == 'title') {
             document.title = value;
-            return;
+            return true;
         } else if (toEdit == 'icon') {
             document.getElementById('HTMLlogo').setAttribute('href', value);
-            return;
+            return true;
         }
         return false;
     },
     download: function(filename, text) {
+        //Download a file with desidered name and text. Its important to insert both name and text.
+        if (filename == null || filename.length < 1 || text == null) return false;
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', filename);
@@ -209,8 +225,10 @@ var CommonJS = {
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
+        return true;
     },
     onIframe: function() {
+        //Checks if the page is being displayied on an iFrame.
         if (window!=window.top) {
             return true;
         } else {
@@ -218,6 +236,11 @@ var CommonJS = {
         }
     },
     copyText: function(id, text) {
+        //Insert the id of a textarea / input element OR the text and it will copy it on user's clipboard.
+        if (document.getElementById(id) == null) {
+            text = id;
+            id = null;
+        }
         if (id == null || id.length <= 0) {
             if (text == null || text.length <= 0) {
                 return false;
@@ -241,23 +264,56 @@ var CommonJS = {
         return true;
     },
     getTXT: function(url) {
-        localStorage.removeItem('getTxtTMP');
+        //Insert an URL and then CommonJS will return the content.
         fetch(url).then(response => response.text()).then(data => {
-            localStorage.setItem('getTxtTMP', data);
+            return data;
         });
-        return localStorage.getItem('getTxtTMP')
+    },
+    random: function(length, type, casetype) {
+        //LENGTH = how much will the string be long;
+        //TYPE = num / str / both; (Generate numbers or strings or both)
+        //CASETYPE = upr / lwr / both; (Generated letters on uppercase or lowercase or both)
+        //Default = '5', 'both', 'both';
+        length = length ?? 5;
+        if (isNaN(length)) length = 5;
+        type = type ?? 'both';
+        casetype = casetype ?? 'both';
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        if (type == 'num') {
+            characters = '0123456789';
+        } else if (type == 'str' && casetype == 'upr') {
+            characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        } else if (type == 'str' && casetype == 'lwr') {
+            characters = 'abcdefghijklmnopqrstuvwxyz';
+        } else if (type == 'str' && casetype == 'both') {
+            characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        }
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    },
+    getElementNumber: function(DivID) {
+        //example: function('thisIsADivID');
+        var Number = document.getElementById(DivID).getElementsByTagName('*').length;
+        return Number;
     }
 }
-console.log('CommonJS function enabled succeffully!');
+console.log(
+    '%cCommonJS v3.0 function enabled succeffully!',
+    'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
+);
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
-    var xversion = '4.0.1';
+    var xversion = '4.0.5';
     var changelog = {
         OPT1: 'New Settings:',
-        TXT1: '<li>Hide Changelog</li><li>Show Changelog</li>',
-        OPT2: 'Improved:',
-        TXT2: '<li>Optimization</li><li>Settings</li><li>Graphics</li><li>Menu</li>',
-        OPT3: '',
-        TXT3: '',
+        TXT1: '<li>ColdBoot Version</li>',
+        OPT2: 'Added:',
+        TXT2: '<li>Version Selector</li>',
+        OPT3: 'Optimized:',
+        TXT3: '<li>Carousel</li>',
         OPT4: '',
         TXT4: '',
         open: function() {
@@ -315,57 +371,83 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             localStorage.setItem('XChangelog' + xversion, true);
         }
     }
-    console.log('Now Running CommonJS (X-Center v' + xversion + ')');
+    console.log(
+        '%cNow Running CommonJS (X-Center v' + xversion + ')',
+        'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(255,106,0,1) 100%);border-radius: 15px;'
+        );
     if (location.href.indexOf('pbd') <= -1) {
-        link('/assets/css/loading.css', 'css');
+        CommonJS.link('/assets/css/loading.css', 'css');
     }
     $(window).on('load',function(){
         $(".loading").fadeOut(1000);
         $(".page").fadeIn(1000);
     });
-    console.log('Executing Page Data Scripts...');
+
+    console.log(
+        '%cExecuting Page Data Scripts...',
+        'padding: 10px;background-color: black;border-radius: 15px;'
+    );
     if (localStorage.getItem('XCenterPageData') != null) {
         var s = document.createElement('script');
         s.appendChild(document.createTextNode(localStorage.getItem('XCenterPageData')));
         document.head.appendChild(s);
         localStorage.removeItem('XCenterPageData')
-        console.log('Page Data Scripts Executed')
+        console.log('> Slot 1 Page Data Scripts Executed')
     } else {
-        console.log('No Page Data Scripts Found.')
+        console.log('> No Page Data Scripts Found in slot 1.')
     }
     if (localStorage.getItem('XColdBootData') != null) {
         var s = document.createElement('script');
         s.appendChild(document.createTextNode(localStorage.getItem('XColdBootData')));
         document.head.appendChild(s);
+        console.log('> Slot 2 Page Data Scripts Executed')
+    } else {
+        console.log('> No Page Data Scripts Found in slot 2.')
     }
     if (localStorage.getItem('XColdBootData2') != null) {
         var s = document.createElement('script');
         s.appendChild(document.createTextNode(localStorage.getItem('XColdBootData2')));
         document.head.appendChild(s);
+        console.log('> Slot 3 Page Data Scripts Executed')
+    } else {
+        console.log('> No Page Data Scripts Found in slot 3.')
     }
     if (localStorage.getItem('XColdBootData3') != null) {
         var s = document.createElement('script');
         s.appendChild(document.createTextNode(localStorage.getItem('XColdBootData3')));
         document.head.appendChild(s);
+        console.log('> Slot 4 Page Data Scripts Executed')
+    } else {
+        console.log('> No Page Data Scripts Found in slot 4.')
     }
-    console.log('Checking if displaying on an iframe...');
+    console.log(
+        '%cFinished Executing Page Data Scripts.',
+        'padding: 10px;background-color: black;border-radius: 15px;'
+    )
+    console.log('> Checking if displaying on an iframe...');
     if (window!=window.top) {
-        console.error('IFRAME DETECTED!')
+        console.log(
+            '%cIFRAME DETECTED!',
+            'padding: 10px;background-color: red;border-radius: 15px;'
+        )
         if (location.href.indexOf('iframe') == -1) {
-            console.warn('Do not use the website on an iFrame')
+            console.log(
+                '%cDo not use the website on an iFrame',
+                'padding: 10px;background-color: red;border-radius: 15px;'
+            )
             window.location = '/issues/iframe.html';
         } else {
-            console.log('Not using an iFrame')
+            console.log('> Not using an iFrame')
         }
     } else {
-        console.log('Checking Page...')
+        console.log('> Checking Page Link For iFrame Errors...')
         if (location.href.indexOf('iframe') != -1) {
-            console.log('Redirecting...')
+            console.log('> Error Found, Redirecting...')
             window.location = '/';
         }
     }
     function sysTheme() {
-        console.log('Getting System Theme...');
+        console.log('> Getting System Theme...');
         var darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
         var theme;
         if (darkTheme.matches) {
@@ -373,7 +455,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         } else {
             theme = 'light';
         }
-        console.log('Done, ' + theme + ' theme detected.');
+        console.log('> Done, ' + theme + ' theme detected.');
         return theme;
     }
     settings('get')
@@ -385,7 +467,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')};
     setTheme();
     function setTheme() {
-        console.log('Setting Page Theme...');
+        console.log('> Setting Page Theme...');
         if (localStorage.getItem('theme') == 'auto') {
             if (document.getElementById('settings-ThemeDetect') != null) {document.getElementById('settings-ThemeDetect').checked = true;}
             if (theme == 'dark') {
@@ -422,24 +504,27 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
                 document.getElementById('settings-ThemeDarkCheck').checked = false;
             }
         }
-        console.log('Page theme edited!');
+        console.log('> Page theme edited!');
     }
     var winHeight = window.innerHeight;
     var winWidth = window.innerWidth;
     document.body.style.cursor="url('/assets/cursors/xcenter.cur'), default";
     if (location.href.indexOf('/tools/') != -1 || location.href.indexOf('/xarbot/') != -1 || location.href.indexOf('/os/') != -1 || location.href.indexOf('/settings/') != -1 || location.href.indexOf('/help/') != -1 || location.href.indexOf('/issues/') != -1) {} else if (window.location.pathname.length <= 1 || location.href.indexOf('index') != -1) {} else {localStorage.setItem('LastLocalPage', location.href);console.log('External Page Saved.');}
     if (localStorage.getItem('LastLocalPage') == null) {
-        console.log('Resetting Recent Page...');
+        console.log('> Resetting Recent Page...');
         localStorage.setItem('LastLocalPage', '/help/#RecentPage');
     }
     function RecentPage() {
-        console.log('Redirecting to last local page...');
+        console.log(
+            '%cRedirecting to last local page...',
+            'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
+        );
         location.href = localStorage.getItem('LastLocalPage');
         return false;
     }
     navResize();
     function navResize() {
-        console.log('Resizing navbar...');
+        console.log('> Resizing navbar...');
         winHeight = window.innerHeight;
         winWidth = window.innerWidth;
         if (winWidth <= "123") {
@@ -494,43 +579,75 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         }
     }
     window.onresize = function() {
-        console.log('WINDOW RESIZEMENT DETECTED!');
+        console.log(
+            '%cWINDOW RESIZEMENT DETECTED!',
+            'padding: 10px;background-color: yellow;border-radius: 15px'
+        );
         navResize();
         osPageFix();
     }
-    function link(file, type) {
-        console.log('Linking ' + type + ' file...');
-        if (type == "js") {
-            var th = document.getElementsByTagName('head')[0];
-            var s = document.createElement('script');
-            s.setAttribute('type','text/javascript');
-            s.setAttribute('src',file);
-            th.appendChild(s);
-        } else if (type == 'css') {
-            var head = document.getElementsByTagName('head')[0];
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = file;
-            head.appendChild(link);
-        }
-    }
     function NewMenu() {
-        console.log('Menu Requested...');
+        console.log('> Menu Requested...');
         document.getElementById('new-menu').classList.toggle('hided');
     }
     if (document.getElementById('new-page-indicator') != null) {
-        console.log('Fixing page indicator...');
+        console.log('> Page Indicator Animation Started...');
         var Timeout = setTimeout(() => {document.getElementById('new-page-indicator').classList.add('fadeOut');document.getElementById('new-page-indicator').classList.add('semi-hided-smooth')}, 5000)
     }
     /*------------------------------------------------------------
     CAROUSEL
     ------------------------------------------------------------*/
     if (document.getElementById('carousel-1') != null) {
-        console.log('Carousel Detected');
+        console.log(
+            '%cCarousel Detected',
+            'padding: 10px;background-color: gray;border-radius: 15px;'
+        );
         document.getElementById('carousel-1').classList.remove('hided');
     }
     function carousel(s) {
+        console.log('> Processing Carousel Request');
+        var CarouselContents = CommonJS.getElementNumber('new-carousel') - 1;
+        function carouselCheckShown(num) {
+            if (num < 1 || num == undefined || num == null) return false;
+            if (!document.getElementById('carousel-' + num).classList.contains('hided')) {
+                return num;
+            } else {
+                --num
+                var temp = carouselCheckShown(num);
+                return temp;
+            }
+        }
+        var currentshown = carouselCheckShown(CarouselContents);
+        if (s == '+') {
+            if (currentshown >= CarouselContents) {
+                document.getElementById('carousel-' + currentshown).classList.add('hided');
+                currentshown = 1;
+                document.getElementById('carousel-' + currentshown).classList.remove('hided');
+            } else {
+                document.getElementById('carousel-' + currentshown).classList.add('hided');
+                ++currentshown;
+                document.getElementById('carousel-' + currentshown).classList.remove('hided');
+            }
+        } else if (s == '-') {
+            if (currentshown <= 1) {
+                document.getElementById('carousel-' + currentshown).classList.add('hided');
+                currentshown = CarouselContents;
+                document.getElementById('carousel-' + currentshown).classList.remove('hided');
+            } else {
+                document.getElementById('carousel-' + currentshown).classList.add('hided');
+                --currentshown;
+                document.getElementById('carousel-' + currentshown).classList.remove('hided');
+            }
+        } else if (s == 'j') {
+            console.log(
+                '%cCarousel Obsolete Option. Use - or + to change the image.',
+                'padding: 10px;background: rgb(58,105,180);background-color: red;border-radius: 15px;'
+            )
+            return;
+        } else return;
+    }
+    /*function carousel(s) {
+        //OLD CAROUSEL VERSION
         console.log('Carousel Action Requested...');
         var first = document.getElementById('carousel-1').classList.contains('hided');
         var one = document.getElementById('carousel-1');
@@ -585,15 +702,14 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
                 window.location = '/tools';
             }
         }
-    }
-    function dropdown() {
-        console.log('Toggling Dropdown...');
-        document.getElementById('new-dropdown').classList.toggle('hided');
-    }
+    }*/
     function settings(a) {
-        console.log('Fetching settings...');
+        console.log(
+            '%cManaging Settings',
+            'padding: 10px;background-color: gray;border-radius: 15px;'
+        );
         if (a == 'apply') {
-            console.log('Applying settings...');
+            console.log('> Saving Settings...');
             if (document.getElementById('settings-ThemeDetect').checked) {
                 localStorage.setItem('theme', 'auto');
             } else if (document.getElementById('settings-ThemeDarkCheck').checked) {
@@ -606,11 +722,22 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             } else {
                 localStorage.setItem('AutoHideChangelog', 'false');
             }
+            if (document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '4.0' || document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '3.0' || document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '2.0' ||document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '1.0') {
+                localStorage.setItem('XCenterColdBootVersion', document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML);
+            }
+            if (document.getElementById('new-settings-ColdBoot-Optimize').checked) {
+                localStorage.setItem('XCenterColdBootVersionOptimize', 'true');
+            } else {
+                localStorage.setItem('XCenterColdBootVersionOptimize', 'false');
+            }
+            console.log('> Saved Settings');
             window.location = '/';
         } else if (a == 'get') {
-            console.log('Getting settings...');
+            console.log('> Obtaining Settings...');
             if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')}
             if (localStorage.getItem('AutoHideChangelog') == null) {localStorage.setItem('AutoHideChangelog', 'false')}
+            if (localStorage.getItem('XCenterColdBootVersionOptimize') == null) {localStorage.setItem('XCenterColdBootVersionOptimize', 'false')}
+            if (localStorage.getItem('XCenterColdBootVersion') == null) {localStorage.setItem('XCenterColdBootVersion', '4.0')}
             var theme = localStorage.getItem('theme');
             var ChangelogHide = localStorage.getItem('AutoHideChangelog');
             if (document.getElementById('settings-ThemeDetect') != null) {
@@ -623,40 +750,69 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
                     document.getElementById('settings-ChangelogHide').checked = true;
                 }
             }
+            if (document.getElementById('new-settings-ColdBoot-Optimize') != null) {
+                if (localStorage.getItem('XCenterColdBootVersionOptimize') == 'true') {
+                    document.getElementById('new-settings-ColdBoot-Optimize').checked = true;
+                }
+            }
+            var ColdBootVersion = localStorage.getItem('XCenterColdBootVersion');
+            console.log('> Settings Obtained.')
         } else if (a == 'reset') {
-            console.log('Resetting settings...');
+            console.log('> Default Settings Enabled.');
             localStorage.setItem('theme', 'auto');
             localStorage.setItem('AutoHideChangelog', 'false');
+            localStorage.setItem('XCenterColdBootVersion', '4.0');
+            localStorage.setItem('XCenterColdBootVersionOptimize', 'false');
             ChangelogHide = 'false';
             theme = 'auto';
+            ColdBootVersion = '4.0';
             location.reload();
         }
+    }
+    console.log(
+        '%cChecking For ColdBoot Version...',
+        'padding: 10px;background-color: blue;border-radius: 15px;'
+    )
+    var ColdBootVersion = localStorage.getItem('XCenterColdBootVersion') ?? '4.0';
+    if (ColdBootVersion != '4.0') {
+        console.log('> Redirecting to ColdBoot Version...')
+        window.location = '/version/' + ColdBootVersion;
+    } else {
+        console.log('> No ColdBoot Version Found.')
     }
     /*------------------------------------------------------------
     SYSTEM ICON CHANGE
     ------------------------------------------------------------*/
-    console.log('Detecting Operative System...');
+    console.log(
+        '%cDetecting Operative System...',
+        'padding: 10px;background-color: gray;border-radius: 15px;'
+    );
     var Systemicon;
     Systemicon = 'unknown.png';
     if (navigator.userAgent.indexOf("Win") != -1) {
-        console.log('Operative System Detected (Windows)');
+        console.log('> User OS is Windows.');
         Systemicon = "windows.png"
     } else if (navigator.userAgent.indexOf("like Mac") != -1) {
         Systemicon = "apple.png"
-        console.log('Operative System Detected (iOS)');
+        console.log('> User OS is iOS.');
     } else if (navigator.userAgent.indexOf("Mac") != -1) {
         Systemicon = "apple.png"
-        console.log('Operative System Detected (MacOS)');
+        console.log('> User OS is MacOS.');
     } else if (navigator.userAgent.indexOf("Android") != -1) {
         Systemicon = "android.png"
-        console.log('Operative System Detected (Android)');
+        console.log('> User OS is Android.');
     } else if (navigator.userAgent.indexOf("Linux") != -1) {
         Systemicon = "linux.png"
         console.log('Operative System Detected (Linux)');
     } else if (navigator.userAgent.indexOf("Nintendo WiiU") != -1) {
         Systemicon = "WiiU.png"
-        console.log('Operative System Detected (WiiU)');
-    } else {console.error('Unknown Operative System')}
+        console.log('> Navigating on a Wii U.');
+    } else {
+        console.log(
+            '%cCould Not Retrieve Operating System.',
+            'padding: 10px;background-color: red;border-radius: 15px;'
+        )
+    }
     var NavBarOS = document.getElementById('nav-OS');
     var ReccomendOS = document.getElementById('reccomend-OS');
     var OSpng = document.getElementById('new-os-png');
@@ -678,7 +834,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     osPageFix();
     function osPageFix() {
         if (document.getElementById('new-os-png') == null) return;
-        console.log('Fixing OS image')
+        console.log('> Changing OS icon...')
         winHeight = window.innerHeight;
         winWidth = window.innerWidth;
         if (winWidth <= "750") {
@@ -1489,7 +1645,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         }
     }
     if (OStool1 != null) {
-        console.log('Fixing OS tools')
+        console.log('> Choosing Tools for your OS...')
         if (Systemicon == 'windows.png') {
             OStool1.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1MSIgaGVpZ2h0PSIxOTQyIiB2aWV3Qm94PSIwIDAgMTI1MSAxOTQyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGxSdWxlPSJub256ZXJvIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0yMzUuOTEgMTMzMy41NmM1My41NCAzMi44NiA3ODYuMiA0ODQuMjYgNzg2LjIgNDg0LjI2czc2LjYyIDYwIDE1My44MyAyMi43OWM3Ny4yMS0zNy4yMSA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTRjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42Mi03NDMuNDgtNDU4LjYycy02Mi4yOS00OS4yNy0xMzYuNzMtMTcuMDlDMTYxLjQ3IDQ0LjAxIDE1OSAxMTUuNTIgMTU5IDEzNC4zMnYxMDc4LjE0Yy41MiAxNi4yNSAyLjQzIDM3LjgxIDguNTUgNDkuODkgMTAuNjggMjEuMDkgMTQuODIgMzguMzUgNjguMzYgNzEuMjF6TTQ4NyA0ODcuMzdsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNDg3LjM3eiIgZmlsbD0iIzI2QUJGRiIvPgogICAgPHBhdGggZD0iTTAgMTI5OS4zN2MuNTIgMTYuMjUgMi40MyAzOS4yIDguNTUgNTEuMjcgMTAuNjggMjEuMSAxNC44MiAzOC4zNiA2OC4zNiA3MS4yMnM3ODYuMiA0ODQuMjUgNzg2LjIgNDg0LjI1IDc2LjYyIDYwLjA2IDE1My44MyAyMi43OWM3Ny4yMS0zNy4yNyA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTVjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42LTc0My40OC00NTguNlMxNTEuMzUgNjggNzYuOTEgMTAwLjEyIDAgMjAzLjgyIDAgMjIyLjYxdjEwNzYuNzZ6bTMyNy03MjMuNzFsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNTc1LjY2eiIgZmlsbD0iI0Y1MDA0OSIvPgogIDwvZz4KPC9zdmc+Cg==';
             OStool2.src = 'https://1.bp.blogspot.com/-Lu-J0GQDC4E/X6AuK8qJKpI/AAAAAAAAXSc/ZqwKNtiBLg894r8sBu1iHbQbKNCI_NGpwCLcBGAsYHQ/s680/Softwareanddriver.com%2B-%2BTeraCopy%2B2021%2BFree%2BDownload.png';
@@ -1528,7 +1684,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         }
     }
     function AddStoreApp(id, name, desc, titles, icon) {
-        console.log('Adding Store App...');
+        console.log('> Adding Store App...');
         document.getElementById('new-shop-empty').classList.add('hided');
         document.getElementById('new-shop-apps').classList.remove('hided');
         if (icon == null || icon.length < 1 || icon == 'undefined') icon = 'https://xcenter.netlify.app/assets/media/app.png';
@@ -1543,14 +1699,14 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         newStoreApp.setAttribute("onclick", 'location.href = "/shop/app/?id=' + id + '";');
         document.getElementById("new-shop-apps").appendChild(newStoreApp);
         document.getElementById(id).innerHTML = "<titles class='hided'>" + titles + "</titles>\n<img src='" + icon + "' alt=''>\n<h3>" + name + "</h3>\n<p>" + desc + "</p>";
-        console.log('Store App Added')
+        console.log('> Store App Added!')
     }
     function StoreProcessApp(input) {
         var tempElement = document.createElement('div');
         tempElement.innerHTML = input;
         StoreProcessAppAfter();
         function StoreProcessAppAfter() {
-            console.log('Processing App...')
+            console.log('> Processing App...')
             var Packs = tempElement.querySelector('apps').innerText || tempElement.querySelector('apps').textContent;
             var ProcessedAppID = tempElement.querySelector('id').innerText || tempElement.querySelector('id').textContent;
             fetch('https://raw.githubusercontent.com/Xarber/xcenter/store/' + ProcessedAppID + '.app').then(response => response.text()).then(data => {
@@ -1633,8 +1789,47 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         }
     }
     if (ChangelogHide == 'false' && (localStorage.getItem('XChangelog' + xversion) == null || localStorage.getItem('XChangelog' + xversion) == false)) changelog.open();
-    console.log('All Scripts Executed Succeffully!');
+    //RAINBOW_FOOTER_EASTER_EGG
+    if (localStorage.getItem('XCenterVersionSelectorEasterEgg') == 'true') {
+        document.querySelector('.new-footer').classList.add('rainbow');
+        if (document.getElementById('new-footer-img-easter') != null) {
+            document.getElementById('new-footer-img-easter').innerHTML = 'true';
+        }
+    } else {
+        document.querySelector('.new-footer').classList.remove('rainbow');
+        if (document.getElementById('new-footer-img-easter') != null) {
+            document.getElementById('new-footer-img-easter').innerHTML = 'false';
+        }
+    }
+    console.log(
+        '%cAll X-Center Scripts Executed Succeffully!',
+        'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(255,106,0,1) 100%);border-radius: 15px;'
+        );
 } else {
-    console.log('Running On External Page / Old Version');
+    console.log(
+        '%cRunning On External Page / Old Version',
+        'background-color: gray;padding: 10px;border-radius: 15px;'
+    );
+    if (localStorage.getItem('XCenterColdBootVersion') != '4.0' && (location.href.indexOf('xcenter') != -1 || location.href.indexOf('127.0.0.1') != -1)) {
+        console.log(
+            '%cX-Center ColdBoot Version',
+            'padding: 10px;background-color: gray;border-radius: 15px;'
+        );
+        if (localStorage.getItem('XCenterColdBootVersionOptimize') != 'true') {
+            CommonJS.replaceURL(window.location.pathname.replaceAll('/version/' + localStorage.getItem('XCenterColdBootVersion'), ''))
+        }
+        var GoBackToNewVersion = document.createElement('button');
+        GoBackToNewVersion.setAttribute('style', 'position: fixed;top: 0;right: 0;width: 50px;heigth: 50px;background-color: rgba(255, 255, 255, 0.5); !important;padding: 10 !important;border: 0px;border-radius: 0px 0px 0px 15px;z-index: 100000000000000;');
+        GoBackToNewVersion.setAttribute('onclick', 'localStorage.setItem("XCenterColdBootVersion", "4.0");window.location = "/";')
+        GoBackToNewVersion.setAttribute('id', 'new-XCenterGoBackToNewVersion');
+        document.body.appendChild(GoBackToNewVersion)
+        var GoBackToNewVersionIMG = document.createElement('img');
+        GoBackToNewVersionIMG.setAttribute('src', '/assets/media/logo.png')
+        GoBackToNewVersionIMG.setAttribute('style', 'width: 100%;heigth: 100%;')
+        document.getElementById('new-XCenterGoBackToNewVersion').appendChild(GoBackToNewVersionIMG);
+    }
 }
-console.log('Code Execution Ended Succeffully!')
+console.log(
+    '%cCode Execution Ended Succeffully!',
+    'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
+)

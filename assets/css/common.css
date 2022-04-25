@@ -75,6 +75,7 @@ button {border: 0px;background-color: rgba(129, 129, 129, 0.644);border-radius: 
 .new-navbar-dark {width: 95%;margin-left: 2.5%;height: 50px;background-color: rgb(58, 58, 58);box-shadow: 3px 3px 5px rgb(85, 85, 85);position: fixed;z-index: 9;bottom: 15px;border-radius: 15px;}
 .new-navbar-button {width: 50px;height: 50px;background-color: transparent;border-radius: 15px;border: none;margin-right: 2.5%;margin-left: 2.5%;padding: 0px !important;margin-top: 0px !important;margin-bottom: 0px !important;position: relative;z-index: 9;}
 .new-navbar-button img {width: 70%;height: 70%;}
+.new-navbar-button-hided {display: none !important;}
 .new-carousel {width: 100%;height: 80%;margin-top: -40px;}
 .new-carousel-pages {height: 100%;width: 100%;overflow: hidden;position: relative;}
 .new-carousel-pages img {height: 100%;border-radius: 25px 25px 25px 25px;position: absolute;transform: translate(-50%, -50%);top: 50%;left: 50%;}
@@ -115,12 +116,6 @@ button {border: 0px;background-color: rgba(129, 129, 129, 0.644);border-radius: 
 .new-settings-option p {float: left;}
 .new-settings-option label {float: right;margin-right: 10%;}
 .new-settings-actions {float: right;margin-right: 10%;}
-.new-dropdown {background-color: rgba(128, 128, 128, 0.815);max-width: 200px;border-radius: 15px;position: absolute;}
-.new-dropdown button {width: 94%;margin: 5px;background-color: transparent;}
-.new-dropdown button:hover {background-color: rgba(128, 128, 128, 0.342);}
-.new-settings-dropdown {background-color: rgba(128, 128, 128, 0.815);max-width: 200px;border-radius: 15px;position: absolute;margin-right: 100px;padding-right: 5px;clear: both;}
-.new-settings-dropdown button {width: 94%;margin: 5px;background-color: transparent;}
-.new-settings-dropdown button:hover {background-color: rgba(128, 128, 128, 0.342);}
 .new-group {padding: 25px;background-color: rgba(128, 128, 128, 0.342);margin-top: 20px;margin-bottom: 20px;width: 100%;border-radius: 50px;}
 .new-float-group {padding: 25px;background-color: rgba(128, 128, 128, 0.342);margin-top: 20px;margin-bottom: 20px;width: 100%;border-radius: 50px;}
 .new-card {width: 300px;height: 400px;padding: 20px;background-color: rgba(105, 105, 105, 0.342);border-radius: 30px;float: left;margin-left: 1.5%;margin-bottom: 1.5%;}
@@ -176,6 +171,18 @@ div.horizontal-scroll {overflow-y: hidden;overflow-x: auto;}
 .new-changelog p, .new-changelog ul, .new-changelog li {margin-left: 15px;}
 .new-changelog .new-changelog h1, .new-changelog p {overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .new-changelog h1 {text-align: center;}
+.new-setup {background-color: white;position: fixed;top: 0px;width: 100%;height: 100%;z-index: 11;}
+.new-setup * {color: black !important;}
+.new-settings-ColdBoot {position: fixed;width: 95%;height: 86%;top: 2%;left: 2.5%;background-color: #888;z-index: 1;border-radius: 10px;padding: 5px;color: white !important;}
+.new-settings-ColdBoot button {background-color: rgb(0, 68, 255);padding: 10px 50px 10px 50px !important;margin: 5px 0px 5px 0px;}
+.new-settings-ColdBoot button#new-settings-ColdBoot-cancel {padding: 10px 37px 10px 37px !important;background-color: darkgray !important;}
+.new-dropdown {max-width: 200px;}
+.new-dropdown:hover div {display: unset;visibility: visible;}
+.new-dropdown button {max-width: 200px;border-radius: 15px !important;}
+.new-dropdown div {background-color: gray;max-width: 200px;border-radius: 15px;position: absolute;padding: 2px;display: none;visibility: hidden;z-index: 100000000000000000;}
+.new-dropdown div button {width: 94%;margin: 5px;background-color: transparent;}
+.new-dropdown div button:hover {background-color: rgba(82, 82, 82, 0.342);}
+.new-dropdown-OPEN div {display: unset;visibility: visible;}
 /*------------------------------------------------
 SCROLLBAR
 ------------------------------------------------*/
@@ -385,6 +392,7 @@ DEVICES
 .hided {display: none;visibility: hidden;}
 .semi-hided {background-color: transparent !important;color: transparent !important;opacity: 0;}
 .semi-hided-smooth {-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.shown {display: unset;visibility: visible;}
 @-webkit-keyframes fadeOut {
   0% {opacity: 1;}
   100% {opacity: 0;}
@@ -395,3 +403,58 @@ DEVICES
 }
 .fadeOut {-webkit-animation-name: fadeOut;animation-name: fadeOut;}
 .clickDisabled {pointer-events: none;}
+.rainbow{
+  animation: rainbow linear;
+  animation-iteration-count: infinite;
+  animation-duration: 30s;
+}
+@keyframes rainbow{
+  100%,0%{
+      background-color: rgb(255,0,0);
+      color: rgb(255,0,0);
+  }
+  8%{
+      background-color: rgb(255,127,0);
+      color: rgb(255,127,0);
+  }
+  16%{
+      background-color: rgb(255,255,0);
+      color: rgb(255,255,0);
+  }
+  25%{
+      background-color: rgb(127,255,0);
+      color: rgb(127,255,0);
+  }
+  33%{
+      background-color: rgb(0,255,0);
+      color: rgb(0,255,0);
+  }
+  41%{
+      background-color: rgb(0,255,127);
+      color: rgb(0,255,127);
+  }
+  50%{
+      background-color: rgb(0,255,255);
+      color: rgb(0,255,255);
+  }
+  58%{
+      background-color: rgb(0,127,255);
+      color: rgb(0,127,255);
+  }
+  66%{
+      background-color: rgb(0,0,255);
+      color: rgb(0,0,255);
+  }
+  75%{
+      background-color: rgb(127,0,255);
+      color: rgb(127,0,255);
+  }
+  83%{
+      background-color: rgb(255,0,255);
+      color: rgb(255,0,255);
+  }
+  91%{
+      background-color: rgb(255,0,127);
+      color: rgb(255,0,127);
+  }
+}
