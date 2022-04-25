@@ -1774,8 +1774,8 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         if (document.getElementById('new-store-app-screen-1').classList.contains('hided') && document.getElementById('new-store-app-screen-2').classList.contains('hided') && document.getElementById('new-store-app-screen-3').classList.contains('hided') && document.getElementById('new-store-app-screen-4').classList.contains('hided') && document.getElementById('new-store-app-screen-5').classList.contains('hided') && document.getElementById('new-store-app-screen-6').classList.contains('hided')) {document.getElementById('new-store-app-screens-empty').classList.remove('hided');}
     }
     if (location.href.indexOf('/shop/') != -1) {
-        if (location.href.indexOf('/shop/app/?id=X70015') != -1 && CommonJS.params('get', 'id', '0').length == 6) {
-            //DoNothing.
+        if ((location.href.indexOf('/shop/app/?id=X70015') != -1 && CommonJS.params('get', 'id', '0').length == 6) || localStorage.getItem('XCenterTemporaryStoreAccess') == 'true') {
+            localStorage.setItem('XCenterTemporaryStoreAccess', 'false');
         } else {
             location.href = '/issues/shop.html';
         }
