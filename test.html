@@ -79,77 +79,10 @@
       <button class="new-navbar-button" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
     </center>
   </nav>
-  <div class="new-page-indicator" style="margin-bottom: 0px;" id="new-page-indicator">
-    <h1>Home</h1>
+  <div class="new-page-indicator" id="new-page-indicator">
+    <h1></h1>
   </div>
-  <div class="new-carousel">
-    <button class="new-carousel-back new-carousel-button" onclick="carousel('-');"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/></svg></button>
-    <button class="new-carousel-next new-carousel-button" onclick="carousel('+');"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/></svg></button>
-    <div class="new-carousel-pages" id="new-carousel">
-      <img id="carousel-bg" class="rainbow" src="/assets/media/4.0/blankWide.png" alt="">
-      <img id="carousel-1" class="hided" src="/assets/media/4.0/CoverTRANSPARENT.png" alt="" onclick="window.location = '/about';">
-      <img id="carousel-2" class="hided" src="/assets/media/4.0/xarbotCOVER.png" alt="" onclick="window.location = '/xarbot';">
-      <img id="carousel-3" class="hided" src="/assets/media/4.0/xwipCOVER.png" alt="" onclick="window.location = '/xwip';">
-      <img id="carousel-4" class="hided" src="/assets/media/4.0/Cover.png" alt="" onclick="window.location = '/about';">
-      <img id="carousel-5" class="hided" src="/assets/media/4.0/toolsCOVER.png" alt="" onclick="window.location = '/tools';">
-      <img id="carousel-6" class="hided" src="/assets/media/versions/VERSIONS.png" alt="" onclick="window.location = '/version';">
-    </div>
-  </div>
-  <br><br><br>
-  <div class="new-reccomended">
-      <div class="new-reccomend" onclick="window.location = '/shop';">
-        <img src="/assets/media/4.0/shop.png" height="50%" alt="">
-        <p>X-Store</p>
-        <desc>Download Content</de>
-      </div>
-      <div class="new-reccomend" onclick="window.location = '/tools';">
-        <img src="/assets/media/4.0/tools.png" height="50%" alt="">
-        <p>Tools</p>
-        <desc>Run useful tools for your PC</desc>
-      </div>
-      <div class="new-reccomend" onclick="window.location = '/OS';">
-        <img src="/assets/media/4.0/unknown.png" id="reccomend-OS" height="50%" alt="">
-        <p>OS</p>
-        <desc>Discover new tools</desc>
-      </div>
-      <div class="new-reccomend" onclick="window.location = '/about';">
-        <img src="/assets/media/4.0/info.png" height="50%" alt="">
-        <p>About</p>
-        <desc>Other from X-Center</desc>
-      </div>
-  </div>
-  <div class="new-float-group clearfix" id="new-card-group_INDEX">
-    <center>
-      <div class="new-card">
-        <img src="/assets/media/4.0/xarbot.png" alt="">
-        <h3>Xarbot</h3>
-        <p>Get the access to useful tools for your discord servers, some games for your users, and all for free!</p>
-        <button onclick="location.href = '/xarbot';" class="new-card-btn-join">Go ></button>
-        <button onclick="location.href = '/xarbot/#help';">Help ></button>
-      </div>
-      <div class="new-card">
-        <img src="/assets/media/4.0/xwip.png" alt="">
-        <h3>XWIP</h3>
-        <p>Discover a new minecraft world, with lots of packs and mods to increase the game's experience!</p>
-        <button onclick="location.href = '/xwip';" class="new-card-btn-join">Go ></button>
-        <button onclick="location.href = '/xwip/#help';">Help ></button>
-      </div>
-      <div class="new-card">
-        <img src="/assets/media/4.0/xarber.png" alt="">
-        <h3>Xarber</h3>
-        <p>Xarber is a content developer with lots of apps and projects designed to help others, like X-Center!</p>
-        <button onclick="location.href = '/xarber';" class="new-card-btn-join">Go ></button>
-        <button onclick="location.href = '/xarber/#help';">Help ></button>
-      </div>
-      <div class="new-card">
-        <img src="/assets/media/4.0/plus.png" alt="">
-        <h3>Site Map</h3>
-        <p>Do not know where to start? Want a faster navigation? Here's the page for you: Find every X-Center Page!</p>
-        <button onclick="location.href = '/map';" class="new-card-btn-join">Go ></button>
-        <button onclick="location.href = '/map/#help';">Help ></button>
-      </div>
-    </center>
-  </div>
+
   <div class="new-footer">
     <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
     <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
@@ -158,8 +91,6 @@
   </div>
   <noscript><meta http-equiv="refresh" content="0;url=/issues/js.html"></noscript>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
-  <script src="/assets/js/FileSaver.js"></script>
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/translations.js"></script>
   <script src="/assets/js/getparams.js"></script>

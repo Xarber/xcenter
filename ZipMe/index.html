@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="" id="html">
+<head>
+     <title>ZipMe</title>
+     <link rel="stylesheet" href="/assets/css/common.css">
+     <link rel="shortcut icon" href="/assets/media/logo.png" type="image/x-icon">
+     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+     <link rel="stylesheet" href="style.css">
+</head>
+<div class="loading">
+    <div></div>
+</div>
+<body class="page">
+    <div class="ZipMeINPUT hided">
+        <div class="center">
+            <h6 id="ZipMeINPUTh6">Title</h6>
+            <p id="ZipMeINPUTp">Desc</p>
+            <input type="text" class="" id="ZipMeINPUT">
+            <textarea class="hided" id="ZipMeINPUTtxtarea" style="box-sizing: border-box;height: 80%;width: 100%;"></textarea>
+            <div>
+                <button id="ZipMeINPUTconfirm">Confirm</button>
+                <button onclick="document.querySelector('.ZipMeINPUT').classList.add('hided');">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="ZipMeASK hided">
+        <div class="center">
+            <h6 id="ZipMeASKh6">Title</h6>
+            <p id="ZipMeASKp">Desc</p>
+            <div>
+                <button id="ZipMeASKact">Confirm</button>
+                <button onclick="document.querySelector('.ZipMeASK').classList.add('hided');">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="ZipMeUPLOAD hided">
+        <div class="center">
+            <h6>Upload</h6>
+            <p>Add a file to the zip.</p>
+            <div>
+                <button onclick="document.querySelector('.ZipMeUPLOAD').classList.add('hided');">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <nav class="new-navbar-light" id="navbar">
+        <div class="new-menu hided vertical-scroll" id="new-menu">
+          <button class="new-menu-button" onclick=""><img style="border-radius: 5px;" src="upload.png" width="100%" alt=""><h3>Upload</h3></button>
+          <button class="new-menu-button" onclick="ZipMe.process('download');this.parentNode.classList.add('hided');"><img style="border-radius: 5px;" src="confirm.png" width="100%" alt=""><h3>Confirm</h3></button>
+          <button class="new-menu-button" onclick="ZipMe.process('newFolder');this.parentNode.classList.add('hided');"><img style="border-radius: 5px;" src="folder.png" width="100%" alt=""><h3>Folder</h3></button>
+          <button class="new-menu-button" onclick="ZipMe.process('newFile');this.parentNode.classList.add('hided');"><img style="border-radius: 5px;" src="file.png" width="100%" alt=""><h3>File</h3></button>
+        </div>
+        <center>
+          <button class="new-navbar-button-hided" onclick="location.href = '/';" id="new-navbar-home"><img src="/assets/media/4.0/home.png" width="100%" alt=""></button>
+          <button class="new-navbar-button-hided" onclick="location.href = '/tools';" id="new-navbar-tools"><img src="/assets/media/4.0/tools.png" width="100%" alt=""></button>
+          <button class="new-navbar-button-hided" onclick="location.href = '/xarbot';" id="new-navbar-xarbot"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""></button>
+          <button class="new-navbar-button-hided" onclick="location.href = '/os';" id="new-navbar-OS"><img src="/assets/media/4.0/unknown.png" id="nav-OS" width="100%" alt=""></button>
+          <button class="new-navbar-button-hided" onclick="location.href = '/settings';" id="new-navbar-settings"><img src="/assets/media/4.0/settings.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="NewMenu()" id="new-navbar-menu"><img src="/assets/media/4.0/menu.png" width="100%" alt=""></button>
+          <button class="new-navbar-button-hided" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
+        </center>
+    </nav>
+    <div class="new-page-indicator hided" id="new-page-indicator">
+        <h1></h1>
+    </div>
+    <div class="new-footer hided">
+        <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
+        <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
+        <h1>X-Center</h1>
+        <copyright>@ Copyright 2022 - Xarber</copyright>
+    </div>
+    <div class="ZipMe" id="ZipMe">
+        <h1>ZipMe</h1><hr>
+        <div id="ZipMeEMPTY" class="center">
+            <h1>Upload a file from the menu to the zip.</h1>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jszip.js"></script>
+    <script src="/assets/js/FileSaver.js"></script>
+    <script src="/assets/js/common.js"></script>
+    <script src="main.js"></script>
+</body>

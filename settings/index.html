@@ -86,6 +86,28 @@
     <h3>Settings</h3>
     <hr>
   </div>
+  <div class="new-settings-ColdBoot hided" id="setting-ColdBoot">
+    <h1>ColdBoot Version</h1>
+    <p>What version do you want to automatically boot? Use the top right button to go back to 4.0.</p>
+    <p class="hided" id="new-settings-ColdBoot-selectedColdBoot">4.0</p>
+    <div class="new-dropdown">
+      <button class="new-dropdown-button" onclick="this.parentNode.classList.toggle('new-dropdown-OPEN')">Versions</button>
+      <br>
+      <div>
+        <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML = '4.0';" class="rainbow" style="color: black !important;">4.0</button>
+        <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML = '3.0';">3.0</button>
+        <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML = '2.0';">2.0</button>
+        <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML = '1.0';">1.0</button>
+      </div>
+    </div>
+    <button onclick="this.parentNode.classList.add('hided');" id="new-settings-ColdBoot-cancel">Close</button>
+    <br><br>
+    <p>Optimized Mode</p>
+    <label class="new-switch" onclick="">
+      <input type="checkbox" id="new-settings-ColdBoot-Optimize" class="new-switch-input">
+      <span class="new-switch-slider"></span>
+    </label>
+  </div>
   <div class="new-settings-group vertical-scroll">
     <div class="new-settings-option">
       <p>Auto Theme Detection</p>
@@ -120,6 +142,11 @@
     <div class="new-settings-option">
       <p>Changelog</p>
       <button style="float: right;margin-right:10%;background-color: blue;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="changelog.open()">Show</button>
+    </div>
+    <br><br>
+    <div class="new-settings-option">
+      <p>ColdBoot Version</p>
+      <button style="float: right;margin-right:10%;background-color: blue;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="document.getElementById('setting-ColdBoot').classList.remove('hided')">Edit</button>
     </div>
     <br><br>
     <div class="new-settings-option">
