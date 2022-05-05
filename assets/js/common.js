@@ -15,6 +15,232 @@ var CommonJS = {
             return false;
         }
     },
+    link: function(file, type) {
+        //Links a css/js file to the page.
+        console.log('Linking ' + type + ' file...');
+        if (type == null || type.length < 1) {if (file.indexOf('.css') != -1) {type = 'css'} else if (file.indexOf('.js') != -1) {type = 'js'}};
+        if (type == "js") {
+            var th = document.getElementsByTagName('head')[0];
+            var s = document.createElement('script');
+            s.setAttribute('type','text/javascript');
+            s.setAttribute('src',file);
+            th.appendChild(s);
+        } else if (type == 'css') {
+            var head = document.getElementsByTagName('head')[0];
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = file;
+            head.appendChild(link);
+        }
+    },
+    classExists: function (searchClassName) {
+        for (let i = 0; i < document.styleSheets.length; i++) {
+            let styleSheet = document.styleSheets[i];
+            try {
+                for (let j = 0; j < styleSheet.cssRules.length; j++) {
+                    let rule = styleSheet.cssRules[j];
+                    // console.log(rule.selectorText)
+                    if (rule.selectorText && rule.selectorText.includes(searchClassName)) {
+                        return true;
+                    }
+                }
+                if (styleSheet.imports) {
+                    for (let k = 0; k < styleSheet.imports.length; k++) {
+                    let imp = styleSheet.imports[k];
+                    for (let l = 0; l < imp.cssRules.length; l++) {
+                        let rule = imp.cssRules[l];
+                        if (
+                        rule.selectorText &&
+                        rule.selectorText.includes(searchClassName)
+                        ) {
+                            return true;
+                        }
+                    }
+                    }
+                }
+            } catch (err) {}
+        }
+        return false;
+    },
+    playAudio: function(url) {
+        var audio = new Audio(url);
+        audio.play();
+    },
+    notification: function(action, title, desc, nosound, uploadnotification, isUploaded) {
+        title = title ?? 'Notification';
+        desc = desc ?? 'No Desc Provided';
+        action = action ?? '';
+        nosound = nosound ?? false;
+        uploadnotification = uploadnotification ?? false;
+        if (!CommonJS.classExists('.new-notification') || !CommonJS.classExists('.new-notifications') || !CommonJS.classExists('.hided')) {
+            console.log(
+                '%cImportant Notification Component Missing: CommonCSS, aborting...',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            );
+            return false;
+        }
+        if (document.getElementById('new-notification') == null) {
+            console.log(
+                '%cNotification Component Missing: Notification Box, adding...',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            )
+            var notificationadd = document.createElement('div');
+            var notificationaddclose = document.createElement('button');
+            var notificationaddtitle = document.createElement('h3');
+            var notificationadddesc = document.createElement('p');
+            notificationadd.setAttribute('class', 'new-notification hided');
+            notificationadd.setAttribute('id', 'new-notification');
+            notificationaddclose.setAttribute('onclick', 'this.parentNode.setAttribute("onclick", "");this.parentNode.classList.add("hided");')
+            notificationaddtitle.setAttribute('id', 'new-notification-title');
+            notificationadddesc.setAttribute('id', 'new-notification-cnt');
+            notificationaddclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+            notificationaddtitle.innerHTML = 'Notification';
+            notificationadddesc.innerHTML = 'No Desc Provided';
+            notificationadd.appendChild(notificationaddclose);
+            notificationadd.appendChild(notificationaddtitle);
+            notificationadd.appendChild(notificationadddesc);
+            document.body.appendChild(notificationadd);
+        }
+        if (document.getElementById('new-notification-hided') == null) {
+            console.log(
+                '%cNotification Component Missing: Multiple Notification Box, adding...',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            )
+            var notificationhided = document.createElement('div');
+            var notificationhidedclose = document.createElement('button');
+            var notificationhideddesc = document.createElement('p');
+            var notificationhidedp = document.createElement('p');
+            notificationhided.setAttribute('class', 'new-notification hided');
+            notificationhided.setAttribute('onclick', "document.getElementById('new-notification-hided').classList.add('hided');document.getElementById('new-notification').classList.add('hided');document.getElementById('new-notifications-bkg').classList.remove('hided');");
+            notificationhided.setAttribute('style', 'top: 120px;height: 50px;');
+            notificationhided.setAttribute('id', 'new-notification-hided');
+            notificationhidedclose.setAttribute('onclick', "this.parentNode.setAttribute('onclick', '');this.parentNode.classList.add('hided');var timeout = setTimeout(() => {this.parentNode.setAttribute('onclick', document.getElementById('new-notification-hided-onclick').innerHTML)}, 1000);")
+            notificationhidedclose.setAttribute('style', 'margin-top: 0;')
+            notificationhidedp.setAttribute('class', 'hided');
+            notificationhidedp.setAttribute('id', 'new-notification-hided-onclick');
+            notificationhidedclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+            notificationhideddesc.innerHTML = 'Multiple notifications. Open the notification menu to read.';
+            notificationhidedp.innerHTML = "document.getElementById('new-notification-hided').classList.add('hided');document.getElementById('new-notification').classList.add('hided');document.getElementById('new-notifications-bkg').classList.remove('hided');";
+            notificationhided.appendChild(notificationhidedclose);
+            notificationhided.appendChild(notificationhideddesc);
+            notificationhided.appendChild(notificationhidedp);
+            document.body.appendChild(notificationhided);
+        } 
+        if (document.getElementById('new-notifications-bkg') == null) {
+            console.log(
+                '%cNotification Component Missing: Notification Menu, adding...',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            )
+            var notificationsbkg = document.createElement('div');
+            var notifications = document.createElement('div');
+            var notificationsclose = document.createElement('button');
+            var notificationstitle = document.createElement('h1');
+            var notificationshr = document.createElement('hr');
+            var notificationadduploadinput = document.createElement('input');
+            var notificationadduploadlabel = document.createElement('label');
+            notificationsbkg.setAttribute('class', 'new-notifications hided');
+            notificationsbkg.setAttribute('id', 'new-notifications-bkg');
+            notifications.setAttribute('class', 'vertical-scroll');
+            notifications.setAttribute('id', 'new-notifications');
+            notificationsclose.setAttribute('onclick', "this.parentNode.parentNode.classList.add('hided');");
+            notificationadduploadinput.setAttribute('type', 'file');
+            notificationadduploadinput.setAttribute('id', 'new-notifications-upload');
+            notificationadduploadinput.setAttribute('class', 'hided');
+            notificationadduploadinput.setAttribute('accept', '.xnp');
+            notificationadduploadlabel.setAttribute('for', 'new-notifications-upload');
+            notificationadduploadlabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/></svg>';
+            notificationsclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+            notificationstitle.innerHTML = 'Notifications';
+            notificationsbkg.appendChild(notifications);
+            notifications.appendChild(notificationsclose);
+            if (document.getElementById('new-notifications-upload') == null && uploadnotification) {
+                console.log(
+                    '%cNotification Component Missing: Upload Button, adding...',
+                    'background-color: red;padding: 10px;border-radius: 15px;'
+                )
+                notifications.appendChild(notificationadduploadlabel);
+                notifications.appendChild(notificationadduploadinput);
+            }
+            notifications.appendChild(notificationstitle);
+            notifications.appendChild(notificationshr);
+            document.body.appendChild(notificationsbkg);
+            if (document.getElementById('new-notifications-upload') != null && uploadnotification) {
+                let NotificationInput = document.getElementById("new-notifications-upload");
+                NotificationInput.addEventListener("change", () => {
+                    let files = NotificationInput.files;
+                    if(files.length == 0) return;
+                    const file = files[0];
+                    let reader = new FileReader();
+                    reader.onload = (e) => {
+                        const file = e.target.result;
+                        const lines = file.split(/\r\n|\n/);
+                        var tempElement = document.createElement('div');
+                        tempElement.innerHTML = lines.join("\n");
+                        var NotificationTitle = tempElement.querySelector('title').innerText || tempElement.querySelector('title').textContent;
+                        var NotificationDesc = tempElement.querySelector('desc').innerText || tempElement.querySelector('desc').textContent;
+                        var NotificationScript = tempElement.querySelector('script').innerText || tempElement.querySelector('script').textContent;
+                        NotificationTitle.replaceAll('\n', '');
+                        NotificationDesc.replaceAll('\n', '');
+                        NotificationScript.replaceAll('\n', ';');
+                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc)
+                    };
+                    reader.onerror = (e) => alert(e.target.error.name);
+                    reader.readAsText(file);
+                });
+            }
+        }
+        console.group('Notification Sent')
+        console.log('Title: ' + title);
+        console.log('Desc: ' + desc);
+        console.log('Action: ' + action);
+        console.groupEnd()
+        var notification = document.createElement('div');
+        var notificationclose = document.createElement('button');
+        var notificationtitle = document.createElement('h3');
+        var notificationdesc = document.createElement('p');
+        if (isUploaded) {
+            notification.setAttribute('class', 'new-notification new-notification-uploaded');
+        } else {
+            notification.setAttribute('class', 'new-notification');
+        }
+        notification.setAttribute('onclick', 'this.classList.add("hided");' + action);
+        notificationclose.setAttribute('onclick', 'this.parentNode.setAttribute("onclick", "");this.parentNode.classList.add("hided");var timeout = setTimeout(() => {this.parentNode.setAttribute("onclick", document.getElementById("new-notification-hided-onclick").innerHTML)}, 1000)')
+        notificationclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+        notificationtitle.innerHTML = title;
+        notificationdesc.innerHTML = desc;
+        notification.appendChild(notificationclose);
+        notification.appendChild(notificationtitle);
+        notification.appendChild(notificationdesc);
+        document.getElementById('new-notifications').appendChild(notification);
+        if (!nosound) {
+            var audio = new Audio('https://local-xcenter.netlify.app/assets/media/4.0/notification.mp3');
+            audio.play();
+        }
+        if (!document.getElementById('new-notifications-bkg').classList.contains('hided')) {
+            return;
+        }
+        if (!document.getElementById('new-notification').classList.contains('hided')) {
+            document.getElementById('new-notification-hided').classList.remove('hided');
+            return;
+        }
+        if (!action.indexOf('this.classList.add("hided")') != -1) {action = 'this.classList.add("hided");' + action}
+        document.getElementById('new-notification-title').innerHTML = title;
+        document.getElementById('new-notification-cnt').innerHTML = desc;
+        document.getElementById('new-notification').setAttribute('onclick', action);
+        document.getElementById('new-notification').classList.remove('hided');
+        return true;
+    },
+    input: function(title, defaultINPUT) {
+        var createBox = document.createElement('div');
+        var BoxTitle = document.createElement('h3');
+        var BoxInput = document.createElement('input');
+        createBox.setAttribute('style', 'position: fixed;z-index: 90;left: 50%;width: 98%;max-width: 500px;heigth: 200px;');
+        createBox.appendChild(BoxTitle);
+        createBox.appendChild(BoxInput);
+        document.body.appendChild(createBox);
+        
+    },
     getOS: function() {
         //Gets the user's operative system (userAgent, not accurate.)
         console.warn('Detecting your OS...')
@@ -32,27 +258,6 @@ var CommonJS = {
         }
         if (OS == 'unknown') console.error("Your OS wasn't recognized.")
         return OS;
-    },
-    link: function(file, type) {
-        //Links a css/js file to the page.
-        console.log('Linking ' + type + ' file...');
-        if (type == "js") {
-            var th = document.getElementsByTagName('head')[0];
-            var s = document.createElement('script');
-            s.setAttribute('type','text/javascript');
-            s.setAttribute('src',file);
-            th.appendChild(s);
-        } else if (type == 'css') {
-            var head = document.getElementsByTagName('head')[0];
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = file;
-            head.appendChild(link);
-        }
-    },
-    wait: function() {
-        //Does Nothing
     },
     params: function(action, parameter, defaultvalue) {
         //Gets/Deletes page parameter. parameter must be defined.
@@ -241,6 +446,7 @@ var CommonJS = {
             text = id;
             id = null;
         }
+        if (text == 'CommonJS.AddToScript.LinkToJSFile.CopyHTML.Confirm.true') text = '<script src="https://xcenter.netlify.app/assets/js/common.js"></script>';
         if (id == null || id.length <= 0) {
             if (text == null || text.length <= 0) {
                 return false;
@@ -301,6 +507,8 @@ var CommonJS = {
         return Number;
     }
 }
+CommonJS.notification('', 'Test', 'This is a test, ignore me.', false, true);
+CommonJS.notification('', 'Test', 'This is another test, ignore me.', false, true);
 console.log(
     '%cCommonJS v3.0 function enabled succeffully!',
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
