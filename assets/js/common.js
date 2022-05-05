@@ -507,8 +507,6 @@ var CommonJS = {
         return Number;
     }
 }
-CommonJS.notification('', 'Test', 'This is a test, ignore me.', false, true);
-CommonJS.notification('', 'Test', 'This is another test, ignore me.', false, true);
 console.log(
     '%cCommonJS v3.0 function enabled succeffully!',
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
