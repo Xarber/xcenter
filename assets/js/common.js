@@ -176,7 +176,7 @@ var CommonJS = {
                         var NotificationTitle = tempElement.querySelector('title').innerText || tempElement.querySelector('title').textContent;
                         var NotificationDesc = tempElement.querySelector('desc').innerText || tempElement.querySelector('desc').textContent;
                         var NotificationScript = tempElement.querySelector('script').innerText || tempElement.querySelector('script').textContent;
-                        var NotificationStyle = tempElement.querySelector('style').innerText || tempElement.querySelector('style').textContent;
+                        var NotificationStyle = tempElement.querySelector('css').innerText || tempElement.querySelector('css').textContent;
                         NotificationTitle.replaceAll('\n', '');
                         NotificationDesc.replaceAll('\n', '');
                         NotificationStyle.replaceAll('\n', '');
