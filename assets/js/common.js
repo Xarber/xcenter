@@ -211,6 +211,7 @@ var CommonJS = {
         var notificationtitle = document.createElement('h3');
         var notificationdesc = document.createElement('p');
         notification.setAttribute('onclick', 'this.classList.add("hided");' + action);
+        notification.setAttribute('class', 'new-notification');
         if (style != null && style.length > 0) {
             notification.setAttribute("style", style);
         } else {
