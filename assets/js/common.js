@@ -204,6 +204,8 @@ var CommonJS = {
         console.group('Notification Sent')
         console.log('Title: ' + title);
         console.log('Desc: ' + desc);
+        console.log('Silent: ' + nosound);
+        console.log('Style: ' + style);
         console.log('Action: ' + action);
         console.groupEnd()
         var notification = document.createElement('div');
