@@ -211,7 +211,11 @@ var CommonJS = {
         var notificationtitle = document.createElement('h3');
         var notificationdesc = document.createElement('p');
         notification.setAttribute('onclick', 'this.classList.add("hided");' + action);
-        if (style != null && style.length > 1) notification.setAttribute("style", style);
+        if (style != null && style.length > 0) {
+            notification.setAttribute("style", style);
+        } else {
+            notification.setAttribute("style", "");
+        }
         notificationclose.setAttribute('onclick', 'this.parentNode.setAttribute("onclick", "");this.parentNode.classList.add("hided");var timeout = setTimeout(() => {this.parentNode.setAttribute("onclick", document.getElementById("new-notification-hided-onclick").innerHTML)}, 1000)')
         notificationclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
         notificationtitle.innerHTML = title;
@@ -235,6 +239,11 @@ var CommonJS = {
         document.getElementById('new-notification-title').innerHTML = title;
         document.getElementById('new-notification-cnt').innerHTML = desc;
         document.getElementById('new-notification').setAttribute('onclick', action);
+        if (style != null && style.length > 0) {
+            document.getElementById('new-notification').setAttribute("style", style);
+        } else {
+            document.getElementById('new-notification').setAttribute("style", "");
+        }
         document.getElementById('new-notification').classList.remove('hided');
         return true;
     },
