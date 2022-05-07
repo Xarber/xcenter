@@ -248,7 +248,7 @@ var CommonJS = {
             document.getElementById('new-notification').setAttribute("style", "");
         }
         document.getElementById('new-notification').classList.remove('hided');
-        document.getElementById("new-notifications-upload").value = "";
+        document.getElementById("new-notifications-upload").value = null;
         return true;
     },
     input: function(title, defaultINPUT) {
