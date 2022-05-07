@@ -149,19 +149,15 @@ var CommonJS = {
             notificationadduploadinput.setAttribute('class', 'hided');
             notificationadduploadinput.setAttribute('accept', '.xnp');
             notificationadduploadlabel.setAttribute('for', 'new-notifications-upload');
+            notificationadduploadlabel.setAttribute('class', 'hided')
+            notificationadduploadlabel.setAttribute('id', 'new-notifications-upload-label');
             notificationadduploadlabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/></svg>';
             notificationsclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
             notificationstitle.innerHTML = 'Notifications';
             notificationsbkg.appendChild(notifications);
             notifications.appendChild(notificationsclose);
-            if (document.getElementById('new-notifications-upload') == null && uploadnotification) {
-                console.log(
-                    '%cNotification Component Missing: Upload Button, adding...',
-                    'background-color: red;padding: 10px;border-radius: 15px;'
-                )
-                notifications.appendChild(notificationadduploadlabel);
-                notifications.appendChild(notificationadduploadinput);
-            }
+            notifications.appendChild(notificationadduploadlabel);
+            notifications.appendChild(notificationadduploadinput);
             notifications.appendChild(notificationstitle);
             notifications.appendChild(notificationshr);
             document.body.appendChild(notificationsbkg);
@@ -183,12 +179,25 @@ var CommonJS = {
                         NotificationTitle.replaceAll('\n', '');
                         NotificationDesc.replaceAll('\n', '');
                         NotificationScript.replaceAll('\n', ';');
-                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc)
+                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc, false, true)
                     };
                     reader.onerror = (e) => alert(e.target.error.name);
                     reader.readAsText(file);
                 });
             }
+        }
+        if (uploadnotification && document.getElementById('new-notifications-upload-label').classList.contains('hided')) {
+            console.log(
+                '%cNotification Component Missing: Upload Button, adding...',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            )
+            document.getElementById('new-notifications-upload-label').classList.remove('hided');
+        } else if (!uploadnotification && !document.getElementById('new-notifications-upload-label').classList.contains('hided')) {
+            console.log(
+                '%cRemoving Notification Component: Upload Button.',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            )
+            document.getElementById('new-notifications-upload-label').classList.add('hided');
         }
         console.group('Notification Sent')
         console.log('Title: ' + title);
@@ -512,14 +521,14 @@ console.log(
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
 );
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
-    var xversion = '4.0.5';
+    var xversion = '4.0.8';
     var changelog = {
-        OPT1: 'New Settings:',
-        TXT1: '<li>ColdBoot Version</li>',
-        OPT2: 'Added:',
-        TXT2: '<li>Version Selector</li>',
-        OPT3: 'Optimized:',
-        TXT3: '<li>Carousel</li>',
+        OPT1: 'Added:',
+        TXT1: '<li>Notifications</li><li>CommonJS Copy in Xarber page</li>',
+        OPT2: '',
+        TXT2: '',
+        OPT3: '',
+        TXT3: '',
         OPT4: '',
         TXT4: '',
         open: function() {
