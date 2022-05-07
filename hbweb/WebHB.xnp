@@ -1,5 +1,12 @@
 <title>HB</title>
 <desc>Try to launch WebHB</desc>
+<css>
+    background-color: blue !important;
+    background-image: url('https://xcenter.netlify.app/assets/media/hb.png') !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    backgorund-position: right !important;
+</css>
 <script>
     document.head.innerHTML = document.head.innerHTML + '\
         <title>HB WEB</title>\
