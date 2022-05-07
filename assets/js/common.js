@@ -179,7 +179,7 @@ var CommonJS = {
                         NotificationTitle.replaceAll('\n', '');
                         NotificationDesc.replaceAll('\n', '');
                         NotificationScript.replaceAll('\n', ';');
-                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc)
+                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc, false, true)
                     };
                     reader.onerror = (e) => alert(e.target.error.name);
                     reader.readAsText(file);
