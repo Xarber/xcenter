@@ -179,8 +179,6 @@ var CommonJS = {
                         NotificationTitle.replaceAll('\n', '');
                         NotificationDesc.replaceAll('\n', '');
                         NotificationScript.replaceAll('\n', ';');
-                        NotificationScript.replaceAll('<js', '<script');
-                        NotificationScript.replaceAll('</js>', '</script>');
                         CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc)
                     };
                     reader.onerror = (e) => alert(e.target.error.name);
