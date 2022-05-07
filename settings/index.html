@@ -150,6 +150,11 @@
     </div>
     <br><br>
     <div class="new-settings-option">
+      <p>Test Notification</p>
+      <button style="float: right;margin-right:10%;background-color: blue;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="CommonJS.notification("","Test", "This is a test notification.", false, true)>Send</button>
+    </div>
+    <br><br>
+    <div class="new-settings-option">
       <p>Reset Recent Page</p>
       <button style="float: right;margin-right:10%;background-color: red;height: 40px;margin-top: -12 px;padding: 0px 30px 0px 30px;" onclick="localStorage.removeItem('LastLocalPage');location.reload();">Reset</button>
     </div>
