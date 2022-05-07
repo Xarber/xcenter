@@ -188,7 +188,7 @@ var CommonJS = {
                 });
             }
         }
-        if (uploadnotification && document.getElementById('new-notifications-upload-label').classList.contains('hided');) {
+        if (uploadnotification && document.getElementById('new-notifications-upload-label').classList.contains('hided')) {
             console.log(
                 '%cNotification Component Missing: Upload Button, adding...',
                 'background-color: red;padding: 10px;border-radius: 15px;'
