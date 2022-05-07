@@ -521,14 +521,14 @@ console.log(
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
 );
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
-    var xversion = '4.0.5';
+    var xversion = '4.0.8';
     var changelog = {
-        OPT1: 'New Settings:',
-        TXT1: '<li>ColdBoot Version</li>',
-        OPT2: 'Added:',
-        TXT2: '<li>Version Selector</li>',
-        OPT3: 'Optimized:',
-        TXT3: '<li>Carousel</li>',
+        OPT1: 'Added:',
+        TXT1: '<li>Notifications</li><li>CommonJS Copy in Xarber page</li>',
+        OPT2: '',
+        TXT2: '',
+        OPT3: '',
+        TXT3: '',
         OPT4: '',
         TXT4: '',
         open: function() {
