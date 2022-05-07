@@ -67,7 +67,7 @@ var CommonJS = {
         var audio = new Audio(url);
         audio.play();
     },
-    notification: function(action, title, desc, nosound, uploadnotification, isUploaded) {
+    notification: function(action, title, desc, nosound, uploadnotification, style) {
         title = title ?? 'Notification';
         desc = desc ?? 'No Desc Provided';
         action = action ?? '';
@@ -176,10 +176,12 @@ var CommonJS = {
                         var NotificationTitle = tempElement.querySelector('title').innerText || tempElement.querySelector('title').textContent;
                         var NotificationDesc = tempElement.querySelector('desc').innerText || tempElement.querySelector('desc').textContent;
                         var NotificationScript = tempElement.querySelector('script').innerText || tempElement.querySelector('script').textContent;
+                        var NotificationStyle = tempElement.querySelector('style').innerText || tempElement.querySelector('style').textContent;
                         NotificationTitle.replaceAll('\n', '');
                         NotificationDesc.replaceAll('\n', '');
+                        NotificationStyle.replaceAll('\n', '');
                         NotificationScript.replaceAll('\n', ';');
-                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc, false, true)
+                        CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc, nosound, uploadnotification, NotificationStyle)
                     };
                     reader.onerror = (e) => alert(e.target.error.name);
                     reader.readAsText(file);
@@ -208,12 +210,8 @@ var CommonJS = {
         var notificationclose = document.createElement('button');
         var notificationtitle = document.createElement('h3');
         var notificationdesc = document.createElement('p');
-        if (isUploaded) {
-            notification.setAttribute('class', 'new-notification new-notification-uploaded');
-        } else {
-            notification.setAttribute('class', 'new-notification');
-        }
         notification.setAttribute('onclick', 'this.classList.add("hided");' + action);
+        if (style != null && style.length > 1) notification.setAttribute("style", style);
         notificationclose.setAttribute('onclick', 'this.parentNode.setAttribute("onclick", "");this.parentNode.classList.add("hided");var timeout = setTimeout(() => {this.parentNode.setAttribute("onclick", document.getElementById("new-notification-hided-onclick").innerHTML)}, 1000)')
         notificationclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
         notificationtitle.innerHTML = title;
