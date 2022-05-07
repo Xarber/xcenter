@@ -194,7 +194,7 @@ var CommonJS = {
                 'background-color: red;padding: 10px;border-radius: 15px;'
             )
             document.getElementById('new-notifications-upload-label').classList.remove('hided');
-        } else {
+        } else if (!uploadnotification && !document.getElementById('new-notifications-upload-label').classList.contains('hided')) {
             console.log(
                 '%cRemoving Notification Component: Upload Button.',
                 'background-color: red;padding: 10px;border-radius: 15px;'
