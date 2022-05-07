@@ -165,7 +165,7 @@ var CommonJS = {
                 let NotificationInput = document.getElementById("new-notifications-upload");
                 NotificationInput.addEventListener("change", () => {
                     let files = NotificationInput.files;
-                    if(files.length == 0) return;-
+                    if(files.length == 0) return;
                     const file = files[0];
                     let reader = new FileReader();
                     reader.onload = (e) => {
