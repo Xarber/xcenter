@@ -194,6 +194,12 @@ var CommonJS = {
                 'background-color: red;padding: 10px;border-radius: 15px;'
             )
             document.getElementById('new-notifications-upload-label').classList.remove('hided');
+        } else {
+            console.log(
+                '%cRemoving Notification Component: Upload Button.',
+                'background-color: red;padding: 10px;border-radius: 15px;'
+            )
+            document.getElementById('new-notifications-upload-label').classList.add('hided');
         }
         console.group('Notification Sent')
         console.log('Title: ' + title);
