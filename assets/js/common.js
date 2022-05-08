@@ -67,11 +67,139 @@ var CommonJS = {
         var audio = new Audio(url);
         audio.play();
     },
-    notification: function(action, title, desc, nosound, uploadnotification, style) {
+    notification: function(action, title, desc, nosound, uploadnotification, style, onlyrecover) {
+        if (onlyrecover == true) {
+            if (document.getElementById('new-notification') == null) {
+                console.log(
+                    '%cNotification Component Missing: Notification Box, adding...',
+                    'background-color: red;padding: 10px;border-radius: 15px;'
+                )
+                var notificationadd = document.createElement('div');
+                var notificationaddclose = document.createElement('button');
+                var notificationaddtitle = document.createElement('h3');
+                var notificationadddesc = document.createElement('p');
+                notificationadd.setAttribute('class', 'new-notification hided');
+                notificationadd.setAttribute('id', 'new-notification');
+                notificationaddclose.setAttribute('onclick', 'this.parentNode.setAttribute("onclick", "");this.parentNode.classList.add("hided");')
+                notificationaddtitle.setAttribute('id', 'new-notification-title');
+                notificationadddesc.setAttribute('id', 'new-notification-cnt');
+                notificationaddclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+                notificationaddtitle.innerHTML = 'Notification';
+                notificationadddesc.innerHTML = 'No Desc Provided';
+                notificationadd.appendChild(notificationaddclose);
+                notificationadd.appendChild(notificationaddtitle);
+                notificationadd.appendChild(notificationadddesc);
+                document.body.appendChild(notificationadd);
+            }
+            if (document.getElementById('new-notification-hided') == null) {
+                console.log(
+                    '%cNotification Component Missing: Multiple Notification Box, adding...',
+                    'background-color: red;padding: 10px;border-radius: 15px;'
+                )
+                var notificationhided = document.createElement('div');
+                var notificationhidedclose = document.createElement('button');
+                var notificationhideddesc = document.createElement('p');
+                var notificationhidedp = document.createElement('p');
+                notificationhided.setAttribute('class', 'new-notification hided');
+                notificationhided.setAttribute('onclick', "document.getElementById('new-notification-hided').classList.add('hided');document.getElementById('new-notification').classList.add('hided');document.getElementById('new-notifications-bkg').classList.remove('hided');");
+                notificationhided.setAttribute('style', 'top: 120px !important;height: 50px !important;');
+                notificationhided.setAttribute('id', 'new-notification-hided');
+                notificationhidedclose.setAttribute('onclick', "this.parentNode.setAttribute('onclick', '');this.parentNode.classList.add('hided');var timeout = setTimeout(() => {this.parentNode.setAttribute('onclick', document.getElementById('new-notification-hided-onclick').innerHTML)}, 1000);")
+                notificationhidedclose.setAttribute('style', 'margin-top: 0 !important;')
+                notificationhidedp.setAttribute('class', 'hided');
+                notificationhidedp.setAttribute('id', 'new-notification-hided-onclick');
+                notificationhidedclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+                notificationhideddesc.innerHTML = 'Multiple notifications. Open the notification menu to read.';
+                notificationhidedp.innerHTML = "document.getElementById('new-notification-hided').classList.add('hided');document.getElementById('new-notification').classList.add('hided');document.getElementById('new-notifications-bkg').classList.remove('hided');";
+                notificationhided.appendChild(notificationhidedclose);
+                notificationhided.appendChild(notificationhideddesc);
+                notificationhided.appendChild(notificationhidedp);
+                document.body.appendChild(notificationhided);
+            } 
+            if (document.getElementById('new-notifications-bkg') == null) {
+                console.log(
+                    '%cNotification Component Missing: Notification Menu, adding...',
+                    'background-color: red;padding: 10px;border-radius: 15px;'
+                )
+                var notificationsbkg = document.createElement('div');
+                var notifications = document.createElement('div');
+                var notificationsclose = document.createElement('button');
+                var notificationstitle = document.createElement('h1');
+                var notificationshr = document.createElement('hr');
+                var notificationadduploadinput = document.createElement('input');
+                var notificationadduploadlabel = document.createElement('label');
+                notificationsbkg.setAttribute('class', 'new-notifications hided');
+                notificationsbkg.setAttribute('id', 'new-notifications-bkg');
+                notifications.setAttribute('class', 'vertical-scroll');
+                notifications.setAttribute('id', 'new-notifications');
+                notificationsclose.setAttribute('onclick', "this.parentNode.parentNode.classList.add('hided');");
+                notificationadduploadinput.setAttribute('type', 'file');
+                notificationadduploadinput.setAttribute('id', 'new-notifications-upload');
+                notificationadduploadinput.setAttribute('class', 'hided');
+                notificationadduploadinput.setAttribute('accept', '.xnp');
+                notificationadduploadlabel.setAttribute('for', 'new-notifications-upload');
+                notificationadduploadlabel.setAttribute('class', 'hided')
+                notificationadduploadlabel.setAttribute('id', 'new-notifications-upload-label');
+                notificationadduploadlabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/></svg>';
+                notificationsclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+                notificationstitle.innerHTML = 'Notifications';
+                notificationsbkg.appendChild(notifications);
+                notifications.appendChild(notificationsclose);
+                notifications.appendChild(notificationadduploadlabel);
+                notifications.appendChild(notificationadduploadinput);
+                notifications.appendChild(notificationstitle);
+                notifications.appendChild(notificationshr);
+                document.body.appendChild(notificationsbkg);
+                if (document.getElementById('new-notifications-upload') != null && uploadnotification) {
+                    let NotificationInput = document.getElementById("new-notifications-upload");
+                    NotificationInput.addEventListener("change", () => {
+                        let files = NotificationInput.files;
+                        if(files.length == 0) return;
+                        const file = files[0];
+                        let reader = new FileReader();
+                        reader.onload = (e) => {
+                            const file = e.target.result;
+                            const lines = file.split(/\r\n|\n/);
+                            var tempElement = document.createElement('div');
+                            tempElement.innerHTML = lines.join("\n");
+                            var NotificationTitle = tempElement.querySelector('title').innerText || tempElement.querySelector('title').textContent;
+                            var NotificationDesc = tempElement.querySelector('desc').innerText || tempElement.querySelector('desc').textContent;
+                            var NotificationScript = tempElement.querySelector('script').innerText || tempElement.querySelector('script').textContent;
+                            var NotificationStyle = tempElement.querySelector('css').innerText || tempElement.querySelector('css').textContent;
+                            NotificationTitle.replaceAll('\n', '');
+                            NotificationDesc.replaceAll('\n', '');
+                            NotificationStyle.replaceAll('\n', '');
+                            NotificationScript.replaceAll('\n', ';');
+                            CommonJS.notification(NotificationScript, NotificationTitle, NotificationDesc, nosound, uploadnotification, NotificationStyle)
+                        };
+                        reader.onerror = (e) => alert(e.target.error.name);
+                        reader.readAsText(file);
+                    });
+                }
+            }
+            if (uploadnotification && document.getElementById('new-notifications-upload-label').classList.contains('hided')) {
+                console.log(
+                    '%cNotification Component Missing: Upload Button, adding...',
+                    'background-color: red;padding: 10px;border-radius: 15px;'
+                )
+                document.getElementById('new-notifications-upload-label').classList.remove('hided');
+            } else if (!uploadnotification && !document.getElementById('new-notifications-upload-label').classList.contains('hided')) {
+                console.log(
+                    '%cRemoving Notification Component: Upload Button.',
+                    'background-color: red;padding: 10px;border-radius: 15px;'
+                )
+                document.getElementById('new-notifications-upload-label').classList.add('hided');
+            }
+            return;
+        }
         title = title ?? 'Notification';
         desc = desc ?? 'No Desc Provided';
         action = action ?? '';
-        nosound = nosound ?? false;
+        if ((nosound == null || nosound.length < 1) && localStorage.getItem('SilentNotifications') == 'true') {
+            nosound = true;
+        } else {
+            nosound = nosound ?? false;
+        }
         uploadnotification = uploadnotification ?? false;
         if (!CommonJS.classExists('.new-notification') || !CommonJS.classExists('.new-notifications') || !CommonJS.classExists('.hided')) {
             console.log(
@@ -536,8 +664,8 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     var changelog = {
         OPT1: 'Added:',
         TXT1: '<li>Notifications</li><li>CommonJS Copy in Xarber page</li>',
-        OPT2: '',
-        TXT2: '',
+        OPT2: 'New Settings:',
+        TXT2: '<li>Hide Notifications</li><li>Silent Notifications</li>',
         OPT3: '',
         TXT3: '',
         OPT4: '',
@@ -689,6 +817,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
     var navbar = document.getElementById('navbar');
     var menu = document.getElementById('new-menu');
     var theme = sysTheme();
+    var NotificationHide, NotificationSilent = 'false';
     var ChangelogHide = localStorage.getItem('AutoHideChangelog');
     if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')};
     setTheme();
@@ -956,6 +1085,16 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             } else {
                 localStorage.setItem('XCenterColdBootVersionOptimize', 'false');
             }
+            if (document.getElementById('settings-NotificationsHide').checked) {
+                localStorage.setItem('HideNotifications', 'true');
+            } else {
+                localStorage.setItem('HideNotifications', 'false');
+            }
+            if (document.getElementById('settings-NotificationsSilent').checked) {
+                localStorage.setItem('SilentNotifications', 'true');
+            } else {
+                localStorage.setItem('SilentNotifications', 'false');
+            }
             console.log('> Saved Settings');
             window.location = '/';
         } else if (a == 'get') {
@@ -964,6 +1103,8 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             if (localStorage.getItem('AutoHideChangelog') == null) {localStorage.setItem('AutoHideChangelog', 'false')}
             if (localStorage.getItem('XCenterColdBootVersionOptimize') == null) {localStorage.setItem('XCenterColdBootVersionOptimize', 'false')}
             if (localStorage.getItem('XCenterColdBootVersion') == null) {localStorage.setItem('XCenterColdBootVersion', '4.0')}
+            if (localStorage.getItem('HideNotifications') == null) {localStorage.setItem('HideNotifications', 'false')}
+            if (localStorage.getItem('SilentNotifications') == null) {localStorage.setItem('SilentNotifications', 'false')}
             var theme = localStorage.getItem('theme');
             var ChangelogHide = localStorage.getItem('AutoHideChangelog');
             if (document.getElementById('settings-ThemeDetect') != null) {
@@ -981,7 +1122,19 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
                     document.getElementById('new-settings-ColdBoot-Optimize').checked = true;
                 }
             }
-            var ColdBootVersion = localStorage.getItem('XCenterColdBootVersion');
+            if (document.getElementById('settings-NotificationsHide') != null) {
+                if (localStorage.getItem('HideNotifications') == 'true') {
+                    document.getElementById('settings-NotificationsHide').checked = true;
+                }
+            }
+            if (document.getElementById('settings-NotificationsSilent') != null) {
+                if (localStorage.getItem('SilentNotifications') == 'true') {
+                    document.getElementById('settings-NotificationsSilent').checked = true;
+                }
+            }
+            NotificationHide = localStorage.getItem('HideNotifications');
+            NotificationSilent = localStorage.getItem('SilentNotifications');
+            ColdBootVersion = localStorage.getItem('XCenterColdBootVersion');
             console.log('> Settings Obtained.')
         } else if (a == 'reset') {
             console.log('> Default Settings Enabled.');
@@ -989,12 +1142,18 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             localStorage.setItem('AutoHideChangelog', 'false');
             localStorage.setItem('XCenterColdBootVersion', '4.0');
             localStorage.setItem('XCenterColdBootVersionOptimize', 'false');
+            localStorage.setItem('NotificationsSilent', 'false');
+            localStorage.setItem('NotificationsHide', 'false');
             ChangelogHide = 'false';
             theme = 'auto';
             ColdBootVersion = '4.0';
+            NotificationHide = 'false';
+            NotificationSilent = 'false';
             location.reload();
         }
     }
+    CommonJS.notification('', '', '', true, true, '', true);
+    if (NotificationHide == 'true') {document.getElementById('new-notification').classList.add('hided-force');document.getElementById('new-notification-hided').classList.add('hided-force')}
     console.log(
         '%cChecking For ColdBoot Version...',
         'padding: 10px;background-color: blue;border-radius: 15px;'
