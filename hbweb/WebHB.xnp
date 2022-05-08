@@ -5,7 +5,7 @@
     background-image: url('https://xcenter.netlify.app/assets/media/hb.png') !important;
     background-repeat: no-repeat !important;
     background-size: contain !important;
-    backgorund-position: right !important;
+    background-position: right !important;
 </css>
 <script>
     document.head.innerHTML = document.head.innerHTML + '\
