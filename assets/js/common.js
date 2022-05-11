@@ -34,7 +34,7 @@ var CommonJS = {
             head.appendChild(link);
         }
     },
-    classExists: function (searchClassName) {
+    classExists: function(searchClassName) {
         for (let i = 0; i < document.styleSheets.length; i++) {
             let styleSheet = document.styleSheets[i];
             try {
@@ -1001,68 +1001,12 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             return;
         } else return;
     }
-    /*function carousel(s) {
-        //OLD CAROUSEL VERSION
-        console.log('Carousel Action Requested...');
-        var first = document.getElementById('carousel-1').classList.contains('hided');
-        var one = document.getElementById('carousel-1');
-        var second = document.getElementById('carousel-2').classList.contains('hided');
-        var two = document.getElementById('carousel-2');
-        var third = document.getElementById('carousel-3').classList.contains('hided');
-        var three = document.getElementById('carousel-3');
-        var fourth = document.getElementById('carousel-4').classList.contains('hided');
-        var four = document.getElementById('carousel-4');
-        if (s != 'j') {
-            if (!first) {
-                if (s == '+') {
-                    one.classList.add('hided');
-                    two.classList.remove('hided');
-                } else if (s == '-') {
-                    one.classList.add('hided');
-                    four.classList.remove('hided');
-                }
-            } else if (!second) {
-                if (s == '+') {
-                    two.classList.add('hided');
-                    three.classList.remove('hided');
-                } else if (s == '-') {
-                    two.classList.add('hided');
-                    one.classList.remove('hided');
-                }
-            } else if (!third) {
-                if (s == '+') {
-                    three.classList.add('hided');
-                    four.classList.remove('hided');
-                } else if (s == '-') {
-                    three.classList.add('hided');
-                    two.classList.remove('hided');
-                }
-            } else if (!fourth) {
-                if (s == '+') {
-                    four.classList.add('hided');
-                    one.classList.remove('hided');
-                } else if (s == '-') {
-                    four.classList.add('hided');
-                    three.classList.remove('hided');
-                }
-            }
-        } else {
-            if (!first) {
-                window.location = '/about';
-            } else if (!second) {
-                window.location = '/xarbot';
-            } else if (!third) {
-                window.location = '/xwip';
-            } else if (!fourth) {
-                window.location = '/tools';
-            }
-        }
-    }*/
-    function settings(a) {
+    function settings(a, r) {
         console.log(
             '%cManaging Settings',
             'padding: 10px;background-color: gray;border-radius: 15px;'
         );
+        r = r ?? '/';
         if (a == 'apply') {
             console.log('> Saving Settings...');
             if (document.getElementById('settings-ThemeDetect').checked) {
@@ -1077,14 +1021,6 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             } else {
                 localStorage.setItem('AutoHideChangelog', 'false');
             }
-            if (document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '4.0' || document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '3.0' || document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '2.0' ||document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '1.0') {
-                localStorage.setItem('XCenterColdBootVersion', document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML);
-            }
-            if (document.getElementById('new-settings-ColdBoot-Optimize').checked) {
-                localStorage.setItem('XCenterColdBootVersionOptimize', 'true');
-            } else {
-                localStorage.setItem('XCenterColdBootVersionOptimize', 'false');
-            }
             if (document.getElementById('settings-NotificationsHide').checked) {
                 localStorage.setItem('HideNotifications', 'true');
             } else {
@@ -1095,8 +1031,21 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             } else {
                 localStorage.setItem('SilentNotifications', 'false');
             }
+            if (window.location.href.indexOf('/settings/') != -1) {
+                if (document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '4.0' || document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '3.0' || document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '2.0' ||document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML == '1.0') {
+                    localStorage.setItem('XCenterColdBootVersion', document.getElementById('new-settings-ColdBoot-selectedColdBoot').innerHTML);
+                }
+                if (document.getElementById('new-settings-ColdBoot-Optimize').checked) {
+                    localStorage.setItem('XCenterColdBootVersionOptimize', 'true');
+                } else {
+                    localStorage.setItem('XCenterColdBootVersionOptimize', 'false');
+                }
+            } else {
+
+            }
             console.log('> Saved Settings');
-            window.location = '/';
+            if (r == 'REFRESH') {location.reload();return false}
+            window.location = r;
         } else if (a == 'get') {
             console.log('> Obtaining Settings...');
             if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')}
