@@ -98,6 +98,9 @@ var Tools = {
         console.clear();
         return false;
     },
+    settings: function() {
+
+    },
     //HERE ARE THE APP'S TOOLS, ONLY EDIT/ADD TOOLS DOWN HERE!!!
     consoleSend: function() {
         var value = document.getElementById('consoleType').value;
@@ -116,7 +119,7 @@ var Tools = {
     ResetOwnerShip: function() {
 
     },
-    download: function() {
+    download: function(url) {
 
     },
     WinActivate: function() {
