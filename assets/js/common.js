@@ -945,6 +945,7 @@ console.log(
 );
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
     var xversion = '4.0.9';
+    if (location.href.indexOf('local-xcenter.netlify.app') != -1) xversion = xversion + "e";
     var changelog = {
         OPT1: 'Added:',
         TXT1: '<li>Toasts</li><li>DeltaSCP</li>',
