@@ -379,6 +379,281 @@ var CommonJS = {
         document.getElementById("new-notifications-upload").value = null;
         return true;
     },
+    toast: function(toast) {
+        /*
+            EXAMPLE:
+            CommonJS.toast({
+                title: "EXAMPLE",
+                type: "info",
+                position: "topleft",
+                list: false,
+                scripts: "alert(\"EXAMPLE TOAST SCRIPT\")"
+            })
+            REMEMBER: You can also not asign all variables and you can list them in any order you want (USE JSON RULES!!!)
+        */
+        toast.title = toast.title ?? "Toast Notification"; // CAN BE any;
+        toast.type = toast.type ?? "none"; //CAN BE info / error / success / create / other (this only creates the components);
+        toast.position = toast.position ?? "topright"; //USABLE ONCE!!! (topleft / topright / bottomleft / bottomright);
+        toast.style = toast.style ?? "NONE"; //CAN BE any style propriety;
+        toast.duration = toast.duration ?? "5s"; //CAN BE Xs / infinite;
+        toast.sounds = toast.sounds ?? false; //CAN BE any boolean;
+        toast.upload = toast.upload ?? false; //CAN BE any boolean;
+        toast.list = toast.list ?? true; //CAN BE any boolean (notification menu, highly reccomended);
+        toast.scripts = toast.scripts ?? "NONE"; // CAN BE any JS script;
+        toast.theme = toast.theme ?? "auto" // CAN BE light / dark / auto;
+        var toasttime = toast.duration;
+        toasttime = toasttime.replaceAll('s', '');
+        if (toasttime != "infinite") {
+            toasttime *= 1000;
+        };
+        if (document.getElementById('commonjs-toast-container') == null) {
+            var toastcontainer = document.createElement('div');
+            toastcontainer.setAttribute('id', 'commonjs-toast-container');
+            if (toast.position == "bottomleft") {
+                toastcontainer.setAttribute('class', 'commonjstoastcontainer bottom left')
+            } else if (toast.position == "bottomright") {
+                toastcontainer.setAttribute('class', 'commonjstoastcontainer bottom right')
+            } else if (toast.position == "topright") {
+                toastcontainer.setAttribute('class', 'commonjstoastcontainer right')
+            } else if (toast.position == "topleft") {
+                toastcontainer.setAttribute('class', 'commonjstoastcontainer left')
+            }
+            var toaststyles = document.createElement('style');
+            var documentbackground;
+            var toasttextcolor = "black";
+            if (toast.theme == 'auto') {
+                var tmp = CommonJS.getTheme();
+                if (tmp == "dark") {
+                    documentbackground = 'rgb(32,37,41)';
+                    toasttextcolor = "white";
+                }
+                if (tmp == "light") {
+                    documentbackground = 'rgb(256,256,256)';
+                    toasttextcolor = "black";
+                }
+            } else if (toast.theme == 'dark') {
+                documentbackground = 'rgb(32,37,41)';
+                toasttextcolor = "white";
+            } else if (toast.theme == 'light') {
+                documentbackground = 'rgb(256,256,256)';
+                toasttextcolor = "black";
+            } else documentbackground = 'rgb(256,256,256)';
+            toaststyles.innerHTML = "\
+            .commonjstoastcontainer{position:fixed;z-index:100000000;top:0;bottom:0;background-color:transparent;width:100%;max-width:300px;pointer-events:none;height:100%;margin-right: 10px;}\
+            .commonjstoastcontainer.right{right:0;}\
+            .commonjstoastcontainer.left{left:0;}\
+            .commonjstoastcontainer.bottom{transform: scaleY(-1);}\
+            .commonjstoastcontainer.bottom > div{transform: scaleY(-1);}\
+            .commonjstoast{width:calc(100% - 5px);padding:5px 10px 30px 10px;margin:5px;position:relative;border-radius:5px;position:relative;z-index:100000001;pointer-events:auto !important;border:1px solid gray;background-color: " + documentbackground + ";}\
+            .commonjstoast.info{border-left: 5px solid blue;}\
+            .commonjstoast.info div{background-color: blue;}\
+            .commonjstoast.error{border-left: 5px solid red;}\
+            .commonjstoast.error div{background-color: red;}\
+            .commonjstoast.success{border-left: 5px solid green;}\
+            .commonjstoast.success div{background-color: green;}\
+            .commonjstoast.warn{border-left: 5px solid yellow;}\
+            .commonjstoast.warn div{background-color: yellow;}\
+            .commonjstoast.other{border-left: 5px solid gray;}\
+            .commonjstoast.other div{background-color: gray;}\
+            .commonjstoast.none div{background: rgb(255,0,0);background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(236,255,0,1) 35%, rgba(0,129,255,1) 100%);}\
+            .commonjstoast.scripts{cursor: pointer;}\
+            .commonjstoast p{height:100%;float:left;pointer-events:auto !important;margin-top:0px !important;color: "+ toasttextcolor +"}\
+            .commonjstoast div{animation: timeout " + toast.duration + ";pointer-events:auto !important;position:absolute;left:0;right:0;bottom:0;height: 5px;}\
+            .commonjstoast button{float:right;height:100%;aspect-ratio:1/1;background-color: transparent !important;padding: 0px !important;margin: 5px !important;float:right;pointer-events:auto !important;margin-top:0px !important;color: " + toasttextcolor + " !important}\
+            @keyframes timeout{\
+                100% {width: 0%;}\
+                99% {width: 1%;}\
+                98% {width: 2%;}\
+                97% {width: 3%;}\
+                96% {width: 4%;}\
+                95% {width: 5%;}\
+                94% {width: 6%;}\
+                93% {width: 7%;}\
+                92% {width: 8%;}\
+                91% {width: 9%;}\
+                90% {width: 10%;}\
+                89% {width: 11%;}\
+                88% {width: 12%;}\
+                87% {width: 13%;}\
+                86% {width: 14%;}\
+                85% {width: 15%;}\
+                84% {width: 16%;}\
+                83% {width: 17%;}\
+                82% {width: 18%;}\
+                81% {width: 19%;}\
+                80% {width: 20%;}\
+                79% {width: 21%;}\
+                78% {width: 22%;}\
+                77% {width: 23%;}\
+                76% {width: 24%;}\
+                75% {width: 25%;}\
+                74% {width: 26%;}\
+                73% {width: 27%;}\
+                72% {width: 28%;}\
+                71% {width: 29%;}\
+                70% {width: 30%;}\
+                69% {width: 31%;}\
+                68% {width: 32%;}\
+                67% {width: 33%;}\
+                66% {width: 34%;}\
+                65% {width: 35%;}\
+                64% {width: 36%;}\
+                63% {width: 37%;}\
+                62% {width: 38%;}\
+                61% {width: 39%;}\
+                60% {width: 40%;}\
+                59% {width: 41%;}\
+                58% {width: 42%;}\
+                57% {width: 43%;}\
+                56% {width: 44%;}\
+                55% {width: 45%;}\
+                54% {width: 46%;}\
+                53% {width: 47%;}\
+                52% {width: 48%;}\
+                51% {width: 49%;}\
+                50% {width: 50%;}\
+                49% {width: 51%;}\
+                48% {width: 52%;}\
+                47% {width: 53%;}\
+                46% {width: 54%;}\
+                45% {width: 55%;}\
+                44% {width: 56%;}\
+                43% {width: 57%;}\
+                42% {width: 58%;}\
+                41% {width: 59%;}\
+                40% {width: 60%;}\
+                39% {width: 61%;}\
+                38% {width: 62%;}\
+                37% {width: 63%;}\
+                36% {width: 64%;}\
+                35% {width: 65%;}\
+                34% {width: 66%;}\
+                33% {width: 67%;}\
+                32% {width: 68%;}\
+                31% {width: 69%;}\
+                30% {width: 70%;}\
+                29% {width: 71%;}\
+                28% {width: 72%;}\
+                27% {width: 73%;}\
+                26% {width: 74%;}\
+                25% {width: 75%;}\
+                24% {width: 76%;}\
+                23% {width: 77%;}\
+                22% {width: 78%;}\
+                21% {width: 79%;}\
+                20% {width: 80%;}\
+                19% {width: 81%;}\
+                18% {width: 82%;}\
+                17% {width: 83%;}\
+                16% {width: 84%;}\
+                15% {width: 85%;}\
+                14% {width: 86%;}\
+                13% {width: 87%;}\
+                12% {width: 88%;}\
+                11% {width: 89%;}\
+                10% {width: 90%;}\
+                9% {width: 91%;}\
+                8% {width: 92%;}\
+                7% {width: 93%;}\
+                6% {width: 94%;}\
+                5% {width: 95%;}\
+                4% {width: 96%;}\
+                3% {width: 97%;}\
+                2% {width: 98%;}\
+                1% {width: 99%;}\
+                0% {width: 100%;}\
+              }\
+            "
+            document.body.appendChild(toastcontainer);
+            document.head.appendChild(toaststyles);
+        }
+        var newtoast = document.createElement('div');
+        if (toast.type == "info") {
+            newtoast.setAttribute('class', 'commonjstoast info')
+        } else if (toast.type == "error") {
+            newtoast.setAttribute('class', 'commonjstoast error')
+        } else if (toast.type == "success") {
+            newtoast.setAttribute('class', 'commonjstoast success')
+        } else if (toast.type == "warn") {
+            newtoast.setAttribute('class', 'commonjstoast warn')
+        } else if (toast.type == "other") {
+            newtoast.setAttribute('class', 'commonjstoast other')
+        } else if (toast.type == "none") {
+            newtoast.setAttribute('class', 'commonjstoast none')
+        }
+        if (toast.scripts != "NONE") {newtoast.classList.add('scripts')}
+        if (toast.scripts != "NONE") newtoast.setAttribute('onclick', toast.scripts);
+        if (toast.style != "NONE") {
+            if (toast.theme == 'auto') {
+                var tmp = CommonJS.getTheme();
+                if (tmp == "dark") {
+                    newtoast.setAttribute('style', "background-color: rgb(32,37,41);" + toast.style)
+                }
+                if (tmp == "light") {
+                    newtoast.setAttribute('style', "background-color: rgb(256,256,256);" + toast.style)
+                }
+            } else if (toast.theme == 'dark') {
+                newtoast.setAttribute('style', "background-color: rgb(32,37,41);" + toast.style)
+            } else if (toast.theme == 'light') {
+                newtoast.setAttribute('style', "background-color: rgb(256,256,256);" + toast.style)
+            } else {
+                newtoast.setAttribute('style', "background-color: rgb(256,256,256);" + toast.style)
+            }
+        } else {
+            if (toast.theme == 'auto') {
+                var tmp = CommonJS.getTheme();
+                if (tmp == "dark") {
+                    newtoast.setAttribute('style', "background-color: rgb(32,37,41);")
+                }
+                if (tmp == "light") {
+                    newtoast.setAttribute('style', "background-color: rgb(256,256,256);")
+                }
+            } else if (toast.theme == 'dark') {
+                newtoast.setAttribute('style', "background-color: rgb(32,37,41);")
+            } else if (toast.theme == 'light') {
+                newtoast.setAttribute('style', "background-color: rgb(256,256,256);")
+            } else {
+                newtoast.setAttribute('style', "background-color: rgb(256,256,256);")
+            }
+        }
+        var toasttitle = document.createElement('p');
+        var toastclose = document.createElement('button');
+        var toasttimeout = document.createElement('div');
+        if (toast.theme == 'auto') {
+            var tmp = CommonJS.getTheme();
+            if (tmp == "dark") {
+                toasttitle.setAttribute('style', 'color: white;')
+                toastclose.setAttribute('style', 'color: white;')
+            } else if (tmp == "light") {
+                toasttitle.setAttribute('style', 'color: black;')
+                toastclose.setAttribute('style', 'color: black;')
+            }
+        } else if (toast.theme == 'dark') {
+            toasttitle.setAttribute('style', 'color: white;')
+            toastclose.setAttribute('style', 'color: white !important;')
+        } else if (toast.theme == 'light') {
+            toasttitle.setAttribute('style', 'color: black;')
+            toastclose.setAttribute('style', 'color: black !important;')
+        } else {
+            toasttitle.setAttribute('style', 'color: black;')
+            toastclose.setAttribute('style', 'color: black !important;')
+        }
+        toasttitle.innerHTML = toast.title;
+        newtoast.appendChild(toasttitle);
+        toastclose.setAttribute('onclick', 'this.parentNode.setAttribute("onclick", "");this.parentNode.parentNode.removeChild(this.parentNode);')
+        toastclose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>';
+        newtoast.appendChild(toastclose);
+        if (toast.duration == "infinite") {toasttimeout.setAttribute('style', 'visibility: hidden;display: none;')} else {toasttimeout.setAttribute('style', 'animation-duration: ' + toast.duration+ '')}
+        newtoast.appendChild(toasttimeout);
+        var toastidtmp = 'TOAST-' + CommonJS.random('30');
+        newtoast.setAttribute('id', toastidtmp);
+        document.getElementById('commonjs-toast-container').appendChild(newtoast);
+        if (toasttime != 'infinite') {
+            setTimeout(() => {
+                document.getElementById(toastidtmp).parentNode.removeChild(document.getElementById(toastidtmp));
+            }, toasttime)
+        }
+    },
     input: function(title, defaultINPUT) {
         var createBox = document.createElement('div');
         var BoxTitle = document.createElement('h3');
@@ -653,6 +928,15 @@ var CommonJS = {
         //example: function('thisIsADivID');
         var Number = document.getElementById(DivID).getElementsByTagName('*').length;
         return Number;
+    },
+    downloadPage: function() {
+        var tmp = document.createElement('a');
+        tmp.setAttribute('href', window.location);
+        tmp.setAttribute('download', 'download');
+        tmp.click();
+    },
+    getDocumentBackground: function() {
+        return window.getComputedStyle(document.body,null).getPropertyValue('background-color');
     }
 }
 console.log(
@@ -660,12 +944,12 @@ console.log(
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
 );
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
-    var xversion = '4.0.8';
+    var xversion = '4.0.9';
     var changelog = {
         OPT1: 'Added:',
-        TXT1: '<li>Notifications</li><li>CommonJS Copy in Xarber page</li>',
+        TXT1: '<li>Toasts</li><li>DeltaSCP</li>',
         OPT2: 'New Settings:',
-        TXT2: '<li>Hide Notifications</li><li>Silent Notifications</li>',
+        TXT2: '',
         OPT3: '',
         TXT3: '',
         OPT4: '',

@@ -179,9 +179,10 @@ div.horizontal-scroll {overflow-y: hidden;overflow-x: auto;}
 .new-dropdown {max-width: 200px;}
 .new-dropdown:hover div {display: unset;visibility: visible;}
 .new-dropdown button {max-width: 200px;border-radius: 15px !important;}
-.new-dropdown div {background-color: gray;max-width: 200px;border-radius: 15px;position: absolute;padding: 2px;display: none;visibility: hidden;z-index: 100000000000000000;}
+.new-dropdown div {background-color: gray;max-width: 200px;border-radius: 15px;position: absolute;padding: 2px;display: none;visibility: hidden;z-index: 100000000000000000;max-height: 100px !important;overflow-y: auto !important;overflow-x: hidden;}
 .new-dropdown div button {width: 94%;margin: 5px;background-color: transparent;}
 .new-dropdown div button:hover {background-color: rgba(82, 82, 82, 0.342);}
+.new-dropdown-minimal div button {width: 94%;margin-left: 5px;margin-top: 1px;background-color: transparent;padding: 0 !important;}
 .new-dropdown-OPEN div {display: unset;visibility: visible;}
 .new-progressbar {height: 50px;border-radius: 10px;background-color: white !important;max-width: 90% !important;}
 .new-progressbar div {height: 50px;border-radius: 10px;width: 100% !important;background-color: rgb(58, 58, 255);max-width: 100% !important;}
@@ -403,6 +404,7 @@ DEVICES
   right:0;
 }
 .hided {display: none;visibility: hidden;}
+.hided-force {display: none !important;visibility: hidden !important;}
 .semi-hided {background-color: transparent !important;color: transparent !important;opacity: 0;}
 .semi-hided-smooth {-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both;}
 .shown {display: unset;visibility: visible;}
@@ -420,6 +422,109 @@ DEVICES
   animation: rainbow linear;
   animation-iteration-count: infinite;
   animation-duration: 30s;
+}
+@keyframes timeout{
+  100% {width: 100%;}
+  99% {width: 99%;}
+  98% {width: 98%;}
+  97% {width: 97%;}
+  96% {width: 96%;}
+  95% {width: 95%;}
+  94% {width: 94%;}
+  93% {width: 93%;}
+  92% {width: 92%;}
+  91% {width: 91%;}
+  90% {width: 90%;}
+  89% {width: 89%;}
+  88% {width: 88%;}
+  87% {width: 87%;}
+  86% {width: 86%;}
+  85% {width: 85%;}
+  84% {width: 84%;}
+  83% {width: 83%;}
+  82% {width: 82%;}
+  81% {width: 81%;}
+  80% {width: 80%;}
+  79% {width: 79%;}
+  78% {width: 78%;}
+  77% {width: 77%;}
+  76% {width: 76%;}
+  75% {width: 75%;}
+  74% {width: 74%;}
+  73% {width: 73%;}
+  72% {width: 72%;}
+  71% {width: 71%;}
+  70% {width: 70%;}
+  69% {width: 69%;}
+  68% {width: 68%;}
+  67% {width: 67%;}
+  66% {width: 66%;}
+  65% {width: 65%;}
+  64% {width: 64%;}
+  63% {width: 63%;}
+  62% {width: 62%;}
+  61% {width: 61%;}
+  60% {width: 60%;}
+  59% {width: 59%;}
+  58% {width: 58%;}
+  57% {width: 57%;}
+  56% {width: 56%;}
+  55% {width: 55%;}
+  54% {width: 54%;}
+  53% {width: 53%;}
+  52% {width: 52%;}
+  51% {width: 51%;}
+  50% {width: 50%;}
+  49% {width: 49%;}
+  48% {width: 48%;}
+  47% {width: 47%;}
+  46% {width: 46%;}
+  45% {width: 45%;}
+  44% {width: 44%;}
+  43% {width: 43%;}
+  42% {width: 42%;}
+  41% {width: 41%;}
+  40% {width: 40%;}
+  39% {width: 39%;}
+  38% {width: 38%;}
+  37% {width: 37%;}
+  36% {width: 36%;}
+  35% {width: 35%;}
+  34% {width: 34%;}
+  33% {width: 33%;}
+  32% {width: 32%;}
+  31% {width: 31%;}
+  30% {width: 30%;}
+  29% {width: 29%;}
+  28% {width: 28%;}
+  27% {width: 27%;}
+  26% {width: 26%;}
+  25% {width: 25%;}
+  24% {width: 24%;}
+  23% {width: 23%;}
+  22% {width: 22%;}
+  21% {width: 21%;}
+  20% {width: 20%;}
+  19% {width: 19%;}
+  18% {width: 18%;}
+  17% {width: 17%;}
+  16% {width: 16%;}
+  15% {width: 15%;}
+  14% {width: 14%;}
+  13% {width: 13%;}
+  12% {width: 12%;}
+  11% {width: 11%;}
+  10% {width: 10%;}
+  9% {width: 9%;}
+  8% {width: 8%;}
+  7% {width: 7%;}
+  6% {width: 6%;}
+  5% {width: 5%;}
+  4% {width: 4%;}
+  3% {width: 3%;}
+  2% {width: 2%;}
+  1% {width: 1%;}
+  0% {width: 0%;}
 }
 @keyframes rainbow{
   100%,0%{
