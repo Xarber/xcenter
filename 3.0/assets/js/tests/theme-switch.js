@@ -1,0 +1,1 @@
+document.getElementById('HTMLdoc').classList.toggle('light')
