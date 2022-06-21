@@ -1,0 +1,39 @@
+.ZipMe {margin: 5px;width: calc(100% - 5px);height: calc(100% - 5px);}
+.ZipMeCNT {width: 300px;height: 450px;border-radius: 25px;background-color: rgb(197, 197, 197);border: 1px solid rgb(116, 116, 116);margin: 5px;float: left;}
+.ZipMeCNT button {width: 90%;height: 10%;margin-left: 5%;margin-right: 5%;margin-bottom: 5%;margin-top: 5%;border: 0px;border-radius: 25px !important;background-color: red;color: white !important;}
+.ZipMeCNT button svg {margin-top: -15px;}
+.ZipMeCNT img {width: 80%;margin: 10%;border-radius: 15px;margin-bottom: 2%;}
+.ZipMeCNT h3 {margin-left: 10%;margin-bottom: 22%;color: rgb(49, 49, 49) !important;}
+.ZipMeASK {width: 100%;height: 100%;position: relative;background-color: rgba(0, 0, 0, 0.404);position: fixed;left: 0;top: 0;bottom: 0;right: 0;z-index: 10;}
+.ZipMeASK div {width: 80%;height: 20%;background-color: rgb(48, 48, 48);padding: 10px;}
+.ZipMeASK div p {width: 100%;background-color: transparent;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.ZipMeASK div div {display: flex;background-color: transparent;}
+.ZipMeASK div div button:nth-child(1) {position: absolute;bottom: 1%;right: 5px;margin: 5px;background-color: rgb(48, 48, 48);background-color: transparent;padding: 0;border-radius: 0px;}
+.ZipMeASK div div button:nth-child(2) {position: absolute;bottom: 1%;right: 68px;margin: 5px;background-color: rgb(48, 48, 48);background-color: transparent;padding: 0;border-right: 1px solid gray;padding-right: 5px;border-radius: 0px !important;}
+.ZipMeINPUT {width: 100%;height: 100%;position: relative;background-color: rgba(0, 0, 0, 0.404);position: fixed;left: 0;top: 0;bottom: 0;right: 0;z-index: 10;}
+.ZipMeINPUT div {width: 80%;height: 30%;background-color: rgb(48, 48, 48);padding: 10px;}
+.ZipMeINPUT div p {width: 100%;background-color: transparent;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.ZipMeINPUT div div {display: flex;background-color: transparent;}
+.ZipMeINPUT div div button:nth-child(1) {position: absolute;bottom: 1%;right: 5px;margin: 5px;background-color: rgb(48, 48, 48);background-color: transparent;padding: 0;border-radius: 0px;}
+.ZipMeINPUT div div button:nth-child(2) {position: absolute;bottom: 1%;right: 68px;margin: 5px;background-color: rgb(48, 48, 48);background-color: transparent;padding: 0;border-right: 1px solid gray;padding-right: 5px;border-radius: 0px !important;}
+.ZipMeINPUT div input {width: 100%;height: 30%;background-color: rgba(131, 131, 131, 0.493);padding: 10px;color: rgb(0, 0, 0);border: 0;border-radius: 10px;}
+.ZipMeFOLDER div {width: 98%;height: 98%;margin-top: calc(1% - 5px);margin-left: calc(1.5% - 5px);background-color: rgb(77, 77, 77);padding: 5px;z-index: 10;border-radius: 15px;}
+.ZipMeFOLDER div button {border: 0px;border-radius: 500 !important;padding: 0px !important;background-color: transparent;color: rgb(136, 136, 136) !important;float: right;margin: 2px;}
+.ZipMeFOLDER div div {width: 100%;height: 91.3%;background-color: rgba(0, 0, 0, 0.226);margin: 0;}
+.ZipMeFOLDER {width: 100%;height: 100%;position: fixed;top: 0;z-index: 9;background-color: rgba(0, 0, 0, 0.562);}
+.ZipMeFOLDER div div div {width: 200px;height: 300px;}
+.ZipMeFOLDER div div div h3 {color: white !important;}
+.ZipMeFOLDER div div div button {color: red !important;}
+.ZipMeUPLOAD {width: 100%;height: 100%;position: relative;background-color: rgba(0, 0, 0, 0.404);position: fixed;left: 0;top: 0;bottom: 0;right: 0;z-index: 10;}
+.ZipMeUPLOAD div {width: 80%;height: 90%;background-color: rgb(48, 48, 48);padding: 10px;}
+.ZipMeUPLOAD div p {width: 100%;background-color: transparent;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.ZipMeUPLOAD div div {display: flex;background-color: transparent;}
+.ZipMeUPLOAD div div button:nth-child(1) {position: absolute;bottom: 1%;right: 5px;margin: 5px;background-color: rgb(48, 48, 48);background-color: transparent;padding: 0;border-radius: 0px;}
+.ZipMeUPLOAD div div button:nth-child(2) {position: absolute;bottom: 1%;right: 68px;margin: 5px;background-color: rgb(48, 48, 48);background-color: transparent;padding: 0;border-right: 1px solid gray;padding-right: 5px;border-radius: 0px !important;}
+@media (max-width: 335px) {
+    .ZipMeCNT {width: calc(100% - 10px);height: 450px;position: relative;border-radius: 25px;background-color: rgb(197, 197, 197);border: 1px solid rgb(116, 116, 116);margin: 5px;float: left;}
+    .ZipMeCNT button {width: 90%;height: 10%;margin-left: 5%;margin-right: 5%;position: absolute;bottom: 0%;border: 0px;border-radius: 25px !important;background-color: red;color: white !important;}
+    .ZipMeCNT button svg {margin-top: -15px;}
+    .ZipMeCNT img {width: 80%;margin: 10%;border-radius: 15px;margin-bottom: 2%;}
+    .ZipMeCNT h3 {margin-left: 10%;margin-bottom: 22%;}
+}
