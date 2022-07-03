@@ -1,0 +1,1 @@
+{"installed":true,"type":"Script","title":"Homebrew","src":"https://xcenter.netlify.app/assets/media/hb.png","id":"Homebrew1345207600","content":"<script>\nvar script = document.createElement('script');script.src='//xcenter.netlify.app/hbweb/hb.js';document.body.appendChild(script);script.onload = function () {hb.init()};\n</script>"}
