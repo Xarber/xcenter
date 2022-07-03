@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" id="html">
+<head>
+    <!--PAGE INFO-->
+    <title id="pageinfo-title">X-Center</title>
+    <link id="pageinfo-icon" rel="shortcut icon" href="/assets/media/logo.png" type="image/x-icon">
+    <meta id="ogpageinfo-title" property="og:title" content="X-Center 5.0">
+    <meta id="ogpageinfo-name" property="og:site_name" content="X-Center">
+    <meta id="ogpageinfo-icon" property="og:image" content="https://xcenter.netlify.app/assets/media/logo.png">
+    <meta id="ogpageinfo-desc" property="og:description" content="Find every project and app made by Xarber and other users, all of them safe and tested. You can also find some tools or useful sites.">
+    <meta id="ogpageinfo-link" property="og:url" content="https://xcenter.netlify.app/">
+
+    <!--BOOTSTRAP AND EXTERNAL LINKS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="/assets/js/crypto.js" defer></script>
+    
+    <!--XCENTER HEAD-->
+    <link rel="stylesheet" href="/assets/base/style.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <script src="/assets/js/common.js" defer></script>
+    <script src="/assets/base/script.js" defer></script>
+    <script src="/assets/js/apps.js" defer></script>
+
+    <!--HIDED COMMONJS 5.0 FIXES-->
+    <nav class="new-navbar-light hided" id="navbar">
+        <div class="new-menu hided vertical-scroll" id="new-menu">
+          <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/shop';"><img src="/assets/media/4.0/shop.png" width="100%" alt=""><h3>Store</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xarber';"><img src="/assets/media/4.0/xarber.png" width="100%" alt=""><h3>Xarber</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xwip';"><img src="/assets/media/4.0/xwip.png" width="100%" alt=""><h3>XWIP</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xarbot';"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""><h3>Xarbot</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/os';"><img src="/assets/media/4.0/os.png" width="100%" alt=""><h3>OS</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/settings';"><img src="/assets/media/4.0/settings.png" width="100%" alt=""><h3>Settings</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/help';"><img src="/assets/media/4.0/unknown.png" width="100%" alt=""><h3>FAQ</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/feedback';"><img src="/assets/media/4.0/chat.png" width="100%" alt=""><h3>Feedback</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/about';"><img src="/assets/media/4.0/info.png" width="100%" alt=""><h3>About</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/map';"><img src="/assets/media/4.0/plus.png" width="100%" alt=""><h3>Site Map</h3></button>
+          <button class="new-menu-button" onclick="RecentPage()"><img src="/assets/media/4.0/other.png" width="100%" alt=""><h3>Other</h3></button>
+        </div>
+        <center>
+          <button class="new-navbar-button" onclick="location.href = '/';" id="new-navbar-home"><img src="/assets/media/4.0/home.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/tools';" id="new-navbar-tools"><img src="/assets/media/4.0/tools.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/xarbot';" id="new-navbar-xarbot"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/os';" id="new-navbar-OS"><img src="/assets/media/4.0/unknown.png" id="nav-OS" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/settings';" id="new-navbar-settings"><img src="/assets/media/4.0/settings.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="NewMenu()" id="new-navbar-menu"><img src="/assets/media/4.0/menu.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
+        </center>
+    </nav>
+    <div class="new-footer hided">
+        <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
+        <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
+        <h1>X-Center</h1>
+        <copyright>@ Copyright 2022 - Xarber</copyright>
+    </div>
+</head>
+<body class="page" style="background-color: black !important;">
+    <div class="nav-compenser"><button></button></div>
+    <nav class="hided">
+        <div id="navbar-pages">
+            <button onclick="location.href = this.id;" id="/"><img src="/assets/base/home.png">Home</button>
+            <button onclick="location.href = this.id;" id="/tools/"><img src="/assets/base/tools.png">Tools</button>
+            <button onclick="location.href = this.id;" id="/pages/"><img src="/assets/base/pages.png">Pages</button>
+            <button onclick="location.href = this.id;" id="/apps/"><img src="/assets/base/apps.png">Apps</button>
+            <button onclick="location.href = this.id;" id="/settings/"><img src="/assets/base/settings.png">Settings</button>
+            <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')" id="navbar-other"><img src="/assets/base/other.png">Other</button>
+        </div>
+        <div id="navbar-users">
+            <button id="navbar-notifications">Notifications</button>
+            <button id="navbar-internet">Internet</button>
+            <button id="navbar-user">User</button>
+        </div>
+        <button onclick="document.getElementById('navbar-menu').classList.toggle('hided');" id="navbar-menubtn" class="navbar-menubtn hided"><img src="/assets/base/menu.png">Menu</button>
+        <div class="hided" id="navbar-menu">
+            <button onclick="location.href = this.id;"><img src="/assets/base/home.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/tools.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/pages.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/apps.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/settings.png"></button>
+            <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
+        </div>
+    </nav>
+    <div class="center xcenter-setup">
+        <div class="hided" id="setup-settings">
+            <p id="setup-step-name-1">theme</p>
+            <p id="setup-step-name-2">ShowChangelog</p>
+            <p id="setup-step-name-3">ReceiveNotifications</p>
+            <p id="setup-step-name-4">ColdBootVersion</p>
+            <p id="setup-step-name-5">RunScripts</p>
+            <p id="setup-step-1">Auto</p>
+            <p id="setup-step-2">Yes</p>
+            <p id="setup-step-3">Yes</p>
+            <p id="setup-step-4">No</p>
+            <p id="setup-step-5">No</p>
+        </div>
+        <div id="setup-0" class="">
+            <center>
+                <h1>Welcome to X-Center.</h1>
+                <p>Since it's your first time here, we will let you set everything up</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id)">Next</button>
+                <button onclick="xcenter.app.download()" class="rainbow" style="color: black !important;">Download the app</button>
+                <button onclick="CommonJS.localStorageBackup.restore();">Import Settings</button>
+                <button onclick="xcenter.setup.default()">Skip and use Defaults</button>
+            </center>
+        </div>
+        <div id="setup-1" class="hided">
+            <center>
+                <h1>Select Your Theme</h1>
+                <p>Not everyone prefers the dark theme, so pick one!</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Auto')" class="rainbow" style="color: black !important;">Auto (Default)</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Dark')">Dark (MOST OPTIMIZED)</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Light')">Light</button>
+            </center>
+        </div>
+        <div id="setup-2" class="hided">
+            <center>
+                <h1>Remain Updated?</h1>
+                <p>Always show the changelog for new versions?</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Yes')" class="rainbow" style="color: black !important;">Yes</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Only Major Updates')">Only Major Updates</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Never')">Never</button>
+            </center>
+        </div>
+        <div id="setup-3" class="hided">
+            <center>
+                <h1>Receive notifications?</h1>
+                <p>Receive process / errors notifications on the website (Not meant for desktop notifications)</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Yes')" class="rainbow" style="color: black !important;">Yes</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Without Sounds')">Without Sounds</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'No')">No</button>
+            </center>
+        </div>
+        <div id="setup-4" class="hided">
+            <center>
+                <h1>Would you like to always browse old versions?</h1>
+                <p>Using this setting you can access old versions while booting the website</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'No')">No, thanks</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Choose Later')">Yes, let me choose later</button>
+            </center>
+        </div>
+        <div id="setup-5" class="hided">
+            <center>
+                <h1>Allow Apps to execute scripts on your PC?</h1>
+                <p>This may be required for some apps's execution, but can be dangerous for your PC.</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'No')">No, i want to stay safe</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Yes')">Yes, let me have the best experience</button>
+            </center>
+        </div>
+        <div id="setup-finish" class="hided">
+            <center>
+                <h1>All Set!</h1>
+                <p>You finished setting up X-Center! Remember, you can always set theese options in the settings menu.</p>
+                <button onclick="xcenter.setup.finish();">Finish Setup</button>
+                <button onclick="xcenter.setup.review()">Review Options</button>
+                <input type="checkbox" id="xcenter-setup-export">
+                <label for="xcenter-setup-export">Export Settings</label>
+            </center>
+        </div>
+        <div id="setup-review" class="hided">
+            <center>
+                <h1>Review</h1>
+                <p>Check again all settings and edit them if needed.</p>
+                <div style="background-color: black;padding: 10px;border-radius: 10px;height: 200px;overflow-y: auto;overflow-x: hidden;">
+                    <p id="setup-review-1">Theme: </p>
+                    <p id="setup-review-2">Show Changelog: </p>
+                    <p id="setup-review-3">Show Notifications: </p>
+                    <p id="setup-review-4">Show Old Version: </p>
+                    <p id="setup-review-5">Run Scripts: </p>
+                </div>
+                <button style="background-color: rgba(255, 255, 255, 0.062);" onclick="this.parentNode.parentNode.classList.add('hided');document.getElementById('setup-finish').classList.remove('hided');">Go Back</button>
+                <button onclick="xcenter.setup.show();">Restart Setup</button>
+            </center>
+        </div>
+    </div>
+    <footer class="hided">
+        <div>
+            <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
+        </div>
+        <div>
+            <img onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" src="/assets/media/logo.png" alt="">
+        </div>
+    </footer>
+</body>
+</html>

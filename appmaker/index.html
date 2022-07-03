@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" id="html">
+<head>
+    <!--PAGE INFO-->
+    <title id="pageinfo-title">X-Center</title>
+    <link id="pageinfo-icon" rel="shortcut icon" href="/assets/media/logo.png" type="image/x-icon">
+    <meta id="ogpageinfo-title" property="og:title" content="X-Center 5.0">
+    <meta id="ogpageinfo-name" property="og:site_name" content="X-Center">
+    <meta id="ogpageinfo-icon" property="og:image" content="https://xcenter.netlify.app/assets/media/logo.png">
+    <meta id="ogpageinfo-desc" property="og:description" content="Find every project and app made by Xarber and other users, all of them safe and tested. You can also find some tools or useful sites.">
+    <meta id="ogpageinfo-link" property="og:url" content="https://xcenter.netlify.app/">
+
+    <!--BOOTSTRAP AND EXTERNAL LINKS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="/assets/js/crypto.js" defer></script>
+    
+    <!--XCENTER HEAD-->
+    <link rel="stylesheet" href="/assets/base/style.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <script src="/assets/js/common.js" defer></script>
+    <script src="/assets/base/script.js" defer></script>
+    <script src="/assets/js/apps.js" defer></script>
+
+    <!--HIDED COMMONJS 5.0 FIXES-->
+    <nav class="new-navbar-light hided" id="navbar">
+        <div class="new-menu hided vertical-scroll" id="new-menu">
+          <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/shop';"><img src="/assets/media/4.0/shop.png" width="100%" alt=""><h3>Store</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xarber';"><img src="/assets/media/4.0/xarber.png" width="100%" alt=""><h3>Xarber</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xwip';"><img src="/assets/media/4.0/xwip.png" width="100%" alt=""><h3>XWIP</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xarbot';"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""><h3>Xarbot</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/os';"><img src="/assets/media/4.0/os.png" width="100%" alt=""><h3>OS</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/settings';"><img src="/assets/media/4.0/settings.png" width="100%" alt=""><h3>Settings</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/help';"><img src="/assets/media/4.0/unknown.png" width="100%" alt=""><h3>FAQ</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/feedback';"><img src="/assets/media/4.0/chat.png" width="100%" alt=""><h3>Feedback</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/about';"><img src="/assets/media/4.0/info.png" width="100%" alt=""><h3>About</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/map';"><img src="/assets/media/4.0/plus.png" width="100%" alt=""><h3>Site Map</h3></button>
+          <button class="new-menu-button" onclick="RecentPage()"><img src="/assets/media/4.0/other.png" width="100%" alt=""><h3>Other</h3></button>
+        </div>
+        <center>
+          <button class="new-navbar-button" onclick="location.href = '/';" id="new-navbar-home"><img src="/assets/media/4.0/home.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/tools';" id="new-navbar-tools"><img src="/assets/media/4.0/tools.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/xarbot';" id="new-navbar-xarbot"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/os';" id="new-navbar-OS"><img src="/assets/media/4.0/unknown.png" id="nav-OS" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/settings';" id="new-navbar-settings"><img src="/assets/media/4.0/settings.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="NewMenu()" id="new-navbar-menu"><img src="/assets/media/4.0/menu.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
+        </center>
+    </nav>
+    <div class="new-footer hided">
+        <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
+        <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
+        <h1>X-Center</h1>
+        <copyright>@ Copyright 2022 - Xarber</copyright>
+    </div>
+</head>
+<body class="page dark">
+    <div class="nav-compenser hided"><button></button></div>
+    <nav class="hided">
+        <div id="navbar-pages">
+            <button onclick="location.href = this.id;" id="/"><img src="/assets/base/home.png">Home</button>
+            <button onclick="location.href = this.id;" id="/tools/"><img src="/assets/base/tools.png">Tools</button>
+            <button onclick="location.href = this.id;" id="/pages/"><img src="/assets/base/pages.png">Pages</button>
+            <button onclick="location.href = this.id;" id="/apps/"><img src="/assets/base/apps.png">Apps</button>
+            <button onclick="location.href = this.id;" id="/settings/"><img src="/assets/base/settings.png">Settings</button>
+            <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')" id="navbar-other"><img src="/assets/base/other.png">Other</button>
+        </div>
+        <div id="navbar-users">
+            <button id="navbar-notifications">Notifications</button>
+            <button id="navbar-internet">Internet</button>
+            <button id="navbar-user">User</button>
+        </div>
+        <button onclick="document.getElementById('navbar-menu').classList.toggle('hided');" id="navbar-menubtn" class="navbar-menubtn hided"><img src="/assets/base/menu.png">Menu</button>
+        <div class="hided" id="navbar-menu">
+            <button onclick="location.href = this.id;"><img src="/assets/base/home.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/tools.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/pages.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/apps.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/settings.png"></button>
+            <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
+        </div>
+    </nav>
+    <div class="appmaker-welcome hided" id="welcome">
+        <div class="center">
+            <h1>Welcome!</h1>
+            <p>Welcome to App Maker! With this tool you can build Apps, Web Games, Other Tools, or anything you want (On Web Format)! <br> Make easily light and fast apps with this tool! Import or Create a new project from the tool, give the app a name and (eventually) a description, and youre done! You have created your first X-Center App, using codes that you probably already know! <br> This app uses Electron technologies to allow you to also run scripts on the user's PC (only if allowed in the settings), and have all-system compatible apps!</p>
+            <button onclick="this.parentNode.parentNode.remove();">Let's Start!</button>
+        </div>
+    </div>
+    <div id="appmaker" class="appmaker">
+        <h1>App Maker</h1>
+        <p>Fill the requested spots to create the app and then press "BUILD"</p>
+        <div id="appmaker-preview" class="appmaker-preview">
+            <button onclick="appmaker.preview()">Refresh Preview</button>
+            <div id="appmaker-preview-shown">
+                <div class="center">
+                    <h1>Click on "Refresh Preview"</h1>
+                </div>
+            </div>
+        </div>
+        <div class="appmaker-build">
+            <label for="appmaker-build-title">App Title</label><br>
+            <input id="appmaker-build-title" type="text" onclick="this.value = '';this.setAttribute('onclick', '');" value="App"><br>
+            <label for="appmaker-build-desc">App Desc</label><br>
+            <input id="appmaker-build-desc" type="text" onclick="this.value = '';this.setAttribute('onclick', '');" value=""><br>
+            <label for="appmaker-build-author">App Author</label><br>
+            <input id="appmaker-build-author" type="text" onclick="this.value = '';this.setAttribute('onclick', '');" value="User"><br>
+            <label for="appmaker-build-type">App Type</label><br>
+            <input id="appmaker-build-type" type="text" onclick="this.value = '';this.setAttribute('onclick', '');" value="Auto (App / Tool / Game / Script / Theme)"><br>
+            <label for="appmaker-build-icon">App Icon Link</label><br>
+            <input id="appmaker-build-icon" type="text" onclick="this.value = '';this.setAttribute('onclick', '');" value="https://xcenter.netlify.app/assets/media/apps/default.png"><br>
+            <button id="appmaker-build" onclick="appmaker.getInfo()">BUILD</button>
+            <div>
+                <div>
+                    <p>HTML</p>
+                    <textarea name="appmaker-build-content-html" id="appmaker-build-content-html" cols="30" rows="10"><h1 class="previewtitle">This is a preview</h1><p>Click on "Refresh Preview" when you're done building your app to have a preview of what you've done. Batch scripts won't run on the preview. You can see in the input fields how this preview was made. For CSS styles you may have to insert a !important tag after the styles (not fundamental on the final app), to make them more important than the website's stylesheets.</p><br><h1>CSS EXAMPLE:</h1><br><textarea cols="75" rows="5">h1 {color: blue !important;text-decoration: underline !important;}</textarea></textarea>
+                </div>
+                <div>
+                    <p>CSS</p>
+                    <textarea name="appmaker-build-content-css" id="appmaker-build-content-css" cols="30" rows="10">.previewtitle {color: blue !important;text-decoration: underline;margin: 10px;} textarea {background-color: transparent;color: white !important;}</textarea>
+                </div>
+                <div>
+                    <p>JS</p>
+                    <textarea name="appmaker-build-content-js" id="appmaker-build-content-js" cols="30" rows="10">document.querySelector(".previewtitle").setAttribute('onclick', 'alert("you clicked me!")')</textarea>
+                </div>
+                <div>
+                    <p>BATCH</p>
+                    <textarea name="appmaker-build-content-bat" id="appmaker-build-content-bat" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="hided">
+        <div>
+            <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
+        </div>
+        <div>
+            <img onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" src="/assets/media/logo.png" alt="">
+        </div>
+    </footer>
+    <script>
+        var appmaker = {
+            convert: function(data, then) {
+                var type = data.type;
+                var title = data.title;
+                var desc = data.desc;
+                var author = data.author;
+                var icon = data.icon;
+                var html = data.html;
+                var css = data.css;
+                var js = data.js;
+                var bat = data.bat;
+                var id = data.id ?? title + CommonJS.random("10", "both", "upr");
+                var tmp = document.createElement('div');
+                tmp.innerHTML = html;
+                var csscontainer = document.createElement('style');
+                csscontainer.innerHTML = css;
+                var jscontainer = document.createElement('script');
+                jscontainer.setAttribute('type', 'text/javascript');
+                jscontainer.innerHTML = "\n" + js + "\n";
+                tmp.appendChild(jscontainer);
+                tmp.appendChild(csscontainer);
+                then = then ?? "convert";
+                if (then == "convert") {
+                    var datanew = {
+                        type: type,
+                        title: title,
+                        desc: desc,
+                        author: author,
+                        src: icon,
+                        id: id,
+                        batch: bat,
+                        content: tmp.innerHTML
+                    }
+                    app.pack.build("", datanew);
+                } else if (then == "preview") {
+                    document.getElementById('appmaker-preview-shown').innerHTML = tmp.innerHTML;
+                    var jscontainer = document.createElement('script');
+                    jscontainer.setAttribute('type', 'text/javascript');
+                    jscontainer.innerHTML = "\n" + js + "\n";
+                    document.body.appendChild(jscontainer)
+                    var csscontainer = document.createElement('style');
+                    csscontainer.innerHTML = css;
+                    document.head.insertBefore(csscontainer, document.head.firstChild)
+                }
+            },
+            getInfo: function(then) {
+                var type = appmaker.getType();
+                var author = document.getElementById('appmaker-build-author').value ?? "User";
+                var title = document.getElementById('appmaker-build-title').value ?? "App";
+                var description = document.getElementById('appmaker-build-desc').value ?? title + " is a " + type + " made by " + author + ".";
+                var icon = document.getElementById('appmaker-build-icon').value ?? "https://xcenter.netlify.app/assets/media/apps/default.png";
+                var html = document.getElementById('appmaker-build-content-html').value ?? "empty";
+                var css = document.getElementById('appmaker-build-content-css').value ?? "empty";
+                var js = document.getElementById('appmaker-build-content-js').value ?? "empty";
+                var bat = document.getElementById('appmaker-build-content-bat').value ?? "empty";
+                then = then ?? "convert";
+                if (then == "preview") {
+                    appmaker.convert({
+                        type: type,
+                        title: title,
+                        desc: description,
+                        author: author,
+                        icon: icon,
+                        html: html,
+                        css: css,
+                        js: js,
+                        bat: bat,
+                    }, "preview");
+                    return;
+                }
+                appmaker.convert({
+                    type: type,
+                    title: title,
+                    desc: description,
+                    author: author,
+                    icon: icon,
+                    html: html,
+                    css: css,
+                    js: js,
+                    bat: bat,
+                })
+            },
+            getType: function() {
+                var html = document.getElementById('appmaker-build-content-html').value ?? "empty";
+                var css = document.getElementById('appmaker-build-content-css').value ?? "empty";
+                var js = document.getElementById('appmaker-build-content-js').value ?? "empty";
+                var bat = document.getElementById('appmaker-build-content-bat').value ?? "empty";
+                var type = document.getElementById('appmaker-build-type').value ?? "Auto (App / Tool / Game / Script / Theme)";
+                if (html.length < 1) html = "empty";
+                if (css.length < 1) css = "empty";
+                if (js.length < 1) js = "empty";
+                if (bat.length < 1) bat = "empty";
+                if (type == "Auto (App / Tool / Game / Script / Theme)") {
+                    if (html != "empty" && css != "empty" && js != "empty") type = "App";
+                    if (html != "empty" && css != "empty" && js != "empty" && bat != "empty") type = "Tool";
+                    if (html == "empty" && css == "empty" && (js != "empty" || bat != "empty")) type = "Script";
+                    if (html == "empty" && css != "empty" && bat == "empty") type = "Theme";
+                }
+                if (type == "App" || type == "Tool" || type == "Game" || type == "Script" || type == "Theme") {
+                    if (type == "Theme") alert("Theme app detected. Themes aren't currently supported.")
+                    return type;
+                }
+                return "App";
+            },
+            preview: function() {
+                appmaker.getInfo("preview");
+            }
+        }
+        setTimeout(() => {
+            appmaker.preview();
+        }, 250)
+        document.body.classList.add('dark');
+    </script>
+    <style>
+        .appmaker {background-color: transparent;padding: 0;margin: 10px;}
+        .appmaker input {width: 100%;background-color: transparent;color: white;border: 1px solid white;padding: 10px;border-radius: 10px;margin-bottom: 10px;}
+        .appmaker-build {width: 100% !important;border-radius: 0;height: 100%;}
+        .appmaker-build div {width: 100%;height: 100%;position: relative;}
+        .appmaker-build button {background-color: green;width: 100%;height: 100px;font-size: 50px;}
+        .appmaker-build div div {width: calc(50% - 20px);margin: 10px;aspect-ratio: 1 / 1;background-color: transparent;max-width: 400px;float: left;min-width: 300px;margin-bottom: 50px;}
+        .appmaker-build div div textarea {background-color: transparent;border: 1px solid white;border-radius: 10px;padding: 10px !important;color: white;width: 100%;height: 100%;overflow: auto;white-space: nowrap;}
+        .appmaker-welcome {width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.459);position: fixed;top: 0;bottom: 0;left: 0;right: 0;}
+        .appmaker-welcome div {width: 80%;height: 60% !important;min-width: 500px;min-height: 300px;background-color: blue;padding: 10px;border-radius: 10px;margin: 0;position: relative;}
+        .appmaker-welcome div * {margin: 0;}
+        .appmaker-welcome div button {position: absolute;bottom: 0;left: 0;right: 0;border-radius: 0 0 10px 10px !important;background-color: rgba(0, 0, 0, 0.281);}
+        .appmaker-preview {width: 100%;height: 500px;background-color: transparent;float: none !important;border-radius: 10px;padding: 0px;border: 1px solid white;margin-bottom: 10px;position: relative;}
+        .appmaker-preview button {width: 100%;height: 30px;background-color: transparent;color: white;font-size: unset;padding: unset;border-bottom: 1px solid white;position: absolute;top: 0;left: 0;right: 0;border-radius: 10px 10px 0px 0px !important;z-index: 10;}
+        .appmaker-preview div {width: 100%;position: absolute;top: 30px;bottom: 0px;right: 0px;left: 0px;z-index: 1;overflow: auto;}
+        @media (max-width: 675px) {
+            .appmaker-build div div {min-width: 100%;margin: 0;max-width: unset !important;margin-bottom: 50px;margin-top: 10px;min-height: 400px;float: unset !important;}
+        }
+    </style>
+</body>
+</html>
