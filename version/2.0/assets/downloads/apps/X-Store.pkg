@@ -1,0 +1,1 @@
+{"installed":true,"type":"Tool","title":"X-Store","desc":"Download apps from your favourite stores!","author":"Xarber","src":"/assets/media/apps/store.png","id":"xstore","batch":"","content":"<script>\nlocation.href = '/store/';\n</script>"}
