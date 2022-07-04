@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://xcenter.netlify.app/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/dark/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/changelog</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/1.0/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/xarbot</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/xwip</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/xarber</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/apps/store/fnf/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/apps/store/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/windows/11/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/apps/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/changelog</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/xarbot</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/xwip</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/xarber</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/apps/store/fnf/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/apps/store/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/windows/11/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/apps/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/changelog</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/xarbot</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/xwip</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/xarber</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/apps/store/fnf/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/apps/store/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/windows/11/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/apps/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/changelog</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/xarbot</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/xwip</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/xarber</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/apps/store/fnf/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/apps/store/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/windows/11/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/apps/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/changelog</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/xarbot</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/xwip</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/xarber</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/apps/store/fnf/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/apps/store/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/windows/11/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/apps/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/changelog</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/xarbot</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/xwip</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/xarber</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/apps/store/fnf/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/apps/store/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/windows/11/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/apps/</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/404</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/1.0/index.html</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/apps/store/fnf/download</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/download/wbts</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/download/openme</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/docs</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/apps/store/fnf/download</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/download/wbts</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/download/openme.html</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/docs</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/apps/store/fnf/download</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/download/wbts</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/download/openme.html</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/docs</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/apps/store/fnf/download</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/it-it/dark/docs</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/apps/store/fnf/download</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/docs</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/apps/store/fnf/download</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/dark/apps/store/fnf/download.html</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/apps/store/fnf/download.html</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/fr-fr/dark/docs</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://xcenter.netlify.app/en-us/apps/store/fnf/download.html</loc>
+  <lastmod>2021-09-10T11:00:38+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+
+
+</urlset>
