@@ -2535,7 +2535,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         }
         var GoBackToNewVersion = document.createElement('button');
         GoBackToNewVersion.setAttribute('style', 'position: fixed;top: 0;right: 0;width: 50px;heigth: 50px;background-color: rgba(255, 255, 255, 0.5); !important;padding: 10 !important;border: 0px;border-radius: 0px 0px 0px 15px;z-index: 100000000000000;');
-        GoBackToNewVersion.setAttribute('onclick', 'localStorage.setItem("XCenterColdBootVersion", "4.0");window.location = "/";')
+        GoBackToNewVersion.setAttribute('onclick', 'localStorage.setItem("XCenterColdBootVersion", "5.0");localStorage.setItem("settings-coldbootversion", "5.0");window.location = "/";')
         GoBackToNewVersion.setAttribute('id', 'new-XCenterGoBackToNewVersion');
         document.body.appendChild(GoBackToNewVersion)
         var GoBackToNewVersionIMG = document.createElement('img');
