@@ -57,10 +57,21 @@
         <h1>X-Center</h1>
         <copyright>@ Copyright 2022 - Xarber</copyright>
     </div>
+    
+    <!--ISSUES-->
+    <style>
+        ::-moz-selection { /* Code for Firefox */
+            background: transparent;
+        }
+
+        ::selection {
+            background: transparent;
+        }
+    </style>
 </head>
 <body class="page">
     <div class="nav-compenser"><button></button></div>
-    <nav>
+    <nav class="hided">
         <div id="navbar-pages">
             <button onclick="location.href = this.id;" id="/"><img src="/assets/base/home.png">Home</button>
             <button onclick="location.href = this.id;" id="/tools/"><img src="/assets/base/tools.png">Tools</button>
@@ -84,15 +95,12 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-    <div class="xcenter-tools">
-        <h1>Smart Tools</h1>
-        <h1><u style="text-decoration-color: blue;">Easily</u> execute <br> <u style="text-decoration-color: orange;">Hard</u> operations</h1>
-        <button style="background-color: rgba(183,230,255,255);" onclick="">Download .exe</button>
-        <button style="background-color: rgba(186,183,205,255);" onclick="">Install App</button>
-        <button style="background-color: rgba(249,159,0,255);" onclick="">Quick Launch</button>
-        <h4>Smart Tools is a BATCH program made by Xarber. It was then converted to exe and finally brought to X-Center .pkg app. <br> Smart Tools can let you execute Hard operations fast and easily. Having problem with your audio? Open the app, go to optimization and select "Audio" and your problem will probably be solved! Do not want to activate windows paying? Use the app and everything will be done for you! <br> The only limit are the batch scripts, they do not do literally everything and they do not provide UI, and that's why it was brought to a website based .exe program. Now that X-Center Web Based Apps are here, and they let you execute batch scripts, the app was also brought to the X-Center app system. (This means that the app can be runned without even needing to install it thanks to Quick Launch!). To run provide Admin Privileges (just click "Yes" after opening the app)</h4>
+    <div class="center">
+        <h1 style="font-size: 300px;margin: 0;text-align: center;">X</h1>
+        <h1>403: Access Denied</h1>
+        <button onclick="window.history.go(-2);" style="width: 100%;background-color: blue;">Go Back</button>
     </div>
-    <footer>
+    <footer class="hided">
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
         </div>

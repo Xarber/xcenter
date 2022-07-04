@@ -57,8 +57,12 @@
         <h1>X-Center</h1>
         <copyright>@ Copyright 2022 - Xarber</copyright>
     </div>
+
+    <!--PBDLOAD-->
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="main.css">
 </head>
-<body class="page">
+<body class="page" id="body">
     <div class="nav-compenser"><button></button></div>
     <nav>
         <div id="navbar-pages">
@@ -84,15 +88,32 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-    <div class="xcenter-tools">
-        <h1>Smart Tools</h1>
-        <h1><u style="text-decoration-color: blue;">Easily</u> execute <br> <u style="text-decoration-color: orange;">Hard</u> operations</h1>
-        <button style="background-color: rgba(183,230,255,255);" onclick="">Download .exe</button>
-        <button style="background-color: rgba(186,183,205,255);" onclick="">Install App</button>
-        <button style="background-color: rgba(249,159,0,255);" onclick="">Quick Launch</button>
-        <h4>Smart Tools is a BATCH program made by Xarber. It was then converted to exe and finally brought to X-Center .pkg app. <br> Smart Tools can let you execute Hard operations fast and easily. Having problem with your audio? Open the app, go to optimization and select "Audio" and your problem will probably be solved! Do not want to activate windows paying? Use the app and everything will be done for you! <br> The only limit are the batch scripts, they do not do literally everything and they do not provide UI, and that's why it was brought to a website based .exe program. Now that X-Center Web Based Apps are here, and they let you execute batch scripts, the app was also brought to the X-Center app system. (This means that the app can be runned without even needing to install it thanks to Quick Launch!). To run provide Admin Privileges (just click "Yes" after opening the app)</h4>
+    <div class="center" id="pbdload-div">
+        <center>
+            <img src="/assets/media/4.0/pbdload.png" style="border-radius: 50px;margin-left: -25%;" width="150%" alt="">
+            <h1>PBDLoad</h1>
+            <p>Upload a .pbd file to run your code inside the browser</p>
+            <label for="pbdload" class="pbdload">Boot</label>
+            <input type="file" id="pbdload" class="hided" accept=".pbd">
+            <p class="pbderror" id="pbderror"></p>
+            <button class="pbdload" style="background-color: gray !important;" onclick="document.getElementById('pbdload-about').classList.remove('hided');document.getElementById('pbdload-div').classList.add('hided');window.location = '#pbdload-about';CommonJS.replaceURL('/pbdload/')">About</button>
+        </center>
     </div>
-    <footer>
+    <div class="hided center" id="pbdload-about">
+        <br>
+        <h1 style="text-align: center;">What is PBDload?</h1>
+        <p>PBD Load is a .pbd file loader. What does it mean? It's very simple:</p>
+        <p>You insert a .pbd file and the browser convert it to html, so it can be displayed as a website. How is this possible? PBD is a file format very similiar to HTML so with help of JS you can easily convert it to HTML. But what does PBD stand for then? PBD Stands for PageBootDocument. You can convert your script in this same page:</p>
+        <center>
+            <label for="pbdload-convert" class="pbdload" style="margin-bottom: 15px;">HTML > PBD</label>
+            <label for="pbdload-convertHTML" class="pbdload">PBD > HTML</label>
+            <input type="file" id="pbdload-convert" class="hided" accept=".html">
+            <input type="file" id="pbdload-convertHTML" class="hided" accept=".pbd">
+            <p class="pbderror" id="pbderror-convert"></p>
+            <button class="pbdload" style="background-color: gray !important;" onclick="document.getElementById('pbdload-about').classList.add('hided');document.getElementById('pbdload-div').classList.remove('hided');window.location = '#pbdload-div';CommonJS.replaceURL('/pbdload/')">Close</button>
+        </center>
+    </div>
+    <footer class="hided">
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
         </div>

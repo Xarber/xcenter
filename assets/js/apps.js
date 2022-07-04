@@ -696,6 +696,7 @@ var app = {
                 themeidentifier = title + CommonJS.random('10', 'both', 'both');
                 themescripts = content.substring(content.indexOf('<script type="text/javascript">') + 31, content.lastIndexOf("</script>"));
                 themelaunch = content.substring(content.indexOf('<style>') + 7, content.lastIndexOf("</style>"));
+                themelaunch = themelaunch.replaceAll(';;', ';').replaceAll(';', '!important;');
                 for (let i = 0;i < 100;i++) {
                     if (localStorage.getItem('XCenterTheme' + i + "Name") == null || localStorage.getItem('XCenterTheme' + i) == null || localStorage.getItem('XCenterTheme' + i + 'Scripts') == null) {
                         localStorage.setItem('XCenterTheme' + i + "Name", themeidentifier.replaceAll(themeidentifier.replaceAll(title, ''), ''));
@@ -704,6 +705,7 @@ var app = {
                         i = 100;
                     }
                 }
+                document.getElementById('new-xcenter-app-launch').classList.add('hided');
                 CommonJS.toast({
                     title: "Theme Added",
                     type: "success"

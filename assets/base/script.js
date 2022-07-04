@@ -5,6 +5,8 @@ var winWidth = window.innerWidth;
 var setupstep = 0;
 var nextsetupstep = 1;
 var lastsetupstep = 5;
+var theme, changelog, notifications, runbatchscripts, coldbootversion; //FINAL SETTINGS VARS;
+var autotheme, darktheme, tmpchangelog, majorchangelog, tmpnotifications, silentnotifications, currenttheme; //TMP SETTINGS VARS;
 var xcenter = {
     app: {
         download: function() {
@@ -73,8 +75,98 @@ var xcenter = {
             localStorage.setItem('xcenter-setup', 'finished');
             window.location = "/";
         }
+    },
+    settings: {
+        reset: function() {
+            var tmpsettingresetconfirmbkg = document.createElement('div');
+            var tmpsettingresetconfirm = document.createElement('div');
+            var tmpsettingresetconfirmtitle = document.createElement('h1');
+            var tmpsettingresetconfirmdesc = document.createElement('desc');
+            var tmpsettingresetconfirmbtn = document.createElement('button');
+            var tmpsettingresetcancelbtn = document.createElement('button');
+            var tmpsettingresetbtns = document.createElement('div');
+            tmpsettingresetconfirmbkg.setAttribute('style', 'position: fixed;z-index: 101;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.596);');
+            tmpsettingresetconfirm.setAttribute('style', 'width: 80%;height: 60%;min-width: 600px;min-height: 350px;background-color: red;padding: 10px;border-radius: 10px;');
+            tmpsettingresetconfirm.setAttribute('class', 'center');
+            tmpsettingresetbtns.setAttribute('style', 'position: absolute;bottom: 0;left: 0;width: 100%;display: flex;')
+            tmpsettingresetconfirmbtn.setAttribute('style', 'flex-grow: 1;background-color: rgb(255, 255, 255, 0.196);border-radius: 0px 0px 10px 0px !important;');
+            tmpsettingresetcancelbtn.setAttribute('style', 'flex-grow: 1;background-color: rgb(255, 255, 255, 0.196);border-radius: 0px 0px 0px 10px !important;')
+            tmpsettingresetcancelbtn.setAttribute('onclick', 'this.parentNode.parentNode.parentNode.remove()');
+            tmpsettingresetconfirmtitle.setAttribute('style', 'float: none !important;width: 100% !important;margin: 0;')
+            tmpsettingresetconfirmdesc.setAttribute('style', 'float: none !important;width: 100% !important;margin: 0;')
+            tmpsettingresetconfirmtitle.innerHTML = "Confirm";
+            tmpsettingresetconfirmdesc.innerHTML = "Confirm to reset X-Center. This will uninstall all the apps and their data and it will reset the settings.";
+            tmpsettingresetconfirmbtn.innerHTML = "Confirm";
+            tmpsettingresetcancelbtn.innerHTML = "Cancel";
+            tmpsettingresetconfirmbtn.onclick = function() {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location = "/";
+            }
+            tmpsettingresetconfirm.appendChild(tmpsettingresetconfirmtitle);
+            tmpsettingresetconfirm.appendChild(tmpsettingresetconfirmdesc);
+            tmpsettingresetbtns.appendChild(tmpsettingresetcancelbtn);
+            tmpsettingresetbtns.appendChild(tmpsettingresetconfirmbtn);
+            tmpsettingresetconfirm.append(tmpsettingresetbtns);
+            tmpsettingresetconfirmbkg.appendChild(tmpsettingresetconfirm);
+            document.body.appendChild(tmpsettingresetconfirmbkg);
+        },
+        defaults: function() {
+            currenttheme = CommonJS.getTheme();
+            if (document.getElementById('settings-autotheme').checked == false) document.getElementById('settings-autotheme').click();
+            if (document.getElementById('settings-showchangelog').checked == false) document.getElementById('settings-showchangelog').click();
+            if (document.getElementById('settings-majorupdchangelog').checked == true) document.getElementById('settings-majorupdchangelog').click();
+            if (document.getElementById('settings-notifications').checked == false) document.getElementById('settings-notifications').click();
+            if (document.getElementById('settings-silentnotifications').checked == true) document.getElementById('settings-silentnotifications').click();
+            if (document.getElementById('settings-batchscripts').checked == false) document.getElementById('settings-batchscripts').click();
+            document.getElementById('xcenter-settings-coldbootversion-default').click();
+        },
+        get: function() {
+            currenttheme = CommonJS.getTheme();
+            autotheme = localStorage.getItem('settings-autotheme') ?? true;
+            darktheme = localStorage.getItem('settings-darktheme') ?? true;
+            tmpchangelog = localStorage.getItem('settings-showchangelog') ?? true;
+            majorchangelog = localStorage.getItem('settings-majorupdchangelog') ?? false;
+            tmpnotifications = localStorage.getItem('settings-notifications') ?? true;
+            silentnotifications = localStorage.getItem('settings-silentnotifications') ?? false;
+            runbatchscripts = localStorage.getItem('settings-batchscripts') ?? true;
+            coldbootversion = localStorage.getItem('settings-coldbootversion') ?? "5.0";
+            if (darktheme == true || darktheme == "true") {theme = "dark"} else if (darktheme == false || darktheme == "false") {theme = "light"}
+            if (autotheme == true || autotheme == "true") theme = "auto";
+            if (majorchangelog == true || majorchangelog == "true") {changelog = "major"} else if (changelog == true || changelog == "true") {changelog = true}
+            if (tmpchangelog == false || tmpchangelog == "false") changelog = false;
+            if (silentnotifications == true || silentnotifications == "true") {notifications = "silent"} else if (tmpnotifications == true || tmpnotifications == "true") {notifications = true}
+            if (tmpnotifications == false) notifications = false;
+            if ((autotheme == true || autotheme == "true") && currenttheme == "dark") {darktheme = true} else if ((autotheme == true || autotheme == "true") && currenttheme == "light") {darktheme = false};
+            localStorage.setItem('settings-autotheme', autotheme)
+            localStorage.setItem('settings-darktheme', darktheme)
+            localStorage.setItem('settings-showchangelog', tmpchangelog)
+            localStorage.setItem('settings-majorupdchangelog', majorchangelog)
+            localStorage.setItem('settings-notifications', tmpnotifications)
+            localStorage.setItem('settings-silentnotifications', silentnotifications)
+            localStorage.setItem('settings-batchscripts', runbatchscripts)
+            localStorage.setItem('settings-coldbootversion', coldbootversion)
+            if (window.location.pathname == "/settings/") {
+                document.getElementById('settings-autotheme').checked = false;
+                document.getElementById('settings-darktheme').checked = false;
+                document.getElementById('settings-showchangelog').checked = false;
+                document.getElementById('settings-majorupdchangelog').checked = false;
+                document.getElementById('settings-notifications').checked = false;
+                document.getElementById('settings-silentnotifications').checked = false;
+                document.getElementById('settings-batchscripts').checked = false;
+                if (autotheme == true || autotheme == "true") document.getElementById('settings-autotheme').checked = true;
+                if (darktheme == true || darktheme == "true") document.getElementById('settings-darktheme').checked = true;
+                if (tmpchangelog == true || tmpchangelog == "true") document.getElementById('settings-showchangelog').checked = true;
+                if (majorchangelog == true || majorchangelog == "true") document.getElementById('settings-majorupdchangelog').checked = true;
+                if (tmpnotifications == true || tmpnotifications == "true") document.getElementById('settings-notifications').checked = true;
+                if (silentnotifications == true || silentnotifications == "true") document.getElementById('settings-silentnotifications').checked = silentnotifications;
+                if (runbatchscripts == true || runbatchscripts == "true") document.getElementById('settings-batchscripts').checked = runbatchscripts;
+                document.getElementById('settings-coldbootversion').innerHTML = "Current: " + coldbootversion;
+            }
+        }
     }
 }
+xcenter.settings.get();
 if (localStorage.getItem('XCenterLastSecondaryPage') == null) localStorage.setItem('XCenterLastSecondaryPage', '/help/')
 function prepareNav() {
     var weblink = location.pathname.replaceAll('index.html', '');

@@ -84,8 +84,86 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-
-    <footer>
+    <div class="xcenter-settings">
+        <h1>Settings</h1>
+        <div class="xcenter-settings-options">
+            <div class="xcenter-settings-option">
+                <p>Auto Theme</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-autotheme" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <p>Dark Theme</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-darktheme" onclick="document.getElementById('settings-autotheme').checked = false;localStorage.setItem(this.id, '' + this.checked + '');localStorage.setItem('settings-autotheme', 'false');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <p>Show Changelog</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-showchangelog" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <p>Only Major Updates Changelog</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-majorupdchangelog" onclick="document.getElementById('settings-showchangelog').checked = true;localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <p>Show Notifications</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-notifications" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <p>Silent Noifications</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-silentnotifications" onclick="document.getElementById('settings-notifications').checked = true;localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <p>Run Batch Scripts</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-batchscripts" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
+                <div id="xcenter-settings-coldbootversion" class="xcenter-settings-coldbootversion hided">
+                    <div class="center">
+                        <h1>ColdBoot Version</h1>
+                        <p>Select a version to be automatically booted while launching X-Center. To remove the coldboot version, just press the logo at top left corner.</p>
+                        <p id="settings-coldbootversion">Current: None</p>
+                        <div>
+                            <button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add('hided');localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();" ColdBootVersionID="5.0" class="rainbow" id="xcenter-settings-coldbootversion-default">None</button>
+                            <button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add('hided');localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();" ColdBootVersionID="4.0">4.0</button>
+                            <button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add('hided');localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();" ColdBootVersionID="3.0">3.0</button>
+                            <button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add('hided');localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();" ColdBootVersionID="2.0">2.0</button>
+                            <button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add('hided');localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();" ColdBootVersionID="1.0">1.0</button>
+                        </div>
+                    </div>
+                </div>
+                <p>ColdBoot Version</p>
+                <button onclick="document.getElementById('xcenter-settings-coldbootversion').classList.remove('hided');">Switch</button>
+            </div>
+        </div>
+        <hr>
+        <div class="xcenter-settings-actions">
+            <button onclick="window.history.go(-1)">Go Back</button>
+            <button onclick="xcenter.settings.defaults()">Defaults</button>
+            <button onclick="CommonJS.localStorageBackup.make('X-CenterBackup')">Backup</button>
+            <button onclick="xcenter.settings.reset()">Reset</button>
+        </div>
+    </div>
+    <footer class="hided">
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
         </div>

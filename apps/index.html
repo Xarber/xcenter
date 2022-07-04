@@ -84,12 +84,12 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-    <div style="background-color: black;border-radius: 10px;margin: 2px;padding: 10px;">
+    <div class="new-xcenter-apps-header">
         <input type="file" class="hided" accept=".pkg" id="new-xcenter-apps-upload" >
-        <img style="border-radius: 10px;max-height: 120px;float: right;height: 100%;cursor: pointer;" onclick="document.getElementById('new-xcenter-apps-packages').classList.remove('hided')" src="/assets/media/apps/pack.png" id="new-xcenter-apps-packs" alt="">
-        <img style="border-radius: 10px;max-height: 120px;float: right;height: 100%;cursor: pointer;margin-right: 10px;" onclick="app.mode('uninstall')" src="/assets/media/apps/uninstall.png" id="new-xcenter-apps-uninstall" alt="">
-        <h1 id="new-xcenter-apps-title" style="color: white !important;">Apps</h1>
-        <p id="new-xcenter-apps-desc" style="color: white !important;">Download apps from the shop and launch them here</p>
+        <img onclick="document.getElementById('new-xcenter-apps-packages').classList.remove('hided')" src="/assets/media/apps/pack.png" id="new-xcenter-apps-packs" alt="">
+        <img style="margin-right: 10px;" onclick="app.mode('uninstall')" src="/assets/media/apps/uninstall.png" id="new-xcenter-apps-uninstall" alt="">
+        <h1 id="new-xcenter-apps-title">Apps</h1>
+        <p id="new-xcenter-apps-desc">Download apps from the shop and launch them here</p>
         <p id="new-xcenter-apps-mode" class="hided">launch</p>
     </div>
     <div class="new-xcenter-apps" id="new-xcenter-apps">

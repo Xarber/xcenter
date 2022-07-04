@@ -84,7 +84,36 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-
+    <div class="sitemap">
+        <h1>Site Map</h1>
+        <div class="sitemap-category">
+            <h3>Main Pages</h3>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/">Home</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/tools/">Tools</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/pages/">Pages</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/apps/">Apps</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/settings/">Settings</button>
+        </div>
+        <div class="sitemap-category">
+            <h3>Secondary</h3>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/about/">About</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/deltascp/">DeltaSCP</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/help/">Help</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/xarbot/">Xarbot</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/xwip/">XWIP</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/xarber/">Xarber</button>
+        </div>
+        <div class="sitemap-category">
+            <h3>Developer</h3>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/issues/">Issues</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/pbdload/">PBD Loader</button>
+            <button onclick="window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/sample.html">Sample Page</button>
+        </div>
+        <div class="sitemap-category">
+            <h3>Beta Pages</h3>
+            <button onclick="//window.location = this.id.replaceAll('sitemap-link-', '');" id="sitemap-link-/">No Pages</button>
+        </div>
+    </div>
     <footer>
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>

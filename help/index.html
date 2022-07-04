@@ -84,7 +84,42 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-
+    <div class="xcenter-help">
+        <h1>X-Center Q&A / Help</h1>
+        <p>See Questions and Answers from users / default ones to get help. To read just click on one category.</p>
+        <div>
+            <div id="xcenter-help-404">
+                <p onclick="document.getElementById(this.parentNode.id + '-content').classList.toggle('hided')">Why do I get the 404 error?</p>
+                <div class="hided" id="xcenter-help-404-content">
+                    <p>A: You get into the 404 error page when you try to get inside a page that has been moved OR does not exist. To fix the problem, check the URL to see if some spelling errors were made or check on the website the new link if the old page was moved (this often occurs on new major versions).</p>
+                </div>
+            </div>
+            <div id="xcenter-help-403">
+                <p onclick="document.getElementById(this.parentNode.id + '-content').classList.toggle('hided')">Why do I get the 403 error?</p>
+                <div class="hided" id="xcenter-help-403-content">
+                    <p>A: You get the 403 error when you open a page without the necessary permissions. To fix the problem, ask for the permission or check if the page is already released (X-Center could use the 403 error also when the page is still in developement).</p>
+                </div>
+            </div>
+            <div id="xcenter-help-jserror">
+                <p onclick="document.getElementById(this.parentNode.id + '-content').classList.toggle('hided')">Why do always get in the JS error?</p>
+                <div class="hided" id="xcenter-help-jserror-content">
+                    <p>A: You could get the JS error when you use the website without JS permissions. To fix search in browser settings "JavaScript" and enable it.</p>
+                </div>
+            </div>
+            <div id="xcenter-help-iframe">
+                <p onclick="document.getElementById(this.parentNode.id + '-content').classList.toggle('hided')">Why do always get in the iFrame error?</p>
+                <div class="hided" id="xcenter-help-iframe-content">
+                    <p>A: You get the iFrame error when you access X-Center from another link using an iFrame. To fix enter X-Center from the right link, and not from any external page.</p>
+                </div>
+            </div>
+            <div id="xcenter-help-recentpage">
+                <p onclick="document.getElementById(this.parentNode.id + '-content').classList.toggle('hided')">What is the recent page?</p>
+                <div class="hided" id="xcenter-help-recentpage-content">
+                    <p>A: The recent page button redirects you to the last secondary page you visited. To check what are the secondary pages, just go into <a href="/pages/">X-Center Sitemap</a> and look for the Secondary Category.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>

@@ -973,7 +973,7 @@ var CommonJS = {
     },
     localStorageBackup: {
         make: function(name) {
-            name = name ?? "X-CenterBackup";
+            name = name ?? "Backup";
             var backup = {};
             for (i = 0; i < localStorage.length; i++) {
               var key = localStorage.key(i);

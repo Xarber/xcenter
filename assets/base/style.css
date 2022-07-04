@@ -19,7 +19,7 @@ footer div img {height: 40px;margin: 5px;}
 .navbuttonextend {animation: navbuttonextend 0.5s;width: 100px;}
 #navbar-other.navbuttonextend {animation: navbuttonextend 0.5s;width: unset;padding-right: 5px;}
 #navbar-menu {position: fixed;top: 44px;left: 2px;right: 2px;bottom: 2px;z-index: 12;border-radius: 10px;background-color: black;padding: 0px;overflow-x: hidden;overflow-y: auto;}
-#navbar-menu button {width: calc(100% - 10px)!important;text-align: center;margin: 5px;}
+#navbar-menu button {width: calc(100% - 10px) !important;text-align: center;margin: 5px;}
 .explore {width: calc(100% - 4px);padding: 10px;background-color: black;margin: 2px;border-radius: 10px;height: 150px;}
 .explore button {width: 100%;height: calc(calc(100% / 4) - 4px);padding: 0 !important;margin: 2px 0px 2px 0px !important;}
 .explore-banner {width: calc(100% - 4px);margin: 2px;background-color: black;border-radius: 10px;padding: 5px;max-height: 500px;}
@@ -28,6 +28,9 @@ footer div img {height: 40px;margin: 5px;}
 .new-xcenter-apps {width: calc(100% - 4px);margin: 2px;border-radius: 10px;background-color: black;padding: 5px;max-height: 54%;overflow-y: auto;overflow-x: hidden;}
 .new-xcenter-apps img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;cursor: pointer;}
 .new-xcenter-apps img:hover {animation: glow infinite linear 1s;}
+.new-xcenter-apps-header {background-color: black;border-radius: 10px;margin: 2px;padding: 10px;}
+.new-xcenter-apps-header img {border-radius: 10px;max-height: 120px;float: right;height: 100%;cursor: pointer;}
+.new-xcenter-apps-header h1, p {color: white !important;}
 .new-xcenter-apps-limits {position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 100;background-color: #00000063;}
 .new-xcenter-apps-limits div {width: 50%;height: 20%;min-height: 250px;min-width: 500px;background-color: rgb(255, 0, 0);padding: 10px;border-radius: 10px;position: relative;}
 .new-xcenter-apps-limits div button {position: absolute;bottom: 10px;width: calc(100% - 20px);background-color: blue;}
@@ -78,6 +81,51 @@ footer div img {height: 40px;margin: 5px;}
 .store-app-view-info div div p {margin: 0;}
 .xcenter-setup div center button {width: 100%;margin: 5px;background-color: transparent;border: 1px solid white;}
 .xcenter-setup div center button:nth-child(3) {background-color: rgba(255, 255, 255, 0.062);}
+.xcenter-about {margin: 10px;background-color: rgba(255, 255, 255, 0.212);padding: 10px;border-radius: 10px;}
+.xcenter-xwip {height: calc(100% - 130px);overflow-y: scroll;overflow-x: hidden;}
+.xcenter-xwip div:nth-child(1) {background-color: rgb(0, 255, 0);margin: 0;height: 15%;border-radius: 20px 20px 0px 0px;}
+.xcenter-xwip div:nth-child(2) {background-color: rgba(185,122,86,255);margin: 0;min-height: 85%;padding: 20px;border-radius: 0px 0px 20px 20px;}
+.xcenter-xwip div:nth-child(2) h1 {margin-top: 0;font-size: 50px;}
+.xcenter-xwip div:nth-child(2) h3:nth-child(2) {background-color: rgba(255, 255, 255, 0.247);padding: 10px;border-radius: 20px;}
+.xcenter-xwip div:nth-child(2) button {color: rgba(69,62,108,255);width: 100%;margin: 5px;margin-left: 0;}
+.xcenter-xarbot {padding: 10px;background-color: rgba(32,22,74,255);}
+.xcenter-xarbot h1:nth-child(2) {padding: 5px;background-color: rgba(69,62,108,255);border-radius: 10px;}
+.xcenter-xarbot button {background-color: rgba(183,230,255,255);color: rgba(69,62,108,255);width: 100%;}
+.xcenter-xarbot h4 {background-color: rgba(69,62,108,255);margin-top: 20px;padding: 10px;border-radius: 10px;}
+.xcenter-tools {padding: 10px;background-color: rgba(32,22,74,255);}
+.xcenter-tools h1:nth-child(2) {padding: 5px;background-color: rgba(69,62,108,255);border-radius: 10px;}
+.xcenter-tools button {color: rgba(69,62,108,255);}
+.xcenter-tools h4 {background-color: rgba(69,62,108,255);margin-top: 20px;padding: 10px;border-radius: 10px;}
+.xcenter-issues {width: 100%;padding: 10px;}
+.xcenter-issues h1 {text-align: center;}
+.xcenter-issues div {width: 100%;padding: 10px;background-color: rgba(255, 255, 255, 0.13);border-radius: 10px;}
+.xcenter-issues div button {width: 100%;margin: 5px 0px 5px 0px;}
+.xcenter-settings {width: calc(100% - 20px);height: calc(100% - 150px);margin: 10px;margin-top: -31px;}
+.xcenter-settings h1 {margin-bottom: 10px;}
+.xcenter-settings hr {width: 100%;margin: 5px 0px 5px 0px !important;background-color: rgba(255, 255, 255, 0.329);height: 1px;}
+.xcenter-settings-options {height: 80%;width: 100%;background-color: rgba(255, 255, 255, 0.212);padding: 10px;border-radius: 10px;overflow-y: auto;overflow-x: hidden;}
+.xcenter-settings-option {width: 100%;height: 40px;border-radius: 10px;padding: 5px;background-color: rgba(255, 255, 255, 0.212);margin: 5px 0px 5px 0px;}
+.xcenter-settings-option p {margin: 0;float: left;margin-top: 3px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;width: 80%;}
+.xcenter-settings-option label {margin-top: 3px;float: right;}
+.xcenter-settings-option button {padding: 5px 12px 5px 12px;float: right;}
+.xcenter-settings-actions {display: flex;}
+.xcenter-settings-actions button {flex-grow: 1;}
+.xcenter-settings-actions button:hover {background-color: rgba(255, 255, 255, 0.185);}
+.xcenter-settings-actions button:nth-child(1) {border-radius: 10px 0px 0px 10px !important;}
+.xcenter-settings-actions button:nth-child(2), .xcenter-settings-actions button:nth-child(3) {border-radius: 0px !important;}
+.xcenter-settings-actions button:nth-child(4) {border-radius: 0px 10px 10px 0px !important;background-color: red;}
+.xcenter-settings-coldbootversion {position: fixed;z-index: 100;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.596);}
+.xcenter-settings-coldbootversion div {width: 80%;height: 60%;min-width: 600px;min-height: 350px;background-color: black;padding: 10px;border-radius: 10px;border: 1px solid white;}
+.xcenter-settings-coldbootversion div h1, .xcenter-settings-coldbootversion div p {margin: 0;overflow: unset !important;text-overflow: unset !important;display: unset !important;-webkit-line-clamp: unset !important;-webkit-box-orient: unset !important;}
+.xcenter-settings-coldbootversion div div {width: calc(100% - 20px);min-width: unset !important;min-height: unset !important;position: absolute;bottom: 10px;overflow-y: auto;overflow-x: hidden;}
+.xcenter-settings-coldbootversion div div button {width: 100%;margin: 5px 0px 5px 0px;color: black !important;text-align: left;background-color: white;border: 1px solid black;}
+.xcenter-help {width: calc(100% - 20px);height: calc(100% - 150px);padding: 10px;background-color: rgba(255, 255, 255, 0.185);margin: 10px;border-radius: 10px;}
+.xcenter-help div {width: 100%;height: 74%;padding: 10px;overflow-y: auto;overflow-x: hidden;background-color: rgba(255, 255, 255, 0.185);padding: 10px;border-radius: 10px;}
+.xcenter-help div div {margin: 5px 0px 5px 0px;height: auto !important;}
+.xcenter-help div div div {background-color: transparent;max-height: 200px !important;overflow-x: hidden;overflow-y: auto;}
+.sitemap {width: 100%;padding: 10px;}
+.sitemap-category {width: 100%;margin: 10px 0px 10px 0px;padding: 10px;background-color: rgba(255, 255, 255, 0.13);border-radius: 10px;overflow-y: auto;}
+.sitemap-category button {width: 100%;text-align: left;height: 30px;padding: 0;padding-left: 10px;margin: 5px 0px 5px 0px;}
 @keyframes glow {
     0% {
         border: 5px solid blue;
