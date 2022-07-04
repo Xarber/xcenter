@@ -1053,6 +1053,7 @@ console.log(
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
 );
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
+    localStorage.setItem('XCenterColdBootVersion', localStorage.getItem('settings-coldbootversion'))
     var xversion = '4.0.9';
     if (location.href.indexOf('local-xcenter.netlify.app') != -1) xversion = xversion + "e";
     var changelog = {
@@ -1179,18 +1180,20 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             '%cIFRAME DETECTED!',
             'padding: 10px;background-color: red;border-radius: 15px;'
         )
-        if (location.href.indexOf('iframe') == -1) {
-            console.log(
-                '%cDo not use the website on an iFrame',
-                'padding: 10px;background-color: red;border-radius: 15px;'
-            )
-            window.location = '/issues/iframe.html';
-        } else {
-            console.log('> Not using an iFrame')
+        if (location.href.indexOf('/version/') == -1) {
+            if (location.href.indexOf('iframe') == -1) {
+                console.log(
+                    '%cDo not use the website on an iFrame',
+                    'padding: 10px;background-color: red;border-radius: 15px;'
+                )
+                window.location = '/issues/iframe.html';
+            } else {
+                console.log('> Not using an iFrame')
+            }
         }
     } else {
         console.log('> Checking Page Link For iFrame Errors...')
-        if (location.href.indexOf('iframe') != -1) {
+        if (location.href.indexOf('/version/') != -1) {
             console.log('> Error Found, Redirecting...')
             window.location = '/';
         }
@@ -1445,8 +1448,8 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             console.log('> Obtaining Settings...');
             if (localStorage.getItem('theme') == null) {localStorage.setItem('theme', 'auto')}
             if (localStorage.getItem('AutoHideChangelog') == null) {localStorage.setItem('AutoHideChangelog', 'false')}
-            if (localStorage.getItem('XCenterColdBootVersionOptimize') == null) {localStorage.setItem('XCenterColdBootVersionOptimize', 'false')}
-            if (localStorage.getItem('XCenterColdBootVersion') == null) {localStorage.setItem('XCenterColdBootVersion', '4.0')}
+            if (localStorage.getItem('XCenterColdBootVersionOptimize') == null) {localStorage.setItem('XCenterColdBootVersionOptimize', 'true')}
+            if (localStorage.getItem('XCenterColdBootVersion') == null) {localStorage.setItem('XCenterColdBootVersion', '5.0')}
             if (localStorage.getItem('HideNotifications') == null) {localStorage.setItem('HideNotifications', 'false')}
             if (localStorage.getItem('SilentNotifications') == null) {localStorage.setItem('SilentNotifications', 'false')}
             var theme = localStorage.getItem('theme');
@@ -1502,8 +1505,8 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         '%cChecking For ColdBoot Version...',
         'padding: 10px;background-color: blue;border-radius: 15px;'
     )
-    var ColdBootVersion = localStorage.getItem('XCenterColdBootVersion') ?? '4.0';
-    if (ColdBootVersion != '4.0') {
+    var ColdBootVersion = localStorage.getItem('XCenterColdBootVersion') ?? '5.0';
+    if (ColdBootVersion != '5.0') {
         console.log('> Redirecting to ColdBoot Version...')
         window.location = '/version/' + ColdBootVersion;
     } else {
@@ -2535,11 +2538,12 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(255,106,0,1) 100%);border-radius: 15px;'
         );
 } else {
+    localStorage.setItem('XCenterColdBootVersion', localStorage.getItem('settings-coldbootversion'))
     console.log(
         '%cRunning On External Page / Old Version',
         'background-color: gray;padding: 10px;border-radius: 15px;'
     );
-    if (localStorage.getItem('XCenterColdBootVersion') != '4.0' && (location.href.indexOf('xcenter') != -1 || location.href.indexOf('127.0.0.1') != -1)) {
+    if (localStorage.getItem('XCenterColdBootVersion') != '5.0' && (location.href.indexOf('xcenter') != -1 || location.href.indexOf('127.0.0.1') != -1)) {
         console.log(
             '%cX-Center ColdBoot Version',
             'padding: 10px;background-color: gray;border-radius: 15px;'
