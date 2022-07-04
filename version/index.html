@@ -57,10 +57,14 @@
         <h1>X-Center</h1>
         <copyright>@ Copyright 2022 - Xarber</copyright>
     </div>
+
+    <!--VERSIONSWITCHER-->
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="page">
     <div class="nav-compenser"><button></button></div>
-    <nav>
+    <nav class="hided">
         <div id="navbar-pages">
             <button onclick="location.href = this.id;" id="/"><img src="/assets/base/home.png">Home</button>
             <button onclick="location.href = this.id;" id="/tools/"><img src="/assets/base/tools.png">Tools</button>
@@ -84,10 +88,18 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-    <div class="versionswitcher">
-        
+    <iframe id="versionswitcher-navigate" class="hided" style="position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 199;" width="100%" height="100%" src="/version/4.0/" frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0"></iframe>
+    <div id="versionswitcher" class="versionswitcher center">
+      <h1>Select A Version</h1>
+      <div>
+        <button onclick="versionswitcher.apply(this.innerHTML);" class="rainbow">5.0</button>
+        <button onclick="versionswitcher.apply(this.innerHTML);">4.0</button>
+        <button onclick="versionswitcher.apply(this.innerHTML);">3.0</button>
+        <button onclick="versionswitcher.apply(this.innerHTML);">2.0</button>
+        <button onclick="versionswitcher.apply(this.innerHTML);">1.0</button>
+      </div>
     </div>
-    <footer>
+    <footer class="hided">
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
         </div>
