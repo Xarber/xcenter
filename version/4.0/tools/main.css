@@ -1,0 +1,47 @@
+.ToolsWeb {margin-left: 10%;margin-top: 1%;margin-bottom: 1%;margin-right: 10%;height: 80%;}
+.ToolsWeb hr {margin-left: 0% !important;margin-right: 0% !important;width: 100%;}
+.ToolsWebTabs button {float: right;background-color: transparent;padding: 0px !important;margin: 5px;}
+.tools-reccomended {width: 100%;aspect-ratio: 16 / 9;border-radius: 50px;background-color: rgba(128, 128, 128, 0.342);margin-bottom: 50px;margin-top: 20px;}
+.tools-reccomend {width: 46%;height: 40%;margin-left:2%;margin-right: 2%;margin-bottom: 20px;margin-top: 20px;background-color: rgba(54, 54, 54, 0.384);border-radius: 25px;float: left;}
+.tools-reccomend img {float: left;margin:25px;height: 50%;}
+.tools-reccomend p {margin: 0px;margin-top: 10px;border: 0px;padding: 0px;}
+.tools-reccomend desc {color: gray;}
+.tools-reccomend:hover {background-color: rgba(75, 74, 74, 0.384);cursor: pointer;}
+@media (max-width:767px){
+    .tools-reccomended {width: 100%;height: 560px;border-radius: 20px;background-color: rgba(128, 128, 128, 0.342);margin-bottom: 50px;margin-top: 20px;}
+    .tools-reccomend {width: 96%;height: 100px;margin-bottom: 20px;margin-top: 20px;background-color: rgba(54, 54, 54, 0.384);border-radius: 25px;}
+    .tools-reccomend img {height: 30%;margin: 3%;margin-bottom: 100%;}
+}
+.tools-list {width: 100%;height: 10%;background-color: rgba(128, 128, 128, 0.342);border-radius: 20px;}
+.tools-list button {width: calc(100% - 20px);margin: 10px;border-radius: 15px;text-align: left;background-image: url('https://local-xcenter.netlify.app/assets/media/4.0/run.png');background-size: contain;background-repeat: no-repeat;background-position: right;padding: 10px !important;}
+.tools-console {width: 100%;height: 100%;}
+.tools-console div input {height: 50px;width: calc(100% - 55px);background-color: rgba(95, 95, 95, 0.747);border: 0;border-radius: 0px 0px 0px 8px;padding: 1%;color: white;}
+.tools-console div button {border-radius: 0px 0px 8px 0px !important;aspect-ratio: 1 / 1;height: 50px;padding: 0;background-color: rgba(95, 95, 95, 0.747) !important;background-image: url('https://local-xcenter.netlify.app/assets/media/4.0/run.png');background-repeat: no-repeat;background-size: 50%;background-position: center;margin-top: 0%;float: right;}
+.tools-console div#tools-admin-console-cmds {width: 100%;height: 94%;background-color: rgba(95, 95, 95, 0.747);margin-bottom: 5px;border-radius: 8px 8px 8px 0px;padding: 1%;}
+.tools-console div#tools-admin-console-cmds h3 {color: darkgray;}
+button#ToolsWebBack {position: fixed;top:50%;left: 1%;width: 5%;aspect-ratio: 1 / 1;background-color: transparent !important;border-radius: 100px !important;background-image: url('https://local-xcenter.netlify.app/assets/media/4.0/left-arrow.svg');background-size: contain;background-repeat: no-repeat;}
+.ToolsWebBack {position: fixed;top:50%;left: 1%;width: 5%;aspect-ratio: 1 / 1;background-color: transparent !important;border-radius: 100px !important;background-image: url('https://local-xcenter.netlify.app/assets/media/4.0/left-arrow.svg');background-size: contain;background-repeat: no-repeat;}
+.tools-other div button {background-image: none;flex-grow: 1 !important;aspect-ratio: 1/2;float: left;}
+.tools-other div {display: flex !important;gap: .5rem;}
+.tools-runned {width: auto;}
+.tools-optimize {width: auto;}
+.tools-files {width: auto;}
+.tools-download {width: auto;}
+.tools-iso {width: auto;}
+.tools-plugin {width: auto;}
+.tools-settings {width: auto;}
+.tools-help {width: auto;}
+.tools-notification {position: fixed;width: 80%;max-width: 600px;height: 100px;background-color: rgb(51, 51, 51);z-index: 100;right: 10px;top: 10px;padding: 10px;border-radius: 15px;cursor: pointer;box-shadow: 1px 1px 15px black !important;}
+.tools-notification h3 {width: 90%;}
+.tools-notification button {float: right;background-color: transparent;padding: 0px !important;margin: 5px;}
+.tools-notification p {width: 100%;}
+.tools-notifications {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.582);z-index: 98;}
+.tools-notifications div {position: fixed;top: 2%;left: 1%;width: 98%;height: 96%;background-color: rgb(51, 51, 51);z-index: 99;padding: 10px;border-radius: 15px;}
+.tools-notifications div button {float: right;background-color: transparent;padding: 0px !important;margin: 5px;}
+.tools-notifications div hr {width: 100% !important;margin-left: 0 !important;}
+.tools-notifications div .tools-notification {width: 98% !important;max-width: unset;margin-left: 1%;height: 100px;position: unset;z-index: 100;right: auto;margin-bottom: 10px;}
+.tools-files-file p {float: left;}
+.tools-files-file button {float: right;padding: 5px !important;margin-left: 5px;position: relative;z-index: 100;}
+.tools-files-file {margin-bottom: 15px;}
+.tools-tool-settings {position: fixed;width: 100%;height: 100%;top: 0%;left: 0%;background-color: rgba(0, 0, 0, 0.527);z-index: 100;}
+.tools-tool-settings div#tools-other-settings-tool-subdiv {position: fixed;width: 90%;height: 90%;left: 5%;top: 5%;background-color: rgb(51, 51, 51);z-index: 101;padding: 1%;border-radius: 20px;}

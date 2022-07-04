@@ -1,0 +1,9 @@
+[[REDIRECTS]]
+status = "404"
+from = "/*"
+to = "/issues/404.html"
+
+[[REDIRECTS]]
+status = "403"
+from = "/*"
+to = "/issues/403.html"
