@@ -1053,6 +1053,7 @@ console.log(
     'padding: 10px;background: rgb(58,105,180);background: linear-gradient(90deg, rgba(58,105,180,1) 0%, rgba(253,209,29,1) 50%, rgba(255,106,0,1) 100%);border-radius: 15px;'
 );
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
+    if (localStorage.getItem('settings-coldbootversion') == null) localStorage.setItem('settings-coldbootversion', '5.0');
     localStorage.setItem('XCenterColdBootVersion', localStorage.getItem('settings-coldbootversion'))
     var xversion = '4.0.9';
     if (location.href.indexOf('local-xcenter.netlify.app') != -1) xversion = xversion + "e";
@@ -1180,20 +1181,18 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             '%cIFRAME DETECTED!',
             'padding: 10px;background-color: red;border-radius: 15px;'
         )
-        if (location.href.indexOf('/version/') == -1) {
-            if (location.href.indexOf('iframe') == -1) {
-                console.log(
-                    '%cDo not use the website on an iFrame',
-                    'padding: 10px;background-color: red;border-radius: 15px;'
-                )
-                window.location = '/issues/iframe.html';
-            } else {
-                console.log('> Not using an iFrame')
-            }
+        if (location.href.indexOf('iframe') == -1) {
+            console.log(
+                '%cDo not use the website on an iFrame',
+                'padding: 10px;background-color: red;border-radius: 15px;'
+            )
+            window.location = '/issues/iframe.html';
+        } else {
+            console.log('> Not using an iFrame')
         }
     } else {
         console.log('> Checking Page Link For iFrame Errors...')
-        if (location.href.indexOf('/version/') != -1) {
+        if (location.href.indexOf('iframe') != -1) {
             console.log('> Error Found, Redirecting...')
             window.location = '/';
         }
@@ -1511,6 +1510,24 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         window.location = '/version/' + ColdBootVersion;
     } else {
         console.log('> No ColdBoot Version Found.')
+    }
+    if (localStorage.getItem('XCenterColdBootVersion') != '5.0' && (location.href.indexOf('xcenter') != -1 || location.href.indexOf('127.0.0.1') != -1)) {
+        console.log(
+            '%cX-Center ColdBoot Version',
+            'padding: 10px;background-color: gray;border-radius: 15px;'
+        );
+        if (localStorage.getItem('XCenterColdBootVersionOptimize') != 'true') {
+            CommonJS.replaceURL(window.location.pathname.replaceAll('/version/' + localStorage.getItem('XCenterColdBootVersion'), ''))
+        }
+        var GoBackToNewVersion = document.createElement('button');
+        GoBackToNewVersion.setAttribute('style', 'position: fixed;top: 0;right: 0;width: 50px;heigth: 50px;background-color: rgba(255, 255, 255, 0.5); !important;padding: 10 !important;border: 0px;border-radius: 0px 0px 0px 15px;z-index: 100000000000000;');
+        GoBackToNewVersion.setAttribute('onclick', 'localStorage.setItem("XCenterColdBootVersion", "5.0");localStorage.setItem("settings-coldbootversion", "5.0");window.location = "/";')
+        GoBackToNewVersion.setAttribute('id', 'new-XCenterGoBackToNewVersion');
+        document.body.appendChild(GoBackToNewVersion)
+        var GoBackToNewVersionIMG = document.createElement('img');
+        GoBackToNewVersionIMG.setAttribute('src', '/assets/media/logo.png')
+        GoBackToNewVersionIMG.setAttribute('style', 'width: 100%;heigth: 100%;')
+        document.getElementById('new-XCenterGoBackToNewVersion').appendChild(GoBackToNewVersionIMG);
     }
     /*------------------------------------------------------------
     SYSTEM ICON CHANGE

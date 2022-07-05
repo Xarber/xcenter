@@ -72,8 +72,65 @@ var xcenter = {
             if (document.getElementById('xcenter-setup-export').checked) {
                 CommonJS.localStorageBackup.make('settings');
             }
+            xcenter.setup.convert()
             localStorage.setItem('xcenter-setup', 'finished');
             window.location = "/";
+        },
+        convert: function() {
+            var tmptheme = localStorage.getItem('settings-theme');
+            var tmpchangelog = localStorage.getItem('settings-changelog');
+            var tmpnotify = localStorage.getItem('settings-shownotifications');
+            var tmpcoldboot = localStorage.getItem('settings-cbversion');
+            var tmpbatch = localStorage.getItem('settings-scripts');
+            localStorage.removeItem('settings-theme');
+            localStorage.removeItem('settings-changelog');
+            localStorage.removeItem('settings-shownotifications');
+            localStorage.removeItem('settings-cbversion');
+            localStorage.removeItem('settings-scripts');
+            if (tmptheme == "Auto") {
+                localStorage.setItem('settings-autotheme', 'true');
+                localStorage.setItem('settings-darktheme', 'true');
+            } else if (tmptheme == "Dark") {
+                localStorage.setItem('settings-autotheme', 'false');
+                localStorage.setItem('settings-darktheme', 'true');
+            } else if (tmptheme == "Light") {
+                localStorage.setItem('settings-autotheme', 'false');
+                localStorage.setItem('settings-autotheme', 'false');
+            }
+            if (tmpchangelog == "Yes") {
+                localStorage.setItem('settings-showchangelog', 'true');
+                localStorage.setItem('settings-majorupdchangelog', 'false');
+            } else if (tmpchangelog == "Only Major Updates") {
+                localStorage.setItem('settings-showchangelog', 'true');
+                localStorage.setItem('settings-majorupdchangelog', 'true');
+            } else if (tmpchangelog == "Never") {
+                localStorage.setItem('settings-showchangelog', 'false');
+                localStorage.setItem('settings-majorupdchangelog', 'false');
+            }
+            if (tmpnotify == "Yes") {
+                localStorage.setItem('settings-notifications', 'true');
+                localStorage.setItem('settings-silentnotifications', 'false');
+            } else if (tmpnotify == "Without Sounds") {
+                localStorage.setItem('settings-notifications', 'true');
+                localStorage.setItem('settings-silentnotifications', 'true');
+            } else if (tmpnotify == "No") {
+                localStorage.setItem('settings-notifications', 'false');
+                localStorage.setItem('settings-silentnotifications', 'false');
+            }
+            if (tmpbatch == "No") {
+                localStorage.setItem('settings-batchscripts', 'false');
+            } else if (tmpbatch == "Yes") {
+                localStorage.setItem('settings-batchscripts', 'true');
+            }
+            if (tmpcoldboot == "No") {
+                localStorage.setItem('settings-coldbootversion', '5.0');
+            } else if (tmpcoldboot == "Choose Later") {
+                var coldbootaskcontain = document.createElement('div');
+                coldbootaskcontain.setAttribute('class', 'xcenter-settings-coldbootversion');
+                coldbootaskcontain.setAttribute('id', 'xcenter-settings-coldbootversion');
+                coldbootaskcontain.innerHTML = '<div class="center"><h1>ColdBoot Version</h1><p>Select a version to be automatically booted while launching X-Center. To remove the coldboot version, just press the logo at top left corner.</p><p id="settings-coldbootversion">Current: None</p><div><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="5.0" class="rainbow" id="xcenter-settings-coldbootversion-default">None</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="4.0">4.0</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="3.0">3.0</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="2.0">2.0</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="1.0">1.0</button></div></div>';
+                document.body.appendChild(coldbootaskcontain);
+            }
         }
     },
     settings: {
@@ -122,6 +179,11 @@ var xcenter = {
             document.getElementById('xcenter-settings-coldbootversion-default').click();
         },
         get: function() {
+            if (localStorage.getItem('settings-theme') != null || localStorage.getItem('settings-changelog') != null || localStorage.getItem('settings-shownotifications') != null || localStorage.getItem('settings-cbversion') != null || localStorage.getItem('settings-scripts') != null) {
+                xcenter.setup.convert();
+                return;
+            }
+            if (localStorage.getItem('settings-coldbootversion') == null) localStorage.setItem('settings-coldbootversion', '5.0');
             currenttheme = CommonJS.getTheme();
             autotheme = localStorage.getItem('settings-autotheme') ?? true;
             darktheme = localStorage.getItem('settings-darktheme') ?? true;
@@ -136,7 +198,7 @@ var xcenter = {
             if (majorchangelog == true || majorchangelog == "true") {changelog = "major"} else if (changelog == true || changelog == "true") {changelog = true}
             if (tmpchangelog == false || tmpchangelog == "false") changelog = false;
             if (silentnotifications == true || silentnotifications == "true") {notifications = "silent"} else if (tmpnotifications == true || tmpnotifications == "true") {notifications = true}
-            if (tmpnotifications == false) notifications = false;
+            if (tmpnotifications == false) {notifications = false;silentnotifications = true;}
             if ((autotheme == true || autotheme == "true") && currenttheme == "dark") {darktheme = true} else if ((autotheme == true || autotheme == "true") && currenttheme == "light") {darktheme = false};
             localStorage.setItem('settings-autotheme', autotheme)
             localStorage.setItem('settings-darktheme', darktheme)
@@ -163,9 +225,35 @@ var xcenter = {
                 if (runbatchscripts == true || runbatchscripts == "true") document.getElementById('settings-batchscripts').checked = runbatchscripts;
                 document.getElementById('settings-coldbootversion').innerHTML = "Current: " + coldbootversion;
             }
+            
+            //APPLY
+            if (theme == "light") {
+                document.body.setAttribute('class', 'light');
+                document.getElementById('html').setAttribute('class', 'light')
+            };
+            if (theme == "dark") {
+                document.body.setAttribute('class', 'dark');
+                document.getElementById('html').setAttribute('class', 'dark')
+            }
+            if (theme == "auto") {
+                if (currenttheme == "dark") {
+                    document.body.setAttribute('class', 'dark');
+                    document.getElementById('html').setAttribute('class', 'dark')
+                } else if (currenttheme == "light") {
+                    document.body.setAttribute('class', 'light');
+                    document.getElementById('html').setAttribute('class', 'light')
+                }
+            }
         }
     }
 }
+if (localStorage.getItem('xcenter-setup') != "finished") {
+    if (window.location.pathname == "/setup/") {
+        xcenter.setup.show();
+    } else {
+        window.location = "/setup/";
+    }
+} else if (window.location.pathname == "/setup/") window.location = "/";
 xcenter.settings.get();
 if (localStorage.getItem('XCenterLastSecondaryPage') == null) localStorage.setItem('XCenterLastSecondaryPage', '/help/')
 function prepareNav() {
@@ -291,10 +379,3 @@ function themeapply() {
     }
 }
 themeapply();
-if (localStorage.getItem('xcenter-setup') != "finished") {
-    if (window.location.pathname == "/setup/") {
-        xcenter.setup.show();
-    } else {
-        window.location = "/setup/";
-    }
-}
