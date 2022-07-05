@@ -19,8 +19,10 @@ var xcenter = {
             for (let i = 0;i < lastsetupstep;++i) {
                 var afteri = +i + 1;
                 var oldsetupstepcontent = document.getElementById("setup-step-" + afteri).innerHTML;
-                document.getElementById("setup-step-" + afteri).innerHTML = "";
-                document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML.replaceAll(oldsetupstepcontent, '') + document.getElementById("setup-step-" + afteri).innerHTML;
+                if (document.getElementById("setup-selected-" + afteri).innerHTML != "") {
+                    document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML.replaceAll(document.getElementById('setup-selected-' + afteri).innerHTML, '')
+                    document.getElementById('setup-selected-' + afteri).innerHTML = "";
+                }
             }
             document.getElementById('setup-review').classList.add('hided');
             document.getElementById('setup-0').classList.remove('hided');
@@ -32,13 +34,13 @@ var xcenter = {
             if (document.getElementById("setup-" + nextsetupstep) != null) {
                 document.getElementById("setup-" + setupstep).classList.add('hided');
                 document.getElementById("setup-" + nextsetupstep).classList.remove('hided');
-                if (selection != null) document.getElementById("setup-step-" + setupstep).innerHTML = selection;
+                if (selection != null) document.getElementById("setup-selected-" + setupstep).innerHTML = selection;
                 ++setupstep;
                 ++nextsetupstep;
             } else if (setupstep == lastsetupstep) {
                 document.getElementById("setup-" + setupstep).classList.add('hided');
                 document.getElementById("setup-finish").classList.remove('hided');
-                if (selection != null) document.getElementById("setup-step-" + setupstep).innerHTML = selection;
+                if (selection != null) document.getElementById("setup-selected-" + setupstep).innerHTML = selection;
                 nextsetupstep = lastsetupstep;
                 setupstep = nextsetupstep;
             }
@@ -51,7 +53,9 @@ var xcenter = {
             document.getElementById('setup-finish').classList.remove('hided');
             for (let i = 0;i < lastsetupstep;++i) {
                 var afteri = +i + 1;
+                var oldsetupstepcontent = document.getElementById("setup-selected-" + afteri).innerHTML;
                 document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML.replaceAll(oldsetupstepcontent, '') + document.getElementById("setup-step-" + afteri).innerHTML;
+                document.getElementById("setup-selected-" + afteri).innerHTML = document.getElementById("setup-step-" + afteri).innerHTML;
             }
         },
         review: function() {
@@ -59,20 +63,21 @@ var xcenter = {
             document.getElementById('setup-review').classList.remove('hided');
             for (let i = 0;i < lastsetupstep;++i) {
                 var afteri = +i + 1;
-                document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML + document.getElementById("setup-step-" + afteri).innerHTML;
+                var oldsetupstepcontent = document.getElementById("setup-selected-" + afteri).innerHTML;
+                if (oldsetupstepcontent == "") oldsetupstepcontent = document.getElementById("setup-step-" + afteri).innerHTML;
+                document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML.replaceAll(oldsetupstepcontent, '') + document.getElementById("setup-selected-" + afteri).innerHTML;
             }
         },
         finish: function() {
             for (let i = 0;i < lastsetupstep;++i) {
                 var afteri = +i + 1;
-                var name = document.getElementById('setup-step-name-' + afteri);
-                var value = document.getElementById('setup-step-' + afteri);
+                var name = document.getElementById('setup-step-name-' + afteri).innerHTML;
+                var value = document.getElementById('setup-selected-' + afteri).innerHTML;
                 localStorage.setItem(name, value);
             }
             if (document.getElementById('xcenter-setup-export').checked) {
                 CommonJS.localStorageBackup.make('settings');
             }
-            xcenter.setup.convert()
             localStorage.setItem('xcenter-setup', 'finished');
             window.location = "/";
         },
@@ -95,7 +100,7 @@ var xcenter = {
                 localStorage.setItem('settings-darktheme', 'true');
             } else if (tmptheme == "Light") {
                 localStorage.setItem('settings-autotheme', 'false');
-                localStorage.setItem('settings-autotheme', 'false');
+                localStorage.setItem('settings-darktheme', 'false');
             }
             if (tmpchangelog == "Yes") {
                 localStorage.setItem('settings-showchangelog', 'true');
@@ -125,12 +130,61 @@ var xcenter = {
             if (tmpcoldboot == "No") {
                 localStorage.setItem('settings-coldbootversion', '5.0');
             } else if (tmpcoldboot == "Choose Later") {
-                var coldbootaskcontain = document.createElement('div');
-                coldbootaskcontain.setAttribute('class', 'xcenter-settings-coldbootversion');
-                coldbootaskcontain.setAttribute('id', 'xcenter-settings-coldbootversion');
-                coldbootaskcontain.innerHTML = '<div class="center"><h1>ColdBoot Version</h1><p>Select a version to be automatically booted while launching X-Center. To remove the coldboot version, just press the logo at top left corner.</p><p id="settings-coldbootversion">Current: None</p><div><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="5.0" class="rainbow" id="xcenter-settings-coldbootversion-default">None</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="4.0">4.0</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="3.0">3.0</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="2.0">2.0</button><button localStorageName="settings-coldbootversion" onclick="this.parentNode.parentNode.parentNode.classList.add(\'hided\');localStorage.setItem(this.getAttribute(\'localStorageName\'), this.getAttribute(\'ColdBootVersionID\'));xcenter.settings.get();" ColdBootVersionID="1.0">1.0</button></div></div>';
-                document.body.appendChild(coldbootaskcontain);
+                var coldbootversioncontainbkg = document.createElement('div');
+                var coldbootversioncontain = document.createElement('div');
+                var coldbootversioncontaintitle = document.createElement('h1');
+                var coldbootversioncontaindesc = document.createElement('p');
+                var coldbootversioncontaincurrent = document.createElement('p');
+                var coldbootversioncontainoptions = document.createElement('div');
+                var coldbootversioncontainfive = document.createElement('button');
+                var coldbootversioncontainfour = document.createElement('button');
+                var coldbootversioncontainthree = document.createElement('button');
+                var coldbootversioncontaintwo = document.createElement('button');
+                var coldbootversioncontainone = document.createElement('button');
+                coldbootversioncontainbkg.setAttribute('id', 'xcenter-settings-coldbootversion');
+                coldbootversioncontainbkg.setAttribute('class', 'xcenter-settings-coldbootversion');
+                coldbootversioncontain.setAttribute('class', 'center');
+                coldbootversioncontaincurrent.setAttribute('id', 'settings-coldbootversion');
+                coldbootversioncontainfive.setAttribute('class', 'rainbow');
+                coldbootversioncontainfive.setAttribute('id', 'xcenter-settings-coldbootversion-default');
+                coldbootversioncontainfive.setAttribute('localStorageName', 'settings-coldbootversion');
+                coldbootversioncontainfour.setAttribute('localStorageName', 'settings-coldbootversion');
+                coldbootversioncontainthree.setAttribute('localStorageName', 'settings-coldbootversion');
+                coldbootversioncontaintwo.setAttribute('localStorageName', 'settings-coldbootversion');
+                coldbootversioncontainone.setAttribute('localStorageName', 'settings-coldbootversion');
+                coldbootversioncontainfive.setAttribute('ColdBootVersionID', '5.0');
+                coldbootversioncontainfour.setAttribute('ColdBootVersionID', '4.0');
+                coldbootversioncontainthree.setAttribute('ColdBootVersionID', '3.0');
+                coldbootversioncontaintwo.setAttribute('ColdBootVersionID', '2.0');
+                coldbootversioncontainone.setAttribute('ColdBootVersionID', '1.0');
+                coldbootversioncontainfive.setAttribute('onclick', "this.parentNode.parentNode.parentNode.remove();localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();");
+                coldbootversioncontainfour.setAttribute('onclick', "this.parentNode.parentNode.parentNode.remove();localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();");
+                coldbootversioncontainthree.setAttribute('onclick', "this.parentNode.parentNode.parentNode.remove();localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();");
+                coldbootversioncontaintwo.setAttribute('onclick', "this.parentNode.parentNode.parentNode.remove();localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();");
+                coldbootversioncontainone.setAttribute('onclick', "this.parentNode.parentNode.parentNode.remove();localStorage.setItem(this.getAttribute('localStorageName'), this.getAttribute('ColdBootVersionID'));xcenter.settings.get();");
+                coldbootversioncontaintitle.innerHTML = "ColdBoot Version <br>";
+                coldbootversioncontaindesc.innerHTML = "Select a version to be automatically booted while launching X-Center. To remove the coldboot version, just press the logo at top left corner.";
+                coldbootversioncontaincurrent.innerHTML = "Current: None";
+                coldbootversioncontainfive.innerHTML = "None";
+                coldbootversioncontainfour.innerHTML = "4.0";
+                coldbootversioncontainthree.innerHTML = "3.0";
+                coldbootversioncontaintwo.innerHTML = "2.0";
+                coldbootversioncontainone.innerHTML = "1.0";
+                coldbootversioncontainoptions.appendChild(coldbootversioncontainfive);
+                coldbootversioncontainoptions.appendChild(coldbootversioncontainfour);
+                coldbootversioncontainoptions.appendChild(coldbootversioncontainthree);
+                coldbootversioncontainoptions.appendChild(coldbootversioncontaintwo);
+                coldbootversioncontainoptions.appendChild(coldbootversioncontainone);
+                coldbootversioncontain.appendChild(coldbootversioncontaintitle);
+                coldbootversioncontain.appendChild(coldbootversioncontaindesc);
+                coldbootversioncontain.appendChild(coldbootversioncontaincurrent);
+                coldbootversioncontain.appendChild(coldbootversioncontainoptions);
+                coldbootversioncontainbkg.appendChild(coldbootversioncontain);
+                document.body.appendChild(coldbootversioncontainbkg);
+            } else {
+                xcenter.settings.get();
             }
+            console.log('Converted Setup Options to Final Settings')
         }
     },
     settings: {
