@@ -872,7 +872,6 @@ var CommonJS = {
     },
     copyText: function(id, text) {
         //Insert the id of a textarea / input element OR the text and it will copy it on user's clipboard.
-        alert(text)
         if (text == null && document.getElementById(id) == null) {
             text = id;
             id = null;
