@@ -52,7 +52,7 @@ footer div img {height: 40px;margin: 5px;}
 .new-xcenter-apps img:hover {animation: glow infinite linear 1s;}
 .new-xcenter-apps-header {background-color: black;border-radius: 10px;margin: 2px;padding: 10px;}
 .new-xcenter-apps-header img {border-radius: 10px;max-height: 120px;float: right;height: 100%;cursor: pointer;}
-.new-xcenter-apps-header h1, p {color: white !important;}
+.new-xcenter-apps-header h1, .new-xcenter-apps-header p {color: white !important;}
 .new-xcenter-apps-limits {position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 100;background-color: #00000063;}
 .new-xcenter-apps-limits div {width: 50%;height: 20%;min-height: 250px;min-width: 500px;background-color: rgb(255, 0, 0);padding: 10px;border-radius: 10px;position: relative;}
 .new-xcenter-apps-limits div button {position: absolute;bottom: 10px;width: calc(100% - 20px);background-color: blue;}
@@ -145,6 +145,9 @@ footer div img {height: 40px;margin: 5px;}
 .xcenter-help div {width: 100%;height: 74%;padding: 10px;overflow-y: auto;overflow-x: hidden;background-color: rgba(255, 255, 255, 0.185);padding: 10px;border-radius: 10px;}
 .xcenter-help div div {margin: 5px 0px 5px 0px;height: auto !important;}
 .xcenter-help div div div {background-color: transparent;max-height: 200px !important;overflow-x: hidden;overflow-y: auto;}
+.xcenter-xarber {padding: 10px;margin: 10px;width: calc(100% - 20px);background-color: rgba(126, 126, 126, 0.247);border-radius: 10px;}
+.xcenter-xarber img {width: 10%;border-radius: 10px;float: right;}
+.xcenter-xarber button {width: 100%;height: 30px;padding: 0;margin: 5px 0px 5px 0px;}
 .sitemap {width: 100%;padding: 10px;}
 .sitemap-category {width: 100%;margin: 10px 0px 10px 0px;padding: 10px;background-color: rgba(255, 255, 255, 0.13);border-radius: 10px;overflow-y: auto;}
 .sitemap-category button {width: 100%;text-align: left;height: 30px;padding: 0;padding-left: 10px;margin: 5px 0px 5px 0px;}
@@ -185,8 +188,29 @@ footer div img {height: 40px;margin: 5px;}
 /*FIXES-------------------------------*/
 @media (max-width: 270px) {
     footer {height: 130px;}
+    .xcenter-xarber img {width: 100% !important;float: none;}
 }
 @media (max-width: 220px) {
     footer {height: 150px;}
 }
-
+@media (max-width: 423px) {
+    .xcenter-tools button {width: 100%;margin: 5px 0px 5px 0px;}
+    .xcenter-settings-option {height: 100px;position: relative;}
+    .xcenter-settings-option button {width: calc(100% - 10px);float: none;position: absolute;bottom: 5px;left: 5px;}
+    .xcenter-settings-option label {float: none;position: absolute;bottom: 10px;right: 10px;}
+    .xcenter-settings-actions {display: block;}
+    .xcenter-settings-actions button {width: 100% !important;flex-grow: unset !important;}
+    .xcenter-settings-actions button:nth-child(1) {border-radius: 10px 10px 0px 0px !important;}
+    .xcenter-settings-actions button:nth-child(2) {border-radius: 0px !important;}
+    .xcenter-settings-actions button:nth-child(3) {border-radius: 0px !important;}
+    .xcenter-settings-actions button:nth-child(4) {border-radius: 0px 0px 10px 10px !important;}
+}
+@media (max-width: 517px) {
+    .new-xcenter-apps-limits div {width: 100%;min-width: unset !important;height: 80%;}
+    .xcenter-xarber img {width: 50%;}
+}
+@media (max-width: 373px) {
+    .new-xcenter-apps-header h1, .new-xcenter-apps-header p {float: unset !important;}
+    .new-xcenter-apps-header img {float: left !important;width: calc(50% - 15px) !important;aspect-ratio: 1 / 1 !important;margin: 0px 5px 10px 5px;max-height: unset !important;}
+    .new-xcenter-apps img {width: 100%;}
+}
