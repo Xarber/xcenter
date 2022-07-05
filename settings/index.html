@@ -97,35 +97,35 @@
             <div class="xcenter-settings-option">
                 <p>Dark Theme</p>
                 <label class="new-switch">
-                    <input type="checkbox" id="settings-darktheme" onclick="document.getElementById('settings-autotheme').checked = false;localStorage.setItem(this.id, '' + this.checked + '');localStorage.setItem('settings-autotheme', 'false');xcenter.settings.get();" class="new-switch-input">
+                    <input type="checkbox" id="settings-darktheme" onclick="localStorage.setItem(this.id, '' + this.checked + '');localStorage.setItem('settings-autotheme', 'false');if (document.getElementById('settings-autotheme').checked == true) {document.getElementById('settings-autotheme').click()};xcenter.settings.get();" class="new-switch-input">
                     <span class="new-switch-slider"></span>
                 </label>
             </div>
             <div class="xcenter-settings-option">
                 <p>Show Changelog</p>
                 <label class="new-switch">
-                    <input type="checkbox" id="settings-showchangelog" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <input type="checkbox" id="settings-showchangelog" onclick="localStorage.setItem(this.id, '' + this.checked + '');if (document.getElementById('settings-majorupdchangelog').checked == true) {document.getElementById('settings-majorupdchangelog').click()};xcenter.settings.get();" class="new-switch-input">
                     <span class="new-switch-slider"></span>
                 </label>
             </div>
             <div class="xcenter-settings-option">
                 <p>Only Major Updates Changelog</p>
                 <label class="new-switch">
-                    <input type="checkbox" id="settings-majorupdchangelog" onclick="document.getElementById('settings-showchangelog').checked = true;localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <input type="checkbox" id="settings-majorupdchangelog" onclick="localStorage.setItem(this.id, '' + this.checked + '');if (document.getElementById('settings-showchangelog').checked == false) {document.getElementById('settings-showchangelog').click()};xcenter.settings.get();" class="new-switch-input">
                     <span class="new-switch-slider"></span>
                 </label>
             </div>
             <div class="xcenter-settings-option">
                 <p>Show Notifications</p>
                 <label class="new-switch">
-                    <input type="checkbox" id="settings-notifications" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <input type="checkbox" id="settings-notifications" onclick="localStorage.setItem(this.id, '' + this.checked + '');if (document.getElementById('settings-silentnotifications').checked == true) {document.getElementById('settings-silentnotifications').click()};xcenter.settings.get();" class="new-switch-input">
                     <span class="new-switch-slider"></span>
                 </label>
             </div>
             <div class="xcenter-settings-option">
                 <p>Silent Noifications</p>
                 <label class="new-switch">
-                    <input type="checkbox" id="settings-silentnotifications" onclick="document.getElementById('settings-notifications').checked = true;localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <input type="checkbox" id="settings-silentnotifications" onclick="localStorage.setItem(this.id, '' + this.checked + '');if (document.getElementById('settings-notifications').checked == false) {document.getElementById('settings-notifications').click()};xcenter.settings.get();" class="new-switch-input">
                     <span class="new-switch-slider"></span>
                 </label>
             </div>
