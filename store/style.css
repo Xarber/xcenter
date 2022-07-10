@@ -1,0 +1,82 @@
+.store {width: 100%;height: 100%;padding: 10px;}
+.store div {margin: 5px;margin-top: 10px;}
+.store div h1 {margin: 0 !important;float: left;}
+.store div button {width: 50px;height: 50px;float: right;background-color: transparent;padding: 0;}
+.store div hr {width: calc(100% - 4px);margin: 2px !important;height: 5px !important;background-color: gray;}
+.store-apps {display: flex;width: 100%;overflow-x: auto;overflow-y: hidden;}
+.store-apps img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;cursor: pointer;}
+.store-apps img:hover {animation: glow infinite linear 1s;}
+.store-reccomended-stores img {aspect-ratio: 1 / 1;width: 200px;}
+.store-reccomended-stores img:hover {animation: storeadd infinite linear 1s;}
+.store-app-view {background-color: rgb(27, 27, 27);width: 100%;height: 100%;}
+.store-app-view div {width: calc(100% - 10px);margin: 5px;padding: 10px;background-color: gray;border-radius: 10px;}
+.store-app-view div img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;float: left;}
+.store-app-view div h1 {margin: 0;}
+.store-app-view div button {width: 100%;background-color: greenyellow;}
+.store-app-view-desc {background-color: rgba(0, 0, 0, 0.596) !important;}
+.store-app-view-desc-daycuriosity {background-color: black !important;}
+.store-app-view-info {background-color: rgba(0, 0, 0, 0.596) !important;}
+.store-app-view-info div {background-color: black;min-height: 100px;padding: 0;display: table;}
+.store-app-view-info div div {display: table-cell;font-size: 20px;margin: 0 !important;height: 100%;padding: 10px;}
+.store-app-view-info div div:nth-child(1) {border-radius: 10px 0px 0px 10px !important;width: 10%;}
+.store-app-view-info div div:nth-child(2) {border-radius: 0px 10px 10px 0px !important;}
+.store-app-view-info div div:nth-child(2) p {text-align: right;}
+.store-app-view-info div div p {margin: 0;}
+.store-external-download {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 500;pointer-events: none;}
+.store-external-download div {width: 80%;background-color: rgb(29, 29, 29);height: 80%;position: absolute;bottom: calc(-80% + 100px);padding: 10px;border-radius: 10px 10px;margin-left: 10%;pointer-events: all;}
+.store-external-download div img {height: 80px;float: left;margin-right: 10px;border-radius: 10px;}
+.store-external-download div h1 {float: left;font-size: 30px;margin: 0;margin-top: -5px;}
+.store-external-download div button {float: right;height: 30px;background-color: transparent;padding: 0;margin-top: 20px;margin-left: 10px;}
+.store-external-download div button:nth-child(3) {transform: rotate(180deg);}
+.store-external-download div button:nth-child(4) {background-color: rgba(255, 255, 255, 0.200);padding: 10px;padding-top: 5px;}
+.store-external-download div div {position: absolute;bottom: 0;width: 100%;left: 0px;right: 0px;top: 100px;margin: 0px;height: calc(100% - 100px);border-radius: 0px 0px 10px 10px;background-color: rgba(129, 129, 129, 0.473) !important;}
+.store-external-download.extend {background-color: rgba(0, 0, 0, 0.726);pointer-events: all;}
+.store-external-download.extend div {animation: externalextend 0.2s linear;bottom: 70px;}
+.store-external-download.extend div button:nth-child(3) {transform: unset;}
+.store-external-download.minimal div {margin-left: 0%;width: 100px;border-radius: 0px 10px 0px 0px;animation: externalminimal 0.2s linear;}
+.store-external-download.minimal div img {margin-bottom: 10px;}
+.store-external-download.premied div {background-color: rgb(104, 104, 0);}
+.store-external-download.premied div div {background-image: url('/assets/media/apps/storepremied.png');background-repeat: no-repeat;background-position: bottom right;background-size: 150px;}
+@media (max-width: 500px) {
+    .store-external-download div h1 {float: none;}
+    .store-external-download div button {float: right;height: 30px;background-color: transparent;padding: 0;margin-top: 10px;margin-left: 10px;}
+    .store-external-download div button:nth-child(4) {width: calc(100% - 150px);position: absolute;left: 90px;}
+}
+@media (max-width: 350px) {
+    .store-external-download div {height: calc(80% + 30px);}
+    .store-external-download div button {float: none;height: 30px;background-color: transparent;padding: 0;margin-top: 10px;margin-left: 10px;}
+    .store-external-download div button:nth-child(3) {position: absolute;top: 85px;right: 10px;}
+    .store-external-download div button:nth-child(4) {width: calc(100% - 150px);top: 85px;left: 0px;width: calc(100% - 60px);}
+    .store-external-download div div {height: calc(80% + 15px);top: 140px;}
+}
+@keyframes externalminimal {
+    0% {
+        width: 80%;
+        margin-left: 10%;
+        border-radius: 10px;
+    }
+    100% {
+        width: 100px;
+        margin-left: 0%;
+        border-radius: 0px 10px 0px 0px;
+    }
+}
+@keyframes externalextend {
+    0% {
+        bottom: -510px;
+    }
+    100% {
+        bottom: 70px;
+    }
+}
+@keyframes storeadd {
+    0% {
+        border: 5px solid green;
+    }
+    50% {
+        border: 5px solid greenyellow;
+    }
+    100% {
+        border: 5px solid green;
+    }
+}

@@ -27,6 +27,7 @@
 
     <!--PAGE HEAD-->
     <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
 
     <!--HIDED COMMONJS 5.0 FIXES-->
     <nav class="new-navbar-light hided" id="navbar">
@@ -102,96 +103,108 @@
     <div class="store-guide hided">
 
     </div>
-    <div class="store" id="store-home">
+    <div class="store-external-download minimal premied" wasminimal="false">
+        <div>
+            <img src="/assets/media/apps/app.png" onclick="if (this.parentNode.parentNode.classList.contains('minimal') || this.parentNode.parentNode.getAttribute('wasminimal') == 'true') {this.parentNode.parentNode.classList.toggle('minimal');this.parentNode.parentNode.setAttribute('wasminimal', 'true');this.parentNode.parentNode.classList.remove('extend')}" alt="">
+            <h1>App Name</h1>
+            <button onclick="this.parentNode.parentNode.classList.toggle('extend');"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></button>
+            <button>Download</button>
+            <div>
+                <h3>Type</h3>
+                <p>Description. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque enim eum veritatis ipsum asperiores accusantium quasi sunt architecto dolor eveniet voluptatem rerum repudiandae, ullam, numquam expedita excepturi aut nisi quas?</p>
+            </div>
+        </div>
+    </div>
+    <div class="store hided" id="store-home">
         <div class="store-last-comeouts">
             <h1>Last Comeouts</h1><br><br><hr>
             <div class="store-apps">
-                <img id="store-comeouts-1" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-2" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-3" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-4" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-5" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-6" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-7" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-8" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-9" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-10" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-11" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-comeouts-12" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
+                <img id="store-comeouts-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
         </div>
         <div class="store-best-apps" id="store-apps">
             <h1>Best Apps</h1><button onclick="store.section(this.parentNode.id)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg></button><br><br><hr>
             <div class="store-apps">
-                <img id="store-app-1" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-2" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-3" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-4" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-5" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-6" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-7" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-8" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-9" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-10" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-11" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-app-12" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
+                <img id="store-app-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-app-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
         </div>
         <div class="store-updates">
             <h1>Recent Updates</h1><br><br><hr>
             <div class="store-apps">
-                <img id="store-update-1" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-2" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-3" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-4" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-5" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-6" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-7" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-8" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-9" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-10" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-11" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-update-12" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
+                <img id="store-update-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-update-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
         </div>
         <div class="store-tools" id="store-tools">
             <h1>Tools</h1><button onclick="store.section(this.parentNode.id)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg></button><br><br><hr>
             <div class="store-apps">
-                <img id="store-tool-1" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-2" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-3" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-4" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-5" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-6" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-7" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-8" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-9" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-10" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-11" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
-                <img id="store-tool-12" onclick="store.section(this.id)" src="/assets/media/apps/app.png" alt="">
+                <img id="store-tool-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
         </div>
         <div class="store-reccomended-stores">
             <h1>Best Stores</h1><br><br><hr>
             <div class="store-apps">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-1" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-2" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-3" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-4" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-5" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-6" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-7" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-8" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-9" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-10" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-11" src="/assets/media/apps/store.png" alt="">
-                <img onclick="store.add(this.getAttribute('storelink'))" id="store-reccomended-12" src="/assets/media/apps/store.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-1" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-2" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-3" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-4" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-5" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-6" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-7" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-8" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-9" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-10" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-11" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.add(this.id)" id="store-reccomended-12" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
             </div>
         </div>
     </div>
     <div class="store-app-view hided">
         <div>
-            <img src="/assets/media/apps/app.png" id="store-app-view-icon" alt="">
+            <img onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" id="store-app-view-icon" alt="">
             <h1 id="store-app-view-name">App</h1>
             <button id="store-app-view-launchinstall">Install</button>
             <div class="store-app-view-desc">
