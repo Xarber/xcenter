@@ -26,7 +26,7 @@
     <script src="/assets/js/apps.js" defer></script>
 
     <!--PAGE HEAD-->
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
 
     <!--HIDED COMMONJS 5.0 FIXES-->
@@ -64,8 +64,8 @@
     </div>
 </head>
 <body class="page">
-    <div class="nav-compenser"><button></button></div>
-    <nav id="store-nav">
+    <div class="nav-compenser hided"><button></button></div>
+    <nav id="store-nav" class="hided">
         <div id="navbar-pages">
             <button style="display: none;visibility: hidden" id="/"></button>
             <button style="display: none;visibility: hidden" id="/tools/"></button>
@@ -74,14 +74,13 @@
             <button style="display: none;visibility: hidden" id="/settings/"></button>
             <button style="display: none;visibility: hidden;" onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')" id="navbar-other"><img src="/assets/base/other.png">Other</button>
             
-            <button onclick="location.href = this.id;" id="/store/"><img src="/assets/media/apps/store.png">Home</button>
-            <button onclick="location.href = this.id;" id="/store/tools/"><img src="/assets/base/tools.png">Tools</button>
-            <button onclick="location.href = this.id;" id="/store/apps/"><img src="/assets/base/apps.png">Apps</button>
-            <button onclick="location.href = this.id;" id="/store/settings/"><img src="/assets/base/settings.png">Settings</button>
+            <button onclick="location.reload()"><img src="/assets/base/quit.png">Quit</button>
+            <button class="navbuttonextend"><img src="/assets/media/apps/store.png">Home</button>
         </div>
         <div id="navbar-users">
-            <button id="navbar-internet"></button>
-            <button id="navbar-downloads"><img src="/assets/media/store/download.png" alt=""></button>
+            <button onclick="store.settings()"><img src="/assets/base/settings.png">Settings</button>
+            <button style="display: none;visibility: hidden;" id="navbar-internet"></button>
+            <button style="display: none;visibility: hidden;" id="navbar-downloads"><img src="/assets/media/store/download.png" alt=""></button>
             <button style="display: none;visibility: hidden" id="navbar-user"></button>
             <button style="display: none;visibility: hidden" class="hided" onclick="document.getElementById" id="navbar-notifications"></button>
         </div>
@@ -103,7 +102,7 @@
     <div class="store-guide hided">
 
     </div>
-    <div class="store-external-download minimal premied" wasminimal="false">
+    <div class="store-external-download hided" wasminimal="false">
         <div>
             <img src="/assets/media/apps/app.png" onclick="if (this.parentNode.parentNode.classList.contains('minimal') || this.parentNode.parentNode.getAttribute('wasminimal') == 'true') {this.parentNode.parentNode.classList.toggle('minimal');this.parentNode.parentNode.setAttribute('wasminimal', 'true');this.parentNode.parentNode.classList.remove('extend')}" alt="">
             <h1>App Name</h1>
@@ -111,31 +110,36 @@
             <button>Download</button>
             <div>
                 <h3>Type</h3>
-                <p>Description. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque enim eum veritatis ipsum asperiores accusantium quasi sunt architecto dolor eveniet voluptatem rerum repudiandae, ullam, numquam expedita excepturi aut nisi quas?</p>
+                <p>App Description</p>
+            </div>
+        </div>
+    </div>
+    <div class="store-settings hided" id="new-xcenter-store-settings">
+        <div class="center">
+            <h3>Settings</h3>
+            <button id="store-settings-close" onclick="this.parentNode.parentNode.classList.add('hided');"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button>
+            <div>
+                <h1>General</h1>
+                <div id="store-settings-stores">
+                    <p>Your Stores (Click to remove or manually add)</p>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-1">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-2">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-3">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-4">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-5">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-6">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-7">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-8">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-9">Empty</button>
+                    <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-10">Empty</button>
+                </div>
             </div>
         </div>
     </div>
     <div class="store hided" id="store-home">
-        <div class="store-last-comeouts">
-            <h1>Last Comeouts</h1><br><br><hr>
-            <div class="store-apps">
-                <img id="store-comeouts-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-                <img id="store-comeouts-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
-            </div>
-        </div>
         <div class="store-best-apps" id="store-apps">
-            <h1>Best Apps</h1><button onclick="store.section(this.parentNode.id)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg></button><br><br><hr>
-            <div class="store-apps">
+            <h1>Apps</h1><br><br><hr>
+            <div class="hided">
                 <img id="store-app-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-app-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-app-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
@@ -149,10 +153,45 @@
                 <img id="store-app-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-app-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
+            <div class="store-section-empty" id="store-apps-empty">
+                <center>
+                    <img onclick="this.src = '/assets/media/apps/storeemptysectionsearching.png';setTimeout(() => {store.prepareSteps.loadStores();this.src = '/assets/media/apps/storeemptysection.png'},2000)" src="/assets/media/apps/storeemptysection.png" alt="">
+                    <h1>Your stores do not contain any apps of this section.</h1><br><br>
+                    <button onclick="store.resetStores();">Reset Stores</button><br><br><br>
+                    <button onclick="store.reload();">Reload</button>
+                </center>
+            </div>
+            <div class="store-apps" id="store-apps-container"></div>
         </div>
-        <div class="store-updates">
-            <h1>Recent Updates</h1><br><br><hr>
-            <div class="store-apps">
+        <div class="store-last-comeouts" id="store-games">
+            <h1>Games</h1><br><br><hr>
+            <div class="hided">
+                <img id="store-comeouts-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-comeouts-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+            </div>
+            <div class="store-section-empty" id="store-games-empty">
+                <center>
+                    <img onclick="this.src = '/assets/media/apps/storeemptysectionsearching.png';setTimeout(() => {store.prepareSteps.loadStores();this.src = '/assets/media/apps/storeemptysection.png'},2000)" src="/assets/media/apps/storeemptysection.png" alt="">
+                    <h1>Your stores do not contain any apps of this section.</h1><br><br>
+                    <button onclick="store.resetStores();">Reset Stores</button><br><br><br>
+                    <button onclick="store.reload();">Reload</button>
+                </center>
+            </div>
+            <div class="store-apps" id="store-games-container"></div>
+        </div>
+        <div class="store-updates" id="store-themes">
+            <h1>Themes</h1><br><br><hr>
+            <div class="hided">
                 <img id="store-update-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-update-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-update-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
@@ -166,10 +205,19 @@
                 <img id="store-update-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-update-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
+            <div class="store-section-empty" id="store-themes-empty">
+                <center>
+                    <img onclick="this.src = '/assets/media/apps/storeemptysectionsearching.png';setTimeout(() => {store.prepareSteps.loadStores();this.src = '/assets/media/apps/storeemptysection.png'},2000)" src="/assets/media/apps/storeemptysection.png" alt="">
+                    <h1>Your stores do not contain any apps of this section.</h1><br><br>
+                    <button onclick="store.resetStores();">Reset Stores</button><br><br><br>
+                    <button onclick="store.reload();">Reload</button>
+                </center>
+            </div>
+            <div class="store-apps" id="store-themes-container"></div>
         </div>
         <div class="store-tools" id="store-tools">
-            <h1>Tools</h1><button onclick="store.section(this.parentNode.id)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg></button><br><br><hr>
-            <div class="store-apps">
+            <h1>Tools</h1><br><br><hr>
+            <div class="hided">
                 <img id="store-tool-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-tool-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-tool-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
@@ -183,54 +231,128 @@
                 <img id="store-tool-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
                 <img id="store-tool-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
             </div>
+            <div class="store-section-empty" id="store-tools-empty">
+                <center>
+                    <img onclick="this.src = '/assets/media/apps/storeemptysectionsearching.png';setTimeout(() => {store.prepareSteps.loadStores();this.src = '/assets/media/apps/storeemptysection.png'},2000)" src="/assets/media/apps/storeemptysection.png" alt="">
+                    <h1>Your stores do not contain any apps of this section.</h1><br><br>
+                    <button onclick="store.resetStores();">Reset Stores</button><br><br><br>
+                    <button onclick="store.reload();">Reload</button>
+                </center>
+            </div>
+            <div class="store-apps" id="store-tools-container"></div>
+        </div>
+        <div class="store-tools" id="store-scripts">
+            <h1>Scripts</h1><br><br><hr>
+            <div class="hided">
+                <img id="store-tool-1" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-2" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-3" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-4" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-5" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-6" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-7" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-8" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-9" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-10" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-11" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+                <img id="store-tool-12" onclick="store.section(this.id)" onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" alt="">
+            </div>
+            <div class="store-section-empty" id="store-scripts-empty">
+                <center>
+                    <img onclick="this.src = '/assets/media/apps/storeemptysectionsearching.png';setTimeout(() => {store.prepareSteps.loadStores();this.src = '/assets/media/apps/storeemptysection.png'},2000)" src="/assets/media/apps/storeemptysection.png" alt="">
+                    <h1>Your stores do not contain any apps of this section.</h1><br><br>
+                    <button onclick="store.resetStores();">Reset Stores</button><br><br><br>
+                    <button onclick="store.reload();">Reload</button>
+                </center>
+            </div>
+            <div class="store-apps" id="store-scripts-container"></div>
         </div>
         <div class="store-reccomended-stores">
             <h1>Best Stores</h1><br><br><hr>
             <div class="store-apps">
-                <img onclick="store.add(this.id)" id="store-reccomended-1" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-2" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-3" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-4" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-5" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-6" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-7" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-8" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-9" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-10" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-11" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
-                <img onclick="store.add(this.id)" id="store-reccomended-12" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-1" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-2" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-3" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-4" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-5" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-6" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-7" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-8" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-9" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-10" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-11" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
+                <img onclick="store.section(this.id)" id="store-reccomended-12" onerror="this.src = '/assets/media/apps/store.png';" src="/assets/media/apps/blank.png" alt="">
             </div>
         </div>
     </div>
-    <div class="store-app-view hided">
-        <div>
-            <img onerror="this.src = '/assets/media/apps/app.png'" src="/assets/media/apps/blank.png" id="store-app-view-icon" alt="">
-            <h1 id="store-app-view-name">App</h1>
-            <button id="store-app-view-launchinstall">Install</button>
-            <div class="store-app-view-desc">
-                <h1>Description</h1>
-                <p id="store-app-view-desc">This is the app's description section. Here you should find everything you need to know about the app. If this does not load, or the text doesnt change, you should report it to the store where you found this app. Instead, if its a default app, you should leave a feedback reporting the problem (and, if you want, also rate the website!). Loading this section should normally take up to 5 seconds or less. If it takes more, check for network issues or if the store is still online. <br> Still loading? In this case we will let you see some curiosities while the section loads.</p>
-                <div class="store-app-view-desc-daycuriosity">
-                    <h3>Did you know..?</h3>
-                    <p id="store-app-view-desc-daycuriosity">Loading curiosity... This will take no time. If it does, its an unlucky day for you. Hope it loads fast!</p>
-                </div>
+    <div class="store-app-view hided" id="app-view">
+        <div class="center">
+            <div>
+                <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('app-install').setAttribute('class', '')"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button>
+                <img src="/assets/media/apps/app.png" id="app-icon" alt="">
+                <h1 id="app-title">App Name</h1>
+                <button id="app-quicklaunch-start" onclick="document.getElementById('app-quicklaunch').setAttribute('class', '');setTimeout(() => {document.getElementById('app-quicklaunch').setAttribute('class', 'new-xcenter-apps-quicklaunch')}, 10);document.getElementById('ql-name').innerHTML = 'Quick Launch: ' + document.getElementById('app-title').innerHTML;document.getElementById('ql-icon').src = document.getElementById('app-icon').src;setTimeout(() => {store.apps.quickLaunch(document.getElementById('app-view').getAttribute('callerid'))}, 2000)">Quick Launch</button>
+                <div id="app-install" onclick="if (this.classList.contains('store-app-installed') == false) {this.classList.add('progressbar');this.classList.add('store-app-installed');store.apps.install(document.getElementById('app-view').getAttribute('callerid'))}"><div onclick="store.apps.launch(document.getElementById('app-view').getAttribute('callerid'))"><p>Launch</p></div><p>Download / Update</p></div>
             </div>
-            <div class="store-app-view-info">
-                <h1>Information</h1>
-                <p>In this section you can find information about the app (such as the size, the support and other things, BUT they have to be declared by the store/app owner)</p>
+            <div>
+                <h1>App Information</h1>
                 <div>
-                    <div id="store-app-view-info-sections">
-                        <p>Size</p>
-                        <p>OS</p>
-                        <p>Auth</p>
+                    <h1>Description</h1>
+                    <div>
+                        <p id="app-description">App Description</p>
                     </div>
-                    <div id="store-app-view-info-answers">
-                        <p>5MB</p>
-                        <p>Windows</p>
-                        <p>None</p>
+                </div>
+                <div>
+                    <h3>Size: <u id="app-size">1MB</u></h3>
+                    <h3>Type: <u id="app-type">App</u></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="store-app-view hided" id="store-view" storeicon="" storetitle="" storedesc="" storetype="" storelink="" storeapps="">
+        <div class="center">
+            <div>
+                <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('store-add').setAttribute('class', '')"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button>
+                <img src="/assets/media/apps/store.png" onerror="this.src = '/assets/media/apps/store.png';" id="store-icon" alt="">
+                <h1 id="store-title">Store</h1>
+                <div id="store-add" onclick="if (this.classList.contains('store-added') == false && this.classList.contains('storeadd') == false) {this.classList.add('storeadd');this.classList.add('store-added');store.add(this.parentNode.parentNode.parentNode.id)}"><div><p>Added</p></div><p>Add</p></div>
+            </div>
+            <div>
+                <h1>Store Information</h1>
+                <div style="height: calc(90% - 15px);">
+                    <h1>Description</h1>
+                    <div>
+                        <p id="store-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem laboriosam ullam quam rerum pariatur quisquam provident! Cupiditate voluptas non laudantium impedit modi ratione. Tempora facilis alias doloremque dolore harum. Sed! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam iusto qui, voluptates tempora itaque laudantium commodi dolores cumque optio eius aspernatur hic recusandae dolor magni quae maiores! Magni, vel eligendi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ipsam unde tempora quam, dicta quos sunt exercitationem illo nesciunt ex corporis, odio, veniam aspernatur laborum velit cumque quia officia omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque nobis dolorum ratione hic similique dolor quia repellat? Minima vero reprehenderit quis, non facere sit dignissimos quaerat nam enim. Delectus, totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius et nesciunt tenetur cupiditate sit eos placeat similique eaque, quo quod modi quidem non dolorem, blanditiis voluptatum vitae laudantium voluptatem saepe. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ipsa quasi rem natus magni dignissimos! Quidem, officia ea ratione itaque praesentium aperiam, a dolor blanditiis, fugit atque aspernatur soluta illo. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit blanditiis totam minus tempora placeat voluptatibus vitae nulla. Voluptatibus laudantium dolorem error nostrum quibusdam explicabo reprehenderit culpa molestiae. Repellendus, aperiam et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid dolores veritatis officia quo culpa ex dolor quia facilis repellat suscipit praesentium cupiditate, accusantium at reprehenderit? Voluptates qui architecto quasi voluptatibus!</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="store-offline" class="store-offline">
+        <div class="center">
+            <center>
+                <img src="/version/3.0/assets/media/offline.png" width="300px" height="300px" alt="">
+                <button style="width: 100% !important;background-color: transparent;border: 1px solid white;" onclick="store.reload()">Reload</button>
+            </center>
+        </div>
+    </div>
+    <div class="new-xcenter-apps-quicklaunch hided" id="app-quicklaunch">
+        <div><div><img src="/assets/media/apps/quicklaunch.png" alt=""></div></div>
+        <img id="ql-icon" src="/assets/media/apps/app.png" alt="">
+        <button onclick="this.parentNode.classList.add('fadeOut');">Cancel</button>
+        <div>
+            <h1 id="ql-name">QuickLaunch: APP</h1>
+            <ul>
+                <li>No Memory Required</li>
+            </ul>
+            <br>
+            <ul>
+                <li>Launch any app fast</li>
+            </ul>
+            <br>
+            <ul>
+                <li>No need to update the apps</li>
+            </ul>
         </div>
     </div>
 </body>
