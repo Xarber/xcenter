@@ -62,7 +62,7 @@ footer div img {height: 40px;margin: 5px;}
 .new-xcenter-apps-launch .inf-loading div {width: 30px;height: 30px;border: 5px solid #45474b;border-top-color: #2a88e6;margin: 10px;animation-duration: 0.5s !important;}
 .new-xcenter-apps-launch .center img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;}
 .new-xcenter-apps-launch .center p {text-align: center;margin: 0;color: #fff !important;}
-.new-xcenter-apps-packages {background-color: rgb(36, 36, 36);position: fixed;display: flex;border-radius: 10px;}
+.new-xcenter-apps-packages {background-color: rgb(36, 36, 36);position: fixed;display: flex;border-radius: 10px;z-index: 100;}
 .new-xcenter-apps-packages button:nth-child(3) {float: right;width: 30px;height: 30px;padding: 0;background-color: transparent;margin: 10px;}
 .new-xcenter-apps-packages button {flex-grow: 1;background-color: transparent;aspect-ratio: 1/1;}
 .new-xcenter-apps-install {background-color: black;}
@@ -77,30 +77,16 @@ footer div img {height: 40px;margin: 5px;}
 .new-xcenter-apps-uninstall .inf-loading div {width: 30px;height: 30px;border: 5px solid #45474b;border-top-color: #2a88e6;margin: 10px;animation-duration: 0.5s !important;}
 .new-xcenter-apps-uninstall .center img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;}
 .new-xcenter-apps-uninstall .center p {text-align: center;margin: 0;color: #fff !important;}
-.store {width: 100%;height: 100%;padding: 10px;}
-.store div {margin: 5px;margin-top: 10px;}
-.store div h1 {margin: 0 !important;float: left;}
-.store div button {width: 50px;height: 50px;float: right;background-color: transparent;padding: 0;}
-.store div hr {width: calc(100% - 4px);margin: 2px !important;height: 5px !important;background-color: gray;}
-.store-apps {display: flex;width: 100%;overflow-x: auto;overflow-y: hidden;}
-.store-apps img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;cursor: pointer;}
-.store-apps img:hover {animation: glow infinite linear 1s;}
-.store-reccomended-stores img {width: 100% !important;aspect-ratio: unset;}
-.store-reccomended-stores img:hover {animation: storeadd infinite linear 1s;}
-.store-app-view {background-color: rgb(27, 27, 27);width: 100%;height: 100%;}
-.store-app-view div {width: calc(100% - 10px);margin: 5px;padding: 10px;background-color: gray;border-radius: 10px;}
-.store-app-view div img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;float: left;}
-.store-app-view div h1 {margin: 0;}
-.store-app-view div button {width: 100%;background-color: greenyellow;}
-.store-app-view-desc {background-color: rgba(0, 0, 0, 0.596) !important;}
-.store-app-view-desc-daycuriosity {background-color: black !important;}
-.store-app-view-info {background-color: rgba(0, 0, 0, 0.596) !important;}
-.store-app-view-info div {background-color: black;min-height: 100px;padding: 0;display: table;}
-.store-app-view-info div div {display: table-cell;font-size: 20px;margin: 0 !important;height: 100%;padding: 10px;}
-.store-app-view-info div div:nth-child(1) {border-radius: 10px 0px 0px 10px !important;width: 10%;}
-.store-app-view-info div div:nth-child(2) {border-radius: 0px 10px 10px 0px !important;}
-.store-app-view-info div div:nth-child(2) p {text-align: right;}
-.store-app-view-info div div p {margin: 0;}
+.new-xcenter-apps-quicklaunch {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 101;background-color: black;width: 100%;height: 100%;animation: quicklaunchfirst 1s linear;}
+.new-xcenter-apps-quicklaunch div:nth-child(1) {width: 50px;height: 50px;position: fixed;top: 0;left: 0;margin: 10px;}
+.new-xcenter-apps-quicklaunch div:nth-child(1) div img {width: 100%;height: 100%;animation: quicklaunchicon 2s infinite linear;padding: 0;}
+.new-xcenter-apps-quicklaunch img:nth-child(2) {width: 100%;height: 100%;max-width: 200px;max-height: 200px;position: fixed;top: calc(50% - 100px);left: 20%;border-radius: 10px;}
+.new-xcenter-apps-quicklaunch button:nth-child(3) {position: fixed;top: calc(50% + 120px);left: 20%;width: 100%;max-width: 200px;background-color: transparent;border: 1px solid white;}
+.new-xcenter-apps-quicklaunch div:nth-child(4) {position: absolute;right: -30%;top: -50%;bottom: 0;padding: 10px;background-color: rgba(255, 255, 255, 0.056);width: 70%;transform: rotate(20deg);height: 200%;animation: quicklaunchsecond 1s linear;}
+.new-xcenter-apps-quicklaunch div:nth-child(4) * {position: absolute;top: 50%;}
+.new-xcenter-apps-quicklaunch div:nth-child(4) h1 {transform: rotate(-20deg);}
+.new-xcenter-apps-quicklaunch div:nth-child(4) ul {transform: rotate(-20deg);width: 50%;position: relative;left: auto;}
+.new-xcenter-apps-quicklaunch div:nth-child(4) ul li {width: 100%;height: 30px;}
 .xcenter-setup div center button {width: 100%;margin: 5px;background-color: transparent;border: 1px solid white;}
 .xcenter-setup div center button:nth-child(3) {background-color: rgba(255, 255, 255, 0.062);}
 .xcenter-about {margin: 10px;background-color: rgba(255, 255, 255, 0.212);padding: 10px;border-radius: 10px;}
@@ -151,6 +137,15 @@ footer div img {height: 40px;margin: 5px;}
 .sitemap {width: 100%;padding: 10px;}
 .sitemap-category {width: 100%;margin: 10px 0px 10px 0px;padding: 10px;background-color: rgba(255, 255, 255, 0.13);border-radius: 10px;overflow-y: auto;}
 .sitemap-category button {width: 100%;text-align: left;height: 30px;padding: 0;padding-left: 10px;margin: 5px 0px 5px 0px;}
+.fadeOut {opacity: 0;animation: fadeOut 0.5s linear;pointer-events: none;}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 @keyframes glow {
     0% {
         border: 5px solid blue;
@@ -162,15 +157,37 @@ footer div img {height: 40px;margin: 5px;}
         border: 5px solid blue;
     }
 }
-@keyframes storeadd {
+@keyframes quicklaunchfirst {
     0% {
-        border: 5px solid green;
-    }
-    50% {
-        border: 5px solid greenyellow;
+        opacity: 0;
     }
     100% {
-        border: 5px solid green;
+        opacity: 1;
+    }
+}
+@keyframes quicklaunchsecond {
+    0% {
+        right: -100%;
+    }
+    50% {
+        right: -100%;
+    }
+    100% {
+        right: -30%;
+    }
+}
+@keyframes quicklaunchicon {
+    0% {
+        padding: 0;
+        left: 0;
+    }
+    50% {
+        padding: 3px;
+        margin: 3px;
+    }
+    100% {
+        padding: 0;
+        left: 0;
     }
 }
 @keyframes navbuttonextend {

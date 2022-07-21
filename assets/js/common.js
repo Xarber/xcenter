@@ -970,6 +970,25 @@ var CommonJS = {
         var mix = m(txt1, txt2);
         return mix.join('');
     },
+    stringBetween: function(string, string1, string2) {
+        if (string == null || string.length < 1) return false;
+        var length = string1.length;
+        var contentbetween = string.substring(string.indexOf(string1) + length, string.lastIndexOf(string2));
+        return contentbetween;
+    },
+    stringSize: function(string) {
+        //NOT STRING LENGTH, STRING SIZE IN BYTES!!!
+        var size = new Blob([string]).size;
+        return size;
+    },
+    isOnline: function() {
+        return window.navigator.onLine;
+    },
+    countChar: function(string, character) {
+        if (string == null || character == null) return;
+        if (string.length < 1 || character.length < 1) return;
+        return (string.split(character)).length - 1;
+    },
     localStorageBackup: {
         make: function(name) {
             name = name ?? "Backup";
@@ -1040,11 +1059,6 @@ var CommonJS = {
             localStoragebkp.appendChild(localStoragebkpUpload);
             document.body.appendChild(localStoragebkp);
         }
-    },
-    countChar: function(string, character) {
-        if (string == null || character == null) return;
-        if (string.length < 1 || character.length < 1) return;
-        return (string.split(character)).length - 1;
     }
 }
 console.log(
