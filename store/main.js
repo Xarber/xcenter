@@ -174,6 +174,21 @@ var store = {
                                             document.getElementById("store-games-container").appendChild(appcontainer);
                                             document.getElementById("store-games-empty").classList.add("hided");
                                         }
+                                        var appsearchcontainer = document.createElement("div");
+                                        var appsearchcontainerimg = document.createElement("img");
+                                        var appsearchcontainertitle = document.createElement("h3");
+                                        var appsearchcontainertype = document.createElement("h4");
+                                        appsearchcontainer.setAttribute('class', 'store-search-app');
+                                        appsearchcontainer.setAttribute('onclick', 'store.section(this.getAttribute("appid"))')
+                                        appsearchcontainer.setAttribute('appid', 'store-app-' + id)
+                                        appsearchcontainerimg.setAttribute('src', icon);
+                                        appsearchcontainerimg.setAttribute('alt', title);
+                                        appsearchcontainertitle.innerHTML = title;
+                                        appsearchcontainertype.innerHTML = type;
+                                        appsearchcontainer.appendChild(appsearchcontainerimg);
+                                        appsearchcontainer.appendChild(appsearchcontainertitle);
+                                        appsearchcontainer.appendChild(appsearchcontainertype);
+                                        document.getElementById("store-search-apps").appendChild(appsearchcontainer);
                                     }
                                 }
                             })
@@ -240,6 +255,21 @@ var store = {
                                                 document.getElementById("store-games-container").appendChild(appcontainer);
                                                 document.getElementById("store-games-empty").classList.add("hided");
                                             }
+                                            var appsearchcontainer = document.createElement("div");
+                                            var appsearchcontainerimg = document.createElement("img");
+                                            var appsearchcontainertitle = document.createElement("h3");
+                                            var appsearchcontainertype = document.createElement("h4");
+                                            appsearchcontainer.setAttribute('class', 'store-search-app');
+                                            appsearchcontainer.setAttribute('onclick', 'store.section(this.getAttribute("appid"))')
+                                            appsearchcontainer.setAttribute('appid', 'store-app-' + id)
+                                            appsearchcontainerimg.setAttribute('src', icon);
+                                            appsearchcontainerimg.setAttribute('alt', title);
+                                            appsearchcontainertitle.innerHTML = title;
+                                            appsearchcontainertype.innerHTML = type;
+                                            appsearchcontainer.appendChild(appsearchcontainerimg);
+                                            appsearchcontainer.appendChild(appsearchcontainertitle);
+                                            appsearchcontainer.appendChild(appsearchcontainertype);
+                                            document.getElementById("store-search-apps").appendChild(appsearchcontainer);
                                         }
                                     })
                                 }
@@ -279,9 +309,10 @@ var store = {
             return false;
         },
         getReccStores: function() {
-            fetch('https://raw.githubusercontent.com/Xarber/temp/best/stores.xsl').then(response => response.text()).then(data => {
-                var lines = (data.split("\n")).length - 1;;
-                lines = +lines + 1;
+            fetch('https://raw.githubusercontent.com/Xarber/xcenter/store/best.xsl').then(response => response.text()).then(data => {
+                var lines = (data.split("\n")).length - 1;
+                var last = data.charAt(data.length - 1);
+                if (last != "\n") lines = +lines + 1;
                 for (let i = lines;i > 0;--i) {
                     setTimeout(() => {
                         var tmplinkelement = data.split("\n")[0];
@@ -337,10 +368,12 @@ var store = {
         store.prepareSteps.loadStores();
         store.prepareSteps.getInstallSlot();
         store.prepareSteps.getReccStores();
+        return true;
     },
     prepareExternal: function() {
         store.prepareSteps.fixLocalStorage();
         store.prepareSteps.getInstallSlot();
+        return true;
     },
     reload: function() {
         if (window.navigator.onLine == false) {
@@ -361,7 +394,7 @@ var store = {
             document.querySelector("#store-nav").classList.remove("hided");
             document.querySelector(".nav-compenser").classList.remove("hided")
         }
-        if (location.pathname == "/apps/" || location.pathname == "/store/") {
+        if (location.pathname.indexOf("/apps/") != -1 || location.pathname.indexOf("/store/") != -1) {
             store.prepare();
         } else {
             store.prepareExternal();
@@ -395,8 +428,6 @@ var store = {
             document.getElementById('app-view').setAttribute("callerid", id)
             if (store.apps.alreadyInstalled(document.getElementById(id).getAttribute("appdata")) != false) document.getElementById("app-install").setAttribute("class", "store-app-installed")
             document.getElementById('app-view').classList.remove('hided');
-        } else if (id.indexOf('store-apps') != -1 || id.indexOf('store-tools') != -1) {
-
         } else if (id.indexOf("store-reccomended-") != -1) {
             var icon = document.getElementById(id).getAttribute("storeicon") ?? document.getElementById(id).src ?? "";
             var title = document.getElementById(id).getAttribute("storetitle") ?? document.getElementById(id).getAttribute("alt") ?? "";
@@ -431,6 +462,11 @@ var store = {
             document.getElementById("store-icon").src = icon;
             document.getElementById("store-description").innerHTML = desc;
             document.getElementById("store-view").classList.remove("hided");
+        } else if (id == "search") {
+            document.querySelector(".store-empty").classList.add("hided");
+            document.querySelector(".store-guide").classList.add("hided");
+            document.querySelector(".store").classList.toggle("hided");
+            document.querySelector(".store-search").classList.toggle("hided");
         }
     },
     alreadyAdded: function(id, eventualdata) {
@@ -557,6 +593,25 @@ var store = {
         
         CommonJS.toast({title: "Stores Resetted", type: "error", duration: "3s"})
         store.reload();
+    },
+    search: function() {
+        document.getElementById('store-search-apps').classList.remove('hided');
+        var query = document.getElementById('store-search-apps-value').value;
+        if (query.length != 0) {
+            document.getElementById('store-search-apps-title').innerHTML = 'Search Results for "' + query + '"';
+        } else document.getElementById('store-search-apps-title').innerHTML = 'Showing all the apps';
+        var filter, ul, li, a, i;
+        filter = query.toUpperCase();
+        ul = document.getElementById("store-search-apps");
+        li = ul.getElementsByClassName("store-search-app");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("h3")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            };
+        };
     },
     apps: {
         alreadyInstalled: function(data) {

@@ -78,6 +78,7 @@
             <button class="navbuttonextend"><img src="/assets/media/apps/store.png">Home</button>
         </div>
         <div id="navbar-users">
+            <button onclick="store.section('search')"><img src="/assets/media/apps/storesearch.png">Search</button>
             <button onclick="store.settings()"><img src="/assets/base/settings.png">Settings</button>
             <button style="display: none;visibility: hidden;" id="navbar-internet"></button>
             <button style="display: none;visibility: hidden;" id="navbar-downloads"><img src="/assets/media/store/download.png" alt=""></button>
@@ -134,6 +135,12 @@
                     <button onclick="if (this.innerHTML != 'Empty') {store.remove(this.id.replaceAll('store-settings-stores-', ''))} else {store.manuallyadd(this.id.replaceAll('store-settings-stores-', ''))}" id="store-settings-stores-10">Empty</button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="store-search hided" id="store-search">
+        <center><form action="#" onsubmit="store.search();return false"><input id="store-search-apps-value" type="text" value="Search" onclick="this.value = '';this.setAttribute('onclick', '')"></form></center>
+        <div id="store-search-apps" class="hided">
+            <h1 id="store-search-apps-title">Search Results for ""</h1>
         </div>
     </div>
     <div class="store hided" id="store-home">
