@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" id="html">
+<head>
+    <!--PAGE INFO-->
+    <title id="pageinfo-title">X-Center</title>
+    <link id="pageinfo-icon" rel="shortcut icon" href="/assets/media/logo.png" type="image/x-icon">
+    <meta id="ogpageinfo-title" property="og:title" content="X-Center 5.0">
+    <meta id="ogpageinfo-name" property="og:site_name" content="X-Center">
+    <meta id="ogpageinfo-icon" property="og:image" content="https://xcenter.netlify.app/assets/media/logo.png">
+    <meta id="ogpageinfo-desc" property="og:description" content="Find every project and app made by Xarber and other users, all of them safe and tested. You can also find some tools or useful sites.">
+    <meta id="ogpageinfo-link" property="og:url" content="https://xcenter.netlify.app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--BOOTSTRAP AND EXTERNAL LINKS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="/assets/js/crypto.js" defer></script>
+    
+    <!--XCENTER HEAD-->
+    <link rel="stylesheet" href="/assets/base/style.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <script src="/assets/js/common.js" defer></script>
+    <script src="/assets/base/script.js" defer></script>
+    <script src="/assets/js/apps.js" defer></script>
+
+    <!--HIDED COMMONJS 5.0 FIXES-->
+    <nav class="new-navbar-light hided" id="navbar">
+        <div class="new-menu hided vertical-scroll" id="new-menu">
+          <button class="new-menu-button" onclick="location.href = '/';"><img src="/assets/media/4.0/home.png" width="100%" alt=""><h3>Home</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/tools';"><img src="/assets/media/4.0/tools.png" width="100%" alt=""><h3>Tools</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/shop';"><img src="/assets/media/4.0/shop.png" width="100%" alt=""><h3>Store</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xarber';"><img src="/assets/media/4.0/xarber.png" width="100%" alt=""><h3>Xarber</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xwip';"><img src="/assets/media/4.0/xwip.png" width="100%" alt=""><h3>XWIP</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/xarbot';"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""><h3>Xarbot</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/os';"><img src="/assets/media/4.0/os.png" width="100%" alt=""><h3>OS</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/settings';"><img src="/assets/media/4.0/settings.png" width="100%" alt=""><h3>Settings</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/help';"><img src="/assets/media/4.0/unknown.png" width="100%" alt=""><h3>FAQ</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/feedback';"><img src="/assets/media/4.0/chat.png" width="100%" alt=""><h3>Feedback</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/about';"><img src="/assets/media/4.0/info.png" width="100%" alt=""><h3>About</h3></button>
+          <button class="new-menu-button" onclick="location.href = '/map';"><img src="/assets/media/4.0/plus.png" width="100%" alt=""><h3>Site Map</h3></button>
+          <button class="new-menu-button" onclick="RecentPage()"><img src="/assets/media/4.0/other.png" width="100%" alt=""><h3>Other</h3></button>
+        </div>
+        <center>
+          <button class="new-navbar-button" onclick="location.href = '/';" id="new-navbar-home"><img src="/assets/media/4.0/home.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/tools';" id="new-navbar-tools"><img src="/assets/media/4.0/tools.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/xarbot';" id="new-navbar-xarbot"><img src="/assets/media/4.0/xarbot.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/os';" id="new-navbar-OS"><img src="/assets/media/4.0/unknown.png" id="nav-OS" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="location.href = '/settings';" id="new-navbar-settings"><img src="/assets/media/4.0/settings.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="NewMenu()" id="new-navbar-menu"><img src="/assets/media/4.0/menu.png" width="100%" alt=""></button>
+          <button class="new-navbar-button" onclick="RecentPage()" id="new-navbar-other"><img src="/assets/media/4.0/other.png" width="100%" alt=""></button>
+        </center>
+    </nav>
+    <div class="new-footer hided">
+        <img src="/assets/media/logo.png" width="80px" height="80px" alt="">
+        <button class="new-gotop" onclick="window.location = '#'"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></button>
+        <h1>X-Center</h1>
+        <copyright>@ Copyright 2022 - Xarber</copyright>
+    </div>
+</head>
+<body class="page">
+    <div class="nav-compenser"><button></button></div>
+    <nav>
+        <div id="navbar-pages">
+            <button onclick="location.href = this.id;" id="/"><img src="/assets/base/home.png">Home</button>
+            <button onclick="location.href = this.id;" id="/tools/"><img src="/assets/base/tools.png">Tools</button>
+            <button onclick="location.href = this.id;" id="/pages/"><img src="/assets/base/pages.png">Pages</button>
+            <button onclick="location.href = this.id;" id="/apps/"><img src="/assets/base/apps.png">Apps</button>
+            <button onclick="location.href = this.id;" id="/settings/"><img src="/assets/base/settings.png">Settings</button>
+            <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')" id="navbar-other"><img src="/assets/base/other.png">Other</button>
+        </div>
+        <div id="navbar-users">
+            <button id="navbar-notifications">Notifications</button>
+            <button id="navbar-internet">Internet</button>
+            <button id="navbar-user">User</button>
+        </div>
+        <button onclick="document.getElementById('navbar-menu').classList.toggle('hided');" id="navbar-menubtn" class="navbar-menubtn hided"><img src="/assets/base/menu.png">Menu</button>
+        <div class="hided" id="navbar-menu">
+            <button onclick="location.href = this.id;"><img src="/assets/base/home.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/tools.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/pages.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/apps.png"></button>
+            <button onclick="location.href = this.id;"><img src="/assets/base/settings.png"></button>
+            <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
+        </div>
+    </nav>
+    <div class="xcenter-os">
+        <div id="os-pc">
+            <div onclick="document.getElementById('os-apps-' + this.id).classList.toggle('hided');" id="Windows"><h1>Windows</h1></div>
+            <div id="os-apps-Windows" class="os-apps hided">
+                <img onclick="window.open('https://parsec.app')" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1MSIgaGVpZ2h0PSIxOTQyIiB2aWV3Qm94PSIwIDAgMTI1MSAxOTQyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGxSdWxlPSJub256ZXJvIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0yMzUuOTEgMTMzMy41NmM1My41NCAzMi44NiA3ODYuMiA0ODQuMjYgNzg2LjIgNDg0LjI2czc2LjYyIDYwIDE1My44MyAyMi43OWM3Ny4yMS0zNy4yMSA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTRjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42Mi03NDMuNDgtNDU4LjYycy02Mi4yOS00OS4yNy0xMzYuNzMtMTcuMDlDMTYxLjQ3IDQ0LjAxIDE1OSAxMTUuNTIgMTU5IDEzNC4zMnYxMDc4LjE0Yy41MiAxNi4yNSAyLjQzIDM3LjgxIDguNTUgNDkuODkgMTAuNjggMjEuMDkgMTQuODIgMzguMzUgNjguMzYgNzEuMjF6TTQ4NyA0ODcuMzdsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNDg3LjM3eiIgZmlsbD0iIzI2QUJGRiIvPgogICAgPHBhdGggZD0iTTAgMTI5OS4zN2MuNTIgMTYuMjUgMi40MyAzOS4yIDguNTUgNTEuMjcgMTAuNjggMjEuMSAxNC44MiAzOC4zNiA2OC4zNiA3MS4yMnM3ODYuMiA0ODQuMjUgNzg2LjIgNDg0LjI1IDc2LjYyIDYwLjA2IDE1My44MyAyMi43OWM3Ny4yMS0zNy4yNyA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTVjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42LTc0My40OC00NTguNlMxNTEuMzUgNjggNzYuOTEgMTAwLjEyIDAgMjAzLjgyIDAgMjIyLjYxdjEwNzYuNzZ6bTMyNy03MjMuNzFsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNTc1LjY2eiIgZmlsbD0iI0Y1MDA0OSIvPgogIDwvZz4KPC9zdmc+Cg==" alt="">
+                <img onclick="window.open('https://codesector.com/teracopy')" src="https://1.bp.blogspot.com/-Lu-J0GQDC4E/X6AuK8qJKpI/AAAAAAAAXSc/ZqwKNtiBLg894r8sBu1iHbQbKNCI_NGpwCLcBGAsYHQ/s680/Softwareanddriver.com%2B-%2BTeraCopy%2B2021%2BFree%2BDownload.png" alt="">
+                <img onclick="window.open('https://code.visualstudio.com/')" src="https://yt3.ggpht.com/_q52i8bUAEvcb7JR4e-eNTv23y2A_wg5sCz0NC0GrGtcw1CRMWJSOPVHUDh_bngD0q4gMvVeoA=s900-c-k-c0x00ffffff-no-rj" alt="">
+                <img onclick="window.open('https://imgburn.com/')" src="https://static.techspot.com/images2/downloads/topdownload/2014/05/ImgBurn_logo.png" alt="">
+                <img onclick="window.open('https://rufus.ie/')" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Rufus-logo.png" alt="">
+                <img onclick="window.open('https://ccleaner.com/recuva')" src="https://m.media-amazon.com/images/I/51vAzs+BboS._SL1280_.jpg" alt="">
+            </div>
+            <div onclick="document.getElementById('os-apps-' + this.id).classList.toggle('hided');" id="MacOS"><h1>MacOS</h1></div>
+            <div id="os-apps-MacOS" class="os-apps hided">
+                <img onclick="window.open('https://gimp.org')" src="https://www.pcprofessionale.it/wp-content/uploads/2019/04/GIMP.png" alt="">
+                <img onclick="window.open('https://qbittorrent.org/')" src="https://www.aranzulla.it/wp-content/contenuti/2021/10/s7Y6171SZdygc0-1200x628.jpg" alt="">
+                <img onclick="window.open('https://drive.google.com/')" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/1200px-Google_Drive_icon_%282020%29.svg.png" alt="">
+                <img onclick="window.open('https://google.it/intl/it/chrome/')" src="https://play-lh.googleusercontent.com/KwUBNPbMTk9jDXYS2AeX3illtVRTkrKVh5xR1Mg4WHd0CG2tV4mrh1z3kXi5z_warlk" alt="">
+                <img onclick="window.open('https://magnet.crowdcafe.com/')" src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/04/9a/1a/049a1aec-9b8f-4810-f8c6-0d0446e87cf1/AppIcon-0-0-85-220-0-0-0-0-4-0-0-0-2x-sRGB-0-0-0-0-0.png/1200x630bb.png" alt="">
+                <img onclick="window.open('https://gog.com/galaxy')" src="https://tecnolocura.es/wp-content/uploads/2020/10/GOG-Galaxy-2.0-para-todos-tus-juegos-en-un-solo-lugar-tecnolocura-2.jpg" alt="">
+            </div>
+            <div onclick="document.getElementById('os-apps-' + this.id).classList.toggle('hided');" id="Linux"><h1>Linux</h1></div>
+            <div id="os-apps-Linux" class="os-apps hided">
+                <img onclick="window.open('https://gimp.org/')" src="https://www.pcprofessionale.it/wp-content/uploads/2019/04/GIMP.png" alt="">
+                <img onclick="window.open('https://parsec.app')" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1MSIgaGVpZ2h0PSIxOTQyIiB2aWV3Qm94PSIwIDAgMTI1MSAxOTQyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGxSdWxlPSJub256ZXJvIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0yMzUuOTEgMTMzMy41NmM1My41NCAzMi44NiA3ODYuMiA0ODQuMjYgNzg2LjIgNDg0LjI2czc2LjYyIDYwIDE1My44MyAyMi43OWM3Ny4yMS0zNy4yMSA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTRjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42Mi03NDMuNDgtNDU4LjYycy02Mi4yOS00OS4yNy0xMzYuNzMtMTcuMDlDMTYxLjQ3IDQ0LjAxIDE1OSAxMTUuNTIgMTU5IDEzNC4zMnYxMDc4LjE0Yy41MiAxNi4yNSAyLjQzIDM3LjgxIDguNTUgNDkuODkgMTAuNjggMjEuMDkgMTQuODIgMzguMzUgNjguMzYgNzEuMjF6TTQ4NyA0ODcuMzdsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNDg3LjM3eiIgZmlsbD0iIzI2QUJGRiIvPgogICAgPHBhdGggZD0iTTAgMTI5OS4zN2MuNTIgMTYuMjUgMi40MyAzOS4yIDguNTUgNTEuMjcgMTAuNjggMjEuMSAxNC44MiAzOC4zNiA2OC4zNiA3MS4yMnM3ODYuMiA0ODQuMjUgNzg2LjIgNDg0LjI1IDc2LjYyIDYwLjA2IDE1My44MyAyMi43OWM3Ny4yMS0zNy4yNyA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTVjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42LTc0My40OC00NTguNlMxNTEuMzUgNjggNzYuOTEgMTAwLjEyIDAgMjAzLjgyIDAgMjIyLjYxdjEwNzYuNzZ6bTMyNy03MjMuNzFsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNTc1LjY2eiIgZmlsbD0iI0Y1MDA0OSIvPgogIDwvZz4KPC9zdmc+Cg==" alt="">
+                <img onclick="window.open('https://audacityteam.org/')" src="https://it.wizcase.com/wp-content/uploads/2020/05/Audacity-logo.jpg" alt="">
+                <img onclick="window.open('https://openshot.org/')" src="https://cdn.neow.in/news/images/uploaded/2016/08/1472576721_openshot_story.jpg" alt="">
+                <img onclick="window.open('https://libreoffice.org/')" src="https://www.geekoo.it/wp-content/uploads/2016/06/Libre-Office.png" alt="">
+                <img onclick="window.open('https://gparted.org/')" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Faenza-gparted.svg/1200px-Faenza-gparted.svg.png" alt="">
+            </div>
+        </div>
+        <div id="os-phone">
+            <div onclick="document.getElementById('os-apps-' + this.id).classList.toggle('hided');" id="Android"><h1>Android</h1></div>
+            <div id="os-apps-Android" class="os-apps hided">
+                <img onclick="window.open('https://terabox.com/')" src="https://play-lh.googleusercontent.com/Tv3h9IHUliBayyGRxcmzOICwPGfbB8M-rnHDpzMlGM5YPS_-LytZO6GccsVPszse2Zqr" alt="">
+                <img onclick="window.open('https://surveys.google.com/google-opinion-rewards/ ')" src="https://play-lh.googleusercontent.com/yeB9XKBeHfHChSDwjsFztdBYY-jcdgUpVQwtahFE6AeoKhKHowZMm9wJ4-W8VvML2w" alt="">
+                <img onclick="window.open('https://weward.fr/')" src="https://media.cdnandroid.com/item_images/1051630/imagen-weward-gagnez-en-marchant-0thumb.jpg" alt="">
+                <img onclick="window.open('https://macrodroid.com/')" src="https://play-lh.googleusercontent.com/PioDUVeFbkSbenRZxrKoUErvC9hEQksRRQhtp39vytQtGXgjpIkZqu1ScJy-MoRUAAE=s180-rw" alt="">
+                <img onclick="window.open('https://play.google.com/store/apps/details?id=com.open.hotspot.vpn.free')" src="https://lh3.googleusercontent.com/xqXWCwIrCqiAH0eGPa5EA2Xx2Onr24wE_jQPBKcc1NCJI9SZmg9eBIFyQqLo_UWxeXw" alt="">
+                <img onclick="window.open('https://parsec.app')" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI1MSIgaGVpZ2h0PSIxOTQyIiB2aWV3Qm94PSIwIDAgMTI1MSAxOTQyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGxSdWxlPSJub256ZXJvIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0yMzUuOTEgMTMzMy41NmM1My41NCAzMi44NiA3ODYuMiA0ODQuMjYgNzg2LjIgNDg0LjI2czc2LjYyIDYwIDE1My44MyAyMi43OWM3Ny4yMS0zNy4yMSA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTRjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42Mi03NDMuNDgtNDU4LjYycy02Mi4yOS00OS4yNy0xMzYuNzMtMTcuMDlDMTYxLjQ3IDQ0LjAxIDE1OSAxMTUuNTIgMTU5IDEzNC4zMnYxMDc4LjE0Yy41MiAxNi4yNSAyLjQzIDM3LjgxIDguNTUgNDkuODkgMTAuNjggMjEuMDkgMTQuODIgMzguMzUgNjguMzYgNzEuMjF6TTQ4NyA0ODcuMzdsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNDg3LjM3eiIgZmlsbD0iIzI2QUJGRiIvPgogICAgPHBhdGggZD0iTTAgMTI5OS4zN2MuNTIgMTYuMjUgMi40MyAzOS4yIDguNTUgNTEuMjcgMTAuNjggMjEuMSAxNC44MiAzOC4zNiA2OC4zNiA3MS4yMnM3ODYuMiA0ODQuMjUgNzg2LjIgNDg0LjI1IDc2LjYyIDYwLjA2IDE1My44MyAyMi43OWM3Ny4yMS0zNy4yNyA3NC4wNi0xMTIuNjEgNzQuMDYtMTIyLjQ5di05OTdzMi44NS01OS44Mi0yMi43OS0xMTMuOTVjLTI4LjkxLTYxLTY4LjI3LTkzLjM2LTExMS4wOS0xMTkuNjQtNDIuODItMjYuMjgtNzQzLjQ4LTQ1OC42LTc0My40OC00NTguNlMxNTEuMzUgNjggNzYuOTEgMTAwLjEyIDAgMjAzLjgyIDAgMjIyLjYxdjEwNzYuNzZ6bTMyNy03MjMuNzFsNDM2IDI2Ny44N3Y2MDdsLTQzNi0yNjVWNTc1LjY2eiIgZmlsbD0iI0Y1MDA0OSIvPgogIDwvZz4KPC9zdmc+Cg==" alt="">
+            </div>
+            <div onclick="document.getElementById('os-apps-' + this.id).classList.toggle('hided');" id="iOS"><h1>iOS</h1></div>
+            <div id="os-apps-iOS" class="os-apps hided">
+                <img onclick="window.open('https://discord.com')" src="https://play-lh.googleusercontent.com/xQ-meXSBylIU8VKA7yUQXDwRu99JX8ic7mAsM4sBidjRgtMyhBDmYD4CpATqrdc1SA" alt="">
+                <img onclick="window.open('https://microsoft.com/edge')" src="https://play-lh.googleusercontent.com/VYvJqGnrQiKkbbyLyMeiL-GM3go4tBIA64uVEGQazLXD4p_M3F45kHyt42o_6d5VXA" alt="">
+                <img onclick="window.open('https://groupme.com/')" src="https://store-images.s-microsoft.com/image/apps.22864.13510798886416455.269db5cf-0e75-4d82-8a6c-5ddabb31c6ef.87c84f5b-d52a-462f-8f13-2a572fb562f0?mode=scale&q=90&h=200&w=200&background=%2300aff0" alt="">
+                <img onclick="window.open('https://capcut.com')" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/47/1b/e6/471be650-72d1-6b36-ee35-8dce3e0042ea/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png" alt="">
+                <img onclick="window.open('https://xbox.com/apps/xbox-app-for-mobile')" src="https://play-lh.googleusercontent.com/ipvfgPBRcDz7Btg9YtlWYHRo05BdTt6WAB-gm2B6b-57PGRX6oAWv940Sp3JHVuMJA" alt="">
+                <img onclick="window.open('https://lifesum.com/')" src="https://is2-ssl.mzstatic.com/image/thumb/Purple126/v4/db/0e/de/db0edee4-6f6b-ebdb-8d69-23f0b98bed80/AppIcon-green-0-1x_U007emarketing-0-7-0-85-220.png/1200x630wa.png" alt="">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
+        </div>
+        <div>
+            <img onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" src="/assets/media/logo.png" alt="">
+        </div>
+    </footer>
+    <script src="/assets/js/common.js"></script>
+    <script>
+        var os = CommonJS.getOS();
+        if (document.getElementById(os) != null && document.getElementById('os-apps-' + os)) {document.getElementById(os).classList.add("detected");document.getElementById('os-apps-' + os).classList.add("detected")}
+    </script>
+</body>
+</html>
