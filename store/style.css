@@ -74,7 +74,7 @@ nav {z-index: 100;}
 .store-settings div.center div {width: 100%;height: calc(100% - 40px);background-color: rgba(128, 128, 128, 0.500);border: 1px solid white;border-radius: 10px;padding: 10px;overflow-x: hidden;overflow-y: auto;}
 .store-settings div.center div div#store-settings-stores {overflow-x: hidden;overflow-y: auto;}
 .store-settings div.center div div#store-settings-stores button {width: 100%;height: 30px;padding: 0;border: 1px solid white;margin-bottom: 5px;text-align: left;padding: 0px 10px 0px 10px;}
-.store-settings-stores-manuallyadd {width: 100%;height: 100%;max-width: 800px;max-height: 300px;background-color: blue;position: fixed;z-index: 201;padding: 10px;border-radius: 10px;}
+.store-settings-stores-manuallyadd {width: 80%;height: 20%;min-height: 200px;background-color: blue;position: fixed;top: 50%;left: 50%;z-index: 201;padding: 10px;border-radius: 10px;}
 .store-settings-stores-manuallyadd input {width: 100%;height: 50px;border-radius: 10px;border: 1px solid white;background-color: rgba(128, 128, 128, 0.500);font-size: 25px;color: white;padding: 10px;}
 .store-settings-stores-manuallyadd button {width: 50%;position: absolute;bottom: 0;background-color: rgba(128, 128, 128, 0.500);}
 .store-settings-stores-manuallyadd button:nth-child(3) {border-radius: 0px 0px 0px 10px !important;left: 0;}
