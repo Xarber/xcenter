@@ -7,6 +7,7 @@ var nextsetupstep = 1;
 var lastsetupstep = 5;
 var theme, changelog, notifications, runbatchscripts, coldbootversion; //FINAL SETTINGS VARS;
 var autotheme, darktheme, tmpchangelog, majorchangelog, tmpnotifications, silentnotifications, currenttheme; //TMP SETTINGS VARS;
+if (document.getElementById("html") == null) document.documentElement.setAttribute("id", "html");
 var xcenter = {
     app: {
         download: function() {
