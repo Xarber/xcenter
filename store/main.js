@@ -532,7 +532,7 @@ var store = {
         store.reload();
     },
     manuallyadd: function(slot) {
-        if (document.getElementById("store-settings-stores-manuallyadd") != null) document.getElementById("store-settings-stores-manuallyadd").remove();
+        if (document.querySelector(".store-settings-stores-manuallyadd") != null) document.querySelector(".store-settings-stores-manuallyadd").remove();
         var container = document.createElement("div");
         container.setAttribute("class", "store-settings-stores-manuallyadd center");
         container.innerHTML = "<p>Add A Store: Insert the store.xsi file link</p><input id=\"store-settings-stores-manuallyadd-link\" type=\"text\"><button onclick=\"this.parentNode.remove()\">Cancel</button>";
