@@ -743,7 +743,10 @@ var store = {
                     }
                 }
                 if (type == "App" || type == "Game" || type == "Tool") {
-                    document.write(content + '<script src="/assets/js/apps.js"></script>');
+                    setTimeout(() => {
+                        document.close();
+                    }, 200)
+                    document.write(content + '<div class="new-xcenter-home-menu app-open"><div><h1>Home Menu</h1><button onclick="if (this.parentNode.parentNode.classList.contains(\'dark\')) {this.parentNode.parentNode.classList.remove(\'dark\')} else {this.parentNode.parentNode.classList.add(\'dark\')}"><img src="/assets/media/apps/themeswitch.png" alt=""></button></div><div class="vertical-center"><img src="' + icon + '" id="new-xcenter-home-menu-appicon" alt="' + title + '"><h3 id="new-xcenter-home-menu-apptitle">' + title + '</h3><br><button onclick="location.reload();">Exit</button><button onclick="app.homeMenu();">Resume</button></div></div><script src="/assets/js/apps.js"></script><link rel="stylesheet" href="/assets/base/style.css">');
                 } else if (type == "Script") {
                     /*scriptlaunch = document.createElement('script');
                     scriptlaunch.innerHTML = content.replaceAll("<style></style>", "").replaceAll('<script type="text/javascript">', '').replaceAll("</script>", "");
@@ -850,7 +853,10 @@ var store = {
                 }
             }
             if (type == "App" || type == "Game" || type == "Tool") {
-                document.write(content + '<script src="/assets/js/apps.js"></script>');
+                setTimeout(() => {
+                    document.close();
+                }, 200)
+                document.write(content + '<div class="new-xcenter-home-menu app-open"><div><h1>Home Menu</h1><button onclick="if (this.parentNode.parentNode.classList.contains(\'dark\')) {this.parentNode.parentNode.classList.remove(\'dark\')} else {this.parentNode.parentNode.classList.add(\'dark\')}"><img src="/assets/media/apps/themeswitch.png" alt=""></button></div><div class="vertical-center"><img src="' + icon + '" id="new-xcenter-home-menu-appicon" alt="' + title + '"><h3 id="new-xcenter-home-menu-apptitle">' + title + '</h3><br><button onclick="location.reload();">Exit</button><button onclick="app.homeMenu();">Resume</button></div></div><script src="/assets/js/apps.js"></script><link rel="stylesheet" href="/assets/base/style.css">');
             } else if (type == "Script") {
                 /*scriptlaunch = document.createElement('script');
                 scriptlaunch.innerHTML = content.replaceAll("<style></style>", "").replaceAll('<script type="text/javascript">', '').replaceAll("</script>", "");

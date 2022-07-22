@@ -128,7 +128,16 @@
         <img src="/assets/media/apps/blank.png" onerror="this.src = '/assets/media/apps/appIconError.png'" onclick="app.launch(this.id)" id="new-xcenter-app-31">
         <img src="/assets/media/apps/blank.png" onerror="this.src = '/assets/media/apps/appIconError.png'" onclick="app.launch(this.id)" id="new-xcenter-app-32">
     </div>
-
+    <div class="new-xcenter-home-menu">
+        <div><h1>Home Menu</h1><button onclick="if (this.parentNode.parentNode.classList.contains('dark')) {this.parentNode.parentNode.classList.remove('dark')} else {this.parentNode.parentNode.classList.add('dark')}"><img src="/assets/media/apps/themeswitch.png" alt=""></button></div>
+        <div class="vertical-center">
+            <img src="/assets/media/apps/app.png" id="new-xcenter-home-menu-appicon" alt="">
+            <h3 id="new-xcenter-home-menu-apptitle">No Apps Running</h3>
+            <br>
+            <button onclick="location.reload();">Exit</button>
+            <button onclick="app.homeMenu();">Resume</button>
+        </div>
+    </div>
     <div class="fullscreen new-xcenter-apps-launch hided" id="new-xcenter-app-launch">
         <div class="inf-loading"><div></div></div>
         <div class="center">
