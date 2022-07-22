@@ -433,3 +433,10 @@ function themeapply() {
     }
 }
 themeapply();
+if (document.getElementById("navbar-notifications") != null) {
+    document.getElementById("navbar-notifications").onclick = function() {
+        document.getElementById('new-notification-hided').classList.add('hided');
+        document.getElementById('new-notification').classList.add('hided');
+        document.getElementById('new-notifications-bkg').classList.remove('hided');
+    }
+}

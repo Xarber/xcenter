@@ -92,14 +92,16 @@ footer div img {height: 40px;margin: 5px;}
 .new-xcenter-home-menu div:nth-child(1) h1 {margin: 0;color: white;}
 .new-xcenter-home-menu div:nth-child(1) button {background-color: transparent;position: absolute;top: 15px;right: 15px;width: 30px;height: 30px;padding: 0;}
 .new-xcenter-home-menu div:nth-child(1) button img {width: 100%;height: 100%;}
-.new-xcenter-home-menu div.vertical-center {width: 100%;margin-left: 40%;margin-top: 5%;}
+.new-xcenter-home-menu div.vertical-center {width: 100%;margin-top: 5%;margin: auto;}
 .new-xcenter-home-menu div.vertical-center img {width: 150px;height: 150px;background-color: white;border-radius: 10px;float: left;margin-left: 20%;margin-right: 10px;visibility: hidden;display: none;}
-.new-xcenter-home-menu div.vertical-center h3 {color: black !important;font-size: 50px !important;margin: 0 !important;}
-.new-xcenter-home-menu div.vertical-center button:nth-child(4) {background-color: rgb(37, 37, 37);color: white;visibility: hidden;display: none;}
-.new-xcenter-home-menu div.vertical-center button {width: 10%;height: 20% !important;background-color: white;color: black;font-size: 30px;float: left;margin: 20px;border-radius: 30px !important;margin-top: 0;min-width: 200px;}
-.new-xcenter-home-menu.app-open div.vertical-center {margin-left: 0;}
+.new-xcenter-home-menu div.vertical-center h3 {color: black !important;font-size: 50px !important;margin: 0 !important;text-align: center;}
+.new-xcenter-home-menu div.vertical-center button:nth-child(4) {width: 10%;margin-left: unset !important;background-color: rgb(37, 37, 37);color: white;visibility: hidden;display: none;}
+.new-xcenter-home-menu div.vertical-center button {width: 80% !important;height: 20% !important;margin-left: 10% !important;background-color: white;color: black;font-size: 30px;float: left;margin: 20px;border-radius: 30px !important;margin-top: 0;min-width: 200px;}
+.new-xcenter-home-menu.app-open div.vertical-center {margin-left: 0;margin: unset !important;}
+.new-xcenter-home-menu.app-open div.vertical-center h3 {text-align: left;}
 .new-xcenter-home-menu.app-open div.vertical-center img {visibility: visible;display: block;}
 .new-xcenter-home-menu.app-open div.vertical-center button:nth-child(4) {visibility: visible;display: block;}
+.new-xcenter-home-menu.app-open div.vertical-center button {width: 10% !important;margin-left: unset !important;}
 .new-xcenter-home-menu.open {animation: homemenu 0.5s linear;top: 0;}
 .new-xcenter-home-menu.closed {animation: homemenu reverse 0.5s linear !important;top: -200%;}
 .new-xcenter-home-menu.dark {background-color: rgba(0, 0, 0, 0.747) !important;}
