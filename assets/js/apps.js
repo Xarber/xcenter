@@ -10,6 +10,7 @@ var datadefault = {
 var title, icon, content, id, type, launch, installData, installSlot, lastInstallSlot, AppID, slots, appinstall, appuninstall, xcenterappinstall, xcenterappuninstall, alreadyinstallcheck, tmpInstallSlot, tmpDataID, desc, author, batch; //INSTALL / UNINSTALL VARS
 var data, applaunch, xcenterapplaunch, launchname, batchrows, batchruncommand, scriptlaunch, scriptidentifier, themelaunch, themeidentifier, themescripts; //LAUNCH VARS
 var limitbkg, limits, limith1, limitp, limitok; //APP STORAGE LIMIT VARS
+var homekey = "a";
 //ENABLE APP FUNCTIONS
 var app = {
     prepareSteps: {
@@ -802,7 +803,10 @@ var app = {
                 }
             }
             if (type == "App" || type == "Game" || type == "Tool") {
-                document.write(content + '<script src="/assets/js/apps.js"></script>');
+                setTimeout(() => {
+                    document.close();
+                }, 200)
+                document.write(content + '<div class="new-xcenter-home-menu app-open"><div><h1>Home Menu</h1><button onclick="if (this.parentNode.parentNode.classList.contains(\'dark\')) {this.parentNode.parentNode.classList.remove(\'dark\')} else {this.parentNode.parentNode.classList.add(\'dark\')}"><img src="/assets/media/apps/themeswitch.png" alt=""></button></div><div class="vertical-center"><img src="' + icon + '" id="new-xcenter-home-menu-appicon" alt="' + title + '"><h3 id="new-xcenter-home-menu-apptitle">' + title + '</h3><br><button onclick="location.reload();">Exit</button><button onclick="app.homeMenu();">Resume</button></div></div><script src="/assets/js/apps.js"></script><link rel="stylesheet" href="/assets/base/style.css">');
             } else if (type == "Script") {
                 /*scriptlaunch = document.createElement('script');
                 scriptlaunch.innerHTML = content.replaceAll("<style></style>", "").replaceAll('<script type="text/javascript">', '').replaceAll("</script>", "");
@@ -933,6 +937,23 @@ var app = {
         });
         */
     },
+    homeMenu: function() {
+        if (document.querySelector('.new-xcenter-home-menu').classList.contains('open')) {
+            document.querySelector('.new-xcenter-home-menu').style.animation = 'none';
+            setTimeout(() => {
+                document.querySelector('.new-xcenter-home-menu').classList.add('closed');
+                document.querySelector('.new-xcenter-home-menu').style.animation = '';
+                document.querySelector('.new-xcenter-home-menu').classList.remove('open');
+            })
+        } else {
+            document.querySelector('.new-xcenter-home-menu').style.animation = 'none';
+            setTimeout(() => {
+                document.querySelector('.new-xcenter-home-menu').style.animation = '';
+                document.querySelector('.new-xcenter-home-menu').classList.add('open');
+                document.querySelector('.new-xcenter-home-menu').classList.remove('closed');
+            })
+        }
+    },
     pack: {
         build: function(slot, eventualdata) {
             if (eventualdata != null) {
@@ -1010,6 +1031,19 @@ if (window.location.pathname.indexOf('/apps/') != -1 && document.querySelector("
             title: "App Storage Limited",
             duration: "2s"
         })
+    }
+}
+if (document.querySelector('.new-xcenter-home-menu') == null) {
+
+}
+if (document.querySelector('.new-xcenter-home-menu') != null) {
+    if (document.getElementById('html') != null && document.getElementById('html').classList.contains('dark')) document.querySelector('.new-xcenter-home-menu').classList.add('dark');
+    window.onkeydown = function(Key) {
+        if (Key.keyCode == homekey.toUpperCase().charCodeAt(0)) {
+            if (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('open') == false) {
+                app.homeMenu();
+            }
+        }
     }
 }
 console.log('%cAPP SCRIPT ENDED', 'padding: 10px;background-color: black;border-radius: 10px;')
