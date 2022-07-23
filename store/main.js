@@ -440,7 +440,6 @@ var store = {
             document.getElementById("app-size").innerHTML = size;
             document.getElementById('app-view').setAttribute("callerid", id)
             if (store.apps.alreadyInstalled(document.getElementById(id).getAttribute("appdata")) != false) document.getElementById("app-install").setAttribute("class", "store-app-installed");
-            alert(document.getElementById('app-view').getAttribute('appql'))
             if (document.getElementById('app-view').getAttribute('appql') == "true" || document.getElementById('app-view').getAttribute('appql') == true) document.getElementById('app-view').classList.add('quicklaunch');
             document.getElementById('app-view').classList.remove('hided');
         } else if (id.indexOf("store-reccomended-") != -1) {
