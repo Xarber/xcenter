@@ -4,9 +4,9 @@ var winHeight = window.innerHeight;
 var winWidth = window.innerWidth;
 var setupstep = 0;
 var nextsetupstep = 1;
-var lastsetupstep = 5;
+var lastsetupstep = 6;
 var theme, changelog, notifications, runbatchscripts, coldbootversion; //FINAL SETTINGS VARS;
-var autotheme, darktheme, tmpchangelog, majorchangelog, tmpnotifications, silentnotifications, currenttheme; //TMP SETTINGS VARS;
+var autotheme, darktheme, tmpchangelog, majorchangelog, tmpnotifications, silentnotifications, currenttheme, homebutton; //TMP SETTINGS VARS;
 var userData;
 if (document.getElementById("html") == null) document.documentElement.setAttribute("id", "html");
 var xcenter = {
@@ -89,11 +89,13 @@ var xcenter = {
             var tmpnotify = localStorage.getItem('settings-shownotifications');
             var tmpcoldboot = localStorage.getItem('settings-cbversion');
             var tmpbatch = localStorage.getItem('settings-scripts');
+            var tmphomebtn = localStorage.getItem('settings-homebtn');
             localStorage.removeItem('settings-theme');
             localStorage.removeItem('settings-changelog');
             localStorage.removeItem('settings-shownotifications');
             localStorage.removeItem('settings-cbversion');
             localStorage.removeItem('settings-scripts');
+            localStorage.removeItem('settings-homebtn');
             if (tmptheme == "Auto") {
                 localStorage.setItem('settings-autotheme', 'true');
                 localStorage.setItem('settings-darktheme', 'true');
@@ -186,6 +188,11 @@ var xcenter = {
             } else {
                 xcenter.settings.get();
             }
+            if (tmphomebtn == "Yes") {
+                localStorage.setItem('settings-homebutton', 'true');
+            } else if (tmphomebtn == "No") {
+                localStorage.setItem('settings-homebutton', 'false');
+            }
             console.log('Converted Setup Options to Final Settings')
         }
     },
@@ -232,6 +239,7 @@ var xcenter = {
             if (document.getElementById('settings-notifications').checked == false) document.getElementById('settings-notifications').click();
             if (document.getElementById('settings-silentnotifications').checked == true) document.getElementById('settings-silentnotifications').click();
             if (document.getElementById('settings-batchscripts').checked == false) document.getElementById('settings-batchscripts').click();
+            if (document.getElementById('settings-homebutton').checked == true) document.getElementById('settings-homebutton').click();
             document.getElementById('xcenter-settings-coldbootversion-default').click();
         },
         get: function() {
@@ -249,6 +257,7 @@ var xcenter = {
             silentnotifications = localStorage.getItem('settings-silentnotifications') ?? false;
             runbatchscripts = localStorage.getItem('settings-batchscripts') ?? true;
             coldbootversion = localStorage.getItem('settings-coldbootversion') ?? "5.0";
+            homebutton = localStorage.getItem('settings-homebutton') ?? false;
             if (darktheme == true || darktheme == "true") {theme = "dark"} else if (darktheme == false || darktheme == "false") {theme = "light"}
             if (autotheme == true || autotheme == "true") theme = "auto";
             if (majorchangelog == true || majorchangelog == "true") {changelog = "major"} else if (changelog == true || changelog == "true") {changelog = true}
@@ -264,6 +273,7 @@ var xcenter = {
             localStorage.setItem('settings-silentnotifications', silentnotifications)
             localStorage.setItem('settings-batchscripts', runbatchscripts)
             localStorage.setItem('settings-coldbootversion', coldbootversion)
+            localStorage.setItem('settings-homebutton', homebutton)
             if (window.location.pathname == "/settings/") {
                 document.getElementById('settings-autotheme').checked = false;
                 document.getElementById('settings-darktheme').checked = false;
@@ -272,6 +282,7 @@ var xcenter = {
                 document.getElementById('settings-notifications').checked = false;
                 document.getElementById('settings-silentnotifications').checked = false;
                 document.getElementById('settings-batchscripts').checked = false;
+                document.getElementById('settings-homebutton').checked = false;
                 if (autotheme == true || autotheme == "true") document.getElementById('settings-autotheme').checked = true;
                 if (darktheme == true || darktheme == "true") document.getElementById('settings-darktheme').checked = true;
                 if (tmpchangelog == true || tmpchangelog == "true") document.getElementById('settings-showchangelog').checked = true;
@@ -279,6 +290,7 @@ var xcenter = {
                 if (tmpnotifications == true || tmpnotifications == "true") document.getElementById('settings-notifications').checked = true;
                 if (silentnotifications == true || silentnotifications == "true") document.getElementById('settings-silentnotifications').checked = silentnotifications;
                 if (runbatchscripts == true || runbatchscripts == "true") document.getElementById('settings-batchscripts').checked = runbatchscripts;
+                if (homebutton == true || homebutton == "true") document.getElementById('settings-homebutton').checked = homebutton;
                 document.getElementById('settings-coldbootversion').innerHTML = "Current: " + coldbootversion;
             }
             
