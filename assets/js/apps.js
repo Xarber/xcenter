@@ -10,7 +10,10 @@ var datadefault = {
 var title, icon, content, id, type, launch, installData, installSlot, lastInstallSlot, AppID, slots, appinstall, appuninstall, xcenterappinstall, xcenterappuninstall, alreadyinstallcheck, tmpInstallSlot, tmpDataID, desc, author, batch; //INSTALL / UNINSTALL VARS
 var data, applaunch, xcenterapplaunch, launchname, batchrows, batchruncommand, scriptlaunch, scriptidentifier, themelaunch, themeidentifier, themescripts; //LAUNCH VARS
 var limitbkg, limits, limith1, limitp, limitok; //APP STORAGE LIMIT VARS
-var homekey = "a";
+var singlehomekey = "m";
+var multiplehomekeyfirst = "Control";
+var multiplehomekeysecond = "m";
+var hometype = "multiple";
 //ENABLE APP FUNCTIONS
 var app = {
     prepareSteps: {
@@ -1077,12 +1080,33 @@ if (document.querySelector('.new-xcenter-home-menu') == null) {
 }
 if (document.querySelector('.new-xcenter-home-menu') != null) {
     if (document.getElementById('html') != null && document.getElementById('html').classList.contains('dark')) document.querySelector('.new-xcenter-home-menu').classList.add('dark');
-    window.onkeydown = function(Key) {
-        if (Key.keyCode == homekey.toUpperCase().charCodeAt(0)) {
-            if (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('open') == false) {
-                app.homeMenu();
+    if (hometype == "single") {
+        window.onkeydown = function(Key) {
+            if (Key.keyCode == singlehomekey.toUpperCase().charCodeAt(0)) {
+                if (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('open') == false) {
+                    app.homeMenu();
+                }
             }
         }
+    } else if (hometype == "multiple") {
+        let keysPressed = {};
+        document.addEventListener('keydown', (event) => {
+            keysPressed[event.key] = true;
+        });
+        document.addEventListener('keyup', (event) => {
+            delete this.keysPressed[event.key];
+        });
+        document.addEventListener('keydown', (event) => {
+            keysPressed[event.key] = true;
+            if (keysPressed[multiplehomekeyfirst] && event.key == multiplehomekeysecond) {
+                if (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('open') == false) {
+                    app.homeMenu();
+                }
+            }
+        });
+        document.addEventListener('keyup', (event) => {
+            delete keysPressed[event.key];
+        });
     }
 }
 console.log('%cAPP SCRIPT ENDED', 'padding: 10px;background-color: black;border-radius: 10px;')
