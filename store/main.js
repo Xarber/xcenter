@@ -5,6 +5,7 @@ var updates1, updates2, updates3, updates4, updates5, updates6, updates7, update
 var tool1, tool2, tool3, tool4, tool5, tool6, tool7, tool8, tool9, tool10, tool11, tool12;
 var store1, store2, store3, store4, store5, store6, store7, store8, store9, store10;
 var storeInstallSlot;
+var quickLaunchTimeout;
 var defaultStore = {
     added: false
 }
@@ -122,6 +123,7 @@ var store = {
                                     data.title = data.title ?? "App";
                                     data.id = data.id ?? data.title + CommonJS.random('10', 'num', 'upr');
                                     data.type = data.type ?? "App";
+                                    data.quicklaunch = data.quicklaunch ?? false;
                                     var title = data.title;
                                     var icon = data.icon ?? data.src ?? "/assets/media/apps/app.png";
                                     var content = data.content;
@@ -130,8 +132,10 @@ var store = {
                                     var desc = data.desc;
                                     var author = data.author;
                                     var batch = data.batch;
+                                    var quicklaunch = data.quicklaunch;
                                     installData = {
                                         installed: true,
+                                        quicklaunch: quicklaunch,
                                         type: type,
                                         title: title,
                                         desc: desc,
@@ -155,6 +159,7 @@ var store = {
                                     appcontainer.setAttribute("appdesc", desc);
                                     appcontainer.setAttribute("appicon", icon);
                                     appcontainer.setAttribute("appsize", size);
+                                    appcontainer.setAttribute("appql", "" + quicklaunch + "");
                                     appcontainer.setAttribute("id", "store-app-" + id);
                                     appcontainer.setAttribute("appdata", JSON.stringify(installData));
                                     if (document.getElementById("store-app-" + id) == null) {
@@ -204,6 +209,7 @@ var store = {
                                     data = data.replaceAll(tmplinkelement + "\n", '');
                                     link = storepath + "/" + link;
                                     fetch(link).then(response => response.json()).then(data => {
+                                        data.quicklaunch = data.quicklaunch ?? false;
                                         var type = data.type;
                                         var title = data.title;
                                         var desc = data.desc;
@@ -212,7 +218,10 @@ var store = {
                                         var id = data.id;
                                         var batch = data.batch;
                                         var content = data.content;
+                                        var quicklaunch = data.quicklaunch;
                                         var installData = {
+                                            installed: true,
+                                            quicklaunch: quicklaunch,
                                             type: type,
                                             title: title,
                                             desc: desc,
@@ -236,6 +245,7 @@ var store = {
                                         appcontainer.setAttribute("appdesc", desc);
                                         appcontainer.setAttribute("appicon", icon);
                                         appcontainer.setAttribute("appsize", size);
+                                        appcontainer.setAttribute("appql", "" + quicklaunch + "");
                                         appcontainer.setAttribute("id", "store-app-" + id);
                                         appcontainer.setAttribute("appdata", JSON.stringify(installData));
                                         if (document.getElementById("store-app-" + id) == null) {
@@ -429,7 +439,9 @@ var store = {
             document.getElementById("app-type").innerHTML = type;
             document.getElementById("app-size").innerHTML = size;
             document.getElementById('app-view').setAttribute("callerid", id)
-            if (store.apps.alreadyInstalled(document.getElementById(id).getAttribute("appdata")) != false) document.getElementById("app-install").setAttribute("class", "store-app-installed")
+            if (store.apps.alreadyInstalled(document.getElementById(id).getAttribute("appdata")) != false) document.getElementById("app-install").setAttribute("class", "store-app-installed");
+            alert(document.getElementById('app-view').getAttribute('appql'))
+            if (document.getElementById('app-view').getAttribute('appql') == "true" || document.getElementById('app-view').getAttribute('appql') == true) document.getElementById('app-view').classList.add('quicklaunch');
             document.getElementById('app-view').classList.remove('hided');
         } else if (id.indexOf("store-reccomended-") != -1) {
             var icon = document.getElementById(id).getAttribute("storeicon") ?? document.getElementById(id).src ?? "";

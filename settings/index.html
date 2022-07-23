@@ -131,6 +131,13 @@
                 </label>
             </div>
             <div class="xcenter-settings-option">
+                <p>Show home button while running apps</p>
+                <label class="new-switch">
+                    <input type="checkbox" id="settings-homebutton" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">
+                    <span class="new-switch-slider"></span>
+                </label>
+            </div>
+            <div class="xcenter-settings-option">
                 <p>Run Batch Scripts</p>
                 <label class="new-switch">
                     <input type="checkbox" id="settings-batchscripts" onclick="localStorage.setItem(this.id, '' + this.checked + '');xcenter.settings.get();" class="new-switch-input">

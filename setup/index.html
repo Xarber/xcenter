@@ -92,16 +92,19 @@
             <p id="setup-step-name-3">settings-shownotifications</p>
             <p id="setup-step-name-4">settings-cbversion</p>
             <p id="setup-step-name-5">settings-scripts</p>
+            <p id="setup-step-name-6">settings-homebtn</p>
             <p id="setup-step-1">Auto</p>
             <p id="setup-step-2">Yes</p>
             <p id="setup-step-3">Yes</p>
             <p id="setup-step-4">No</p>
             <p id="setup-step-5">No</p>
+            <p id="setup-step-5">Yes</p>
             <p id="setup-selected-1"></p>
             <p id="setup-selected-2"></p>
             <p id="setup-selected-3"></p>
             <p id="setup-selected-4"></p>
             <p id="setup-selected-5"></p>
+            <p id="setup-selected-6"></p>
         </div>
         <div id="setup-0" class="">
             <center>
@@ -156,6 +159,14 @@
                 <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Yes')">Yes, let me have the best experience</button>
             </center>
         </div>
+        <div id="setup-5" class="hided">
+            <center>
+                <h1>Do you want to show the home button while running apps?</h1>
+                <p>This may be useful for mobile devices or users without a keyboard.</p>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'Yes')">Yes, i do.</button>
+                <button onclick="xcenter.setup.next(this.parentNode.parentNode.id, 'No')">No, thanks.</button>
+            </center>
+        </div>
         <div id="setup-finish" class="hided">
             <center>
                 <h1>All Set!</h1>
@@ -176,6 +187,7 @@
                     <p id="setup-review-3">Show Notifications: </p>
                     <p id="setup-review-4">Show Old Version: </p>
                     <p id="setup-review-5">Run Scripts: </p>
+                    <p id="setup-review-6">Home Button: </p>
                 </div>
                 <button style="background-color: rgba(255, 255, 255, 0.062);" onclick="this.parentNode.parentNode.classList.add('hided');document.getElementById('setup-finish').classList.remove('hided');">Go Back</button>
                 <button onclick="xcenter.setup.show();">Restart Setup</button>

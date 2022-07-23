@@ -58,10 +58,6 @@
         <h1>X-Center</h1>
         <copyright>@ Copyright 2022 - Xarber</copyright>
     </div>
-
-    <!--VERSIONSWITCHER-->
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body class="page">
     <div class="nav-compenser"><button></button></div>
@@ -108,5 +104,23 @@
             <img onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" src="/assets/media/logo.png" alt="">
         </div>
     </footer>
+    <script>
+        document.body.classList.add('dark');
+        var versionswitcher = {
+            apply: function(version) {
+                if (version == null || version.length < 1) return false;
+                if (version == "5.0") window.location = "/";
+                document.getElementById('versionswitcher-navigate').setAttribute('src', '/version/' + version);
+                document.getElementById('versionswitcher-navigate').classList.remove('hided');
+                document.getElementById('versionswitcher').classList.add('hided');
+                return true;
+            }
+        }
+    </script>
+    <style>
+        .versionswitcher h1 {text-align: center;}
+        .versionswitcher div {width: 100%;height: 100%;max-height: 300px;border: 1px solid white;border-radius: 10px;padding: 10px;overflow-y: auto;overflow-x: hidden;}
+        .versionswitcher div button {width: 100%;height: 30px;padding: 0;text-align: center;color: black !important;margin: 5px 0px 5px 0px;}
+    </style>
 </body>
 </html>

@@ -136,6 +136,18 @@
             <br>
             <button onclick="location.reload();">Exit</button>
             <button onclick="app.homeMenu();">Resume</button>
+            <button onclick="document.querySelector('.new-xcenter-home-menu-error-details').classList.remove('hided');">Error Details</button>
+        </div>
+        <div class="new-xcenter-home-menu-error-details hided">
+            <div>
+                <center>
+                    <h4>An Error Occurred</h4>
+                    <div>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, harum adipisci. Quasi sapiente quis optio ad sint, eum praesentium assumenda reprehenderit modi numquam nesciunt, quisquam non ex illum obcaecati animi?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem ratione at eveniet. Harum accusantium illo odit laborum adipisci beatae expedita fugit. Reprehenderit nemo provident ratione natus hic laborum quae quos!Lorem</p>
+                    </div>
+                    <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided')">Ok</button>
+                </center>
+            </div>
         </div>
     </div>
     <div class="fullscreen new-xcenter-apps-launch hided" id="new-xcenter-app-launch">

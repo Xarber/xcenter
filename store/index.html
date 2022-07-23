@@ -25,10 +25,6 @@
     <script src="/assets/base/script.js" defer></script>
     <script src="/assets/js/apps.js" defer></script>
 
-    <!--PAGE HEAD-->
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-
     <!--HIDED COMMONJS 5.0 FIXES-->
     <nav class="new-navbar-light hided" id="navbar">
         <div class="new-menu hided vertical-scroll" id="new-menu">
@@ -298,7 +294,7 @@
                 <button onclick="this.parentNode.parentNode.parentNode.classList.add('hided');document.getElementById('app-install').setAttribute('class', '')"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button>
                 <img src="/assets/media/apps/app.png" id="app-icon" alt="">
                 <h1 id="app-title">App Name</h1>
-                <button id="app-quicklaunch-start" onclick="document.getElementById('app-quicklaunch').setAttribute('class', '');setTimeout(() => {document.getElementById('app-quicklaunch').setAttribute('class', 'new-xcenter-apps-quicklaunch')}, 10);document.getElementById('ql-name').innerHTML = 'Quick Launch: ' + document.getElementById('app-title').innerHTML;document.getElementById('ql-icon').src = document.getElementById('app-icon').src;setTimeout(() => {store.apps.quickLaunch(document.getElementById('app-view').getAttribute('callerid'))}, 2000)">Quick Launch</button>
+                <button id="app-quicklaunch-start" onclick="document.getElementById('app-quicklaunch').setAttribute('class', '');setTimeout(() => {document.getElementById('app-quicklaunch').setAttribute('class', 'new-xcenter-apps-quicklaunch')}, 10);document.getElementById('ql-name').innerHTML = 'Quick Launch: ' + document.getElementById('app-title').innerHTML;document.getElementById('ql-icon').src = document.getElementById('app-icon').src;quickLaunchTimeout = setTimeout(() => {store.apps.quickLaunch(document.getElementById('app-view').getAttribute('callerid'))}, 3500)">Quick Launch</button>
                 <div id="app-install" onclick="if (this.classList.contains('store-app-installed') == false) {this.classList.add('progressbar');this.classList.add('store-app-installed');store.apps.install(document.getElementById('app-view').getAttribute('callerid'))}"><div onclick="store.apps.launch(document.getElementById('app-view').getAttribute('callerid'))"><p>Launch</p></div><p>Download / Update</p></div>
             </div>
             <div>
@@ -346,9 +342,9 @@
     <div class="new-xcenter-apps-quicklaunch hided" id="app-quicklaunch">
         <div><div><img src="/assets/media/apps/quicklaunch.png" alt=""></div></div>
         <img id="ql-icon" src="/assets/media/apps/app.png" alt="">
-        <button onclick="this.parentNode.classList.add('fadeOut');">Cancel</button>
+        <button onclick="this.parentNode.classList.add('fadeOut');clearTimeout(quickLaunchTimeout)">Cancel</button>
         <div>
-            <h1 id="ql-name">QuickLaunch: APP</h1>
+            <h1 id="ql-name">QuickLaunch: APP</h1><br><br><br><br>
             <ul>
                 <li>No Memory Required</li>
             </ul>
@@ -362,5 +358,230 @@
             </ul>
         </div>
     </div>
+    <script>
+        var s = document.createElement("script");
+        s.src = "/store/main.js";
+        s.onload = function() {store.reload()}
+        document.head.appendChild(s);
+    </script>
+    <style>
+        nav {z-index: 100;}
+        .store {width: 100%;height: 100%;padding: 10px;}
+        .store div {margin: 5px;margin-top: 10px;}
+        .store div h1 {margin: 0 !important;float: left;}
+        .store div button {width: 50px;height: 50px;float: right;background-color: transparent;padding: 0;}
+        .store div hr {width: calc(100% - 4px);margin: 2px !important;height: 5px !important;background-color: gray;}
+        .store-apps {display: flex;width: 100%;overflow-x: auto;overflow-y: hidden;}
+        .store-apps img {width: 100px;aspect-ratio: 1 / 1;margin: 5px;border-radius: 10px;border: 5px solid gray;background-color: gray;cursor: pointer;}
+        .store-apps img:hover {animation: glow infinite linear 1s;}
+        .store-reccomended-stores img {aspect-ratio: 1 / 1;width: 200px;}
+        .store-reccomended-stores img:hover {animation: storeadd infinite linear 1s;}
+        :root {
+            --appdownloadduration: 5s;
+            --storeaddduration: 0.3s;
+        }
+        .store-app-view {position: fixed;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;z-index: 100;background-color: rgba(0, 0, 0, 0.8);}
+        .store-app-view div.center {width: 100%;height: 100%;max-width: 1800px;max-height: 800px;background-color: rgb(46, 46, 46);border-radius: 20px;}
+        .store-app-view div.center div:nth-child(1) {width: 100%;height: 200px;border-radius: 20px 20px 0px 0px;background-color: rgba(0, 0, 0, 0.394);position: relative;}
+        .store-app-view div.center div:nth-child(1) button:nth-child(1) {background-color: transparent;width: 30px;height: 30px;padding: 0;position: absolute;top: 20px;right: 20px;}
+        .store-app-view div.center div:nth-child(1) img {height: 100%;border-radius: 10px;margin: 10px;height: calc(100% - 20px);float: left;}
+        .store-app-view div.center div:nth-child(1) h1 {font-size: 50px;margin-top: 0;}
+        .store-app-view div.center div:nth-child(1) div {width: calc(100% - 210px);position: absolute;left: 200px;bottom: 10px;background-color: rgb(86, 172, 203);height: 50px;padding: 10px;text-align: center;border-radius: 10px;cursor: pointer;}
+        .store-app-view div.center div:nth-child(1) div p {color: white;font-size: 20px;}
+        .store-app-view div.center div:nth-child(1) div div {visibility: hidden;display: none;}
+        .store-app-view div.center div:nth-child(1) div.progressbar {background-color: black;}
+        .store-app-view div.center div:nth-child(1) div.progressbar div {visibility: visible;display: block;position: absolute;bottom: 0;left: 0;width: 100%;animation: progressbar var(--appdownloadduration) linear;background-color: green;}
+        .store-app-view div.center div:nth-child(1) div.progressbar p {visibility: hidden;display: none;}
+        .store-app-view div.center div:nth-child(1) div.progressbar div p {animation: progressbar var(--appdownloadduration) linear;color: white;visibility: visible;display: block;}
+        .store-app-view div.center div:nth-child(1) div.store-app-installed {background-color: black;}
+        .store-app-view div.center div:nth-child(1) div.store-app-installed div {visibility: visible;display: block;position: absolute;bottom: 0;left: 0;width: 100%;background-color: green;}
+        .store-app-view div.center div:nth-child(1) div.store-app-installed p {visibility: hidden;display: none;}
+        .store-app-view div.center div:nth-child(1) div.store-app-installed div p {color: white;visibility: visible;display: block;}
+        .store-app-view div.center div:nth-child(1) div.storeadd {background-color: black;cursor: default !important;}
+        .store-app-view div.center div:nth-child(1) div.storeadd div {visibility: visible;display: block;position: absolute;bottom: 0;left: 0;width: 100%;animation: storepageadd var(--storeaddduration) linear;background-color: green;}
+        .store-app-view div.center div:nth-child(1) div.storeadd p {visibility: hidden;display: none;}
+        .store-app-view div.center div:nth-child(1) div.storeadd div p {animation: storepageadd var(--storeaddduration) linear;color: white;visibility: visible;display: block;}
+        .store-app-view div.center div:nth-child(1) div.store-added {background-color: black;cursor: default !important;}
+        .store-app-view div.center div:nth-child(1) div.store-added div {visibility: visible;display: block;position: absolute;bottom: 0;left: 0;width: 100%;background-color: green;}
+        .store-app-view div.center div:nth-child(1) div.store-added p {visibility: hidden;display: none;}
+        .store-app-view div.center div:nth-child(1) div.store-added div p {color: white;visibility: visible;display: block;}
+        .store-app-view div.center div:nth-child(1) button:nth-child(4) {visibility: hidden;display: none;}
+        .store-app-view div.center div:nth-child(2) {width: 100%;height: calc(100% - 220px);margin: 10px;}
+        .store-app-view div.center div:nth-child(2) div {background-color: rgba(0, 0, 0, 0.394);width: calc(100% - 20px);margin: 5px 0px 5px 0px;border-radius: 10px;padding: 10px;}
+        .store-app-view div.center div:nth-child(2) div:nth-child(2) {height: calc(70% - 5px);}
+        .store-app-view div.center div:nth-child(2) div h1 {margin: 0;}
+        .store-app-view div.center div:nth-child(2) div div:nth-child(2) {background-color: transparent;overflow-y: auto;overflow-x: hidden;height: calc(100% - 50px);}
+        .store-app-view.quicklaunch div.center div:nth-child(1) div:nth-child(5) {width: calc(100% - 370px) !important;}
+        .store-app-view.quicklaunch div.center div:nth-child(1) button:nth-child(4) {background-color: transparent;border: 1px solid white;float: right;visibility: visible;display: unset;position: absolute;bottom: 10px;right: 10px;width: 150px;}
+        .store-external-download {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 500;pointer-events: none;}
+        .store-external-download div {width: 80%;background-color: rgb(29, 29, 29);height: 80%;position: absolute;bottom: calc(-80% + 100px);padding: 10px;border-radius: 10px 10px;margin-left: 10%;pointer-events: all;}
+        .store-external-download div img {height: 80px;float: left;margin-right: 10px;border-radius: 10px;}
+        .store-external-download div h1 {float: left;font-size: 30px;margin: 0;margin-top: -5px;}
+        .store-external-download div button {float: right;height: 30px;background-color: transparent;padding: 0;margin-top: 20px;margin-left: 10px;}
+        .store-external-download div button:nth-child(3) {transform: rotate(180deg);}
+        .store-external-download div button:nth-child(4) {background-color: rgba(255, 255, 255, 0.200);padding: 10px;padding-top: 5px;}
+        .store-external-download div div {position: absolute;bottom: 0;width: 100%;left: 0px;right: 0px;top: 100px;margin: 0px;height: calc(100% - 100px);border-radius: 0px 0px 10px 10px;background-color: rgba(129, 129, 129, 0.473) !important;}
+        .store-external-download.extend {background-color: rgba(0, 0, 0, 0.726);pointer-events: all;}
+        .store-external-download.extend div {animation: externalextend 0.2s linear;bottom: 70px;}
+        .store-external-download.extend div button:nth-child(3) {transform: unset;}
+        .store-external-download.minimal div {margin-left: 0%;width: 100px;border-radius: 0px 10px 0px 0px;animation: externalminimal 0.2s linear;}
+        .store-external-download.minimal div img {margin-bottom: 10px;}
+        .store-external-download.premied div {background-color: rgb(104, 104, 0);}
+        .store-external-download.premied div div {background-image: url('/assets/media/apps/storepremied.png');background-repeat: no-repeat;background-position: bottom right;background-size: 150px;}
+        .store-offline {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 200;background-color: black;width: 100%;height: 100%;}
+        .store-section-empty {width: 100%;height: 200px;background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(102,102,102,1) 100%);border-radius: 10px;padding: 10px;}
+        .store-section-empty center {width: 100%;height: 100%;}
+        .store-section-empty img {background-color: transparent;height: 100% !important;border: 0;padding: 0;aspect-ratio: 1 / 1 !important;width: unset !important;float: right;margin: 0;border-radius: 10px;}
+        .store-section-empty img:hover {animation: glow infinite linear 1s;}
+        .store-section-empty button {float: left !important;width: 200px !important;border: 1px solid white;}
+        .store-settings {width: 100%;height: 100%;position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, 0.589);z-index: 200;}
+        .store-settings h1 {margin: 0;margin-top: 0;}
+        .store-settings div.center {width: 100%;height: 100%;max-width: 1000px;max-height: 600px;background-color: black;border: 1px solid white;border-radius: 10px;padding: 10px;}
+        .store-settings div.center button#store-settings-close {position: absolute;top: 10px;right: 10px;width: 30px;height: 30px;background-color: transparent;padding: 0;}
+        .store-settings div.center div {width: 100%;height: calc(100% - 40px);background-color: rgba(128, 128, 128, 0.500);border: 1px solid white;border-radius: 10px;padding: 10px;overflow-x: hidden;overflow-y: auto;}
+        .store-settings div.center div div#store-settings-stores {overflow-x: hidden;overflow-y: auto;}
+        .store-settings div.center div div#store-settings-stores button {width: 100%;height: 30px;padding: 0;border: 1px solid white;margin-bottom: 5px;text-align: left;padding: 0px 10px 0px 10px;}
+        .store-settings-stores-manuallyadd {width: 80%;height: 20%;min-height: 200px;background-color: blue;position: fixed;top: 50%;left: 50%;z-index: 201;padding: 10px;border-radius: 10px;}
+        .store-settings-stores-manuallyadd input {width: 100%;height: 50px;border-radius: 10px;border: 1px solid white;background-color: rgba(128, 128, 128, 0.500);font-size: 25px;color: white;padding: 10px;}
+        .store-settings-stores-manuallyadd button {width: 50%;position: absolute;bottom: 0;background-color: rgba(128, 128, 128, 0.500);}
+        .store-settings-stores-manuallyadd button:nth-child(3) {border-radius: 0px 0px 0px 10px !important;left: 0;}
+        .store-settings-stores-manuallyadd button:nth-child(4) {border-radius: 0px 0px 10px 0px !important;right: 0;}
+        .store-search {width: 100%;height: calc(100% - 50px);position: fixed;top: 50px;bottom: 0;left: 0;right: 0;background-color: black;z-index: 100;}
+        .store-search form {margin-bottom: 10px;padding: 5px 9px;-moz-border-radius: 3px;-webkit-border-radius: 3px;-o-border-radius: 3px;-ms-border-radius: 3px;-khtml-border-radius: 3px;border-radius: 3px;-moz-transition-property: border-color;-webkit-transition-property: border-color;-o-transition-property: border-color;transition-property: border-color;-moz-transition-duration: 0.1s;-webkit-transition-duration: 0.1s;-o-transition-duration: 0.1s;transition-duration: 0.1s;-moz-transition-timing-function: linear;-webkit-transition-timing-function: linear;-o-transition-timing-function: linear;transition-timing-function: linear;-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1),0 1px 0 rgba(255, 255, 255, 0.2);-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1),0 1px 0 rgba(255, 255, 255, 0.2);box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1),0 1px 0 rgba(255, 255, 255, 0.2);}
+        .store-search input {width: 100%;max-width: 800px;height: 50px;border-radius: 10px;border: 1px solid white;background-color: transparent;color: white;padding: 0px;padding-left: 50px;color: white;font-size: 30px;background-image: url('/assets/media/apps/storesearch.png');background-repeat: no-repeat;background-position: left;background-size: 50px;margin: 10px 0px 10px 0px;min-width: unset !important;box-sizing: border-box !important;-webkit-box-sizing:border-box !important;-moz-box-sizing: border-box !important;}
+        .store-search div#store-search-apps {width: 100%;height: calc(100% - 75px);padding: 10px;overflow-y: auto;overflow-x: hidden;}
+        .store-search-app {width: 100%;height: 150px !important;background: rgb(102,102,102);background: linear-gradient(90deg, rgba(102,102,102,1) 73%, rgba(0,0,0,1) 100%);padding: 10px;cursor: pointer;border-radius: 10px;margin: 5px 0px 5px 0px;}
+        .store-search-app img {height: 100%;float: left;border-radius: 15px;margin-right: 10px;}
+        .store-search-app h1 {margin: 0;}
+        .store-search-app h4 {color: rgb(48, 48, 48);margin: 0;}
+        @media (max-width: 997px) {
+            .store-section-empty {width: 100%;height: 300px;position: relative;}
+            .store-section-empty img {height: 100px !important;position: absolute;bottom: 10px;right: 10px;}
+            .store-section-empty button:nth-child(5) {width: calc(50% - 65px) !important;position: absolute;bottom: 10px;left: 10px;border-radius: 10px 0px 0px 10px !important;}
+            .store-section-empty button:nth-child(9) {width: calc(50% - 65px) !important;position: absolute;bottom: 10px;;right: 120px;border-radius: 0px 10px 10px 0px !important;}
+        }
+        @media (max-width: 500px) {
+            .store-external-download div h1 {float: none;}
+            .store-external-download div button {float: right;height: 30px;background-color: transparent;padding: 0;margin-top: 10px;margin-left: 10px;}
+            .store-external-download div button:nth-child(4) {width: calc(100% - 150px);position: absolute;left: 90px;}
+            .store-section-empty img {height: 100px !important;position: absolute;bottom: 10px;right: 10px;}
+            .store-section-empty h1 {font-size: 20px;}
+            .store-section-empty button:nth-child(5) {width: calc(100% - 120px) !important;position: absolute;border-radius: 10px 10px 0px 0px !important;bottom: 60px;left: 10px;}
+            .store-section-empty button:nth-child(9) {width: calc(100% - 120px) !important;position: absolute;border-radius: 0px 0px 10px 10px !important;bottom: 10px;left: 10px;}
+            .store-search-app {height: unset !important;background: rgb(102,102,102);}
+            .store-search-app img {width: 100%;float: left;border-radius: 15px;margin-right: 10px;height: unset;}
+            .store-search-app h1 {margin: 0;}
+            .store-search-app h4 {color: rgb(48, 48, 48);margin: 0;}
+        }
+        @media (max-width: 350px) {
+            .store-external-download div {height: calc(80% + 30px);}
+            .store-external-download div button {float: none;height: 30px;background-color: transparent;padding: 0;margin-top: 10px;margin-left: 10px;}
+            .store-external-download div button:nth-child(3) {position: absolute;top: 85px;right: 10px;}
+            .store-external-download div button:nth-child(4) {width: calc(100% - 150px);top: 85px;left: 0px;width: calc(100% - 60px);}
+            .store-external-download div div {height: calc(80% + 15px);top: 140px;}
+            .store-section-empty img {visibility: hidden;display: none;}
+            .store-section-empty h1 {font-size: 20px;}
+            .store-section-empty button:nth-child(5) {width: calc(100% - 20px) !important;height: 30px;padding: 0;position: absolute;border-radius: 10px 10px 0px 0px !important;bottom: 40px;left: 10px;font-size: 10px;}
+            .store-section-empty button:nth-child(9) {width: calc(100% - 20px) !important;height: 30px;padding: 0;position: absolute;border-radius: 0px 0px 10px 10px !important;bottom: 10px;left: 10px;font-size: 10px;}
+        }
+        @media (max-width: 600px) {
+            .store-app-view.quicklaunch div.center div:nth-child(1) div:nth-child(5) p {font-size: 15px;padding: 5px;}
+            .store-app-view.quicklaunch div.center div:nth-child(1) div.progressbar p {padding: 0 !important;font-size: unset !important;}
+        }
+        @keyframes storepageadd {
+            0% {
+                width: 100%;
+                background-color: rgb(86, 172, 203);
+                color: transparent;
+            }
+            50% {
+                width: 100%;
+                background-color: black;
+                color: transparent;
+            } 
+            100% {
+                width: 100%;
+                background-color: green;
+                color: white;
+            } 
+        }
+        @keyframes progressbar {
+            0% {
+                width: 100%;
+                background-color: rgb(86, 172, 203);
+                color: transparent;
+            }
+            3% {
+                width: 0%;
+                background-color: rgb(86, 172, 203);
+                color: transparent;
+            }
+            70% {
+                width: 100%;
+                background-color: rgb(86, 172, 203);
+                color: transparent;
+            }
+            75% {
+                width: 100%;
+                background-color: rgb(52, 105, 124);
+                color: transparent;
+            }
+            80% {
+                width: 100%;
+                background-color: rgb(86, 172, 203);
+                color: transparent;
+            }
+            85% {
+                width: 100%;
+                background-color: rgb(52, 105, 124);
+                color: transparent;
+            }
+            90% {
+                width: 100%;
+                background-color: rgb(86, 172, 203);
+                color: transparent;
+            }
+            95% {
+                width: 100%;
+                background-color: rgb(52, 105, 124);
+                color: transparent;
+            }
+            100% {
+                background-color: green;
+                color: white;
+            }
+        }
+        @keyframes externalminimal {
+            0% {
+                width: 80%;
+                margin-left: 10%;
+                border-radius: 10px;
+            }
+            100% {
+                width: 100px;
+                margin-left: 0%;
+                border-radius: 0px 10px 0px 0px;
+            }
+        }
+        @keyframes externalextend {
+            0% {
+                bottom: -510px;
+            }
+            100% {
+                bottom: 70px;
+            }
+        }
+        @keyframes storeadd {
+            0% {
+                border: 5px solid green;
+            }
+            50% {
+                border: 5px solid greenyellow;
+            }
+            100% {
+                border: 5px solid green;
+            }
+        }
+    </style>
 </body>
 </html>
