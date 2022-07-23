@@ -102,7 +102,7 @@
     <br><br>
     <div class="explore">
         <button onclick="app.launch('0')">Store</button>
-        <button onclick="location.href = '/version/'">Versions</button>
+        <button onclick="if (app.alreadyInstallCheck('Version Switcher') != false) {app.launch('' + app.alreadyInstallCheck('Version Switcher') + '')} else {CommonJS.toast({title: 'Install Version Switcher.', type: 'error'})}">Versions</button>
         <button onclick="location.href = '/pages/'">Site Map</button>
         <button onclick="location.href = '/about/'">About</button>
     </div>
