@@ -7,6 +7,7 @@ var nextsetupstep = 1;
 var lastsetupstep = 5;
 var theme, changelog, notifications, runbatchscripts, coldbootversion; //FINAL SETTINGS VARS;
 var autotheme, darktheme, tmpchangelog, majorchangelog, tmpnotifications, silentnotifications, currenttheme; //TMP SETTINGS VARS;
+var userData;
 if (document.getElementById("html") == null) document.documentElement.setAttribute("id", "html");
 var xcenter = {
     app: {
@@ -300,7 +301,83 @@ var xcenter = {
                 }
             }
         }
-    }
+    },
+    userprofile: {
+        prepare: function() {
+            if (document.getElementById("navbar-user") != null) {
+                document.getElementById("navbar-user").onclick = function() {
+                    if (document.getElementById("xcenter-userprofile") == null) {
+                        var container = document.createElement('div');
+                    }
+                    document.getElementById('xcenter-userprofile').classList.remove("hided");
+                }
+            }
+            if (localStorage.getItem('XCenterUserData') == null) {
+                userData = {
+                    username: "User",
+                    birthday: "1/1/1970",
+                    valueuserbirthday: "1970/1/1",
+                    gender: "Unspecified"
+                }
+                document.getElementById('xcenter-userprofile-show').classList.add('hided');
+                document.getElementById('xcenter-userprofile-close').classList.add('hided');
+                document.getElementById('xcenter-userprofile-edit').classList.remove('hided');
+                document.getElementById('xcenter-userprofile').classList.remove('hided')
+            } else {
+                userData = JSON.parse(localStorage["XCenterUserData"]);
+            }
+            document.getElementById('xcenter-userprofile-username').innerHTML = userData.username;
+            document.getElementById('xcenter-userprofile-gender').innerHTML = userData.gender;
+            document.getElementById('xcenter-userprofile-birthday').innerHTML = userData.birthday;
+            document.getElementById('xcenter-userprofile-avatar').src = localStorage.getItem('XCenterUserAvatar');
+        },
+        edit: function() {
+            xcenter.userprofile.prepare();
+            document.getElementById('xcenter-userprofile-edit-username').value = userData.username;
+            document.getElementById('xcenter-userprofile-edit-birthday').value = userData.valueuserbirthday;
+            document.getElementById('xcenter-userprofile-edit-gender-' + userData.gender.toLowerCase()).checked = true;
+            document.getElementById('xcenter-userprofile-edit-avatar-visible').src = localStorage.getItem('XCenterUserAvatar')
+            if (document.querySelector('input[name="xcenter-userprofile-edit-gender"]:checked') != null) {
+                usergender = document.querySelector('input[name="xcenter-userprofile-edit-gender"]:checked').value
+            }
+            document.getElementById('xcenter-userprofile-show').classList.add('hided');
+            document.getElementById('xcenter-userprofile-edit').classList.remove('hided');
+        },
+        save: function() {
+            var username = document.getElementById('xcenter-userprofile-edit-username').value;
+            var userbirthday = document.getElementById('xcenter-userprofile-edit-birthday').value;
+            var useravatar = document.getElementById('xcenter-userprofile-edit-avatar').value;
+            var usergender = "Unspecified";
+            if (document.querySelector('input[name="xcenter-userprofile-edit-gender"]:checked') != null) {
+                usergender = document.querySelector('input[name="xcenter-userprofile-edit-gender"]:checked').value
+            }
+            if (username.length < 1 || userbirthday.length < 1) {CommonJS.toast({title: "Fill all the fields.", type: "error"});return false;}
+            var converteduserbirthday = userbirthday.split('-')[1] + '/' + userbirthday.split('-')[2] + '/' + userbirthday.split('-')[0];
+            document.getElementById('xcenter-userprofile-username').innerHTML = username;
+            document.getElementById('xcenter-userprofile-gender').innerHTML = usergender;
+            document.getElementById('xcenter-userprofile-birthday').innerHTML = converteduserbirthday;
+            userData = {
+                username: username,
+                birthday: userbirthday,
+                valueuserbirthday: userbirthday,
+                gender: usergender
+            }
+            localStorage["XCenterUserData"] = JSON.stringify(userData);
+            const imgPath = document.getElementById('xcenter-userprofile-edit-avatar').files[0];
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string and save to localStorage
+                localStorage.setItem("XCenterUserAvatar", reader.result);
+                document.getElementById('xcenter-userprofile-avatar').src = reader.result;
+            }, false);
+            if (imgPath) {
+                reader.readAsDataURL(imgPath);
+            }
+            document.getElementById('xcenter-userprofile-edit').classList.add('hided');
+            document.getElementById('xcenter-userprofile-show').classList.remove('hided');
+            prepareNav();
+        }
+    },
 }
 if (localStorage.getItem('xcenter-setup') != "finished") {
     if (window.location.pathname == "/setup/") {
@@ -338,8 +415,8 @@ function prepareNav() {
     } else {
         document.getElementById('navbar-internet').innerHTML = '<img src="/assets/base/wifierror.png">';
     }
-    if (localStorage.getItem('usersigned') == 'true') {
-        document.getElementById('navbar-user').innerHTML = '<img src="/assets/base/usersigned.png">';
+    if (localStorage.getItem('XCenterUserAvatar') != null) {
+        document.getElementById('navbar-user').innerHTML = '<img src="' + localStorage.getItem('XCenterUserAvatar') + '">';
     } else {
         document.getElementById('navbar-user').innerHTML = '<img src="/assets/base/usersign.png">';
     }
@@ -441,3 +518,4 @@ if (document.getElementById("navbar-notifications") != null) {
         document.getElementById('new-notifications-bkg').classList.remove('hided');
     }
 }
+xcenter.userprofile.prepare();

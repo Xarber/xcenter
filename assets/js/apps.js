@@ -1037,7 +1037,7 @@ if (document.querySelector('.new-xcenter-home-menu') == null) {
     var container = document.createElement('div');
     container.setAttribute('class', 'new-xcenter-home-menu');
     container.innerHTML = '<div><h1>Home Menu</h1><button onclick="if (this.parentNode.parentNode.classList.contains(\'dark\')) {this.parentNode.parentNode.classList.remove(\'dark\')} else {this.parentNode.parentNode.classList.add(\'dark\')}"><img src="/assets/media/apps/themeswitch.png" alt=""></button></div><div class="vertical-center"><img src="/assets/media/apps/app.png" id="new-xcenter-home-menu-appicon" alt=""><h3 id="new-xcenter-home-menu-apptitle">No Apps Running</h3><br><button onclick="location.reload();">Exit</button><button onclick="app.homeMenu();">Resume</button></div>';
-    document.body.appendChild(container)
+    document.body.appendChild(container);
 }
 if (document.querySelector('.new-xcenter-home-menu') != null) {
     if (document.getElementById('html') != null && document.getElementById('html').classList.contains('dark')) document.querySelector('.new-xcenter-home-menu').classList.add('dark');

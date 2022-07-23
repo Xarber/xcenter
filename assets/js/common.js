@@ -989,6 +989,30 @@ var CommonJS = {
         if (string.length < 1 || character.length < 1) return;
         return (string.split(character)).length - 1;
     },
+    saveLocalStorageImage: function(name, input) {
+        if (name == null || name.length < 1 || document.getElementById(input) == null) return false;
+        var img = document.getElementById(input);
+        var data = CommonJS.convertImgBase64(img);
+        localStorage.setItem(name, data);
+        return true;
+    },
+    loadLocalStorageImage: function(name, output) {
+        if (name == null || name.length < 1 || document.getElementById(output) == null || localStorage[name] == null || localStorage[name].length < 1) return false;
+        var data = localStorage.getItem(name);
+        var imgOutput = document.getElementById(output);
+        imgOutput.src = "data:image/png;base64," + data;
+        return true;
+    },
+    convertImgBase64: function(img) {
+        if (img == null || img.length < 1) return false;
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    },
     localStorageBackup: {
         make: function(name) {
             name = name ?? "Backup";
@@ -1068,15 +1092,15 @@ console.log(
 if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.netlify.app') != -1 || location.href.indexOf('127.0.0.1:5500') != -1)) {
     if (localStorage.getItem('settings-coldbootversion') == null) localStorage.setItem('settings-coldbootversion', '5.0');
     localStorage.setItem('XCenterColdBootVersion', localStorage.getItem('settings-coldbootversion'))
-    var xversion = '4.0.9';
+    var xversion = '5.0.0';
     if (location.href.indexOf('local-xcenter.netlify.app') != -1) xversion = xversion + "e";
     var changelog = {
         OPT1: 'Added:',
-        TXT1: '<li>Toasts</li><li>DeltaSCP</li>',
-        OPT2: 'New Settings:',
-        TXT2: '',
-        OPT3: '',
-        TXT3: '',
+        TXT1: '<li>Apps</li><li>User Profile</li><li>Themes</li>',
+        OPT2: 'Optimized:',
+        TXT2: '<li>General Website</li><li>Store</li>',
+        OPT3: 'Redesigned:',
+        TXT3: '<li>General Website</li>',
         OPT4: '',
         TXT4: '',
         open: function() {
