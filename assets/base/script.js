@@ -304,7 +304,7 @@ var xcenter = {
     },
     userprofile: {
         prepare: function() {
-            if (document.getElementById("xcenter-userprofile") == null) {
+            if (document.getElementById("xcenter-userprofile") == null && location.pathname != '/setup/') {
                 var container = document.createElement('div');
                 container.setAttribute('class', 'xcenter-userprofile hided');
                 container.setAttribute('id', 'xcenter-userprofile')
