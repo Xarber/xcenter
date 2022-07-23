@@ -187,6 +187,7 @@ footer div img {height: 40px;margin: 5px;}
 .xcenter-userprofile div.center div#xcenter-userprofile-edit label div img:nth-child(1) {z-index: 0;}
 .xcenter-userprofile div.center div#xcenter-userprofile-edit label div:hover img:nth-child(1) {z-index: 251;}
 .xcenter-userprofile div.center div#xcenter-userprofile-show img {border-radius: 50%;width: 150px;height: 150px;}
+.xcenter-userprofile div.center div#xcenter-userprofile-edit input[type=radio] {margin-left: 10px !important;}
 .vertical-center {
     margin: 0;
     position: absolute;
@@ -301,6 +302,8 @@ footer div img {height: 40px;margin: 5px;}
 @media (max-width: 517px) {
     .new-xcenter-apps-limits div {width: 100%;min-width: unset !important;height: 80%;}
     .xcenter-xarber img {width: 50%;}
+    .xcenter-userprofile div.center div#xcenter-userprofile-edit input[type=text] {width: 100% !important;}
+    .xcenter-userprofile div.center div#xcenter-userprofile-edit input[type=date] {width: 100% !important;}
 }
 @media (max-width: 373px) {
     .new-xcenter-apps-header h1, .new-xcenter-apps-header p {float: unset !important;}
@@ -311,4 +314,6 @@ footer div img {height: 40px;margin: 5px;}
     .new-xcenter-home-menu div.vertical-center img {width: 25%;height: unset;aspect-ratio: 1 / 1;margin-left: 37.5%;float: none;}
     .new-xcenter-home-menu div.vertical-center h3 {text-align: center;}
     .new-xcenter-home-menu div.vertical-center button {width: 80% !important;height: 50px !important;margin-left: 10% !important;}
+    .new-xcenter-home-menu.app-open div.vertical-center h3 {text-align: center;}
+    .new-xcenter-home-menu.app-open div.vertical-center button {width: 80% !important;float: none;margin-left: 10% !important;}
 }
