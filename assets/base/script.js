@@ -304,11 +304,15 @@ var xcenter = {
     },
     userprofile: {
         prepare: function() {
+            if (document.getElementById("xcenter-userprofile") == null) {
+                var container = document.createElement('div');
+                container.setAttribute('class', 'xcenter-userprofile hided');
+                container.setAttribute('id', 'xcenter-userprofile')
+                container.innerHTML = '<div class="center"><button id="xcenter-userprofile-close" onclick="this.parentNode.parentNode.classList.add(\'hided\')"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button><div id="xcenter-userprofile-show"><img id="xcenter-userprofile-avatar" onerror="this.src = \'/assets/media/apps/userAvatarDefault.png\'" src="/assets/media/apps/userAvatarDefault.png" alt=""><h1 id="xcenter-userprofile-username">User</h1><p id="xcenter-userprofile-gender">Unspecified</p><p id="xcenter-userprofile-birthday">1/1/1970</p><button onclick="xcenter.userprofile.edit()">Edit</button></div><div id="xcenter-userprofile-edit" class="hided"><label for="xcenter-userprofile-edit-avatar"><div><img src="/assets/media/apps/upload-translucent.png" alt=""><img onerror="this.src = \'/assets/media/apps/userAvatarDefault.png\'" id="xcenter-userprofile-edit-avatar-visible" src="/assets/media/apps/userAvatarDefault.png" alt=""></div></label><input type="file" onchange="const imgPath = document.getElementById(\'xcenter-userprofile-edit-avatar\').files[0];const reader = new FileReader();reader.addEventListener(\'load\', function () {document.getElementById(\'xcenter-userprofile-edit-avatar-visible\').src = reader.result;}, false);if (imgPath) {reader.readAsDataURL(imgPath);}" accept=".png, .jpg" name="xcenter-userprofile-edit-avatar" class="hided" id="xcenter-userprofile-edit-avatar" alt=""><input type="text" value="User" id="xcenter-userprofile-edit-username"></input><div id="xcenter-userprofile-edit-gender"><input type="radio" name="xcenter-userprofile-edit-gender" id="xcenter-userprofile-edit-gender-male" value="Male"> Male<input type="radio" name="xcenter-userprofile-edit-gender" id="xcenter-userprofile-edit-gender-female" value="Female"> Female<input type="radio" name="xcenter-userprofile-edit-gender" checked id="xcenter-userprofile-edit-gender-unspecified" value="Unspecified"> Do Not Specify</div><input type="date" value="" id="xcenter-userprofile-edit-birthday"><button onclick="xcenter.userprofile.save();document.getElementById(\'xcenter-userprofile-close\').classList.remove(\'hided\')">Save</button></div></div>';
+                document.body.appendChild(container)
+            }
             if (document.getElementById("navbar-user") != null) {
                 document.getElementById("navbar-user").onclick = function() {
-                    if (document.getElementById("xcenter-userprofile") == null) {
-                        var container = document.createElement('div');
-                    }
                     document.getElementById('xcenter-userprofile').classList.remove("hided");
                 }
             }
