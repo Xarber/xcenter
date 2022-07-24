@@ -1097,11 +1097,11 @@ if (window.location.pathname.indexOf('/apps/') != -1 && document.querySelector("
         document.body.appendChild(container);
     }
     if (window.location.pathname.indexOf('/store/') != -1 || window.location.pathname.indexOf('/apps/') != -1) {
-        if (location.href.indexOf('files:///') === -1) {
+        if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
             document.querySelector('.nav-compenser').classList.add('navbar-error');
             document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
         }
-    } else if (location.href.indexOf('files:///') === -1) {
+    } else if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         CommonJS.toast({
             type: "warn",
             title: "App Storage Limited",
