@@ -1076,7 +1076,7 @@ if (window.location.pathname.indexOf('/apps/') != -1 && document.querySelector("
         }); //UPLOAD APP PROCESS
     }
     app.prepare();
-    if (location.href.indexOf('files:///') === -1) {
+    if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         document.querySelector('.nav-compenser').classList.add('navbar-error');
         document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
     }
@@ -1124,9 +1124,6 @@ if (document.querySelector('.new-xcenter-home-menu') != null) {
         let keysPressed = {};
         document.addEventListener('keydown', (event) => {
             keysPressed[event.key] = true;
-        });
-        document.addEventListener('keyup', (event) => {
-            delete this.keysPressed[event.key];
         });
         document.addEventListener('keydown', (event) => {
             keysPressed[event.key] = true;
