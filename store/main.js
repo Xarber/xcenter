@@ -640,6 +640,7 @@ var store = {
                 if (localStorage["XCenterAppData" + i].replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data) return i;
                 if (localStorage["XCenterAppData" + i] == data.replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '')) return i;
                 if (localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '') == data.replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '')) return i;
+                if (localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data.replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '')) return i;
             }
             return false;
         },
