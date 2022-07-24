@@ -635,8 +635,9 @@ var store = {
                 console.log(localStorage["XCenterAppData" + i]);
                 console.groupEnd()
                 if (localStorage["XCenterAppData" + i] == data || localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '') == data || localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data || localStorage["XCenterAppData" + i].replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data || localStorage["XCenterAppData" + i] == data.replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') || localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '') == data.replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') || localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data.replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '')) {
-                    if (i != 0) return i;
-                    return "0";
+                    console.log('App Already Installed on slot ' + i);
+                    if (i > 0) return i;
+                    return 1;
                 }
             }
             return false;
