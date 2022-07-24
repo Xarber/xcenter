@@ -630,6 +630,10 @@ var store = {
     apps: {
         alreadyInstalled: function(data) {
             for (let i = 0;i < 33;i++) {
+                console.group("ALREADY INSTALLED CHECK");
+                console.log(data);
+                console.log(localStorage["XCenterAppData" + i]);
+                console.groupEnd()
                 if (localStorage["XCenterAppData" + i] == data) return i;
                 if (localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '') == data) return i;
                 if (localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data) return i;
