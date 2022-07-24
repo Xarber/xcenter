@@ -632,6 +632,8 @@ var store = {
             for (let i = 0;i < 33;i++) {
                 if (localStorage["XCenterAppData" + i] == data) return i;
                 if (localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '') == data) return i;
+                if (localStorage["XCenterAppData" + i].replaceAll('"installed":true,', '').replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data) return i;
+                if (localStorage["XCenterAppData" + i].replaceAll('"quicklaunch":false,', '').replaceAll('"quicklaunch":true,', '') == data) return i;
             }
             return false;
         },
