@@ -421,7 +421,7 @@ var store = {
         if (id.indexOf("store-app-") != -1) {
             document.querySelector('.store-empty').classList.add('hided');
             document.querySelector('.store-guide').classList.add('hided');
-            document.querySelector('.store').classList.remove('hided');
+            if (document.querySelector('.store-search').classList.contains('hided')) document.querySelector('.store').classList.remove('hided');
             //apptype="" apptitle="" appdesc="" appicon="" appdata=""
             var type = document.getElementById(id).getAttribute("apptype") ?? "App";
             var title = document.getElementById(id).getAttribute("apptitle") ?? "App";
@@ -438,7 +438,7 @@ var store = {
             document.getElementById("app-description").innerHTML = desc;
             document.getElementById("app-type").innerHTML = type;
             document.getElementById("app-size").innerHTML = size;
-            document.getElementById('app-view').setAttribute("callerid", id)
+            document.getElementById('app-view').setAttribute("callerid", id);
             if (store.apps.alreadyInstalled(document.getElementById(id).getAttribute("appdata")) != false) document.getElementById("app-install").setAttribute("class", "store-app-installed");
             if (document.getElementById('app-view').getAttribute('appql') == "true" || document.getElementById('app-view').getAttribute('appql') == true) document.getElementById('app-view').classList.add('quicklaunch');
             document.getElementById('app-view').classList.remove('hided');
