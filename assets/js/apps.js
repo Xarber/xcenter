@@ -1079,6 +1079,8 @@ if (window.location.pathname.indexOf('/apps/') != -1 && document.querySelector("
     if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         document.querySelector('.nav-compenser').classList.add('navbar-error');
         document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
+    } else {
+        document.getElementById('new-xcenter-apps-limits-bkg').setAttribute('style', 'display: none !important;visibility: hidden !important;')
     }
     if (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') && ((homebutton == true || homebutton == 'true') || (localStorage.getItem('settings-homebutton') == 'true' || localStorage.getItem('settings-homebutton') == true))) {
         var container = document.createElement('button');
@@ -1100,6 +1102,8 @@ if (window.location.pathname.indexOf('/apps/') != -1 && document.querySelector("
         if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
             document.querySelector('.nav-compenser').classList.add('navbar-error');
             document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
+        } else {
+            document.getElementById('new-xcenter-apps-limits-bkg').setAttribute('style', 'display: none !important;visibility: hidden !important;')
         }
     } else if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         CommonJS.toast({
