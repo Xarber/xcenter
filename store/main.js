@@ -630,7 +630,7 @@ var store = {
     apps: {
         alreadyInstalled: function(data) {
             for (let i = 0;i < 33;i++) {
-                console.group("ALREADY INSTALLED CHECK");
+                console.group("ALREADY INSTALLED CHECK: " + i +  "/33");
                 console.log(data);
                 console.log(localStorage["XCenterAppData" + i]);
                 console.groupEnd()
