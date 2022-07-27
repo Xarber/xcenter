@@ -1013,6 +1013,31 @@ var CommonJS = {
         var dataURL = canvas.toDataURL("image/png");
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
     },
+    compressString: function (c) {
+        var x='charCodeAt',b,e={},f=c.split(""),d=[],a=f[0],g=256;for(b=1;b<f.length;b++)c=f[b],null!=e[a+c]?a+=c:(d.push(1<a.length?e[a]:a[x](0)),e[a+c]=g,g++,a=c);d.push(1<a.length?e[a]:a[x](0));for(b=0;b<d.length;b++)d[b]=String.fromCharCode(d[b]);return d.join("")},
+    decompressString: function (b) {
+        var a,e={},d=b.split(""),c=f=d[0],g=[c],h=o=256;for(b=1;b<d.length;b++)a=d[b].charCodeAt(0),a=h>a?d[b]:e[a]?e[a]:f+c,g.push(a),c=a.charAt(0),e[o]=f+c,o++,f=a;return g.join("")
+    },
+    localStorageRemaining: function(spaceToTest) {
+        if (spaceToTest == null || spaceToTest.length < 1) spaceToTest = 20;
+        if (isNaN(spaceToTest)) return false;
+        var isDecimal = spaceToTest % 1;
+        if (isDecimal != 0) return false;
+        var totest = spaceToTest * 1000; //MB AMOUNT TO TEST
+        console.log('Testing LocalStorage free space. Maximum amount: ' + spaceToTest + 'MB');
+        try {
+            for (var i = 250;i <= totest;i += 250) {
+                localStorage.setItem('test', new Array((i * 1024) + 1).join('a'));
+            }
+        } catch (e) {
+            localStorage.removeItem('test');
+            var remaining = (i - 250)/1000;
+            console.log('Remaining LocalStorage Space: ' + remaining + 'MB');
+            return remaining;
+        }
+        console.log('At least ' + spaceToTest + 'MB are free on LocalStorage.');
+        return spaceToTest;
+    },
     localStorageBackup: {
         make: function(name) {
             name = name ?? "Backup";
