@@ -1244,7 +1244,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             '%cIFRAME DETECTED!',
             'padding: 10px;background-color: red;border-radius: 15px;'
         )
-        if (location.href.indexOf('iframe') == -1) {
+        if (location.href.indexOf('iframe') == -1 && location.href.indexOf('files:///') == -1) {
             console.log(
                 '%cDo not use the website on an iFrame',
                 'padding: 10px;background-color: red;border-radius: 15px;'
