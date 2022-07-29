@@ -961,7 +961,7 @@ echo To go back, press any key and then type 'quit'
 echo If you're in offline mode, some commands may not work properly.
 echo If you want a complete experience, please connect to the internet.
 pause >nul
-goto advanced
+goto advanced-insert
 :advanced-limitblock
 cls
 echo This section has been blocked for the limits. (Required: none) Press any key to go back.
@@ -1166,7 +1166,7 @@ powershell -command "(Get-WmiObject -query ‘select * from SoftwareLicensingSer
 echo This is your product key. Press any key to go back.
 pause >nul
 goto advanced-executed
-:advanced
+:advanced-insert
 cls
 set "cmdinstxt=Insert a command. Type 'help' to get help. To insert windows commands type 'cmd <command>'"
 goto advanced-noins

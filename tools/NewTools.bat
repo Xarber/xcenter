@@ -29,7 +29,7 @@ set "params=%*"
     shift
     goto params
 :afterparams
-set "download=bitsadmin /transfer SmartToolsDownload /download /priority foreground"
+set "download=bitsadmin /transfer XCenterSmartToolsDownload /download /priority foreground"
 set "smarttools=%cd%"
 set "programdir=%programfiles%\com.xcenter.apps\smart-tools"
 chdir "%programfiles%"
@@ -47,11 +47,15 @@ set "program=SMARTTOOLS"
 ::APPTOOLS
 
 :getownership
-
+takeown /F %2
+exit /b 1
 :resetownership
-
+icacls %2 /grant Administrators:F
+icacls %2 /setowner "NT SERVICE\TrustedInstaller" /C
+exit /b 1
 :download
-
+%download% %2 %3
+exit /b 1
 :winactivate
 
 :windefender

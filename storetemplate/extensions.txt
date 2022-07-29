@@ -1,0 +1,5 @@
+xsi = X-Center Store Information (All information about the store)
+xsl = X-Center Store List (List of X-Center Stores)
+spl = Store Package List (Package of X-Center apps, only for store type 1)
+sal = Store App Links (Links to store app pkgs, only for store type 2)
+pkg = Package (X-Center App Install Data)
