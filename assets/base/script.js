@@ -18,9 +18,8 @@ var xcenter = {
     setup: {
         show: function() {
             if (window.location.pathname != "/setup/") window.location = "/setup/";
-            for (let i = 0;i < lastsetupstep;++i) {
+            for (let i = 0;i != lastsetupstep;++i) {
                 var afteri = +i + 1;
-                var oldsetupstepcontent = document.getElementById("setup-step-" + afteri).innerHTML;
                 if (document.getElementById("setup-selected-" + afteri).innerHTML != "") {
                     document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML.replaceAll(document.getElementById('setup-selected-' + afteri).innerHTML, '')
                     document.getElementById('setup-selected-' + afteri).innerHTML = "";
@@ -53,7 +52,7 @@ var xcenter = {
         default: function() {
             document.getElementById('setup-0').classList.add('hided');
             document.getElementById('setup-finish').classList.remove('hided');
-            for (let i = 0;i < lastsetupstep;++i) {
+            for (let i = 0;i != lastsetupstep;++i) {
                 var afteri = +i + 1;
                 var oldsetupstepcontent = document.getElementById("setup-selected-" + afteri).innerHTML;
                 document.getElementById("setup-review-" + afteri).innerHTML = document.getElementById("setup-review-" + afteri).innerHTML.replaceAll(oldsetupstepcontent, '') + document.getElementById("setup-step-" + afteri).innerHTML;
@@ -434,7 +433,11 @@ function prepareNav() {
     if (localStorage.getItem('XCenterUserAvatar') != null) {
         document.getElementById('navbar-user').innerHTML = '<img src="' + localStorage.getItem('XCenterUserAvatar') + '">';
     } else {
-        document.getElementById('navbar-user').innerHTML = '<img src="/assets/base/usersign.png">';
+        if (localStorage.getItem('XCenterUserData') != null) {
+            document.getElementById('navbar-user').innerHTML = '<img src="/assets/base/usersigned.png">';
+        } else {
+            document.getElementById('navbar-user').innerHTML = '<img src="/assets/base/usersign.png">';
+        }
     }
     document.getElementById('navbar-notifications').innerHTML = '<img src="/assets/base/notifications.png">';
     if (winWidth < 171) {

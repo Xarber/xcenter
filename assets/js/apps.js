@@ -797,37 +797,39 @@ var app = {
                         type: "error"
                     })
                 } else {
-                    if (command.toLowerCase().indexOf('shutdown') != -1 || command.toLowerCase().indexOf('del ') != -1 || command.toLowerCase().indexOf('taskkill') != -1 || command.toLowerCase().indexOf('sysprep') != -1) {
-                        var batchrunalert = document.createElement('div');
-                        var batchrunalerttxt = document.createElement('h3');
-                        var batchrunalertactions = document.createElement('div');
-                        var batchrunalertconfirm = document.createElement('button');
-                        var batchrunalertcancel = document.createElement('button');
-                        batchrunalert.setAttribute('style', 'position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 200;width: 100%;height: 100%;padding: 10px;background-color: rgb(32,37,41);');
-                        batchrunalertactions.setAttribute('style', 'display: flex;position: absolute;bottom: 0;left: 0;right: 0;background-color: rgba(255, 255, 255, 0.200);')
-                        batchrunalertconfirm.setAttribute('style', 'border-radius: 0 !important;flex-grow: 1;background-color: transparent !important;')
-                        batchrunalertcancel.setAttribute('style', 'border-radius: 0 !important;flex-grow: 1;background-color: transparent !important;')
-                        batchrunalertcancel.setAttribute('onclick', 'this.parentNode.parentNode.remove()');
-                        batchrunalerttxt.innerHTML = "CAUTION! <br> You started an app that contains potential malware or that could damage your computer or make you lose your work. If you are sure about what you're doing, then continue with the process (NOT RECCOMENDED!), else click 'cancel'.";
-                        batchrunalertcancel.innerHTML = "Cancel";
-                        batchrunalertconfirm.innerHTML = "Confirm";
-                        batchrunalertconfirm.onclick = function() {
-                            batchrunalert.remove();
-                            batchrows = CommonJS.countChar(batch, "\n");
-                            ++batchrows;
-                            for (let i = 0;i < batchrows;i++) {
-                                batchruncommand = batch.split('\n')[0];
-                                batch = batch.replaceAll(batchruncommand + "\n", "").replaceAll(batchruncommand, "");
-                                app.run(batchruncommand, (output) => {
-                                    console.log(output);
-                                })
+                    if (batch.toLowerCase().indexOf('shutdown') != -1 || batch.toLowerCase().indexOf('del ') != -1 || batch.toLowerCase().indexOf('taskkill') != -1 || batch.toLowerCase().indexOf('sysprep') != -1) {
+                        setTimeout(() => {
+                            var batchrunalert = document.createElement('div');
+                            var batchrunalerttxt = document.createElement('h3');
+                            var batchrunalertactions = document.createElement('div');
+                            var batchrunalertconfirm = document.createElement('button');
+                            var batchrunalertcancel = document.createElement('button');
+                            batchrunalert.setAttribute('style', 'position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 200;width: 100%;height: 100%;padding: 10px;background-color: rgb(32,37,41);');
+                            batchrunalertactions.setAttribute('style', 'display: flex;position: absolute;bottom: 0;left: 0;right: 0;background-color: rgba(255, 255, 255, 0.200);')
+                            batchrunalertconfirm.setAttribute('style', 'border-radius: 0 !important;flex-grow: 1;background-color: transparent !important;')
+                            batchrunalertcancel.setAttribute('style', 'border-radius: 0 !important;flex-grow: 1;background-color: transparent !important;')
+                            batchrunalertcancel.setAttribute('onclick', 'this.parentNode.parentNode.remove()');
+                            batchrunalerttxt.innerHTML = "CAUTION! <br> You started an app that contains potential malware or that could damage your computer or make you lose your work. If you are sure about what you're doing, then continue with the process (NOT RECCOMENDED!), else click 'cancel'.";
+                            batchrunalertcancel.innerHTML = "Cancel";
+                            batchrunalertconfirm.innerHTML = "Confirm";
+                            batchrunalertconfirm.onclick = function() {
+                                batchrunalert.remove();
+                                batchrows = CommonJS.countChar(batch, "\n");
+                                ++batchrows;
+                                for (let i = 0;i < batchrows;i++) {
+                                    batchruncommand = batch.split('\n')[0];
+                                    batch = batch.replaceAll(batchruncommand + "\n", "").replaceAll(batchruncommand, "");
+                                    app.run(batchruncommand, (output) => {
+                                        console.log(output);
+                                    })
+                                }
                             }
-                        }
-                        batchrunalert.appendChild(batchrunalerttxt);
-                        batchrunalertactions.appendChild(batchrunalertconfirm);
-                        batchrunalertactions.appendChild(batchrunalertcancel);
-                        batchrunalert.appendChild(batchrunalertactions);
-                        document.body.appendChild(batchrunalert);
+                            batchrunalert.appendChild(batchrunalerttxt);
+                            batchrunalertactions.appendChild(batchrunalertconfirm);
+                            batchrunalertactions.appendChild(batchrunalertcancel);
+                            batchrunalert.appendChild(batchrunalertactions);
+                            document.body.appendChild(batchrunalert);
+                        }, 250)
                     } else {
                         batchrows = CommonJS.countChar(batch, "\n");
                         ++batchrows;

@@ -189,7 +189,7 @@ footer div img {height: 40px;margin: 5px;}
 .sitemap-category button {width: 100%;text-align: left;height: 30px;padding: 0;padding-left: 10px;margin: 5px 0px 5px 0px;}
 .fadeOut {opacity: 0;animation: fadeOut 0.5s linear;pointer-events: none;}
 .xcenter-userprofile {position: fixed;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.747);z-index: 100;}
-.xcenter-userprofile div.center {width: 80%;height: 60%;background-color: rgb(44, 44, 44);border-radius: 20px;padding: 20px;}
+.xcenter-userprofile div.center {width: 100%;height: 100%;max-width: 1000px;max-height: 500px;background-color: rgb(44, 44, 44);border-radius: 20px;padding: 20px;}
 .xcenter-userprofile div.center * {color: white;}
 .xcenter-userprofile div.center button:nth-child(1) {position: absolute;top: 20px;right: 20px;width: 30px;height: 30px;padding: 0;background-color: transparent;}
 .xcenter-userprofile div.center div button {position: absolute;bottom: 20px;right: 20px;background-color: transparent;border: 1px solid white;}
