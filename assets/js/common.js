@@ -1239,7 +1239,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         'padding: 10px;background-color: black;border-radius: 15px;'
     )
     console.log('> Checking if displaying on an iframe...');
-    if (window!=window.top) {
+    /*if (window!=window.top) {
         console.log(
             '%cIFRAME DETECTED!',
             'padding: 10px;background-color: red;border-radius: 15px;'
@@ -1259,7 +1259,7 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
             console.log('> Error Found, Redirecting...')
             window.location = '/';
         }
-    }
+    }*/
     function sysTheme() {
         console.log('> Getting System Theme...');
         var darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
