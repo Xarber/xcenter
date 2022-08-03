@@ -21,10 +21,11 @@ var xcenter = {
                 document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
                 setTimeout(() => {
                     document.getElementById('xcenter-userprofile').classList.add('hided');
-                    document.getElementById('new-changelog').classList.add('hided');
+                    if (document.getElementById('new-changelog') != null) document.getElementById('new-changelog').classList.add('hided');
                     document.querySelector('footer').classList.add('hided');
                     document.getElementById('xcenter-navbar').classList.add('hided');
                     document.querySelector('.nav-compenser').classList.add('hided');
+                    if (document.getElementById('new-xcenter-apps-limits-bkg') != null) document.getElementById('new-xcenter-apps-limits-bkg').classList.add('hided');
                     const pages = document.querySelectorAll('.xcenter-pagecontent');
                     for (const pag of pages) {
                         pag.classList.add('hided');
