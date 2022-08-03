@@ -139,7 +139,7 @@ button {border: 0px;background-color: rgba(129, 129, 129, 0.644);border-radius: 
 .new-navbar-button {width: 50px;height: 50px;background-color: transparent;border-radius: 15px;border: none;margin-right: 2.5%;margin-left: 2.5%;padding: 0px !important;margin-top: 0px !important;margin-bottom: 0px !important;position: relative;z-index: 9;}
 .new-navbar-button img {width: 70%;height: 70%;}
 .new-navbar-button-hided {display: none !important;}
-.new-carousel {width: 100%;height: 80%;margin-top: -40px;margin-bottom: 40px;}
+.new-carousel {width: 100%;aspect-ratio: 16 / 9;height: 100%;max-height: 750px;margin-top: -40px;margin-bottom: 40px;}
 .new-carousel-pages {height: 100%;width: 100%;overflow: hidden;position: relative;}
 .new-carousel-pages img {height: 100%;border-radius: 25px 25px 25px 25px;position: absolute;transform: translate(-50%, -50%);top: 50%;left: 50%;}
 .new-carousel-button {width: 50px;margin-left: 5%;margin-right: 5%;height: 10%;background-color: transparent;border: 0px;position: relative;z-index: 1;border-radius: 500px !important;top: 55%;padding: 0px !important;color: black !important;background-color: white !important;}
@@ -262,7 +262,7 @@ div.horizontal-scroll {overflow-y: hidden;overflow-x: auto;}
 .new-notifications div hr {width: 100% !important;margin-left: 0 !important;}
 .new-notifications div .new-notification {width: 98% !important;max-width: unset !important;margin-left: 1% !important;height: 100px !important;position: unset !important;z-index: 100 !important;right: auto !important;margin-bottom: 10px !important;}
 div.fullscreen {width: 100%;height: 100%;position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 1000;overflow-x: auto;overflow-y: auto;}
-.new-localstorage-backup {background-color: blue;border-radius: 10px;padding: 10px;width: 90%;min-width: 300px;height: 20%;min-height: 150px;z-index: 101;}
+.new-localstorage-backup {background-color: blue;border-radius: 10px;padding: 10px;width: 90%;min-width: 300px;height: 20%;min-height: 150px;z-index: 9999999;}
 .new-localstorage-backup button {color: white;position: absolute;top: 10px;right: 10px;background-color: transparent;padding: 0 !important;width: 30px;height: 30px;}
 .new-localstorage-backup label {width: 100%;height: 50px;background-color: rgba(0, 0, 0, 0.281);border-radius: 0 0 10px 10px;text-align: center;cursor: pointer;position: absolute;bottom: 0;left: 0;right: 0;padding: 10px;}
 .text-cut {overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}

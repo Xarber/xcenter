@@ -203,6 +203,11 @@ footer div img {height: 40px;margin: 5px;}
 .xcenter-userprofile div.center div#xcenter-userprofile-edit label div:hover img:nth-child(1) {z-index: 251;}
 .xcenter-userprofile div.center div#xcenter-userprofile-show img {border-radius: 50%;width: 150px;height: 150px;}
 .xcenter-userprofile div.center div#xcenter-userprofile-edit input[type=radio] {margin-left: 10px !important;}
+.xcenter-desktoptransfer {width: 100%;background-color: black;}
+.xcenter-desktoptransfer center {width: 100%;}
+.xcenter-desktoptransfer img {width: 150px;margin: 20px;}
+.xcenter-desktoptransfer img:first-child, .xcenter-desktoptransfer img:nth-child(3) {cursor: pointer;}
+.xcenter-desktoptransfer-arrow {animation: desktoptransferarrow infinite linear 1s;}
 .vertical-center {
     margin: 0;
     position: absolute;
@@ -220,6 +225,20 @@ footer div img {height: 40px;margin: 5px;}
 }
 .horizontal-center {
     left: 50%;
+}
+@keyframes desktoptransferarrow {
+  0% {
+    margin-left: 0%;
+    margin-right: 2.5%;
+  }
+  50% {
+    margin-left: 2.5%;
+    margin-right: 0%;
+  }
+  100% {
+    margin-left: 0%;
+    margin-right: 2.5%;
+  }
 }
 @keyframes fadeOut {
     0% {
@@ -334,8 +353,13 @@ footer div img {height: 40px;margin: 5px;}
     .new-xcenter-home-menu.app-error div.vertical-center h3 {text-align: center;}
     .new-xcenter-home-menu.app-error div.vertical-center button {width: 80% !important;float: none;margin-left: 10% !important;}
 }
-
-
+@media (max-width: 560px) {
+  .xcenter-desktoptransfer img {width: 100px;margin: 0px;}
+}
+@media (max-width: 316px) {
+  .xcenter-desktoptransfer img {width: 50% !important;}
+  .xcenter-desktoptransfer img:nth-child(2) {transform: rotate(90deg);animation: none;}
+}
 
 /*COMMON JS INTEGRATED STYLESHEET*/
 /*NORMALIZE.CSS*/
@@ -602,7 +626,7 @@ footer div img {height: 40px;margin: 5px;}
   .new-notifications div hr {width: 100% !important;margin-left: 0 !important;}
   .new-notifications div .new-notification {width: 98% !important;max-width: unset !important;margin-left: 1% !important;height: 100px !important;position: unset !important;z-index: 100 !important;right: auto !important;margin-bottom: 10px !important;}
   div.fullscreen {width: 100%;height: 100%;position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 1000;overflow-x: auto;overflow-y: auto;}
-  .new-localstorage-backup {background-color: blue;border-radius: 10px;padding: 10px;width: 90%;min-width: 300px;height: 20%;min-height: 150px;z-index: 101;}
+  .new-localstorage-backup {background-color: blue;border-radius: 10px;padding: 10px;width: 90%;min-width: 300px;height: 20%;min-height: 150px;z-index: 9999999;}
   .new-localstorage-backup button {color: white;position: absolute;top: 10px;right: 10px;background-color: transparent;padding: 0 !important;width: 30px;height: 30px;}
   .new-localstorage-backup label {width: 100%;height: 50px;background-color: rgba(0, 0, 0, 0.281);border-radius: 0 0 10px 10px;text-align: center;cursor: pointer;position: absolute;bottom: 0;left: 0;right: 0;padding: 10px;}
   .text-cut {overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
