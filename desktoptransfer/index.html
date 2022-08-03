@@ -58,14 +58,10 @@
         <h1>X-Center</h1>
         <copyright>@ Copyright 2022 - Xarber</copyright>
     </div>
-
-    <!--PBDLOAD-->
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="main.css">
 </head>
-<body class="page" id="body">
-    <div class="nav-compenser"><button></button></div>
-    <nav>
+<body class="page">
+    <div class="nav-compenser hided"><button></button></div>
+    <nav class="hided">
         <div id="navbar-pages">
             <button onclick="location.href = this.id;" id="/"><img src="/assets/base/home.png">Home</button>
             <button onclick="location.href = this.id;" id="/tools/"><img src="/assets/base/tools.png">Tools</button>
@@ -89,37 +85,17 @@
             <button onclick="location.href = localStorage.getItem('XCenterLastSecondaryPage')"><img src="/assets/base/other.png"></button>
         </div>
     </nav>
-    <div class="center" id="pbdload-div">
+    <div class="xcenter-desktoptransfer center">
         <center>
-            <img src="/assets/media/4.0/pbdload.png" style="border-radius: 50px;margin-left: -25%;" width="150%" alt="">
-            <h1>PBDLoad</h1>
-            <p>Upload a .pbd file to run your code inside the browser</p>
-            <label for="pbdload" class="pbdload">Boot</label>
-            <input type="file" id="pbdload" class="hided" accept=".pbd">
-            <p class="pbderror" id="pbderror"></p>
-            <button class="pbdload" style="background-color: gray !important;" onclick="document.getElementById('pbdload-about').classList.remove('hided');document.getElementById('pbdload-div').classList.add('hided');window.location = '#pbdload-about';CommonJS.replaceURL('/pbdload/')">About</button>
+            <img src="/assets/media/apps/desktoptransfer/internet.png" onclick="window.open('https://early-xcenter.netlify.app/settings')" alt="">
+            <img src="/assets/media/apps/desktoptransfer/arrow.png" class="xcenter-desktoptransfer-arrow" alt="">
+            <img src="/assets/media/apps/desktoptransfer/desktop.png" onclick="CommonJS.localStorageBackup.restore()" alt="">
+            <br>
+            <p>Import data from a backup file obtained on X-Center Settings to continue.</p>
+            <p>Click on the web icon to open X-Center</p>
+            <p>Click on the desktop icon to import the file</p>
         </center>
     </div>
-    <div class="hided center" id="pbdload-about">
-        <br>
-        <h1 style="text-align: center;">What is PBDload?</h1>
-        <p>PBD Load is a .pbd file loader. What does it mean? It's very simple:</p>
-        <p>You insert a .pbd file and the browser convert it to html, so it can be displayed as a website. How is this possible? PBD is a file format very similiar to HTML so with help of JS you can easily convert it to HTML. But what does PBD stand for then? PBD Stands for PageBootDocument. You can convert your script in this same page:</p>
-        <center>
-            <label for="pbdload-convert" class="pbdload" style="margin-bottom: 15px;">HTML > PBD</label>
-            <label for="pbdload-convertHTML" class="pbdload">PBD > HTML</label>
-            <input type="file" id="pbdload-convert" class="hided" accept=".html">
-            <input type="file" id="pbdload-convertHTML" class="hided" accept=".pbd">
-            <p class="pbderror" id="pbderror-convert"></p>
-            <button class="pbdload" style="background-color: gray !important;" onclick="document.getElementById('pbdload-about').classList.add('hided');document.getElementById('pbdload-div').classList.remove('hided');window.location = '#pbdload-div';CommonJS.replaceURL('/pbdload/')">Close</button>
-        </center>
-    </div>
-    <style>
-        .pbdload {padding: 5px;background-color: rgb(0, 119, 255);border-radius: 10px;width: 50% !important;border: 5px solid transparent;text-align: center;}
-        .pbdload:hover {cursor: pointer;background-color: rgb(28, 134, 255);}
-        .pbdload:active {border: 5px solid rgb(0, 98, 209);}
-        .pbderror {color: red !important;text-decoration: underline red;text-decoration-style: wavy;text-decoration-thickness: 1px;}
-    </style>
     <footer class="hided">
         <div>
             <p>X-Center 5.0 <br> Copyright 2022 @ Xarber</p>
