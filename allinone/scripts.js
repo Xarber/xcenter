@@ -2713,6 +2713,7 @@ var xcenter = {
                 return true;
             }
             //if (window.location.pathname != "/setup/") window.location = "/setup/";
+            if (currentPage() != "xcenter-pagecontent-setup") switchPage('xcenter-pagecontent-setup');
             for (let i = 0;i < lastsetupstep;++i) {
                 var afteri = +i + 1;
                 var oldsetupstepcontent = document.getElementById("setup-step-" + afteri).innerHTML;
