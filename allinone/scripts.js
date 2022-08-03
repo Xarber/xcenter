@@ -4443,4 +4443,11 @@ window.onresize = function() {
         }
     }, 50)
 }
-//MULTIPLE SCRIPT LAST FIXES STARTED -- MULTIPLE SCRIPT ENDED
+if (localStorage.getItem('XCenterAfterSetup') == null) {
+    for (let i = 5;i != 33;i++) {
+        localStorage.removeItem('XCenterAppData' + i);
+        app.reloadApps();
+    }
+    localStorage.getItem('XCenterAfterSetup', 'true');
+}
+//MULTIPLE SCRIPT LAST FIXES ENDED -- MULTIPLE SCRIPT ENDED
