@@ -4,7 +4,7 @@ var precedentSwitchedPage;
 var initialPage;
 setTimeout(() => {
     if (document.getElementById('new-XCenterGoBackToNewVersion') != null) {document.getElementById('new-XCenterGoBackToNewVersion').setAttribute('style', 'display: none !important;visibility: hidden !important;');}
-    document.querySelector('.navbuttonextend').classList.remove('navbuttonextend');
+    if (document.querySelector('.navbuttonextend') != null) document.querySelector('.navbuttonextend').classList.remove('navbuttonextend');
     initialPage = CommonJS.params('get', 'page', 'index');
     if (document.getElementById('xcenter-pagecontent-' + initialPage) == null) initialPage = 'index';
     switchPage(initialPage);
