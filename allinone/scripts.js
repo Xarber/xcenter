@@ -2713,7 +2713,12 @@ var xcenter = {
                 return true;
             }
             //if (window.location.pathname != "/setup/") window.location = "/setup/";
-            if (currentPage() != "xcenter-pagecontent-setup") switchPage('xcenter-pagecontent-setup');
+            if (currentPage() != "xcenter-pagecontent-setup") switchPage('setup');
+            document.getElementById('xcenter-userprofile').classList.add('hided');
+            document.getElementById('new-changelog').classList.add('hided');
+            document.querySelector('footer').classList.add('hided');
+            document.getElementById('xcenter-navbar').classList.add('hided');
+            document.querySelector('.nav-compenser').classList.add('hided');
             for (let i = 0;i < lastsetupstep;++i) {
                 var afteri = +i + 1;
                 var oldsetupstepcontent = document.getElementById("setup-step-" + afteri).innerHTML;
