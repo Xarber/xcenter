@@ -2925,7 +2925,7 @@ var xcenter = {
             tmpsettingresetconfirmbtn.onclick = function() {
                 localStorage.clear();
                 sessionStorage.clear();
-                window.location = "/";
+                location.reload();
             }
             tmpsettingresetconfirm.appendChild(tmpsettingresetconfirmtitle);
             tmpsettingresetconfirm.appendChild(tmpsettingresetconfirmdesc);
