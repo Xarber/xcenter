@@ -4443,7 +4443,7 @@ window.onresize = function() {
         }
     }, 50)
 }
-if (localStorage.getItem('XCenterAfterSetup') == null && location.href.indexOf('file:///')) {
+if (localStorage.getItem('XCenterAfterSetup') == null && location.href.indexOf('file:///') != -1) {
     for (let i = 0;i != 33;i++) {
         localStorage.removeItem('XCenterAppData' + i);
         app.reloadApps();
