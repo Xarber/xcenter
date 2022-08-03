@@ -3255,6 +3255,9 @@ var limitbkg, limits, limith1, limitp, limitok; //APP STORAGE LIMIT VARS
 var singlehomekey = "m";
 var multiplehomekeyfirst = "Control";
 var multiplehomekeysecond = "m";
+//MULTIPLE SCRIPT FIX
+if (location.href.indexOf('file:///') != -1) multiplehomekeysecond = "h";
+//END FIX
 var hometype = "multiple";
 //ENABLE APP FUNCTIONS
 var app = {
