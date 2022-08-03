@@ -2698,6 +2698,18 @@ var xcenter = {
         show: function() {
             if (location.href.indexOf('file:///') != -1) {
                 document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
+                setTimeout(() => {
+                    document.getElementById('xcenter-userprofile').classList.add('hided');
+                    document.getElementById('new-changelog').classList.add('hided');
+                    document.querySelector('footer').classList.add('hided');
+                    document.getElementById('xcenter-navbar').classList.add('hided');
+                    document.querySelector('.nav-compenser').classList.add('hided');
+                    const pages = document.querySelectorAll('.xcenter-pagecontent');
+                    for (const pag of pages) {
+                        pag.classList.add('hided');
+                    }
+                    document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
+                }, 300)
                 return true;
             }
             //if (window.location.pathname != "/setup/") window.location = "/setup/";
