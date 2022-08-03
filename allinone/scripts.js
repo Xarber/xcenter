@@ -4033,7 +4033,7 @@ var app = {
             document.getElementById('new-xcenter-app-launch-cancel').classList.add('hided');
             //OLD LAUNCH JUST APPENDED TO HEAD A SCRIPT WITH APP CONTENT's SCRIPTS!
             if (batch != null && batch.length > 0) {
-                if (location.href.indexOf('files:///') === -1 || runbatchscripts == false || runbatchscripts == "false") {
+                if (location.href.indexOf('file:///') === -1 || runbatchscripts == false || runbatchscripts == "false") {
                     CommonJS.toast({
                         title: "Batch Not Runned",
                         type: "error"
@@ -4166,7 +4166,7 @@ var app = {
         }
     },
     runBatch: function(path) {
-        if (location.href.indexOf('files:///') === -1 || runbatchscripts == false || runbatchscripts == "false") {
+        if (location.href.indexOf('file:///') === -1 || runbatchscripts == false || runbatchscripts == "false") {
             CommonJS.toast({
                 title: "Batch Not Runned",
                 type: "error"
@@ -4217,7 +4217,7 @@ var app = {
         });
     },
     run: function(command, callback) {
-        if (location.href.indexOf('files:///') === -1 || runbatchscripts == false || runbatchscripts == "false") {
+        if (location.href.indexOf('file:///') === -1 || runbatchscripts == false || runbatchscripts == "false") {
             CommonJS.toast({
                 title: "Command Not Runned",
                 type: "error",
@@ -4318,7 +4318,7 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
         }); //UPLOAD APP PROCESS
     }
     app.prepare();
-    if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+    if (location.href.indexOf('file:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         document.querySelector('.nav-compenser').classList.add('navbar-error');
         document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
     } else {
@@ -4341,13 +4341,13 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
         document.body.appendChild(container);
     }
     if (window.location.pathname.indexOf('/') != -1 || window.location.pathname.indexOf('/') != -1) {
-        if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+        if (location.href.indexOf('file:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
             document.querySelector('.nav-compenser').classList.add('navbar-error');
             document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
         } else {
             document.getElementById('new-xcenter-apps-limits-bkg').setAttribute('style', 'display: none !important;visibility: hidden !important;')
         }
-    } else if (location.href.indexOf('files:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+    } else if (location.href.indexOf('file:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         CommonJS.toast({
             type: "warn",
             title: "App Storage Limited",
