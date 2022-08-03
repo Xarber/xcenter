@@ -2978,7 +2978,7 @@ var xcenter = {
             localStorage.setItem('settings-batchscripts', runbatchscripts)
             localStorage.setItem('settings-coldbootversion', coldbootversion)
             localStorage.setItem('settings-homebutton', homebutton)
-            if (window.location.pathname == "/settings/" || 1 == 1) {
+            if ((window.location.pathname == "/settings/" || 1 == 1) && (document.querySelector('.new-xcenter-homemenu') != null && document.querySelector('.new-xcenter-homemenu').classList.contains('app-open') == false)) {
                 document.getElementById('settings-autotheme').checked = false;
                 document.getElementById('settings-darktheme').checked = false;
                 document.getElementById('settings-showchangelog').checked = false;
