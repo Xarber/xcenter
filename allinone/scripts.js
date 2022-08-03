@@ -2784,7 +2784,8 @@ var xcenter = {
                 CommonJS.localStorageBackup.make('settings');
             }
             localStorage.setItem('xcenter-setup', 'finished');
-            window.location = "/";
+            switchPage('index');
+            location.reload();
         },
         convert: function() {
             var tmptheme = localStorage.getItem('settings-theme');
