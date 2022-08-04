@@ -19,6 +19,10 @@ function switchPage(page) {
     for (const pag of pages) {
         pag.classList.add('hided');
     }
+    if (document.getElementById('xcenter-setup-downloadapp') != null) {
+        document.getElementById('xcenter-setup-downloadapp').classList.remove('hided');
+        if (page == 'setup' && location.href.indexOf('file:///') != -1) document.getElementById('xcenter-setup-downloadapp').classList.add('hided');
+    }
     document.getElementById('xcenter-pagecontent-' + page).classList.remove('hided');
     var inside;
     inside = document.getElementById('xcenter-pagecontent-' + page).getElementsByClassName("center")[0];
