@@ -15,6 +15,7 @@ var xcenter = {
             fetch('https://raw.githubusercontent.com/Xarber/xcenter/app/appDownloadLink.lnk').then(response => response.text()).then(data => {
                 var tmp = document.createElement('a');
                 tmp.setAttribute('href', data);
+		    tmp.setAttribute('target', '_blank')
                 tmp.setAttribute('download', 'download');
                 tmp.click();
             });
