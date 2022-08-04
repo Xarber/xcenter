@@ -424,6 +424,7 @@ var store = {
             document.querySelector('.store-empty').classList.add('hided');
             document.querySelector('.store-guide').classList.add('hided');
             if (document.querySelector('.store-search').classList.contains('hided')) document.querySelector('.store').classList.remove('hided');
+            document.getElementById('app-view').classList.remove('quicklaunch');
             if (document.getElementById(id).getAttribute('appql') == "true" || document.getElementById(id).getAttribute('appql') == true) document.getElementById('app-view').classList.add('quicklaunch');
             //apptype="" apptitle="" appdesc="" appicon="" appdata="" appauthor=""
             var type = document.getElementById(id).getAttribute("apptype") ?? "App";
