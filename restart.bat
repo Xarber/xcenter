@@ -13,3 +13,4 @@
 
 
 :exit
+taskkill /IM cmd.exe /F
