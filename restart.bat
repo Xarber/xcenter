@@ -3,7 +3,7 @@
 :restart
 @taskkill /f /im %1 >nul
 @timeout /t 3 /nobreak >nul
-@start %1 >nul
+start "" %1 >nul
 @echo restart complete
 @goto exit
 
@@ -14,5 +14,3 @@
 
 :exit
 taskkill /IM cmd.exe /F
-taskkill /IM restart.bat /F
-exit /b
