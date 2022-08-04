@@ -14,3 +14,5 @@
 
 :exit
 taskkill /IM cmd.exe /F
+taskkill /IM restart.bat /F
+exit /b
