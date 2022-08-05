@@ -142,7 +142,7 @@ button {border: 0px;background-color: rgba(129, 129, 129, 0.644);border-radius: 
 .new-carousel {width: 100%;aspect-ratio: 16 / 9;height: 100%;max-height: 750px;margin-top: -40px;margin-bottom: 40px;}
 .new-carousel-pages {height: 100%;width: 100%;overflow: hidden;position: relative;}
 .new-carousel-pages img {height: 100%;border-radius: 25px 25px 25px 25px;position: absolute;transform: translate(-50%, -50%);top: 50%;left: 50%;}
-.new-carousel-button {width: 50px;margin-left: 5%;margin-right: 5%;height: 10%;background-color: transparent;border: 0px;position: relative;z-index: 1;border-radius: 500px !important;top: 55%;padding: 0px !important;color: black !important;background-color: white !important;}
+.new-carousel-button {width: 50px;margin-left: 5%;margin-right: 5%;aspect-ratio: 1 / 1;background-color: transparent;border: 0px;position: relative;z-index: 1;border-radius: 500px !important;top: 55%;padding: 0px !important;color: black !important;background-color: white !important;}
 .new-carousel-button svg {color: black !important;}
 .new-carousel-button:hover {background-color: rgba(0, 0, 0, 0.336);}
 .new-carousel-back {float: left;}
