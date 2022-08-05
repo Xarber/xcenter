@@ -1,16 +1,5 @@
-@if %1.==. (goto error) ELSE (goto restart)
-
+if "%1"=="" (exit /b 1) else (goto restart)
 :restart
-@taskkill /f /im %1 >nul
-@timeout /t 3 /nobreak >nul
-start "" %1 >nul
-@echo restart complete
-@goto exit
-
-:error
-@echo Please specify a program...
-@goto exit
-
-
-:exit
-taskkill /IM cmd.exe /F
+taskkill /f /im %1>nul
+start "" %1>nul
+exit /b
