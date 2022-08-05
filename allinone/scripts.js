@@ -3,7 +3,7 @@ var lastSwitchedPage = 'index';
 var precedentSwitchedPage;
 var initialPage;
 var precedentrunbatchscripts;
-var version = "1.0.0";
+var version = "1.0.1";
 setTimeout(() => {
     if (document.getElementById('new-XCenterGoBackToNewVersion') != null) {document.getElementById('new-XCenterGoBackToNewVersion').setAttribute('style', 'display: none !important;visibility: hidden !important;');}
     if (document.querySelector('.navbuttonextend') != null) document.querySelector('.navbuttonextend').classList.remove('navbuttonextend');
