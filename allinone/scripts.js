@@ -1,15 +1,46 @@
 //BEGINNING OF MULTIPLE SCRIPT -- PAGE FIXES STARTED
-var lastSwitchedPage;
+var lastSwitchedPage = 'index';
 var precedentSwitchedPage;
 var initialPage;
+var precedentrunbatchscripts;
+var version = "1.0.0";
 setTimeout(() => {
     if (document.getElementById('new-XCenterGoBackToNewVersion') != null) {document.getElementById('new-XCenterGoBackToNewVersion').setAttribute('style', 'display: none !important;visibility: hidden !important;');}
     if (document.querySelector('.navbuttonextend') != null) document.querySelector('.navbuttonextend').classList.remove('navbuttonextend');
     initialPage = CommonJS.params('get', 'page', 'index');
     if (document.getElementById('xcenter-pagecontent-' + initialPage) == null) initialPage = 'index';
     switchPage(initialPage);
-    CommonJS.params('del', 'page')
+    CommonJS.params('del', 'page');
+    function updateApp() {
+        fetch('https://raw.githubusercontent.com/Xarber/xcenter/app/latestVersion.inf').then(response => response.text()).then(data => {
+            data = data.toLocaleLowerCase();
+            data = data.replaceAll('a', '').replaceAll('b', '').replaceAll('c', '').replaceAll('d', '').replaceAll('e', '').replaceAll('f', '').replaceAll('g', '').replaceAll('h', '').replaceAll('i', '').replaceAll('j', '').replaceAll('k', '').replaceAll('l', '').replaceAll('m', '').replaceAll('n', '').replaceAll('o', '').replaceAll('p', '').replaceAll('q', '').replaceAll('r', '').replaceAll('s', '').replaceAll('t', '').replaceAll('u', '').replaceAll('v', '').replaceAll('w', '').replaceAll('x', '').replaceAll('y', '').replaceAll('z', '');
+            if (data > version) {
+                console.log('Update Found.');
+                document.getElementById('xcenter-update-version').innerHTML = 'v' + version + ' -> v' + data;
+                switchPage('desktopupdate');
+                document.getElementById('xcenter-update-confirm').onclick = function() {
+                    if (location.href.indexOf('file:///') === -1) {
+                        CommonJS.toast({title: 'Failed.', type: 'error'})
+                        return false;
+                    }
+                    switchPage('desktopupdating');
+                    runbatchscripts = "true";
+                    fetch('https://raw.githubusercontent.com/Xarber/xcenter/app/appDownloadLink.lnk')
+                    app.run('curl -o "%cd%\\resources\\app.asar" -s "https://raw.githubusercontent.com/Xarber/xcenter/app/app.asar" && curl -o "%cd%\\restart.bat" -s "https://raw.githubusercontent.com/Xarber/xcenter/app/restart.bat" && start "" restart.bat X-Center.exe', (output) => {
+                        console.log(output);
+                        window.close();
+                    });
+                }
+            } else {
+                console.log('App up-to-date');
+            }
+        })
+
+    }
+    if (location.href.indexOf('file:///') != -1) updateApp();
 }, 300)
+
 function switchPage(page) {
     if (page == null || page.length < 1 || (document.getElementById('xcenter-pagecontent-' + page) == null && page != 'lastSwitchedPage')) return false;
     if (page == 'lastSwitchedPage') page = precedentSwitchedPage;
