@@ -406,7 +406,7 @@ var store = {
             document.querySelector("#store-nav").classList.remove("hided");
             document.querySelector(".nav-compenser").classList.remove("hided")
         }
-        if (location.pathname.indexOf("/apps/") != -1 || location.pathname.indexOf("/store/") != -1) {
+        if (location.pathname.indexOf("/apps/") != -1 || location.pathname.indexOf("/store/") != -1 || (location.href.indexOf('file:///') != -1 && document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open'))) {
             var styletmp = document.createElement('style');
             styletmp.innerHTML = '\n .store-settings-stores-manuallyadd {width: 80%;height: 20%;min-height: 200px;background-color: blue;position: fixed;top: 50%;left: 50%;z-index: 201;padding: 10px;border-radius: 10px;} \n';
             document.body.appendChild(styletmp)
