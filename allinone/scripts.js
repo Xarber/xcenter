@@ -1350,7 +1350,9 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
         if (localStorage.getItem('theme') == 'auto') {
             if (document.getElementById('settings-ThemeDetect') != null) {document.getElementById('settings-ThemeDetect').checked = true;}
             if (theme == 'dark') {
-                pageHTML.classList.add('dark')
+                if (document.querySelector('.new-xcenter-home-menu') == null || (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+                    pageHTML.classList.add('dark')
+                }
                 navbar.classList.add('new-navbar-dark')
                 if (menu != null) {menu.classList.add('new-menu-dark')}
                 if (document.getElementById('settings-ThemeDark') != null) {
@@ -1367,7 +1369,9 @@ if (document.querySelector('.page') != null && (location.href.indexOf('xcenter.n
                 }
             }
         } else if (localStorage.getItem('theme') == 'dark') {
-            pageHTML.classList.add('dark')
+            if (document.querySelector('.new-xcenter-home-menu') == null || (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+                pageHTML.classList.add('dark')
+            }
             navbar.classList.add('new-navbar-dark')
             menu.classList.add('new-menu-dark')
             if (document.getElementById('settings-ThemeDark') != null) {
@@ -3043,20 +3047,28 @@ var xcenter = {
 
             //APPLY
             if (theme == "light") {
-                document.body.setAttribute('class', 'light');
-                document.getElementById('html').setAttribute('class', 'light')
+                if (document.querySelector('.new-xcenter-home-menu') == null || (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+                    document.body.setAttribute('class', 'light');
+                    document.getElementById('html').setAttribute('class', 'light')
+                }
             };
             if (theme == "dark") {
-                document.body.setAttribute('class', 'dark');
-                document.getElementById('html').setAttribute('class', 'dark')
+                if (document.querySelector('.new-xcenter-home-menu') == null || (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+                    document.body.setAttribute('class', 'dark');
+                    document.getElementById('html').setAttribute('class', 'dark')
+                }
             }
             if (theme == "auto") {
                 if (currenttheme == "dark") {
-                    document.body.setAttribute('class', 'dark');
-                    document.getElementById('html').setAttribute('class', 'dark')
+                    if (document.querySelector('.new-xcenter-home-menu') == null || (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+                        document.body.setAttribute('class', 'dark');
+                        document.getElementById('html').setAttribute('class', 'dark')
+                    }
                 } else if (currenttheme == "light") {
-                    document.body.setAttribute('class', 'light');
-                    document.getElementById('html').setAttribute('class', 'light')
+                    if (document.querySelector('.new-xcenter-home-menu') == null || (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+                        document.body.setAttribute('class', 'light');
+                        document.getElementById('html').setAttribute('class', 'light')
+                    }
                 }
             }
         }
@@ -4066,6 +4078,9 @@ var app = {
         id = data.id;
         batch = data.batch;
         content = data.content;
+        /*var contentStringContainer = "'";
+        if (content.indexOf('"') != -1 && content.charAt(content.indexOf('"') - 1) == "\\") contentStringContainer = '"';
+        content = content.replaceAll('</script>', '</scr' + contentStringContainer + '+' + contentStringContainer + 'ipt>');*/
         if (document.getElementById('new-xcenter-app-launch') == null) {
             xcenterapplaunch = document.createElement('div');
             xcenterapplaunch.innerHTML = '<div class="inf-loading"><div></div></div><div class="center"><img src="data:image/png;base64,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" id="new-xcenter-app-launch-icon" alt=""><p id="new-xcenter-app-launch-title">App</p></div><button id="new-xcenter-app-launch-cancel" onclick="document.getElementById(\'new-xcenter-app-launch\').classList.add(\'hided\');clearTimeout(applaunch);"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/></svg></button>';
@@ -4405,7 +4420,7 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
 }
 
 if (document.querySelector('.new-xcenter-home-menu') != null) {
-    if (document.getElementById('html') != null && document.getElementById('html').classList.contains('dark')) document.querySelector('.new-xcenter-home-menu').classList.add('dark');
+    if ((document.getElementById('html') != null && document.getElementById('html').classList.contains('dark')) || document.body.classList.contains('dark')) document.querySelector('.new-xcenter-home-menu').classList.add('dark');
     if (hometype == "single") {
         window.onkeydown = function(Key) {
             if (Key.keyCode == singlehomekey.toUpperCase().charCodeAt(0)) {
@@ -4430,6 +4445,15 @@ if (document.querySelector('.new-xcenter-home-menu') != null) {
         document.addEventListener('keyup', (event) => {
             delete keysPressed[event.key];
         });
+    }
+    if (document.querySelector('appinfo') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false) {
+        var appTitle = document.querySelector('appinfo').getAttribute('title') ?? 'App';
+        var appIcon = document.querySelector('appinfo').getAttribute('icon');
+        var appExit = document.querySelector('appinfo').getAttribute('onexit') ?? 'location.reload()';
+        document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelector('h3').innerHTML = appTitle;
+        document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelector('img').src = appIcon;
+        document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelectorAll('button')[0].setAttribute('onclick', appExit);
+        document.querySelector('.new-xcenter-home-menu').classList.add('app-open');
     }
 }
 console.log('%cAPP SCRIPT ENDED', 'padding: 10px;background-color: black;border-radius: 10px;')
