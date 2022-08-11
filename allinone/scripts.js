@@ -3,7 +3,7 @@ var lastSwitchedPage = 'index';
 var precedentSwitchedPage;
 var initialPage;
 var precedentrunbatchscripts;
-var version = "1.0.1";
+var version = "1.0.2";
 setTimeout(() => {
     if (document.getElementById('new-XCenterGoBackToNewVersion') != null) {document.getElementById('new-XCenterGoBackToNewVersion').setAttribute('style', 'display: none !important;visibility: hidden !important;');}
     if (document.querySelector('.navbuttonextend') != null) document.querySelector('.navbuttonextend').classList.remove('navbuttonextend');
@@ -52,7 +52,7 @@ function switchPage(page) {
     }
     if (document.getElementById('xcenter-setup-downloadapp') != null) {
         document.getElementById('xcenter-setup-downloadapp').classList.remove('hided');
-        if (page == 'setup' && location.href.indexOf('file:///') != -1) document.getElementById('xcenter-setup-downloadapp').classList.add('hided');
+        if (page == 'setup' && (location.href.indexOf('file:///') != -1 && !!window._cordovaNative)) document.getElementById('xcenter-setup-downloadapp').classList.add('hided');
     }
     document.getElementById('xcenter-pagecontent-' + page).classList.remove('hided');
     var inside;
@@ -1102,6 +1102,13 @@ var CommonJS = {
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    },
+    remainingLocalStorage: function() {
+        var spacebytes = 1024 * 1024 * 5 - escape(encodeURIComponent(JSON.stringify(localStorage))).length;
+        var spaceMB = spacebytes / 1000000;
+        if (isNaN(spacebytes) || isNaN(spaceMB)) return false;
+        console.log("Remaining LocalStorage: " + spaceMB + "MB / " + spacebytes + " bytes");
+        return spaceMB;
     },
     localStorageBackup: {
         make: function(name) {
@@ -2741,7 +2748,7 @@ var xcenter = {
     },
     setup: {
         show: function() {
-            if (location.href.indexOf('file:///') != -1) {
+            if (location.href.indexOf('file:///') != -1 && !!window._cordovaNative != -1) {
                 document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
                 setTimeout(() => {
                     document.getElementById('xcenter-userprofile').classList.add('hided');
@@ -2754,6 +2761,7 @@ var xcenter = {
                     for (const pag of pages) {
                         pag.classList.add('hided');
                     }
+                    if (!!window._cordovaNative != -1) {document.querySelector('.xcenter-desktoptransfer').querySelector('center').querySelectorAll('img')[2].src = "data:image/png;base64,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";}
                     document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
                 }, 300)
                 return true;
@@ -4315,6 +4323,18 @@ var app = {
             })
         }
     },
+    refreshAppInfo: function() {
+        if (document.querySelector('appinfo') != null) {
+            var appTitle = document.querySelector('appinfo').getAttribute('title') ?? 'App';
+            var appIcon = document.querySelector('appinfo').getAttribute('icon');
+            var appExit = document.querySelector('appinfo').getAttribute('onexit') ?? 'location.reload()';
+            document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelector('h3').innerHTML = appTitle;
+            document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelector('img').src = appIcon;
+            document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelectorAll('button')[0].setAttribute('onclick', appExit);
+            document.querySelector('.new-xcenter-home-menu').classList.add('app-open');
+            return true;
+        } else return false;
+    },
     pack: {
         build: function(slot, eventualdata) {
             if (eventualdata != null) {
@@ -4381,7 +4401,7 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
         }); //UPLOAD APP PROCESS
     }
     app.prepare();
-    if (location.href.indexOf('file:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+    if ((location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         document.querySelector('.nav-compenser').classList.add('navbar-error');
         document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
     } else {
@@ -4404,13 +4424,13 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
         document.body.appendChild(container);
     }
     if (window.location.pathname.indexOf('/') != -1 || window.location.pathname.indexOf('/') != -1) {
-        if (location.href.indexOf('file:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+        if ((location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
             document.querySelector('.nav-compenser').classList.add('navbar-error');
             document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
         } else {
             document.getElementById('new-xcenter-apps-limits-bkg').setAttribute('style', 'display: none !important;visibility: hidden !important;')
         }
-    } else if (location.href.indexOf('file:///') === -1 && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+    } else if ((location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         CommonJS.toast({
             type: "warn",
             title: "App Storage Limited",
@@ -4517,13 +4537,13 @@ window.onresize = function() {
         }, 50)
     }
 }
-if (localStorage.getItem('XCenterAfterSetup') == null && location.href.indexOf('file:///') != -1) {
+if (localStorage.getItem('XCenterAfterSetup') == null && (location.href.indexOf('file:///') != -1 && !!window._cordovaNative != -1)) {
     for (let i = 0;i != 33;i++) {
         localStorage.removeItem('XCenterAppData' + i);
         app.reloadApps();
     }
     localStorage.setItem('XCenterAfterSetup', 'true');
-} else if (localStorage.getItem('XCenterAfterSetup') != null && location.href.indexOf('file:///') === -1) {
+} else if (localStorage.getItem('XCenterAfterSetup') != null && (location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1)) {
     localStorage.removeItem('XCenterAfterSetup');
 }
 //MULTIPLE SCRIPT LAST FIXES ENDED -- MULTIPLE SCRIPT ENDED

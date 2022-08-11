@@ -94,6 +94,7 @@
             <button onclick="appdesigner.switch(this.id)" id="appdesigner-nav-home" class="appdesigner-page-active">Home</button>
             <button onclick="appdesigner.switch(this.id)" id="appdesigner-nav-new">New</button>
             <button onclick="appdesigner.switch(this.id)" id="appdesigner-nav-load">Load</button>
+            <button onclick="appdesigner.switch(this.id)" id="appdesigner-nav-about">About</button>
             <button onclick="appdesigner.switch(this.id)" id="appdesigner-nav-menu-open" class="hided">Menu</button>
         </center>
         <div class="appdesigner-nav-menu hided"></div>
@@ -119,6 +120,16 @@
                 <button style="background-color: blue;width: 10%;min-width: 150px;">Upload</button>
             </div>
         </div>
+        <div id="appdesigner-about" class="appdesigner-page hided">
+            <div class="center">
+                <h1>About</h1>
+                <hr><br>
+                <p>App Designer is an app built by Xarber to help people (also not knowing how to code) made their own app on X-Center, or website in general. You can also upload a template made by another user to already have a base to work on, or just upload new components to work with. Everything is made 100% free!</p>
+            </div>
+        </div>
+        <div id="appdesigner-build" class="appdesigner-page hided">
+
+        </div>
     </div>
     <footer class="hided">
         <div>
@@ -129,6 +140,9 @@
         </div>
     </footer>
     <style>
+        .dark .appdesigner-nav {background-color: black;border-bottom: 2px solid white;}
+        .dark .appdesigner-nav button {color: white;}
+        .dark .appdesigner hr {background-color: rgba(255, 255, 255, 0.863);}
         .appdesigner-nav {width: 100%;height: 50px;position: fixed;top: 0;left: 0;right: 0;background-color: white;border-bottom: 2px solid black;border-radius: 0px 0px 5px 5px;z-index: 100;}
         .appdesigner-nav button {background-color: transparent;border-radius: 0 !important;color: black;font-weight: bold;margin: 0;padding-left: 5%;padding-right: 5%;height: 49px !important;}
         .appdesigner-nav button.appdesigner-page-active {color: blue;border-bottom: 4px solid blue;animation: activeButton linear 0.3s;}
@@ -190,7 +204,7 @@
             100% {
                 display: block;
                 visibility: visible;
-                height: calc(49px * 3);
+                height: calc(49px * 4);
             }
         }
     </style>
@@ -202,6 +216,7 @@
             window.onresize = appdesigner.navPrepare();
             appdesigner.navPrepare();
         }, 1000)
+        var maxMenuWidth = 320;
         var appdesigner = {
             switch: function(id) {
                 if (id.indexOf('-nav-menu-open') != -1) {
@@ -230,7 +245,7 @@
             navPrepare: function() {
                 var winHeight = window.innerHeight;
                 var winWidth = window.innerWidth;
-                if (winWidth < 200) {
+                if (winWidth < maxMenuWidth) {
                     var buttons = document.getElementById('appdesigner-nav-content').querySelectorAll('button');
                     for (const button of buttons) {
                         button.classList.add('hided')
