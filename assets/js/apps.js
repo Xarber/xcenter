@@ -1014,6 +1014,18 @@ var app = {
             })
         }
     },
+    refreshAppInfo: function() {
+        if (document.querySelector('appinfo') != null) {
+            var appTitle = document.querySelector('appinfo').getAttribute('title') ?? 'App';
+            var appIcon = document.querySelector('appinfo').getAttribute('icon');
+            var appExit = document.querySelector('appinfo').getAttribute('onexit') ?? 'location.reload()';
+            document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelector('h3').innerHTML = appTitle;
+            document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelector('img').src = appIcon;
+            document.querySelector('.new-xcenter-home-menu').querySelector('.vertical-center').querySelectorAll('button')[0].setAttribute('onclick', appExit);
+            document.querySelector('.new-xcenter-home-menu').classList.add('app-open');
+            return true;
+        } else return false;
+    },
     pack: {
         build: function(slot, eventualdata) {
             if (eventualdata != null) {

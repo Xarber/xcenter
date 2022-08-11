@@ -1013,6 +1013,13 @@ var CommonJS = {
         var dataURL = canvas.toDataURL("image/png");
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
     },
+    remainingLocalStorage: function() {
+        var spacebytes = 1024 * 1024 * 5 - escape(encodeURIComponent(JSON.stringify(localStorage))).length;
+        var spaceMB = spacebytes / 1000000;
+        if (isNaN(spacebytes) || isNaN(spaceMB)) return false;
+        console.log("Remaining LocalStorage: " + spaceMB + "MB / " + spacebytes + " bytes");
+        return spaceMB;
+    },
     localStorageBackup: {
         make: function(name) {
             name = name ?? "Backup";
