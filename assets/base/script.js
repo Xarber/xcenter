@@ -229,7 +229,7 @@ var xcenter = {
             var tmpsettingresetcancelbtn = document.createElement('button');
             var tmpsettingresetbtns = document.createElement('div');
             tmpsettingresetconfirmbkg.setAttribute('style', 'position: fixed;z-index: 101;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.596);');
-            tmpsettingresetconfirm.setAttribute('style', 'width: 80%;height: 60%;min-width: 600px;min-height: 350px;background-color: red;padding: 10px;border-radius: 10px;');
+            tmpsettingresetconfirm.setAttribute('style', 'width: 100%;height: 100%;max-width: 800px;max-height: 500px;background-color: red;padding: 10px;border-radius: 10px;');
             tmpsettingresetconfirm.setAttribute('class', 'center');
             tmpsettingresetbtns.setAttribute('style', 'position: absolute;bottom: 0;left: 0;width: 100%;display: flex;')
             tmpsettingresetconfirmbtn.setAttribute('style', 'flex-grow: 1;background-color: rgb(255, 255, 255, 0.196);border-radius: 0px 0px 10px 0px !important;');
