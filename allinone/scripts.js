@@ -4,6 +4,7 @@ var precedentSwitchedPage;
 var initialPage;
 var precedentrunbatchscripts;
 var version = "1.0.2";
+var onScreenConsole = false;
 setTimeout(() => {
     if (document.getElementById('new-XCenterGoBackToNewVersion') != null) {document.getElementById('new-XCenterGoBackToNewVersion').setAttribute('style', 'display: none !important;visibility: hidden !important;');}
     if (document.querySelector('.navbuttonextend') != null) document.querySelector('.navbuttonextend').classList.remove('navbuttonextend');
@@ -20,17 +21,25 @@ setTimeout(() => {
                 document.getElementById('xcenter-update-version').innerHTML = 'v' + version + ' -> v' + data;
                 switchPage('desktopupdate');
                 document.getElementById('xcenter-update-confirm').onclick = function() {
-                    if (location.href.indexOf('file:///') === -1) {
+                    if (location.href.indexOf('file:///') === -1 || (!!window._cordovaNative == -1 || !!window._cordovaNative == false)) {
                         CommonJS.toast({title: 'Failed.', type: 'error'})
                         return false;
                     }
                     switchPage('desktopupdating');
-                    runbatchscripts = "true";
-                    fetch('https://raw.githubusercontent.com/Xarber/xcenter/app/appDownloadLink.lnk')
-                    app.run('curl -o "%cd%\\resources\\app.asar" -s "https://raw.githubusercontent.com/Xarber/xcenter/app/app.asar" && curl -o "%cd%\\restart.bat" -s "https://raw.githubusercontent.com/Xarber/xcenter/app/restart.bat" && start "" restart.bat X-Center.exe', (output) => {
-                        console.log(output);
-                        window.close();
-                    });
+                    if (location.href.indexOf('file:///') != -1) {
+                        runbatchscripts = "true";
+                        app.run('curl -o "%cd%\\resources\\app.asar" -s "https://raw.githubusercontent.com/Xarber/xcenter/app/app.asar" && curl -o "%cd%\\restart.bat" -s "https://raw.githubusercontent.com/Xarber/xcenter/app/restart.bat" && start "" restart.bat X-Center.exe', (output) => {
+                            console.log(output);
+                            window.close();
+                        });
+                    } else if (!!window._cordovaNative != -1 && !!window._cordovaNative != false) {
+                        var tmp = document.createElement('a');
+                        tmp.setAttribute('download', 'X-CenterUpdate.apk');
+                        tmp.setAttribute('href', 'https://raw.githubusercontent.com/Xarber/xcenter/app/app.apk');
+                        tmp.setAttribute('style', 'display: none;visibility: hidden;');
+                        tmp.innerHTML = "Update App";
+                        tmp.click();
+                    }
                 }
             } else {
                 console.log('App up-to-date');
@@ -40,7 +49,197 @@ setTimeout(() => {
     }
     if (location.href.indexOf('file:///') != -1) updateApp();
 }, 300)
+if ((!!window._cordovaNative != false && !!window._cordovaNative != -1) || location.href.indexOf('file:///') != -1) {
+    alert = function(text, callback) {
+        var bkg = document.createElement('div');
+        var container = document.createElement('div');
+        var confirm = document.createElement('button');
+        var title = document.createElement('h1');
+        var desc = document.createElement('p');
+        text = text ?? "";
+        bkg.setAttribute('style', 'position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 9999999999;background-color: rgba(0, 0, 0, 0.675);');
+        container.setAttribute('style', 'background-color: rgb(29, 29, 29);margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);width: 100%;max-width: 650px;height: 100%;max-height: 300px;overflow-x: hidden;overflow-y: auto;padding: 20px;border-radius: 20px;padding-bottom: 50px;padding-top: 0 !important;');
+        confirm.setAttribute('style', 'color: rgb(70, 137, 214);background-color: transparent !important;position: absolute;bottom: 10px;right: 15px;font-weight: bold;');
+        desc.setAttribute('style', 'width: 100%;height: 50%;');
+        title.innerHTML = document.title + " says";
+        confirm.innerHTML = "Ok";
+        desc.innerHTML = text;
+        confirm.onclick = function() {
+            bkg.remove();
+            if (callback != null && typeof(callback) == "function") callback();
+        }
+        container.appendChild(title);
+        container.appendChild(desc);
+        container.appendChild(confirm);
+        bkg.appendChild(container);
+        document.body.appendChild(bkg);
+    }
+    window.prompt = function(text, defaultValue, callback) {
+        var bkg = document.createElement('div');
+        var container = document.createElement('div');
+        var confirm = document.createElement('button');
+        var title = document.createElement('h1');
+        var input = document.createElement('input');
+        text = text ?? "Insert";
+        defaultValue = defaultValue ?? "";
+        bkg.setAttribute('style', 'position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 9999999999;background-color: rgba(0, 0, 0, 0.675);');
+        container.setAttribute('style', 'background-color: rgb(29, 29, 29);margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);width: 100%;max-width: 650px;height: 100%;max-height: 225px;overflow-x: hidden;overflow-y: auto;padding: 20px;border-radius: 20px;padding-bottom: 50px;padding-top: 0 !important;');
+        confirm.setAttribute('style', 'color: rgb(70, 137, 214);background-color: transparent !important;position: absolute;bottom: 10px;right: 15px;font-weight: bold;');
+        input.setAttribute('style', 'width: 100%;height: 50px;background-color: rgb(29, 29, 29) !important;color: white !important;border-radius: 10px !important;border: 1px solid white !important;padding-left: 10px;padding-right: 10px;');
+        title.innerHTML = text;
+        confirm.innerHTML = "Ok";
+        input.value = defaultValue;
+        confirm.onclick = function() {
+            bkg.remove();
+            if (callback != null && typeof(callback) == "function") callback(input.value);
+            return input.value;
+        }
+        container.appendChild(title);
+        container.appendChild(input);
+        container.appendChild(confirm);
+        bkg.appendChild(container);
+        document.body.appendChild(bkg);
+    }
+    if (!!window._cordovaNative != -1 && !!window._cordovaNative != false) {
+        //Download Function on Cordova
+        "use strict";
+        function cordovaDownload(filename, data, mimeType) {
+            var blob = new Blob([data], {
+                type: mimeType
+            });
+            document.addEventListener("deviceready", function() {
+                var storageLocation = "";
+                switch (device.platform) {
+                    case "Android":
+                        storageLocation = cordova.file.externalDataDirectory;
+                    break;
 
+                    case "iOS":
+                        storageLocation = cordova.file.documentsDirectory;
+                    break;
+                }
+                var folderPath = storageLocation;
+                window.resolveLocalFileSystemURL(
+                    folderPath,
+                    function(dir) {
+                        dir.getFile(filename, {create: true}, function(file) {
+                                file.createWriter(
+                                    function(fileWriter) {
+                                    fileWriter.write(blob);
+
+                                    fileWriter.onwriteend = function() {
+                                        var url = file.toURL();
+                                        cordova.plugins.fileOpener2.open(url, mimeType, {
+                                        error: function error(err) {
+                                            console.error(err);
+                                            alert("Unable to download");
+                                        },
+                                        success: function success() {
+                                            console.log("success with opening the file");
+                                        }
+                                        });
+                                    };
+
+                                    fileWriter.onerror = function(err) {
+                                        alert("Unable to download");
+                                        console.error(err);
+                                    };
+                                    },
+                                    function(err) {
+                                    // failed
+                                    alert("Unable to download");
+                                    console.error(err);
+                                    }
+                                );
+                            },
+                            function(err) {
+                                alert("Unable to download");
+                                console.error(err);
+                            }
+                        );
+                    },
+                    function(err) {
+                        alert("Unable to download");
+                        console.error(err);
+                    }
+                );
+            });
+        }
+        function cordovaDataURItoBlob(dataURI) {
+            var isBase64 = dataURI.split(",")[0].split(";")[1] === "base64";
+            var byteString;
+    
+            if (isBase64) {
+                // convert base64 to raw binary data held in a string
+                // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+                byteString = atob(dataURI.split(",")[1]);
+            } else {
+                byteString = dataURI.split(",")[1];
+            } // separate out the mime component
+    
+            var mimeString = dataURI
+                .split(",")[0]
+                .split(":")[1]
+                .split(";")[0]; // write the bytes of the string to an ArrayBuffer
+    
+            var ab = new ArrayBuffer(byteString.length); // create a view into the buffer
+    
+            var ia = new Uint8Array(ab); // set the bytes of the buffer to the correct values
+    
+            for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            } // write the ArrayBuffer to a blob, and you're done
+    
+            var blob = new Blob([ab], {
+                type: mimeString
+            });
+            return blob;
+        };
+        document.addEventListener("deviceready", function () {
+            document.addEventListener("click", function (e) {
+                var elem = e.target;
+
+                while (elem != document) {
+                    if (elem.tagName === "A" && elem.hasAttribute("download")) {
+                        e.preventDefault();
+
+                        if (elem.getAttribute("href").slice(0, 5) === "data:") {
+                            var blob = cordovaDataURItoBlob(elem.getAttribute("href"));
+                            cordovaDownload(elem.getAttribute("download"), blob, blob.type);
+                        } else {
+                            fetch(elem.getAttribute("href")).then(function (response) {return response.blob();}).then(function (blob) {
+                                return cordovaDownload(elem.getAttribute("download"), blob, blob.type);
+                            });
+                        }
+                        return;
+                    }
+
+                    elem = elem.parentNode;
+                }
+            });
+        });
+    }
+    if (onScreenConsole == "true" || onScreenConsole == true) {
+        console.log = function(text) {
+            if (document.querySelector('console') == null) {
+                var container = document.createElement('console');
+                
+            }
+        }
+        console.warn = function(text) {
+    
+        }
+        console.error = function(text) {
+    
+        }
+        console.group = function(text) {
+    
+        }
+        console.groupEnd = function() {
+    
+        }
+    }
+}
 function switchPage(page) {
     if (page == null || page.length < 1 || (document.getElementById('xcenter-pagecontent-' + page) == null && page != 'lastSwitchedPage')) return false;
     if (page == 'lastSwitchedPage') page = precedentSwitchedPage;
@@ -52,7 +251,7 @@ function switchPage(page) {
     }
     if (document.getElementById('xcenter-setup-downloadapp') != null) {
         document.getElementById('xcenter-setup-downloadapp').classList.remove('hided');
-        if (page == 'setup' && (location.href.indexOf('file:///') != -1 && !!window._cordovaNative)) document.getElementById('xcenter-setup-downloadapp').classList.add('hided');
+        if (page == 'setup' && (location.href.indexOf('file:///') != -1 || (!!window._cordovaNative != false && !!window._cordovaNative != -1))) document.getElementById('xcenter-setup-downloadapp').classList.add('hided');
     }
     document.getElementById('xcenter-pagecontent-' + page).classList.remove('hided');
     var inside;
@@ -2748,7 +2947,7 @@ var xcenter = {
     },
     setup: {
         show: function() {
-            if (location.href.indexOf('file:///') != -1 && !!window._cordovaNative != -1) {
+            if (location.href.indexOf('file:///') != -1 || (!!window._cordovaNative != false && !!window._cordovaNative != -1)) {
                 document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
                 setTimeout(() => {
                     document.getElementById('xcenter-userprofile').classList.add('hided');
@@ -2761,7 +2960,7 @@ var xcenter = {
                     for (const pag of pages) {
                         pag.classList.add('hided');
                     }
-                    if (!!window._cordovaNative != -1) {document.querySelector('.xcenter-desktoptransfer').querySelector('center').querySelectorAll('img')[2].src = "data:image/png;base64,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";}
+                    if ((!!window._cordovaNative != false && !!window._cordovaNative != -1)) {document.querySelector('.xcenter-desktoptransfer').querySelector('center').querySelectorAll('img')[2].src = "data:image/png;base64,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";}
                     document.getElementById('xcenter-pagecontent-desktoptransfer').classList.remove('hided');
                 }, 300)
                 return true;
@@ -2963,7 +3162,7 @@ var xcenter = {
             var tmpsettingresetcancelbtn = document.createElement('button');
             var tmpsettingresetbtns = document.createElement('div');
             tmpsettingresetconfirmbkg.setAttribute('style', 'position: fixed;z-index: 101;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.596);');
-            tmpsettingresetconfirm.setAttribute('style', 'width: 80%;height: 60%;min-width: 600px;min-height: 350px;background-color: red;padding: 10px;border-radius: 10px;');
+            tmpsettingresetconfirm.setAttribute('style', 'width: 100%;height: 100%;max-width: 800px;max-height: 500px;background-color: red;padding: 10px;border-radius: 10px;');
             tmpsettingresetconfirm.setAttribute('class', 'center');
             tmpsettingresetbtns.setAttribute('style', 'position: absolute;bottom: 0;left: 0;width: 100%;display: flex;')
             tmpsettingresetconfirmbtn.setAttribute('style', 'flex-grow: 1;background-color: rgb(255, 255, 255, 0.196);border-radius: 0px 0px 10px 0px !important;');
@@ -4401,7 +4600,7 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
         }); //UPLOAD APP PROCESS
     }
     app.prepare();
-    if ((location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+    if ((location.href.indexOf('file:///') === -1 && (!!window._cordovaNative == false || !!window._cordovaNative === -1)) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         document.querySelector('.nav-compenser').classList.add('navbar-error');
         document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
     } else {
@@ -4424,13 +4623,13 @@ if ((window.location.pathname.indexOf('/') != -1 && document.querySelector(".new
         document.body.appendChild(container);
     }
     if (window.location.pathname.indexOf('/') != -1 || window.location.pathname.indexOf('/') != -1) {
-        if ((location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+        if ((location.href.indexOf('file:///') === -1 && (!!window._cordovaNative == false || !!window._cordovaNative === -1)) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
             document.querySelector('.nav-compenser').classList.add('navbar-error');
             document.getElementById('new-xcenter-apps-limits-bkg').classList.remove('hided');
         } else {
             document.getElementById('new-xcenter-apps-limits-bkg').setAttribute('style', 'display: none !important;visibility: hidden !important;')
         }
-    } else if ((location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
+    } else if ((location.href.indexOf('file:///') === -1 && (!!window._cordovaNative == false || !!window._cordovaNative === -1)) && (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false)) {
         CommonJS.toast({
             type: "warn",
             title: "App Storage Limited",
@@ -4515,7 +4714,197 @@ b.keySize,b.ivSize);l.iv=d.iv;b=a.encrypt.call(this,b,c,d.key,l);b.mixIn(d);retu
 8&255]]^n[l[k&255]]},encryptBlock:function(a,b){this._doCryptBlock(a,b,this._keySchedule,t,r,w,v,l)},decryptBlock:function(a,c){var d=a[c+1];a[c+1]=a[c+3];a[c+3]=d;this._doCryptBlock(a,c,this._invKeySchedule,b,x,q,n,s);d=a[c+1];a[c+1]=a[c+3];a[c+3]=d},_doCryptBlock:function(a,b,c,d,e,j,l,f){for(var m=this._nRounds,g=a[b]^c[0],h=a[b+1]^c[1],k=a[b+2]^c[2],n=a[b+3]^c[3],p=4,r=1;r<m;r++)var q=d[g>>>24]^e[h>>>16&255]^j[k>>>8&255]^l[n&255]^c[p++],s=d[h>>>24]^e[k>>>16&255]^j[n>>>8&255]^l[g&255]^c[p++],t=
 d[k>>>24]^e[n>>>16&255]^j[g>>>8&255]^l[h&255]^c[p++],n=d[n>>>24]^e[g>>>16&255]^j[h>>>8&255]^l[k&255]^c[p++],g=q,h=s,k=t;q=(f[g>>>24]<<24|f[h>>>16&255]<<16|f[k>>>8&255]<<8|f[n&255])^c[p++];s=(f[h>>>24]<<24|f[k>>>16&255]<<16|f[n>>>8&255]<<8|f[g&255])^c[p++];t=(f[k>>>24]<<24|f[n>>>16&255]<<16|f[g>>>8&255]<<8|f[h&255])^c[p++];n=(f[n>>>24]<<24|f[g>>>16&255]<<16|f[h>>>8&255]<<8|f[k&255])^c[p++];a[b]=q;a[b+1]=s;a[b+2]=t;a[b+3]=n},keySize:8});u.AES=p._createHelper(d)})();
 
-//CRYPTO.JS SCRIPT ENDED -- MULTIPLE SCRIPT LAST FIXES STARTED
+//CRYPTO.JS SCRIPT ENDED -- FILESAVER.JS SCRIPT STARTED
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define([], factory);
+  } else if (typeof exports !== "undefined") {
+    factory();
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory();
+    global.FileSaver = mod.exports;
+  }
+})(this, function () {
+  "use strict";
+
+  /*
+  * FileSaver.js
+  * A saveAs() FileSaver implementation.
+  *
+  * By Eli Grey, http://eligrey.com
+  *
+  * License : https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md (MIT)
+  * source  : http://purl.eligrey.com/github/FileSaver.js
+  */
+  // The one and only way of getting global scope in all environments
+  // https://stackoverflow.com/q/3277182/1008999
+  var _global = typeof window === 'object' && window.window === window ? window : typeof self === 'object' && self.self === self ? self : typeof global === 'object' && global.global === global ? global : void 0;
+
+  function bom(blob, opts) {
+    if (typeof opts === 'undefined') opts = {
+      autoBom: false
+    };else if (typeof opts !== 'object') {
+      console.warn('Deprecated: Expected third argument to be a object');
+      opts = {
+        autoBom: !opts
+      };
+    } // prepend BOM for UTF-8 XML and text/* types (including HTML)
+    // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+
+    if (opts.autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+      return new Blob([String.fromCharCode(0xFEFF), blob], {
+        type: blob.type
+      });
+    }
+
+    return blob;
+  }
+
+  function download(url, name, opts) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function () {
+      saveAs(xhr.response, name, opts);
+    };
+
+    xhr.onerror = function () {
+      console.error('could not download file');
+    };
+
+    xhr.send();
+  }
+
+  function corsEnabled(url) {
+    var xhr = new XMLHttpRequest(); // use sync to avoid popup blocker
+
+    xhr.open('HEAD', url, false);
+
+    try {
+      xhr.send();
+    } catch (e) {}
+
+    return xhr.status >= 200 && xhr.status <= 299;
+  } // `a.click()` doesn't work for all browsers (#465)
+
+
+  function click(node) {
+    try {
+      node.dispatchEvent(new MouseEvent('click'));
+    } catch (e) {
+      var evt = document.createEvent('MouseEvents');
+      evt.initMouseEvent('click', true, true, window, 0, 0, 0, 80, 20, false, false, false, false, 0, null);
+      node.dispatchEvent(evt);
+    }
+  } // Detect WebView inside a native macOS app by ruling out all browsers
+  // We just need to check for 'Safari' because all other browsers (besides Firefox) include that too
+  // https://www.whatismybrowser.com/guides/the-latest-user-agent/macos
+
+
+  var isMacOSWebView = /Macintosh/.test(navigator.userAgent) && /AppleWebKit/.test(navigator.userAgent) && !/Safari/.test(navigator.userAgent);
+  var saveAs = _global.saveAs || ( // probably in some web worker
+  typeof window !== 'object' || window !== _global ? function saveAs() {}
+  /* noop */
+  // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView
+  : 'download' in HTMLAnchorElement.prototype && !isMacOSWebView ? function saveAs(blob, name, opts) {
+    var URL = _global.URL || _global.webkitURL;
+    var a = document.createElement('a');
+    name = name || blob.name || 'download';
+    a.download = name;
+    a.rel = 'noopener'; // tabnabbing
+    // TODO: detect chrome extensions & packaged apps
+    // a.target = '_blank'
+
+    if (typeof blob === 'string') {
+      // Support regular links
+      a.href = blob;
+
+      if (a.origin !== location.origin) {
+        corsEnabled(a.href) ? download(blob, name, opts) : click(a, a.target = '_blank');
+      } else {
+        click(a);
+      }
+    } else {
+      // Support blobs
+      a.href = URL.createObjectURL(blob);
+      setTimeout(function () {
+        URL.revokeObjectURL(a.href);
+      }, 4E4); // 40s
+
+      setTimeout(function () {
+        click(a);
+      }, 0);
+    }
+  } // Use msSaveOrOpenBlob as a second approach
+  : 'msSaveOrOpenBlob' in navigator ? function saveAs(blob, name, opts) {
+    name = name || blob.name || 'download';
+
+    if (typeof blob === 'string') {
+      if (corsEnabled(blob)) {
+        download(blob, name, opts);
+      } else {
+        var a = document.createElement('a');
+        a.href = blob;
+        a.target = '_blank';
+        setTimeout(function () {
+          click(a);
+        });
+      }
+    } else {
+      navigator.msSaveOrOpenBlob(bom(blob, opts), name);
+    }
+  } // Fallback to using FileReader and a popup
+  : function saveAs(blob, name, opts, popup) {
+    // Open a popup immediately do go around popup blocker
+    // Mostly only available on user interaction and the fileReader is async so...
+    popup = popup || open('', '_blank');
+
+    if (popup) {
+      popup.document.title = popup.document.body.innerText = 'downloading...';
+    }
+
+    if (typeof blob === 'string') return download(blob, name, opts);
+    var force = blob.type === 'application/octet-stream';
+
+    var isSafari = /constructor/i.test(_global.HTMLElement) || _global.safari;
+
+    var isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent);
+
+    if ((isChromeIOS || force && isSafari || isMacOSWebView) && typeof FileReader !== 'undefined') {
+      // Safari doesn't allow downloading of blob URLs
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        var url = reader.result;
+        url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:attachment/file;');
+        if (popup) popup.location.href = url;else location = url;
+        popup = null; // reverse-tabnabbing #460
+      };
+
+      reader.readAsDataURL(blob);
+    } else {
+      var URL = _global.URL || _global.webkitURL;
+      var url = URL.createObjectURL(blob);
+      if (popup) popup.location = url;else location.href = url;
+      popup = null; // reverse-tabnabbing #460
+
+      setTimeout(function () {
+        URL.revokeObjectURL(url);
+      }, 4E4); // 40s
+    }
+  });
+  _global.saveAs = saveAs.saveAs = saveAs;
+
+  if (typeof module !== 'undefined') {
+    module.exports = saveAs;
+  }
+});
+
+//FILESAVER.JS SCRIPT ENDED -- MULTIPLE SCRIPT LAST FIXES STARTED
 window.onresize = function() {
     if (document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open') == false) {
         prepareNav()
@@ -4537,13 +4926,13 @@ window.onresize = function() {
         }, 50)
     }
 }
-if (localStorage.getItem('XCenterAfterSetup') == null && (location.href.indexOf('file:///') != -1 && !!window._cordovaNative != -1)) {
+if (localStorage.getItem('XCenterAfterSetup') == null && (location.href.indexOf('file:///') != -1 || (!!window._cordovaNative != false && !!window._cordovaNative != -1))) {
     for (let i = 0;i != 33;i++) {
         localStorage.removeItem('XCenterAppData' + i);
         app.reloadApps();
     }
     localStorage.setItem('XCenterAfterSetup', 'true');
-} else if (localStorage.getItem('XCenterAfterSetup') != null && (location.href.indexOf('file:///') === -1 && !!window._cordovaNative === -1)) {
+} else if (localStorage.getItem('XCenterAfterSetup') != null && (location.href.indexOf('file:///') === -1 && (!!window._cordovaNative == false || !!window._cordovaNative === -1))) {
     localStorage.removeItem('XCenterAfterSetup');
 }
 //MULTIPLE SCRIPT LAST FIXES ENDED -- MULTIPLE SCRIPT ENDED
