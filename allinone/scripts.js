@@ -3,7 +3,7 @@ var lastSwitchedPage = 'index';
 var precedentSwitchedPage;
 var initialPage;
 var precedentrunbatchscripts;
-var version = "1.0.2";
+var version = "1.0.21";
 var onScreenConsole = false;
 setTimeout(() => {
     if (document.getElementById('new-XCenterGoBackToNewVersion') != null) {document.getElementById('new-XCenterGoBackToNewVersion').setAttribute('style', 'display: none !important;visibility: hidden !important;');}
