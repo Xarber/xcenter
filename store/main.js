@@ -6,6 +6,7 @@ var tool1, tool2, tool3, tool4, tool5, tool6, tool7, tool8, tool9, tool10, tool1
 var store1, store2, store3, store4, store5, store6, store7, store8, store9, store10;
 var storeInstallSlot;
 var quickLaunchTimeout;
+var forceBoot = true;
 var defaultStore = {
     added: false
 }
@@ -406,7 +407,7 @@ var store = {
             document.querySelector("#store-nav").classList.remove("hided");
             document.querySelector(".nav-compenser").classList.remove("hided")
         }
-        if (location.pathname.indexOf("/apps/") != -1 || location.pathname.indexOf("/store/") != -1 || ((location.href.indexOf('file:///') != -1 || (!!window._cordovaNative != -1 && !!window._cordovaNative != false)) && document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open'))) {
+        if (location.pathname.indexOf("/apps/") != -1 || location.pathname.indexOf("/store/") != -1 || (location.href.indexOf('file:///') != -1 && document.querySelector('.new-xcenter-home-menu') != null && document.querySelector('.new-xcenter-home-menu').classList.contains('app-open')) || window!=window.top || forceBoot) {
             var styletmp = document.createElement('style');
             styletmp.innerHTML = '\n .store-settings-stores-manuallyadd {width: 80%;height: 20%;min-height: 200px;background-color: blue;position: fixed;top: 50%;left: 50%;z-index: 201;padding: 10px;border-radius: 10px;} \n';
             document.body.appendChild(styletmp)
