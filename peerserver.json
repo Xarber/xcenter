@@ -1,5 +1,5 @@
 {
-    "use": true,
+    "use": false,
     "ip": "95.239.192.197",
     "port": "8080",
     "key": "XCenterPeerServerKey",
